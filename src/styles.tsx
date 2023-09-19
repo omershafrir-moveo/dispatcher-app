@@ -9,23 +9,30 @@ export const whiteDropdownProps = {
   backgroundColor: "#FFFFFF",
   borderRadius: "10px",
   width: "175",
-  height: "47"
+  height: "47",
 };
-export const rectangleColorProps = {
-  backgroundColor: "#0058B9",
+
+export const mainSearch = {
+  backgroundColor: "#FFFFFF",
   borderRadius: "12px",
+};
+
+export const mainSearchBoxDropdown = {
+  backgroundColor: "#FFFFFF",
+  borderStyle: "none",
+  "& .MuiSelect-icon": {
+    backgroundImage: 'url("./assets/svg/DownArrowIcon.svg")',
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    width: "16px", // Adjust the width and height as needed
+    height: "16px",
+    marginRight: "8px", // Add spacing to adjust the position
+  },
 };
 
 export const mainSearchBoxSearch = {
   backgroundColor: "#FFFFFF",
-  borderRadius: "12px",
-  borderRightStyle: "hidden",
-};
-export const mainSearchBoxDropdown = {
-  backgroundColor: "#FFFFFF",
-  //   backgroundColor: "#FF44FF",
-  borderRadius: "12px",
-  borderLeftStyle: "hidden",
+  borderStyle: "none",
 };
 export const header = {
   backgroundColor: "#262146",

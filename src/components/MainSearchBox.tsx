@@ -1,5 +1,6 @@
 import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from "../assets/svg/SearchIcon.svg";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import DispatcherDropdown from "./DispatcherDropdown";
 import { useState, ChangeEvent, MouseEvent } from "react";
@@ -24,12 +25,14 @@ const MainSearchBox = () => {
       <TextField
         variant="outlined"
         placeholder="Search"
+        value={searchInput}
         onChange={handleInputChange}
         InputProps={{
           startAdornment: (
-            <IconButton type="submit" aria-label="search">
-              <SearchIcon />
-            </IconButton>
+            <img src={SearchIcon}/>
+            // <IconButton type="submit" aria-label="search">
+            //   <SearchIcon />
+            // </IconButton>
           ),
         }}
         sx={sx.mainSearchBoxSearch}
@@ -38,7 +41,7 @@ const MainSearchBox = () => {
   };
 
   return (
-    <>
+    <Box sx={sx.mainSearch}>
       <SearchBox searchValue={searchInput} setSearchValue={setSearchInput} />
       <DispatcherDropdown
         triggerItemName="Everything"
@@ -47,7 +50,7 @@ const MainSearchBox = () => {
         setSelectedOption={setSelectedOption}
         sx={sx.mainSearchBoxDropdown}
       />
-    </>
+    </Box>
   );
 };
 
