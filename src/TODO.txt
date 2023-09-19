@@ -1,0 +1,6 @@
+TODOS:
+
+1. fix : why onChange of search Input breaks the focus of the text box
+2. fix style of searchBox + filter : rounded edges, borders, to make it look like 1 component
+3. add logo to header
+4. fix style of header to look like in figma
