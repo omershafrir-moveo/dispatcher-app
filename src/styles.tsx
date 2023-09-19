@@ -9,23 +9,22 @@ export const whiteDropdownProps = {
   backgroundColor: "#FFFFFF",
   borderRadius: "10px",
   width: "175",
-  height: "47"
+  height: "47",
 };
-export const rectangleColorProps = {
-  backgroundColor: "#0058B9",
+
+export const mainSearch = {
+  backgroundColor: "#FFFFFF",
   borderRadius: "12px",
+};
+
+export const mainSearchBoxDropdown = {
+  backgroundColor: "#FFFFFF",
+  borderStyle: "none",
 };
 
 export const mainSearchBoxSearch = {
   backgroundColor: "#FFFFFF",
-  borderRadius: "12px",
-  borderRightStyle: "hidden",
-};
-export const mainSearchBoxDropdown = {
-  backgroundColor: "#FFFFFF",
-  //   backgroundColor: "#FF44FF",
-  borderRadius: "12px",
-  borderLeftStyle: "hidden",
+  borderStyle: "none",
 };
 export const header = {
   backgroundColor: "#262146",

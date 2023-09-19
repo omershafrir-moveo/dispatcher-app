@@ -3,8 +3,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import { Dispatch, SetStateAction } from "react";
+import DownArrowIcon from "../assets/svg/DownArrowIcon.svg"
 import * as sx from "../styles";
-
 import { useState } from "react";
 
 const DispatcherDropdown: React.FC<{
