@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "../../assets/svg/SearchIcon.svg";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import DispatcherDropdown from "../../trash/DispatcherDropdown/DispatcherDropdown";
+// import DispatcherDropdown from "../../trash/DispatcherDropdown/DispatcherDropdown";
 import { useState, ChangeEvent, MouseEvent } from "react";
 import { Dispatch, SetStateAction } from "react";
 import {
@@ -47,13 +47,13 @@ const MainSearchBox = () => {
   return (
     <Box sx={mainSearchStyle}>
       <SearchBox searchValue={searchInput} setSearchValue={setSearchInput} />
-      <DispatcherDropdown
+      {/* <DispatcherDropdown
         triggerItemName="Everything"
         itemsNames={itemsNames}
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
         sx={mainSearchBoxDropdownStyle}
-      />
+      /> */}
     </Box>
   );
 };

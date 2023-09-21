@@ -1,7 +1,7 @@
 import styled from "styled-components";
 type containerType = "itemsList" | "dropdownMenu";
 
-type StyledContainerProps = {
+export type StyledContainerProps = {
   containerType: containerType;
 };
 
@@ -17,3 +17,5 @@ export const Container = styled.div<StyledContainerProps>`
   align-items: center;
   flex-shrink: 0;
 `;
+
+export default Container

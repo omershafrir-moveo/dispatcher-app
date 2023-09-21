@@ -4,15 +4,12 @@ import { useState } from "react";
 import { StyledMenu } from "./DropDownMenu.styles";
 import { Container } from "../Container/Container.style";
 
-
 type DropDownProps = {
   defaultItemName: string;
   itemsNames: string[];
   selectedOption: string;
   setSelectedOption: Dispatch<SetStateAction<string>>;
 };
-
-
 
 const DropDownMenu: React.FC<DropDownProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
