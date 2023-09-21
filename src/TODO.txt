@@ -4,3 +4,12 @@ TODOS:
 2. fix style of searchBox + filter : rounded edges, borders, to make it look like 1 component
 3. add logo to header
 4. fix style of header to look like in figma
+
+
+DropDown:
+1. fix the sides - padding of menu
+2. learn storybook
+3, delete all css files
+4. add styling to div that wrpas jsx content of DropDownMenu comp
+5. change color of scrollbar
+6. ask roey about margins: how do i know from the figma the small details in between components( like margin)
