@@ -5,7 +5,6 @@ type StyledMenuProps = {
 };
 
 export const StyledMenu = styled.ul<StyledMenuProps>`
-  background-color: aqua;
   padding: 0;
   margin: 0;
   align-items: left;

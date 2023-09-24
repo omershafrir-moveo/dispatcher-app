@@ -13,11 +13,12 @@ const Template = (args) => {
       {...args}
       selectedOption={selectedOption}
       setSelectedOption={setSelectedOption}
+      theme="default"
     />
   );
 };
-export const BasicDropDownMenu = Template.bind({});
-BasicDropDownMenu.args = {
+export const DefaultDropDownMenu = Template.bind({});
+DefaultDropDownMenu.args = {
   defaultItemName: "Sources",
   itemsNames: [
     "Mako",
@@ -30,4 +31,5 @@ BasicDropDownMenu.args = {
     "Yahoo",
     "N12",
   ],
+  theme: "default",
 };

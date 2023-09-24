@@ -3,17 +3,19 @@ import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { StyledMenu } from "./DropDownMenu.styles";
 import { Container } from "../Container/Container.style";
+import { themeOption } from "../DropdownOption/DropdownOption.types";
 
-type DropDownProps = {
+export type DropDownProps = {
   defaultItemName: string;
   itemsNames: string[];
   selectedOption: string;
   setSelectedOption: Dispatch<SetStateAction<string>>;
+  theme: string;
 };
 
 const DropDownMenu: React.FC<DropDownProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("Sources");
+  const [selectedItem, setSelectedItem] = useState(props.defaultItemName);
 
   const onInputBoxClick = () => {
     setIsOpen(!isOpen);
@@ -29,6 +31,9 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         value={selectedItem}
         isInputBox={true}
         handleClick={onInputBoxClick}
+        theme={
+          props.theme === "default" ? "defaultInputOption" : "filterInputOption"
+        }
       />
       {isOpen && (
         <Container containerType="itemsList">
@@ -41,6 +46,9 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
                 handleClick={() => {
                   onOptionClick(item);
                 }}
+                theme={
+                  props.theme === "default" ? "defaultOption" : "filterOption"
+                }
               />
             ))}
           </StyledMenu>

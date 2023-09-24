@@ -24,12 +24,13 @@ function App() {
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "1000px" }}
     >
-      <DropDownMenu
+      {/* <DropDownMenu
         defaultItemName="clickMe"
         itemsNames={menuNames}
         selectedOption={selected}
         setSelectedOption={setSelected}
-      />
+        theme="default"
+      /> */}
     </Container>
   );
 }
