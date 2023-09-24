@@ -1,5 +1,7 @@
+import GlobalStyles from "../../global-styles";
+
 export const buttonStyle = {
-  backgroundColor: "#0058B9",
+  backgroundColor: GlobalStyles.primaryButtonColor,
   width: "226",
   height: "36",
   borderRadius: "20px",
@@ -13,7 +15,7 @@ export const typographyStyle = {
   fontSize: "14px",
   fontStyle: "normal",
   fontWeight: "500",
-  lineHeight: "26px", 
+  lineHeight: "26px",
   letterSpacing: "0.25px",
   textTransform: "uppercase",
-}
+};

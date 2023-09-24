@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DownArrowIcon from "../../assets/svg/DownArrowIcon";
+import DownArrowIcon from "../Icons/DownArrowIcon";
 import THEMES, { StyledButtonProps } from "./DropdownOption.types";
 
 const StyledOption = styled.button<StyledButtonProps>`

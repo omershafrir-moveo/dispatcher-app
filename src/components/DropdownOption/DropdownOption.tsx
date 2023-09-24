@@ -1,5 +1,5 @@
 import StyledOption from "./DropdownOption.styles";
-import DownArrowIcon from "../../assets/svg/DownArrowIcon";
+import DownArrowIcon from "../Icons/DownArrowIcon";
 import { themeOption } from "./DropdownOption.types";
 
 export const DropdownOption: React.FC<{

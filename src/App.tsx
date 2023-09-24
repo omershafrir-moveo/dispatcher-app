@@ -7,22 +7,10 @@ import DropdownOption from "./components/DropdownOption/DropdownOption";
 import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
 
 function App() {
-  const menuNames = [
-    "Mako",
-    "Ynet",
-    "Walla",
-    "Yahoo",
-    "N12",
-    "Yahoo",
-    "N12",
-    "Yahoo",
-    "N12",
-  ];
-  const [selected, setSelected] = useState("Sources");
   return (
     <Container
       className="App"
-      sx={{ backgroundColor: "#FFF2FF", height: "1000px" }}
+      sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
       {/* <DropDownMenu
         defaultItemName="clickMe"

@@ -4,7 +4,7 @@ type StyledMenuProps = {
   numOfItems: number; // Add your custom prop here
 };
 
-export const StyledMenu = styled.ul<StyledMenuProps>`
+export const StyledMenu = styled.ul`
   padding: 0;
   margin: 0;
   align-items: left;

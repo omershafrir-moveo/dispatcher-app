@@ -1,8 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { buttonStyle, typographyStyle } from "./styles";
-import Typography from "@mui/material";
+import { buttonStyle } from "./styles";
 
 const DispatcherButton: React.FC<{ text: string; handleClick: () => void }> = (
   props

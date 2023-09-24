@@ -37,7 +37,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       />
       {isOpen && (
         <Container containerType="itemsList">
-          <StyledMenu numOfItems={props.itemsNames.length}>
+          <StyledMenu>
             {props.itemsNames.map((item, index) => (
               <DropdownOption
                 key={index}

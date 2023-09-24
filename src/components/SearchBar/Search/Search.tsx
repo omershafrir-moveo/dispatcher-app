@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import SearchIcon from "../../assets/svg/SearchIcon.svg";
 import { StyledTextField, StyledLabel } from "./Search.styles";
-import DownArrowIcon from "../../../assets/svg/DownArrowIcon";
+import DownArrowIcon from "../../Icons/DownArrowIcon";
 import {
   mainSearchStyle,
   mainSearchBoxDropdownStyle,
@@ -17,7 +17,11 @@ type searchProps = {
 
 const Search: React.FC<searchProps> = (props) => {
   return (
-      <StyledTextField type="text" placeholder="Search" onChange={props.handleInputChange}/>
+    <StyledTextField
+      type="text"
+      placeholder="Search"
+      onChange={props.handleInputChange}
+    />
   );
 
   //   return (

@@ -2,7 +2,6 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "../../assets/svg/SearchIcon.svg";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-// import DispatcherDropdown from "../../trash/DispatcherDropdown/DispatcherDropdown";
 import { useState, ChangeEvent, MouseEvent } from "react";
 import { Dispatch, SetStateAction } from "react";
 import {
@@ -12,7 +11,7 @@ import {
 } from "./styles";
 
 const MainSearchBox = () => {
-  const [searchInput, setSearchInput] = useState("Search");
+  const [searchInput, setSearchInput] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const itemsNames = ["Everything", "Top Headlines"];
 
@@ -34,9 +33,6 @@ const MainSearchBox = () => {
         InputProps={{
           startAdornment: (
             <img src={SearchIcon} />
-            // <IconButton type="submit" aria-label="search">
-            //   <SearchIcon />
-            // </IconButton>
           ),
         }}
         sx={mainSearchBoxSearchStyle}
