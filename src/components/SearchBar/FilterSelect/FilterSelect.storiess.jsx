@@ -7,7 +7,6 @@ export default {
 };
 
 const Template = (args) => {
-  const [selectedOption, setSelectedOption] = useState("Top Headlines");
   return <FilterSelect />;
 };
 export const DefaultFilterSelect = Template.bind({});

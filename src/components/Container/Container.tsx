@@ -1,7 +1,12 @@
-import {Container as StyledContainer, StyledContainerProps} from './Container.style'
+import { Container as StyledContainer } from "./Container.styles";
+import { StyledContainerProps } from "./Container.types";
 
-const Container:React.FC<StyledContainerProps> = (props) => {
-    return (<StyledContainer containerType={props.containerType}/>) 
-}
- 
+const Container: React.FC<StyledContainerProps> = (props) => {
+  return (
+    <StyledContainer containerType={props.containerType}>
+      {props.children}
+    </StyledContainer>
+  );
+};
+
 export default Container;

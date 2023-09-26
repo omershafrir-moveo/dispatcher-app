@@ -38,7 +38,7 @@ const THEMES: themeType = {
       : theme === "defaultOption"
       ? "28px"
       : theme === "filterInputOption"
-      ? "47px"
+      ? "50px"
       : theme === "filterOption"
       ? "28px"
       : undefined,
@@ -48,7 +48,7 @@ const THEMES: themeType = {
       : theme === "defaultOption"
       ? "none"
       : theme === "filterInputOption"
-      ? "10px"
+      ? "0px 10px 10px 0px"
       : theme === "filterOption"
       ? "none"
       : undefined,
@@ -102,6 +102,7 @@ const THEMES: themeType = {
       : theme === "filterOption"
       ? "#DFE0EB69"
       : undefined,
+      
 };
 
 export default THEMES;

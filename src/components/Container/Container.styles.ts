@@ -1,9 +1,6 @@
 import styled from "styled-components";
-type containerType = "itemsList" | "dropdownMenu";
+import { StyledContainerProps } from './Container.types';
 
-export type StyledContainerProps = {
-  containerType: containerType;
-};
 
 export const Container = styled.div<StyledContainerProps>`
   background-color: ${(props) => (props.containerType === 'itemsList' ? "#ffffff" : "transparent")};
@@ -17,5 +14,6 @@ export const Container = styled.div<StyledContainerProps>`
   align-items: center;
   flex-shrink: 0;
 `;
+
 
 export default Container

@@ -5,20 +5,15 @@ import Header from "./components/Header/Header";
 import { useState } from "react";
 import DropdownOption from "./components/DropdownOption/DropdownOption";
 import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
-
+import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
+import SearchIcon from "./components/Icons/SearchIcon";
 function App() {
   return (
     <Container
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
-      {/* <DropDownMenu
-        defaultItemName="clickMe"
-        itemsNames={menuNames}
-        selectedOption={selected}
-        setSelectedOption={setSelected}
-        theme="default"
-      /> */}
+    <SearchBar />
     </Container>
   );
 }
