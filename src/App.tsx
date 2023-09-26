@@ -6,14 +6,15 @@ import { useState } from "react";
 import DropdownOption from "./components/DropdownOption/DropdownOption";
 import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
 import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
-import SearchIcon from "./components/Icons/SearchIcon";
+import React from "react";
+
 function App() {
   return (
     <Container
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
-    <SearchBar />
+      <SearchBar />
     </Container>
   );
 }

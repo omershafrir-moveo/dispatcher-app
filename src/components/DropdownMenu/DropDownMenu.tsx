@@ -1,16 +1,14 @@
 import DropdownOption from "../DropdownOption/DropdownOption";
-import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { StyledMenu } from "./DropDownMenu.styles";
-import  Container  from "../Container/Container";
-import { themeOption } from "../DropdownOption/DropdownOption.types";
-import { ChangeEvent } from "react";
+import Container from "../Container/Container";
+import React from "react";
 
 export type DropDownProps = {
   defaultItemName: string;
   itemsNames: string[];
   selectedOption: string;
-  handleSelectedOptionChange: (option: string) => void
+  handleSelectedOptionChange: (option: string) => void;
   theme: string;
 };
 
@@ -22,7 +20,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
   };
   const onOptionClick = (item: string) => {
     setIsOpen(false);
-    props.handleSelectedOptionChange(item)
+    props.handleSelectedOptionChange(item);
   };
 
   return (

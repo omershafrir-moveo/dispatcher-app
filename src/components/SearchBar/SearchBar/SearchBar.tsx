@@ -1,8 +1,8 @@
-import {Container, SearchContainer} from "./SearchBar.styles";
+import React , { useState }from "react";
+import { Container, SearchContainer } from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
-import { useState } from "react";
 
 const SearchBar = () => {
   const [selectedOption, setSelectedOption] = useState("Top Headlines");
@@ -19,8 +19,8 @@ const SearchBar = () => {
     console.log("filter change");
   };
   return (
-    <Container >
-      <SearchContainer >
+    <Container>
+      <SearchContainer>
         <SearchIcon />
         <Search
           searchInput={searchValue}
