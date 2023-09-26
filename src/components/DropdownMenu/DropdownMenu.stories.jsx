@@ -12,7 +12,7 @@ const Template = (args) => {
     <DropDownMenu
       {...args}
       selectedOption={selectedOption}
-      handleSelectedOptionChange={() => setSelectedOption("test")}      
+      handleSelectedOptionChange={() => setSelectedOption("mockup")}
       theme="default"
     />
   );
