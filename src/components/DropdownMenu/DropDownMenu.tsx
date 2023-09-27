@@ -1,14 +1,16 @@
+import React , { useState } from "react";
+import { SelectOptionType } from "../../global-data";
+
 import DropdownOption from "../DropdownOption/DropdownOption";
-import { useState } from "react";
 import { StyledMenu } from "./DropDownMenu.styles";
-import Container from "../Container/Container";
-import React from "react";
+import DropDownMenuContainer from "../Container/DropDownMenuContainer/DropDownMenuContainer";
+import ItemsListContainer from "../Container/ItemsListContainer/ItemsListContainer";
 
 export type DropDownProps = {
-  defaultItemName: string;
-  itemsNames: string[];
-  selectedOption: string;
-  handleSelectedOptionChange: (option: string) => void;
+  defaultItemName: SelectOptionType;
+  itemsNames: SelectOptionType[];
+  selectedOption: SelectOptionType;
+  handleSelectedOptionChange: (option: SelectOptionType) => void;
   theme: string;
 };
 
@@ -18,15 +20,15 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
   const onInputBoxClick = () => {
     setIsOpen(!isOpen);
   };
-  const onOptionClick = (item: string) => {
+  const onOptionClick = (item: SelectOptionType) => {
     setIsOpen(false);
     props.handleSelectedOptionChange(item);
   };
 
   return (
-    <Container containerType="dropdownMenu">
+    <DropDownMenuContainer>
       <DropdownOption
-        value={props.selectedOption}
+        value={props.selectedOption.title != "" ? props.selectedOption : props.defaultItemName}
         isInputBox={true}
         handleClick={onInputBoxClick}
         theme={
@@ -34,7 +36,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         }
       />
       {isOpen && (
-        <Container containerType="itemsList">
+        <ItemsListContainer>
           <StyledMenu>
             {props.itemsNames.map((item, index) => (
               <DropdownOption
@@ -50,9 +52,9 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
               />
             ))}
           </StyledMenu>
-        </Container>
+        </ItemsListContainer>
       )}
-    </Container>
+    </DropDownMenuContainer>
   );
 };
 
