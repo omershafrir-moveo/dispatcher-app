@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import * as sx from "../styles";
+import { buttonStyle } from "./styles";
 
 const DispatcherButton: React.FC<{ text: string; handleClick: () => void }> = (
   props
@@ -9,7 +9,7 @@ const DispatcherButton: React.FC<{ text: string; handleClick: () => void }> = (
   return (
     <Button
       variant="contained"
-      sx={sx.buttonProps}
+      sx={buttonStyle}
       endIcon={<ArrowForwardIcon />}
       onClick={props.handleClick}
     >
