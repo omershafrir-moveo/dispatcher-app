@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import { SelectOptionType } from "../../global-data";
 
 import DropdownOption from "../DropdownOption/DropdownOption";
@@ -25,10 +25,16 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     props.handleSelectedOptionChange(item);
   };
 
+  // on first render shlould be 'defaultItemName', after change should be state value
+  const inputOptionValue =
+    props.selectedOption.title != ""
+      ? props.selectedOption
+      : props.defaultItemName;
+
   return (
     <DropDownMenuContainer>
       <DropdownOption
-        value={props.selectedOption.title != "" ? props.selectedOption : props.defaultItemName}
+        value={inputOptionValue}
         isInputBox={true}
         handleClick={onInputBoxClick}
         theme={
