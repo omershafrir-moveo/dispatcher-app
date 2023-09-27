@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
 import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
 import RecentSearchesMenu from "./components/RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import InputSearchBar from "./components/InputSearchBar/InputSearchBar";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
       {/* <SearchBar /> */}
-      <RecentSearchesMenu />
+      <InputSearchBar />
     </Container>
   );
 }

@@ -1,14 +1,17 @@
-import Box from "@mui/material/Box";
-import headerStyle from "./styles";
-import LogoIcon from "../../assets/svg/logoIcon.svg";
+import InputSearchBar from "../InputSearchBar/InputSearchBar";
+import LogoIcon from "../Icons/LogoIcon";
+import { Container, IconWrapper, InputWrapper } from "./Header.styles";
 
 const Header = () => {
   return (
-    <div>
-      <Box sx={headerStyle}>
-        <img src={LogoIcon} />
-      </Box>
-    </div>
+    <Container>
+      <IconWrapper>
+        <LogoIcon />
+      </IconWrapper>
+      <InputWrapper>
+        <InputSearchBar />
+      </InputWrapper>
+    </Container>
   );
 };
 

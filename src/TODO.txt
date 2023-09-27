@@ -13,3 +13,7 @@ DropDown:
 
 RecentSearches:
 - IMPORTANT: when user clicks on 'x' in the recent searches- to stop the event propogation to the Item container that wraps it ( since it is also a button).
+
+
+InputSearchBar: 
+- IMPORTANT: what happens when both the recentSearches and the FilterDropdown are opened ?
