@@ -1,27 +1,25 @@
 import styled from "styled-components";
-import { SearchItemProps, ButtonProps } from "./RecentSearchItem.types";
+import { ButtonProps } from "./RecentSearchItem.types";
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.button<ButtonProps>`
   background-color: #ffffff;
   width: 663px;
   height: 29.3px;
   display: flex;
+  margin: 0px;
+  padding: 0px;
   justify-content: space-between;
-  &:hover {
-    background-color: #dfe0eb69;
-  }
   border: none;
 `;
 
 export const TextContainer = styled.div<{ text: string }>`
-  /* background-color: aqua; */
-  width: 309px;
   height: 13px;
-  margin-left: 15.89px;
   font-family: "Roboto", sans-serif;
   color: #5a5a89;
   font-size: 12px;
   align-items: left;
+  padding-left: 15.89px;
+  letter-spacing: 0.1px;
 `;
 
 export const DeleteButton = styled.button<ButtonProps>`
@@ -29,5 +27,5 @@ export const DeleteButton = styled.button<ButtonProps>`
   color: none;
   background-color: transparent;
   border: none;
-  margin: 0px 5px 0px 5px;
+  margin-right: 15.78px;
 `;

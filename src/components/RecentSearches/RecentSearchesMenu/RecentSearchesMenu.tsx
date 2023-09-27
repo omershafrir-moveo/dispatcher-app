@@ -1,4 +1,11 @@
-import { ItemsList } from "./RecentSearchesMenu.styles";
+import {
+  ItemsList,
+  HeaderContainer,
+  HeaderTitleContainer,
+  FooterContainer,
+  Container,
+  ClearButton,
+} from "./RecentSearchesMenu.styles";
 import RecentSearchesItem from "../RecentSearchesItem/RecentSearchesItem";
 import { useState } from "react";
 
@@ -17,17 +24,33 @@ const RecentSearchesMenu = () => {
       oldItems.filter((oldItem) => oldItem.key !== itemToDelete.key)
     );
   };
+  const clearMock = () => {
+    console.log("cleared all");
+    setItems([]);
+  };
+  const clickMock = (itemClicked: { key: number; text: string }) => {
+    console.log(`clicked ${itemClicked.text}!`);
+  };
 
+  
   return (
-    <ItemsList>
-      {items.map((item) => (
-        <RecentSearchesItem
-          key={item.key}
-          text={item.text}
-          handleDelete={() => deleteMock(item)}
-        />
-      ))}
-    </ItemsList>
+    <Container>
+      <HeaderContainer>
+        <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
+        <ClearButton onClick={clearMock}>CLEAR</ClearButton>
+      </HeaderContainer>
+      <ItemsList>
+        {items.map((item) => (
+          <RecentSearchesItem
+            key={item.key}
+            text={item.text}
+            handleDelete={() => deleteMock(item)}
+            handleClick={() => clickMock(item)}
+          />
+        ))}
+      </ItemsList>
+      <FooterContainer />
+    </Container>
   );
 };
 

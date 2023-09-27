@@ -5,11 +5,17 @@ import {
   TextContainer,
 } from "./RecentSearchesItem.styles";
 import XIcon from "../../Icons/XIcon";
-import { SearchItemProps } from "./RecentSearchItem.types";
+
+export type SearchItemProps = {
+  text: string;
+  handleDelete: () => void;
+  handleClick: () => void;
+  children?: React.ReactNode;
+};
 
 const RecentSearchesItem: React.FC<SearchItemProps> = (props) => {
   return (
-    <ItemContainer>
+    <ItemContainer onClick={props.handleClick}>
       <TextContainer text={props.text}>{props.text}</TextContainer>
       <DeleteButton onClick={props.handleDelete}>
         <XIcon />
