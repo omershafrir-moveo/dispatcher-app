@@ -7,6 +7,7 @@ import DropdownOption from "./components/DropdownOption/DropdownOption";
 import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
 import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
 import React from "react";
+import RecentSearchesMenu from "./components/RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
-      <SearchBar />
+      {/* <SearchBar /> */}
+      <RecentSearchesMenu />
     </Container>
   );
 }
