@@ -1,4 +1,4 @@
-import GlobalStyles from "../../global-styles";
+import { GlobalStyles } from "../../global-data";
 
 export const buttonStyle = {
   backgroundColor: GlobalStyles.primaryButtonColor,

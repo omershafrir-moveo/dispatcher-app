@@ -7,29 +7,35 @@ export default {
 };
 
 const Template = (args) => {
-  const [selectedOption, setSelectedOption] = useState("Sources");
+  const [selectedOption, setSelectedOption] = useState({ key: -1, title: "Sources", value: "" });
   return (
     <DropDownMenu
       {...args}
       selectedOption={selectedOption}
-      handleSelectedOptionChange={() => setSelectedOption("mockup")}
+      handleSelectedOptionChange={() => setSelectedOption( { key: -1, title: "mockup", value: "" })}
       theme="default"
     />
   );
 };
 export const DefaultDropDownMenu = Template.bind({});
 DefaultDropDownMenu.args = {
-  defaultItemName: "Sources",
+  defaultItemName: { key: -1, title: "Sources", value: "" },
   itemsNames: [
-    "Mako",
-    "Ynet",
-    "Walla",
-    "Yahoo",
-    "N12",
-    "Yahoo",
-    "N12",
-    "Yahoo",
-    "N12",
+    {
+      key: 1,
+      title: "Sports",
+      value: "sports",
+    },
+    {
+      key: 2,
+      title: "Everything",
+      value: "every",
+    },
+    {
+      key: 3,
+      title: "Top",
+      value: "top",
+    },
   ],
   theme: "default",
 };
