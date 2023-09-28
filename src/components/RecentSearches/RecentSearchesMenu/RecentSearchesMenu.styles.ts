@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ItemsListProps } from "./RecentSearchesMenu.types";
 import { ButtonProps } from "../RecentSearchesItem/RecentSearchItem.types";
-import { GlobalStyles } from "../../../global-data";
+import {COLORS } from "../../../global-data";
 
 export const Container = styled.div<{ children?: React.ReactNode }>`
   display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.div<{ children?: React.ReactNode }>`
 `;
 
 export const ItemsList = styled.ul<ItemsListProps>`
-  background-color: ${GlobalStyles.primaryLightColor};
+  background-color: ${COLORS.primaryLightColor};
   margin: 0px;
   padding: 0px;
   width: 663px;
@@ -19,7 +19,7 @@ export const HeaderContainer = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${GlobalStyles.primaryLightColor};
+  background-color: ${COLORS.primaryLightColor};
   width: 663px;
   height: 45.3px;
   border-radius: 10px 10px 0px 0px;
@@ -36,7 +36,7 @@ export const HeaderTitleContainer = styled.div`
 `;
 
 export const FooterContainer = styled.div<{ children?: React.ReactNode }>`
-  background-color: ${GlobalStyles.primaryLightColor};
+  background-color: ${COLORS.primaryLightColor};
   width: 663px;
   height: 8.78px;
   border-radius: 0px 0px 10px 10px;

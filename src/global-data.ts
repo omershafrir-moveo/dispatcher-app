@@ -1,4 +1,9 @@
-export const GlobalStyles = {
+// export const GlobalStyles = {
+//   primaryButtonColor: "#0058B9",
+//   primaryLightColor: "#FFFFFF",
+// };
+
+export const COLORS = {
   primaryButtonColor: "#0058B9",
   primaryLightColor: "#FFFFFF",
 };

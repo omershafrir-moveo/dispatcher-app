@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ButtonProps } from "./RecentSearchItem.types";
-import { GlobalStyles } from "../../../global-data";
+import { COLORS } from "../../../global-data";
 
 export const ItemContainer = styled.button<ButtonProps>`
-  background-color: ${GlobalStyles.primaryLightColor};
+  background-color: ${COLORS.primaryLightColor};
   width: 663px;
   height: 29.3px;
   display: flex;
