@@ -8,13 +8,15 @@ import RecentSearchesMenu from "./components/RecentSearches/RecentSearchesMenu/R
 import InputSearchBar from "./components/InputSearchBar/InputSearchBar";
 
 function App() {
+  const [color, setColor] = useState("red");
+
   return (
     <Container
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
       {/* <SearchBar /> */}
-      <InputSearchBar />
+      {/* <InputSearchBar /> */}
     </Container>
   );
 }

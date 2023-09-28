@@ -32,9 +32,8 @@ const RecentSearchesMenu = () => {
     console.log(`clicked ${itemClicked.text}!`);
   };
 
-  
   return (
-    <Container>
+    <Container onMouseLeave={() => console.log("I LEFT/ CLOSE ME")}>
       <HeaderContainer>
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onClick={clearMock}>CLEAR</ClearButton>

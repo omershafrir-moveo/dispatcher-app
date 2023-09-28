@@ -4,8 +4,8 @@ import { Container, Spacer } from "./InputSearchBar.styles";
 import { useState } from "react";
 
 const InputSearchBar = () => {
-  const [isOpenRecent, setIsOpenRecent] = useState(false);
-  const [isOpenFilter, setisOpenFilter] = useState(false);
+  const [isOpenRecent, setIsOpenRecent] = useState(true);
+  const [isOpenFilter, setisOpenFilter] = useState(true);
 
   return (
     <Container>
