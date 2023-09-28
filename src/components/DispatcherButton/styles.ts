@@ -2,10 +2,9 @@ import { GlobalStyles } from "../../global-data";
 
 export const buttonStyle = {
   backgroundColor: GlobalStyles.primaryButtonColor,
-  width: "226",
-  height: "36",
-  borderRadius: "20px",
-  borderStyle: "dotted",
+  width: "226px",
+  height: "36px",
+  borderRadius: "20px"
 };
 
 export const typographyStyle = {
