@@ -17,3 +17,16 @@ RecentSearches:
 
 InputSearchBar: 
 - IMPORTANT: what happens when both the recentSearches and the FilterDropdown are opened ?
+
+
+import { useContext } from 'react'
+import { SearchContext } from "../SearchContext/SearchContext";
+const { } = useContext(SearchContext);
+
+
+
+continue:
+1. fix clicks on/out search bar
+2. fix clicks on/out filter
+3. connect states to search bar and filter box
+4. connect handlers to search bar and filter box

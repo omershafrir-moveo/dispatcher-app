@@ -1,17 +1,48 @@
 import SearchBar from "../SearchBar/SearchBar/SearchBar";
 import RecentSearchesMenu from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { Container, Spacer } from "./InputSearchBar.styles";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { SelectOptionType } from "../../global-data";
+import { SearchBarProps } from "../SearchBar/SearchBar/SearchBar";
+import { RecentSearchesMenuProps } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import { SearchContext } from "../SearchContext/SearchContext";
 
 const InputSearchBar = () => {
-  const [isOpenRecent, setIsOpenRecent] = useState(true);
-  const [isOpenFilter, setisOpenFilter] = useState(true);
+  const [searchValue, setSearchValue] = useState("Search");
+  const [filterValue, setFilterValue] = useState<SelectOptionType>({
+    key: 0,
+    title: "Top Headlines",
+    value: "top",
+  });
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {};
+  const handleFilterChange = (event: SelectOptionType) => {};
 
+  const [items, setItems] = useState([]);
+  const handleClick = (item: RecentSearchesItem) => {};
+  const handleDelete = (item: RecentSearchesItem) => {};
+  const handleClear = () => {};
+
+  const { isOpenRecent } = useContext(SearchContext);
   return (
     <Container>
-      <SearchBar />
+      <SearchBar
+        filterValue={filterValue}
+        handleFilterChange={handleFilterChange}
+        searchValue={searchValue}
+        handleSearchInputChange={handleSearchInputChange}
+      />
       <Spacer />
-      {isOpenRecent && <RecentSearchesMenu />}
+      {isOpenRecent && (
+        <RecentSearchesMenu
+          items={items}
+          handleClick={handleClick}
+          handleDelete={handleDelete}
+          handleClear={handleClear}
+        />
+      )}
     </Container>
   );
 };

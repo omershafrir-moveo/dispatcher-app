@@ -1,4 +1,4 @@
-import React , { useState }from "react";
+import React, { useState, useContext } from "react";
 import { Container, SearchContainer } from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
@@ -11,10 +11,9 @@ export type SearchBarProps = {
   filterValue: SelectOptionType;
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleFilterChange: (event: SelectOptionType) => void;
-}
+};
 
-
-const SearchBar:React.FC<SearchBarProps> = (props) => {
+const SearchBar: React.FC<SearchBarProps> = (props) => {
 
   return (
     <Container>
@@ -26,7 +25,11 @@ const SearchBar:React.FC<SearchBarProps> = (props) => {
         />
       </SearchContainer>
       <FilterSelect
-        defaultItemName={{ key: 0, title: "Top Headlines", value: "top-headlines" }}
+        defaultItemName={{
+          key: 0,
+          title: "Top Headlines",
+          value: "top-headlines",
+        }}
         itemsNames={[
           { key: 0, title: "Top Headlines", value: "top-headlines" },
           { key: 1, title: "Everything", value: "every" },
