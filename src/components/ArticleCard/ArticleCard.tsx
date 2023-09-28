@@ -1,4 +1,9 @@
-import { Card, PhotoContainer, TextContainer } from "./ArticleCard.styles";
+import {
+  Card,
+  PhotoContainer,
+  TextContainer,
+  DataContainer,
+} from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
 import DispatcherButton from "../DispatcherButton/DispatcherButton";
 import Spacer from "../Container/Spacer/Spacer";
@@ -30,21 +35,23 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
         width="244px"
         height="242px"
       />
-      <TextContainer>
-        <Typography margin="17px 0px 0px 0px">{props.text.date}</Typography>
-        <Spacer height="14px" />
-        <Typography color="#000000" size="18px" width="470px" height="42px">
-          {props.text.title}
-        </Typography>
-        <Spacer height="14px" />
-        <Typography>{props.text.source}</Typography>
-        <Spacer height="14px" />
-        <Typography color="#5A5A89" width="711px" height="32px">
-          {props.text.body}
-        </Typography>
-        <Spacer height="20px" />
+      <DataContainer>
+        <TextContainer>
+          <Typography margin="17px 0px 0px 0px">{props.text.date}</Typography>
+          <Spacer height="14px" />
+          <Typography color="#000000" size="18px" width="470px" height="42px">
+            {props.text.title}
+          </Typography>
+          <Spacer height="14px" />
+          <Typography>{props.text.source}</Typography>
+          <Spacer height="14px" />
+          <Typography color="#5A5A89" width="711px" height="32px">
+            {props.text.body}
+          </Typography>
+          <Spacer height="24px" />
+        </TextContainer>
         {props.text.button}
-      </TextContainer>
+      </DataContainer>
     </Card>
   );
 };

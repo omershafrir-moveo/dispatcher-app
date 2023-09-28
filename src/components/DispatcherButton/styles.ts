@@ -4,13 +4,9 @@ export const buttonStyle = {
   backgroundColor: GlobalStyles.primaryButtonColor,
   width: "226px",
   height: "36px",
-  borderRadius: "20px"
-};
-
-export const typographyStyle = {
-  color: "var(--grayscale-white, #FFF)",
+  borderRadius: "20px",
   fontFeatureSettings: "'clig' off, 'liga' off",
-  fontFamily: "Roboto",
+  fontFamily: "'Roboto', sans-serif",
   fontSize: "14px",
   fontStyle: "normal",
   fontWeight: "500",
@@ -18,3 +14,4 @@ export const typographyStyle = {
   letterSpacing: "0.25px",
   textTransform: "uppercase",
 };
+
