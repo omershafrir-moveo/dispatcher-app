@@ -34,6 +34,7 @@ export default meta;
 type StoryType = StoryObj<typeof meta>;
 export const ArticleCardTemplate: StoryType = {
   args: {
-    
+    photo: photoProps.photo,
+    text: photoProps.text
   },
 };
