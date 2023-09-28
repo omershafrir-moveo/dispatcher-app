@@ -1,10 +1,10 @@
 export const GlobalStyles = {
-    primaryButtonColor: "#0058B9"
-}
+  primaryButtonColor: "#0058B9",
+  primaryLightColor: "#FFFFFF",
+};
 
 export type SelectOptionType = {
-    key: number;
-    title: string;
-    value: string; 
-}
-
+  key: number;
+  title: string;
+  value: string;
+};

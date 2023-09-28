@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { GlobalStyles } from "../../../global-data";
 
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${GlobalStyles.primaryLightColor};
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 `;
@@ -19,6 +20,6 @@ export const Container = styled.div`
   height: 50px;
   width: 663px;
   margin: 0px;
-  background-color: #ffffff;
+  background-color: ${GlobalStyles.primaryLightColor};
   border-radius: 10px;
 `;

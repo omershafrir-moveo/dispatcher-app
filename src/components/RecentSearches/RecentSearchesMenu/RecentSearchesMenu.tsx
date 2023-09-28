@@ -9,14 +9,10 @@ import {
 import RecentSearchesItem from "../RecentSearchesItem/RecentSearchesItem";
 import { useState } from "react";
 
-const itemsMock = [
-  { key: 1, text: "crypto" },
-  { key: 2, text: "soccer" },
-  { key: 3, text: "politics" },
-];
-
-const RecentSearchesMenu = () => {
-  const [items, setItems] = useState(itemsMock);
+const RecentSearchesMenu: React.FC<{
+  items: { key: number; text: string }[];
+}> = (props) => {
+  const [items, setItems] = useState(props.items);
 
   const deleteMock = (itemToDelete: { key: number; text: string }) => {
     console.log(`deleted ${itemToDelete.text}!`);
@@ -32,23 +28,24 @@ const RecentSearchesMenu = () => {
     console.log(`clicked ${itemClicked.text}!`);
   };
 
-  
   return (
     <Container>
       <HeaderContainer>
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onClick={clearMock}>CLEAR</ClearButton>
       </HeaderContainer>
-      <ItemsList>
-        {items.map((item) => (
-          <RecentSearchesItem
-            key={item.key}
-            text={item.text}
-            handleDelete={() => deleteMock(item)}
-            handleClick={() => clickMock(item)}
-          />
-        ))}
-      </ItemsList>
+      {items && (
+        <ItemsList>
+          {items.map((item) => (
+            <RecentSearchesItem
+              key={item.key}
+              text={item.text}
+              handleDelete={() => deleteMock(item)}
+              handleClick={() => clickMock(item)}
+            />
+          ))}
+        </ItemsList>
+      )}
       <FooterContainer />
     </Container>
   );

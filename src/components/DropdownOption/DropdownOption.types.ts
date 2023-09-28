@@ -1,3 +1,5 @@
+import { GlobalStyles } from "../../global-data";
+
 type themeProperty = (theme: themeOption) => any;
 type themeType = {
   width: themeProperty;
@@ -64,13 +66,13 @@ const THEMES: themeType = {
       : undefined,
   backgroundColor: (theme: themeOption) =>
     theme === "defaultInputOption"
-      ? "#ffffff"
+      ? GlobalStyles.primaryLightColor
       : theme === "defaultOption"
-      ? "#ffffff"
+      ? GlobalStyles.primaryLightColor
       : theme === "filterInputOption"
-      ? "#ffffff"
+      ? GlobalStyles.primaryLightColor
       : theme === "filterOption"
-      ? "#ffffff"
+      ? GlobalStyles.primaryLightColor
       : undefined,
   fontFamily: (theme: themeOption) =>
     theme === "defaultInputOption"

@@ -12,8 +12,6 @@ function App() {
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
-      {/* <SearchBar /> */}
-      <RecentSearchesMenu />
     </Container>
   );
 }
