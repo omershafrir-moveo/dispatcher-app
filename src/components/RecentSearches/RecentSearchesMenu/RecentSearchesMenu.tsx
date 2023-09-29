@@ -8,7 +8,6 @@ import {
 } from "./RecentSearchesMenu.styles";
 import RecentSearchesItem from "../RecentSearchesItem/RecentSearchesItem";
 
-
 export type RecentSearchesItem = {
   key: number;
   text: string;
@@ -23,10 +22,8 @@ export type RecentSearchesMenuProps = {
 };
 
 const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
-
-
   return (
-    <Container >
+    <Container>
       <HeaderContainer>
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onClick={props.handleClear}>CLEAR</ClearButton>

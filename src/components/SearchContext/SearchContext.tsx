@@ -6,15 +6,28 @@ import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentS
 
 type SearchContextType = {
   isOpenRecent: boolean;
-  isOpenFilter: boolean;
   toggleRecentSearchesMenu: () => void;
-  toggleFilterMenu: () => void;
+  filterValue: SelectOptionType;
+  handleFilterChange: (value: SelectOptionType) => void;
+  searchValue: string;
+  handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  items: RecentSearchesItem[];
+  handleClick: (item: RecentSearchesItem) => void;
+  handleDelete: (item: RecentSearchesItem) => void;
+  handleClear: () => void;
 };
+
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
-  isOpenFilter: false,
   toggleRecentSearchesMenu: () => {},
-  toggleFilterMenu: () => {},
+  filterValue: { key: 0, title: "Top Headlines", value: "top" },
+  handleFilterChange: (value) => {},
+  searchValue: "",
+  handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => {},
+  items: [],
+  handleClick: (item: RecentSearchesItem) => {},
+  handleDelete: (item: RecentSearchesItem) => {},
+  handleClear: () => {},
 };
 
 export const SearchContext =
@@ -24,8 +37,7 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isOpenRecent, setIsOpenRecent] = useState(false);
-  const [isOpenFilter, setIsOpenFilter] = useState(false);
-  const [searchValue, setSearchValue] = useState("Search");
+  const [searchValue, setSearchValue] = useState("");
   const [filterValue, setFilterValue] = useState<SelectOptionType>({
     key: 0,
     title: "Top Headlines",
@@ -34,26 +46,49 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {};
+  ) => {
+    console.log("search change: ", event.target.value);
+    setSearchValue(event.target.value);
+  };
 
-  const handleFilterChange = (event: SelectOptionType) => {};
+  const handleFilterChange = (event: SelectOptionType) => {
+    setFilterValue(event);
+  };
 
-  const [items, setItems] = useState([]);
-  const handleClick = (item: RecentSearchesItem) => {};
-  const handleDelete = (item: RecentSearchesItem) => {};
-  const handleClear = () => {};
+  const [items, setItems] = useState([
+    { key: 1, text: "recent1" },
+    { key: 2, text: "recent2" },
+    { key: 3, text: "recent3" },
+  ]);
+  const handleClick = (item: RecentSearchesItem) => {
+    setSearchValue(item.text);
+  };
+  const handleDelete = (item: RecentSearchesItem) => {
+    //TODO : connect with db and erase permanently the search item
+    setItems((oldItems) =>
+      oldItems.filter((oldItem: RecentSearchesItem) => oldItem.key !== item.key)
+    );
+  };
+  const handleClear = () => {
+    //TODO : connect with db and erase permanently the search items
+    setItems([]);
+  };
+
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
-  };
-  const toggleFilterMenu = () => {
-    setIsOpenFilter((isOpen) => !isOpen);
   };
 
   const SearchData: SearchContextType = {
     isOpenRecent,
-    isOpenFilter,
     toggleRecentSearchesMenu,
-    toggleFilterMenu,
+    filterValue,
+    handleFilterChange,
+    searchValue,
+    handleSearchInputChange,
+    items,
+    handleClick,
+    handleDelete,
+    handleClear,
   };
 
   return (

@@ -24,7 +24,9 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     setIsOpen(false);
     props.handleSelectedOptionChange(item);
   };
-
+  const handleBlur = () => {
+    if (isOpen) setIsOpen(false);
+  };
   // on first render shlould be 'defaultItemName', after change should be state value
   const inputOptionValue =
     props.selectedOption.title != ""
@@ -37,6 +39,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         value={inputOptionValue}
         isInputBox={true}
         handleClick={onInputBoxClick}
+        handleBlur={handleBlur}
         theme={
           props.theme === "default" ? "defaultInputOption" : "filterInputOption"
         }
@@ -52,6 +55,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
                 handleClick={() => {
                   onOptionClick(item);
                 }}
+                handleBlur={handleBlur}
                 theme={
                   props.theme === "default" ? "defaultOption" : "filterOption"
                 }
