@@ -33,3 +33,14 @@ continue:
 
 * handleBlur of filter interrupts state assignment of filter
 * handle vent propogation for recent searches items to work. 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+  const {page,searchQuery} = useContext(SearchContext)
+
+  const callApi = async () => {
+    const res = await axios.get(`url/q=${searchQuery}&page=${page}`);
+    setArtciels(res))
+
+  }

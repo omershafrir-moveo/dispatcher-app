@@ -47,7 +47,6 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log("search change: ", event.target.value);
     setSearchValue(event.target.value);
   };
 
@@ -55,6 +54,7 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
     setFilterValue(event);
   };
 
+  //TODO : connect with db and get items
   const [items, setItems] = useState([
     { key: 1, text: "recent1" },
     { key: 2, text: "recent2" },
@@ -65,12 +65,14 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
   };
   const handleDelete = (item: RecentSearchesItem) => {
     //TODO : connect with db and erase permanently the search item
+    console.log("ITEM DELETE");
     setItems((oldItems) =>
       oldItems.filter((oldItem: RecentSearchesItem) => oldItem.key !== item.key)
     );
   };
   const handleClear = () => {
     //TODO : connect with db and erase permanently the search items
+    console.log("ITEMS CLEAR");
     setItems([]);
   };
 

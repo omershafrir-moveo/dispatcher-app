@@ -30,7 +30,7 @@ const InputSearchBar = () => {
         handleSearchInputChange={handleSearchInputChange}
       />
       <Spacer />
-      {isOpenRecent && (
+      {isOpenRecent && items.length > 0 && (
         <RecentSearchesMenu
           isOpen={isOpenRecent}
           items={items}
