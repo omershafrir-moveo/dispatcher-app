@@ -1,6 +1,8 @@
 import "./App.css";
 import { Container } from "@mui/material";
-import PieGraph from "./components/Widget/PieGraph/PieGraph";
+import MonthsGraph from "./components/Widget/MonthsGraph/MonthsGraph";
+
+
 function App() {
   return (
     <Container
@@ -8,7 +10,7 @@ function App() {
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
       <div style={{height:"100px"}}></div>
-      <PieGraph />
+      <MonthsGraph />
     </Container>
   );
 }
