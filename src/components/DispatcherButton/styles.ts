@@ -1,9 +1,9 @@
-import { GlobalStyles } from "../../global-data";
+import { COLORS  } from "../../global-data";
 
 export const buttonStyle = {
-  backgroundColor: GlobalStyles.primaryButtonColor,
-  width: "226px",
-  height: "36px",
+  backgroundColor: COLORS.primaryButtonColor,
+  width: "226",
+  height: "36",
   borderRadius: "20px",
   fontFeatureSettings: "'clig' off, 'liga' off",
   fontFamily: "'Roboto', sans-serif",

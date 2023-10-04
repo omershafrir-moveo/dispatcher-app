@@ -5,26 +5,24 @@ import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
 import { SelectOptionType } from "../../../global-data";
 
-const SearchBar = () => {
-  const [selectedOption, setSelectedOption] = useState({ key: 0, title: "Top Headlines", value: "top-headlines" });
-  const [searchValue, setSearchValue] = useState("");
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("input change");
-    console.log(searchValue);
-  };
+export type SearchBarProps = {
+  searchValue: string;
+  filterValue: SelectOptionType;
+  handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFilterChange: (event: SelectOptionType) => void;
+}
 
-  const handleFilterChange = (event: SelectOptionType) => {
-    setSelectedOption(event);
-    console.log("filter change");
-  };
+
+const SearchBar:React.FC<SearchBarProps> = (props) => {
+
   return (
     <Container>
       <SearchContainer>
         <SearchIcon />
         <Search
-          searchInput={searchValue}
-          handleInputChange={handleInputChange}
+          searchInput={props.searchValue}
+          handleInputChange={props.handleSearchInputChange}
         />
       </SearchContainer>
       <FilterSelect
@@ -33,8 +31,8 @@ const SearchBar = () => {
           { key: 0, title: "Top Headlines", value: "top-headlines" },
           { key: 1, title: "Everything", value: "every" },
         ]}
-        selectedOption={selectedOption}
-        handleSelectedOptionChange={handleFilterChange}
+        selectedOption={props.filterValue}
+        handleSelectedOptionChange={props.handleFilterChange}
         theme="filter"
       />
     </Container>
