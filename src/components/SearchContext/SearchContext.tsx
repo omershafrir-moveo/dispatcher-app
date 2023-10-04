@@ -33,9 +33,16 @@ const ContextInitalValue: SearchContextType = {
 export const SearchContext =
   createContext<SearchContextType>(ContextInitalValue);
 
-export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export type SearchContextProps = {
+  children?: React.ReactNode;
+  userInputAPI: {
+    handleClick: (item: RecentSearchesItem) => void;
+    handleDelete: (item: RecentSearchesItem) => void;
+    handleClear: () => void;
+  };
+};
+
+export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const [isOpenRecent, setIsOpenRecent] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filterValue, setFilterValue] = useState<SelectOptionType>({
@@ -54,25 +61,7 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
     setFilterValue(event);
   };
 
-  //TODO : connect with db and get items
-  const [items, setItems] = useState([
-    { key: 1, text: "recent1" },
-    { key: 2, text: "recent2" },
-    { key: 3, text: "recent3" },
-  ]);
-  const handleClick = (item: RecentSearchesItem) => {
-    setSearchValue(item.text);
-  };
-  const handleDelete = (item: RecentSearchesItem) => {
-    //TODO : connect with db and erase permanently the search item
-    setItems((oldItems) =>
-      oldItems.filter((oldItem: RecentSearchesItem) => oldItem.key !== item.key)
-    );
-  };
-  const handleClear = () => {
-    //TODO : connect with db and erase permanently the search items
-    setItems([]);
-  };
+  const [items, setItems] = useState<RecentSearchesItem[]>([{key:1, text:"sdsds"}]);
 
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
@@ -86,14 +75,14 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
     searchValue,
     handleSearchInputChange,
     items,
-    handleClick,
-    handleDelete,
-    handleClear,
+    handleClick: props.userInputAPI.handleClick,
+    handleDelete: props.userInputAPI.handleDelete,
+    handleClear: props.userInputAPI.handleClear,
   };
 
   return (
     <SearchContext.Provider value={SearchData}>
-      {children}
+      {props.children}
     </SearchContext.Provider>
   );
 };
