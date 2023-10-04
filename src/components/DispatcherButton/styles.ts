@@ -14,4 +14,3 @@ export const buttonStyle = {
   letterSpacing: "0.25px",
   textTransform: "uppercase",
 };
-
