@@ -1,11 +1,7 @@
 import SearchBar from "../SearchBar/SearchBar/SearchBar";
 import RecentSearchesMenu from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
-import { Container, Spacer } from "./InputSearchBar.styles";
-import { useState, useContext } from "react";
-import { SelectOptionType } from "../../global-data";
-import { SearchBarProps } from "../SearchBar/SearchBar/SearchBar";
-import { RecentSearchesMenuProps } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
-import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import { Spacer } from "./InputSearchBar.styles";
+import { useContext } from "react";
 import { SearchContext } from "../SearchContext/SearchContext";
 
 const InputSearchBar = () => {
@@ -22,7 +18,7 @@ const InputSearchBar = () => {
   } = useContext(SearchContext);
 
   return (
-    <Container>
+    <div>
       <SearchBar
         filterValue={filterValue}
         handleFilterChange={handleFilterChange}
@@ -39,7 +35,7 @@ const InputSearchBar = () => {
           handleClear={handleClear}
         />
       )}
-    </Container>
+    </div>
   );
 };
 

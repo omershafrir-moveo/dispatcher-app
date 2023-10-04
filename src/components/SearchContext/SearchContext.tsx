@@ -65,14 +65,12 @@ export const InputProvider: React.FC<{ children: React.ReactNode }> = ({
   };
   const handleDelete = (item: RecentSearchesItem) => {
     //TODO : connect with db and erase permanently the search item
-    console.log("ITEM DELETE");
     setItems((oldItems) =>
       oldItems.filter((oldItem: RecentSearchesItem) => oldItem.key !== item.key)
     );
   };
   const handleClear = () => {
     //TODO : connect with db and erase permanently the search items
-    console.log("ITEMS CLEAR");
     setItems([]);
   };
 

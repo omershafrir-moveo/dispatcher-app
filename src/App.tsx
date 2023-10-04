@@ -9,15 +9,11 @@ import { RecentSearchesItem } from "./components/RecentSearches/RecentSearchesMe
 import Header from "./components/Header/Header";
 import { SearchContext } from "./components/SearchContext/SearchContext";
 function App() {
-  const [color, setColor] = useState("red");
-
   return (
     <Container
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
-    >
-      <Header />
-    </Container>
+    ></Container>
   );
 }
 
