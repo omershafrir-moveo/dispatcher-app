@@ -24,6 +24,13 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     setIsOpen(false);
     props.handleSelectedOptionChange(item);
   };
+  const handleBlur = () => {
+    // adding timeout of 100 ms to prevent behaviour where onBlur handler of input box fired before onClick handler of option box,
+    // resulting in behaviour where drop down  is practically closed before the onClick is fired, and therefore not working
+    setTimeout(() => {
+      if (isOpen) setIsOpen(false);
+    }, 100);
+  };
 
   // on first render shlould be 'defaultItemName', after change should be state value
   const inputOptionValue =
@@ -37,6 +44,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         value={inputOptionValue}
         isInputBox={true}
         handleClick={onInputBoxClick}
+        handleBlur={handleBlur}
         theme={
           props.theme === "default" ? "defaultInputOption" : "filterInputOption"
         }
@@ -52,6 +60,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
                 handleClick={() => {
                   onOptionClick(item);
                 }}
+                handleBlur={handleBlur}
                 theme={
                   props.theme === "default" ? "defaultOption" : "filterOption"
                 }

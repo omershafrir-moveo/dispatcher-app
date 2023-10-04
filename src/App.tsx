@@ -1,11 +1,7 @@
 import "./App.css";
 import { Container } from "@mui/material";
-import DispatcherButton from "./components/DispatcherButton/DispatcherButton";
-import React, { useState } from "react";
-import DropDownMenu from "./components/DropdownMenu/DropDownMenu";
-import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
-import RecentSearchesMenu from "./components/RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
-import { RecentSearchesItem } from "./components/RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import React, { useContext, useState } from "react";
+import Header from "./components/Header/Header";
 
 function App() {
   return (

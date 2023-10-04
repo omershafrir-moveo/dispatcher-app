@@ -13,3 +13,34 @@ DropDown:
 
 RecentSearches:
 - IMPORTANT: when user clicks on 'x' in the recent searches- to stop the event propogation to the Item container that wraps it ( since it is also a button).
+
+
+InputSearchBar: 
+- IMPORTANT: what happens when both the recentSearches and the FilterDropdown are opened ?
+
+
+import { useContext } from 'react'
+import { SearchContext } from "../SearchContext/SearchContext";
+const { } = useContext(SearchContext);
+
+
+
+continue:
+1. fix clicks on/out search bar
+2. fix clicks on/out filter
+3. connect states to search bar and filter box
+4. connect handlers to search bar and filter box
+
+* handleBlur of filter interrupts state assignment of filter
+* handle vent propogation for recent searches items to work. 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+  const {page,searchQuery} = useContext(SearchContext)
+
+  const callApi = async () => {
+    const res = await axios.get(`url/q=${searchQuery}&page=${page}`);
+    setArtciels(res))
+
+  }

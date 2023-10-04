@@ -7,7 +7,6 @@ import {
   ClearButton,
 } from "./RecentSearchesMenu.styles";
 import RecentSearchesItem from "../RecentSearchesItem/RecentSearchesItem";
-import { useState } from "react";
 
 export type RecentSearchesItem = {
   key: number;
@@ -15,6 +14,7 @@ export type RecentSearchesItem = {
 };
 
 export type RecentSearchesMenuProps = {
+  isOpen?: boolean;
   items: RecentSearchesItem[];
   handleClick: (item: RecentSearchesItem) => void;
   handleDelete: (item: RecentSearchesItem) => void;
@@ -28,7 +28,7 @@ const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onClick={props.handleClear}>CLEAR</ClearButton>
       </HeaderContainer>
-      {props.items && (
+      {props.isOpen && props.items && (
         <ItemsList>
           {props.items.map((item) => (
             <RecentSearchesItem

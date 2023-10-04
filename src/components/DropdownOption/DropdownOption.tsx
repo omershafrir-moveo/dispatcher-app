@@ -7,12 +7,14 @@ export const DropdownOption: React.FC<{
   value: SelectOptionType;
   isInputBox: boolean;
   handleClick: () => void;
+  handleBlur?: () => void;
   theme: themeOption;
 }> = (props) => {
   return (
     <StyledOption
       isInputBox={props.isInputBox}
       onClick={props.handleClick}
+      onBlur={props.handleBlur}
       theme={props.theme}
     >
       {props.value.title}
