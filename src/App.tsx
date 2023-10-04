@@ -8,7 +8,7 @@ function App() {
       className="App"
       sx={{ backgroundColor: "#FFF2FF", height: "100vh" }}
     >
-      <PieGraph />
+      {/* <PieGraph /> */}
     </Container>
   );
 }
