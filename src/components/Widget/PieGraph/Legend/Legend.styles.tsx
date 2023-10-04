@@ -8,7 +8,7 @@ export const LegendContainer = styled.div`
   align-items: flex-start;
   width: 372px;
   height: 143px;
-  margin: 15px 30px 40px 40px;
+  margin-top: 15px;
 `;
 
 export const LegendItem = styled.div`
@@ -43,7 +43,6 @@ export const LegendText = styled.div`
   color: #030035;
 `;
 export const LegendValue = styled.div`
-  margin-left: 30.07px;
   font-size: 15px;
   color: #9fa2b4;
   align-self: right;

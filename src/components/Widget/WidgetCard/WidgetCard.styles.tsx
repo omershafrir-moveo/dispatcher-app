@@ -7,4 +7,5 @@ export const Card = styled.div`
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  padding: 25px 15px 0px 25px;;
 `;
