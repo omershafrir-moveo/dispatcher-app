@@ -1,16 +1,24 @@
-import Box from "@mui/material/Box";
-import MainSearchBox from "../MainSearchBox/MainSearchBox";
-import headerStyle from "./styles";
-import LogoIcon from "../../assets/svg/logoIcon.svg";
+import InputSearchBar from "../InputSearchBar/InputSearchBar";
+import LogoIcon from "../Icons/LogoIcon";
+import { Container, IconWrapper, InputWrapper } from "./Header.styles";
+import { InputProvider, SearchContextProps } from "../SearchContext/SearchContext";
+import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import React from "react";
+import SearchContextApi from "../../api/SearchContextApi";
 
 const Header = () => {
+
   return (
-    <div>
-      <Box sx={headerStyle}>
-        <img src={LogoIcon} />
-        <MainSearchBox />
-      </Box>
-    </div>
+    <Container>
+      <InputProvider userInputAPI={SearchContextApi}>
+        <IconWrapper>
+          <LogoIcon />
+        </IconWrapper>
+        <InputWrapper>
+          <InputSearchBar />
+        </InputWrapper>
+      </InputProvider>
+    </Container>
   );
 };
 

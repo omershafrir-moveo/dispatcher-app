@@ -1,17 +1,12 @@
-import { GlobalStyles } from "../../global-data";
+import { COLORS  } from "../../global-data";
 
 export const buttonStyle = {
-  backgroundColor: GlobalStyles.primaryButtonColor,
+  backgroundColor: COLORS.primaryButtonColor,
   width: "226",
   height: "36",
   borderRadius: "20px",
-  borderStyle: "dotted",
-};
-
-export const typographyStyle = {
-  color: "var(--grayscale-white, #FFF)",
   fontFeatureSettings: "'clig' off, 'liga' off",
-  fontFamily: "Roboto",
+  fontFamily: "'Roboto', sans-serif",
   fontSize: "14px",
   fontStyle: "normal",
   fontWeight: "500",
