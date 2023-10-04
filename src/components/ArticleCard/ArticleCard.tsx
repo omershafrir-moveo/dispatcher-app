@@ -1,14 +1,14 @@
 import {
   Card,
   PhotoContainer,
-  TextContainer,
+  InfoContainer,
   DataContainer,
 } from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
 import DispatcherButton from "../DispatcherButton/DispatcherButton";
 import Spacer from "../Container/Spacer/Spacer";
 
-export type ArticleTextProps = {
+export type ArticleInfoProps = {
   date: string;
   title: string;
   source: string;
@@ -23,7 +23,7 @@ export type ArticlePhotoProps = {
 
 export type ArticleProps = {
   photo: ArticlePhotoProps;
-  text: ArticleTextProps;
+  info: ArticleInfoProps;
 };
 
 const ArticleCard: React.FC<ArticleProps> = (props) => {
@@ -36,21 +36,21 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
         height="242px"
       />
       <DataContainer>
-        <TextContainer>
-          <Typography margin="17px 0px 0px 0px">{props.text.date}</Typography>
+        <InfoContainer>
+          <Typography margin="17px 0px 0px 0px">{props.info.date}</Typography>
           <Spacer height="14px" />
           <Typography color="#000000" size="18px" width="470px" height="42px">
-            {props.text.title}
+            {props.info.title}
           </Typography>
           <Spacer height="14px" />
-          <Typography>{props.text.source}</Typography>
+          <Typography>{props.info.source}</Typography>
           <Spacer height="14px" />
           <Typography color="#5A5A89" width="711px" height="32px">
-            {props.text.body}
+            {props.info.body}
           </Typography>
           <Spacer height="24px" />
-        </TextContainer>
-        {props.text.button}
+        </InfoContainer>
+        {props.info.button}
       </DataContainer>
     </Card>
   );
