@@ -7,7 +7,7 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-
+import styled from "styled-components";
 const MonthsGraph: React.FC<WidgetProps> = (props) => {
   const {
     data,
@@ -46,9 +46,8 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
                 axisLine={false}
                 style={{
                   fontWeight: "700",
-                  fontFamily: "'Roboto', sans-serif",
-                  color: "#FFFFFF",
                 }}
+                tick={{ fill: "#5A5A89" }}
               />
               <defs>
                 <linearGradient
