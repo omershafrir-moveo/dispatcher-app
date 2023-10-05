@@ -10,11 +10,9 @@ import Spacer from "../../Container/Spacer/Spacer";
 
 const PieGraph: React.FC<WidgetProps> = (props) => {
   const COLORS = ["#030035", "#343A6E", "#E8E8E8", "#FF9800"];
-  const {
-    data,
-    isValid,
-  }: { data: { name: string; value: number }[]; isValid: boolean } = props;
+  const { data }: { data: { name: string; value: number }[] } = props;
 
+  let contentFlag = data.length > 0;
   return (
     <WidgetCard type="pie">
       <Typography color="#000000" size="24px" weight="700">
@@ -22,7 +20,7 @@ const PieGraph: React.FC<WidgetProps> = (props) => {
       </Typography>
       <HorizontalLine />
       <WidgetContainer>
-        {isValid && (
+        {contentFlag && (
           <>
             <PieChart width={124} height={124}>
               <Pie
@@ -62,9 +60,9 @@ const PieGraph: React.FC<WidgetProps> = (props) => {
             />
           </>
         )}
-        {!isValid && (
+        {!contentFlag && (
           <>
-            <Spacer height="59.5px" /> 
+            <Spacer height="59.5px" />
             <NoData />
           </>
         )}

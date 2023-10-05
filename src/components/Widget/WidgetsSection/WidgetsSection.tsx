@@ -5,16 +5,15 @@ import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import { sourcesDataMock, datesDataMock } from "../data";
 export type WidgetProps = {
   data: any;
-  isValid: boolean;
   children?: React.ReactNode;
 };
 
 const WidgetsSection = () => {
   return (
     <WidgetContainer>
-      <PieGraph data={sourcesDataMock} isValid={sourcesDataMock.length > 0} />
+      <PieGraph data={sourcesDataMock} />
       <Spacer height="24px" />
-      <MonthsGraph data={datesDataMock} isValid={datesDataMock.length > 0} />
+      <MonthsGraph data={datesDataMock} />
       <Spacer height="24px" />
     </WidgetContainer>
   );

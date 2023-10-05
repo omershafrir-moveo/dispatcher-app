@@ -7,12 +7,10 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-import styled from "styled-components";
 const MonthsGraph: React.FC<WidgetProps> = (props) => {
-  const {
-    data,
-    isValid,
-  }: { data: { date: Date; value: number }[]; isValid: boolean } = props;
+  const { data }: { data: { date: Date; value: number }[] } = props;
+
+  let contentFlag = data.length > 0;
 
   return (
     <WidgetCard type="monthes">
@@ -23,11 +21,12 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
         <HorizontalLine />
       </div>
       <WidgetContainer>
-        {isValid && (
+        {contentFlag && (
           <>
             <Spacer height="80px" />
             <AreaChart
-              width={382}
+              style={{ left: -12 }}
+              width={438}
               height={250}
               data={data}
               margin={{
@@ -76,7 +75,7 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
             </AreaChart>
           </>
         )}
-        {!isValid && (
+        {!contentFlag && (
           <>
             <Spacer height="59.5px" />
             <NoData />
