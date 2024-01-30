@@ -12,7 +12,7 @@ const Template = (args) => {
     <DropDownMenu
       {...args}
       selectedOption={selectedOption}
-      handleSelectedOptionChange={() => setSelectedOption( { key: -1, title: "mockup", value: "" })}
+      handleSelectedOptionChange={(event) => setSelectedOption( event)}
       theme="default"
     />
   );
@@ -35,6 +35,16 @@ DefaultDropDownMenu.args = {
       key: 3,
       title: "Top",
       value: "top",
+    },
+    {
+      key: 4,
+      title: "Crypto",
+      value: "crypto",
+    },
+    {
+      key: 3,
+      title: "Finance",
+      value: "finance",
     },
   ],
   theme: "default",
