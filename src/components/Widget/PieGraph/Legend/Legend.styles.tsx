@@ -18,6 +18,7 @@ export const LegendItem = styled.div`
   height: 20px;
   width: 372px;
   justify-content: flex-start;
+  /* margin-bottom: 0px; */
 `;
 export const LegendItemData = styled.div`
   /* background-color: #21d21e; */

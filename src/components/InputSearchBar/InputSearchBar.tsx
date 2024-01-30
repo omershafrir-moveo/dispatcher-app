@@ -3,6 +3,7 @@ import RecentSearchesMenu from "../RecentSearches/RecentSearchesMenu/RecentSearc
 import { Spacer } from "./InputSearchBar.styles";
 import { useContext } from "react";
 import { SearchContext } from "../SearchContext/SearchContext";
+import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 
 const InputSearchBar = () => {
   const {
@@ -31,8 +32,8 @@ const InputSearchBar = () => {
           isOpen={isOpenRecent}
           items={items}
           handleClick={handleClick}
-          handleDelete={handleDelete}
           handleClear={handleClear}
+          handleDelete={handleDelete}
         />
       )}
     </div>
