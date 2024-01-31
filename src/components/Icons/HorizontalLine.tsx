@@ -14,8 +14,8 @@ const HorizontalLine = () => {
         x2="18"
         y2="2"
         stroke="#5A5A89"
-        stroke-width="4"
-        stroke-linecap="round"
+        strokeWidth="4"
+        strokeLinecap="round"
       />
     </svg>
   );

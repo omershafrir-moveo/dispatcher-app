@@ -5,7 +5,6 @@ import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
 import { SelectOptionType } from "../../../global-data";
 
-
 export type SearchBarProps = {
   searchValue: string;
   filterValue: SelectOptionType;
@@ -14,7 +13,6 @@ export type SearchBarProps = {
 };
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
-
   return (
     <Container>
       <SearchContainer>

@@ -1,4 +1,4 @@
-import { COLORS} from "../../global-data";
+import { COLORS } from "../../global-data";
 
 type themeProperty = (theme: themeOption) => any;
 type themeType = {
@@ -104,7 +104,6 @@ const THEMES: themeType = {
       : theme === "filterOption"
       ? "#DFE0EB69"
       : undefined,
-      
 };
 
 export default THEMES;

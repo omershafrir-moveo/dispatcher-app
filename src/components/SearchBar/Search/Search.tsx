@@ -32,7 +32,7 @@ export const Search: React.FC<searchProps> = (props) => {
       onChange={props.handleInputChange}
       onClick={handleClick}
       onBlur={handleBlur}
-    />
+    />  
   );
 };
 

@@ -10,9 +10,9 @@ function DownArrowIcon() {
       <path
         d="M14.9263 1.51841L7.96316 8.48159L0.999989 1.51841"
         stroke="#5A5A89"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

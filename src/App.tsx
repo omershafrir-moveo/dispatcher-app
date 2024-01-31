@@ -5,7 +5,10 @@ import WidgetsSection from "./components/Widget/WidgetsSection/WidgetsSection";
 import { useState } from "react";
 function App() {
   return (
+    <>
       <Header />
+      {/* <WidgetsSection /> */}
+    </>
   );
 }
 

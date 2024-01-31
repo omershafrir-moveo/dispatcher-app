@@ -61,7 +61,10 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     setFilterValue(event);
   };
 
-  const [items, setItems] = useState<RecentSearchesItem[]>([{key:1, text:"example1"},{key:2, text:"example2"}]);
+  const [items, setItems] = useState<RecentSearchesItem[]>([
+    { key: 1, text: "example1" },
+    { key: 2, text: "example2" },
+  ]);
 
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
@@ -75,7 +78,9 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     searchValue,
     handleSearchInputChange,
     items,
-    handleClick: (item) => {setSearchValue(item.text)},
+    handleClick: (item) => {
+      setSearchValue(item.text);
+    },
     // handleClick: props.userInputAPI.handleClick,
     handleDelete: props.userInputAPI.handleDelete,
     handleClear: props.userInputAPI.handleClear,

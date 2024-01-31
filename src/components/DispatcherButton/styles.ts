@@ -1,4 +1,4 @@
-import { COLORS  } from "../../global-data";
+import { COLORS } from "../../global-data";
 
 export const buttonStyle = {
   backgroundColor: COLORS.primaryButtonColor,

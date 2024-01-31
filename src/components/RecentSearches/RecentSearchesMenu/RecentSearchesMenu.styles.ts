@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ItemsListProps } from "./RecentSearchesMenu.types";
 import { ButtonProps } from "../RecentSearchesItem/RecentSearchItem.types";
-import {COLORS } from "../../../global-data";
+import { COLORS } from "../../../global-data";
 
 export const Container = styled.div<{ children?: React.ReactNode }>`
   display: flex;
