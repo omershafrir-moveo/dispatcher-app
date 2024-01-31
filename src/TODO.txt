@@ -44,3 +44,14 @@ continue:
     setArtciels(res))
 
   }
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+export type articlesLayoutProps = {
+  articles: ArticleProps[];
+  filters: { filter: string; value: string }[];
+};
+
+^^^
+1. type of filters here is just string, but in the filterSelect Component it is an object with key, title, value.
+2. what should be the title above the articles list ?

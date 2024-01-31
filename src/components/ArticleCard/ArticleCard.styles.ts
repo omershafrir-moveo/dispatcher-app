@@ -4,7 +4,7 @@ import { ArticlePhotoProps } from "./ArticleCard";
 export const Card = styled.div`
   display: flex;
   height: 242px;
-  width: 986;
+  width: 955px;
 `;
 
 export const PhotoContainer = styled.img<ArticlePhotoProps>`
@@ -15,14 +15,13 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 741px;
+  width: 711px;
 `;
 
 export const DataContainer = styled.div`
   padding: 0px 16px 0px 17px;
   background-color: #ffffff;
   height: 242px;
-  width: 741px;
   border-radius: 0px 20px 20px 0px;
   display: flex;
   flex-direction: column;
