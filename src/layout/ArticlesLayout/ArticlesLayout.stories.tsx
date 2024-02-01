@@ -28,15 +28,7 @@ const articlesArrayMock: ArticleProps[] = [
   articleMock,
   articleMock,
 ];
-// const articlesData: ArticlesLayoutProps = {
-//   articles: articlesArrayMock,
-//   filters: {
-//     base: "Everything",
-//     country: "Israel",
-//     category: "Crypto",
-//     sources: "Mako",
-//   },
-// };
+
 
 const meta: Meta<typeof ArticlesLayout> = {
   title: "ArticlesLayout",
@@ -48,6 +40,6 @@ export default meta;
 type StoryType = StoryObj<typeof meta>;
 export const ArticlesLayoutTemplate: StoryType = {
   args: {
-    articles: articlesArrayMock
-  }
+    articles: articlesArrayMock,
+  },
 };
