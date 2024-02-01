@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Label } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 import Legend from "./Legend/Legend";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import Typography from "../../Typography/Typography";

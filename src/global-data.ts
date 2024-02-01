@@ -10,24 +10,23 @@ export type SelectOptionType = {
   value: string;
 };
 
-export type CountryType = {
-  typeId: "COUNTRY";
-  key: number;
-  title: string;
-  value: string;
-}
-export type LanguageType = {
-  typeId: "LANGUAGE";
-  key: number;
-  title: string;
-  value: string;
-}
-export type CategoryType = {
-  typeId: "CATEGORY";
-  key: number;
-  title: string;
-  value: string;
-}
-
+// export type CountryType = {
+//   typeId: "COUNTRY";
+//   key: number;
+//   title: string;
+//   value: string;
+// }
+// export type LanguageType = {
+//   typeId: "LANGUAGE";
+//   key: number;
+//   title: string;
+//   value: string;
+// }
+// export type CategoryType = {
+//   typeId: "CATEGORY";
+//   key: number;
+//   title: string;
+//   value: string;
+// }
 
 // export type SelectOptionType = CountryType | LanguageType | CategoryType ;

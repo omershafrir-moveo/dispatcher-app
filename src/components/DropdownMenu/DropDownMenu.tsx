@@ -16,14 +16,17 @@ export type DropDownProps = {
 
 const DropDownMenu: React.FC<DropDownProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const onInputBoxClick = () => {
     setIsOpen(!isOpen);
   };
   const onOptionClick = (item: SelectOptionType) => {
     setIsOpen(false);
+    setIsActive(true);
     props.handleSelectedOptionChange(item);
   };
+
   const handleBlur = () => {
     // adding timeout of 100 ms to prevent behaviour where onBlur handler of input box fired before onClick handler of option box,
     // resulting in behaviour where drop down  is practically closed before the onClick is fired, and therefore not working
@@ -33,10 +36,9 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
   };
 
   // on first render shlould be 'defaultItemName', after change should be state value
-  const inputOptionValue =
-    props.selectedOption.title != ""
-      ? props.selectedOption
-      : props.defaultItemName;
+  const inputOptionValue = isActive
+    ? props.selectedOption
+    : props.defaultItemName;
 
   return (
     <DropDownMenuContainer>
