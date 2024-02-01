@@ -47,6 +47,7 @@ type BodyLayoutProps = {
 const BodyLayout: React.FC<BodyLayoutProps> = (props) => {
   return (
     <Container>
+      {/* <FiltersLayout /> */}
       {/* <Typography color="#262146" size="24px" weight="medium">
         Top Headlines in Israel
       </Typography>

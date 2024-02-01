@@ -41,7 +41,9 @@ try {
     },
   };`;
 
-  const styleTemplate = `export default true`;
+  const styleTemplate = `import styled from "styled-components";
+  
+  export default true`;
 
   //creating 3 files.
   fs.writeFileSync(newFiles[0], compTemplate);

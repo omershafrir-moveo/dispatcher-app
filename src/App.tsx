@@ -7,7 +7,6 @@ import BodyLayout from "./layout/BodyLayout/BodyLayout";
 function App() {
   return (
     <>
-      <Header />
     </>
   );
 }
