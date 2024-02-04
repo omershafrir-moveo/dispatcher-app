@@ -5,10 +5,7 @@ import WidgetsSection from "./components/Widget/WidgetsSection/WidgetsSection";
 import { useState } from "react";
 import BodyLayout from "./layout/BodyLayout/BodyLayout";
 function App() {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 }
 
 export default App;

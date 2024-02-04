@@ -36,12 +36,6 @@ const articlesArrayMock: ArticleProps[] = [
 
 type BodyLayoutProps = {
   articles: ArticlesLayoutProps;
-  // filters: {
-  //   base: "Everything" | "Top Headlines";
-  //   country: string;
-  //   category: string;
-  //   sources: string;
-  // };
 };
 
 const BodyLayout: React.FC<BodyLayoutProps> = (props) => {
