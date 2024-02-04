@@ -2,7 +2,11 @@ import React, { createContext, useContext, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
-import { noneOption } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import {
+  noneOption,
+  yesOption,
+} from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import useDict from "../../hooks/useDict";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -16,8 +20,8 @@ type SearchContextType = {
   handleDelete: (item: RecentSearchesItem) => void;
   handleClear: () => void;
   filtersValues: filtersValuesType;
+  updateFiltersValues: (key: string, value: SelectOptionType) => void;
 };
-
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
   toggleRecentSearchesMenu: () => {},
@@ -31,10 +35,13 @@ const ContextInitalValue: SearchContextType = {
   handleClear: () => {},
   filtersValues: {
     category: noneOption,
-    country: noneOption,
+    country: yesOption,
     language: noneOption,
-    sources: noneOption
-  }
+    sources: noneOption,
+  },
+  updateFiltersValues: (key, value) => {
+    console.log("click at initial");
+  },
 };
 
 export const SearchContext =
@@ -57,7 +64,13 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     title: "Top Headlines",
     value: "top",
   });
-  const []
+  const [filtersDict, updateFiltersDict] = useDict({
+    category: noneOption,
+    country: noneOption,
+    language: noneOption,
+    sources: noneOption,
+  });
+
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -67,7 +80,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const handleFilterChange = (event: SelectOptionType) => {
     setFilterValue(event);
   };
-  
+
   const [items, setItems] = useState<RecentSearchesItem[]>([
     { key: 1, text: "example1" },
     { key: 2, text: "example2" },
@@ -91,7 +104,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     // handleClick: props.userInputAPI.handleClick,
     handleDelete: props.userInputAPI.handleDelete,
     handleClear: props.userInputAPI.handleClear,
-    filtersValues: 
+    filtersValues: filtersDict,
+    updateFiltersValues: updateFiltersDict,
   };
 
   return (

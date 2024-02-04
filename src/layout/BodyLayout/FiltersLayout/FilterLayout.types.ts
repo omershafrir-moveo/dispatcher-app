@@ -18,6 +18,12 @@ export const noneOption: SelectOptionType = {
   value: "none",
 };
 
+export const yesOption: SelectOptionType = {
+  key: 1,
+  title: "Yes",
+  value: "yes",
+};
+
 export const dataMock = {
   language: [
     { key: 0, title: "Arabic", value: "ar" },
@@ -77,5 +83,52 @@ export const dataMock = {
     { key: 13, title: "Poland", value: "PL" },
     { key: 14, title: "Peru", value: "PE" },
     { key: 15, title: "France", value: "FR" },
+  ],
+  sources: [
+    { key: 0, title: "CoStar Group, Inc.", value: "Asta Funding, Inc." },
+    {
+      key: 1,
+      title: "VelocityShares VIX Short-Term ETN",
+      value: "Genocea Biosciences, Inc.",
+    },
+    {
+      key: 2,
+      title: "Asia Pacific Fund, Inc. (The)",
+      value: "Central Garden & Pet Company",
+    },
+    { key: 3, title: "Freshpet, Inc.", value: "Rayonier Inc." },
+    { key: 4, title: "EastGroup Properties, Inc.", value: "Net Element, Inc." },
+    { key: 5, title: "Citigroup Inc.", value: "Graham Holdings Company" },
+    {
+      key: 6,
+      title: "Gabelli Equity Trust, Inc. (The)",
+      value: "Tekla Healthcare Investors",
+    },
+    {
+      key: 7,
+      title: "Taiwan Semiconductor Manufacturing Company Ltd.",
+      value: "Cogent Communications Holdings, Inc.",
+    },
+    {
+      key: 8,
+      title: "Signet Jewelers Limited",
+      value: "Siebert Financial Corp.",
+    },
+    {
+      key: 9,
+      title: "Kimco Realty Corporation",
+      value: "First United Corporation",
+    },
+    { key: 10, title: "Synacor, Inc.", value: "Ringcentral, Inc." },
+    {
+      key: 11,
+      title: "Randolph Bancorp, Inc.",
+      value: "Neptune Technologies & Bioresources Inc",
+    },
+    {
+      key: 12,
+      title: "Insys Therapeutics, Inc.",
+      value: "Jacksonville Bancorp Inc.",
+    },
   ],
 };

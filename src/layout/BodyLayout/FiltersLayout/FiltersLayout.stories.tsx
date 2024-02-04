@@ -11,5 +11,5 @@ export default meta;
 
 type StoryType = StoryObj<typeof meta>;
 export const FiltersLayoutTemplate: StoryType = {
-  args: { mode: modeArray[0] },
+  args: { mode: modeArray[1] },
 };
