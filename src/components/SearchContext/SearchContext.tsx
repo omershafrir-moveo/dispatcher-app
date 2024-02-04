@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
 import { SelectOptionType } from "../../global-data";
-import { SearchBarProps } from "../SearchBar/SearchBar/SearchBar";
-import { RecentSearchesMenuProps } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
+import { noneOption } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -15,6 +15,7 @@ type SearchContextType = {
   handleClick: (item: RecentSearchesItem) => void;
   handleDelete: (item: RecentSearchesItem) => void;
   handleClear: () => void;
+  filtersValues: filtersValuesType;
 };
 
 const ContextInitalValue: SearchContextType = {
@@ -28,6 +29,12 @@ const ContextInitalValue: SearchContextType = {
   handleClick: (item: RecentSearchesItem) => {},
   handleDelete: (item: RecentSearchesItem) => {},
   handleClear: () => {},
+  filtersValues: {
+    category: noneOption,
+    country: noneOption,
+    language: noneOption,
+    sources: noneOption
+  }
 };
 
 export const SearchContext =
@@ -50,7 +57,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     title: "Top Headlines",
     value: "top",
   });
-
+  const []
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -60,7 +67,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const handleFilterChange = (event: SelectOptionType) => {
     setFilterValue(event);
   };
-
+  
   const [items, setItems] = useState<RecentSearchesItem[]>([
     { key: 1, text: "example1" },
     { key: 2, text: "example2" },
@@ -84,6 +91,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     // handleClick: props.userInputAPI.handleClick,
     handleDelete: props.userInputAPI.handleDelete,
     handleClear: props.userInputAPI.handleClear,
+    filtersValues: 
   };
 
   return (

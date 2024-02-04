@@ -3,6 +3,15 @@ import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
 import { modeArray, filterArray } from "./FilterLayout.types";
 import { SelectOptionType } from "../../../global-data";
 import { dataMock, noneOption } from "./FilterLayout.types";
+import { useState ,useContext } from "react";
+import { SearchContext } from "../../../components/SearchContext/SearchContext";
+
+export type filtersValuesType = {
+  country?: SelectOptionType;
+  category?: SelectOptionType;
+  sources?: SelectOptionType;
+  language?: SelectOptionType; 
+}
 
 export type FiltersLayoutProps = {
   mode: SelectOptionType;
@@ -13,6 +22,9 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
     props.mode.key == 1
       ? [filterArray[2], filterArray[3], filterArray[0]]
       : [filterArray[0], filterArray[1]];
+
+  const {} = useContext(SearchContext)
+  // const [filtersSelected, setFiltersSelected] = useState<filtersValues>({})
 
   return (
     <FiltersToolbar>
