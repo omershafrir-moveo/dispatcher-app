@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
-import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
+import { filtersValuesType } from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
   noneOption,
   yesOption,
-} from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+} from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
+import { sortModesArrays } from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FilterLayout.types";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -21,6 +22,8 @@ type SearchContextType = {
   handleClear: () => void;
   filtersValues: filtersValuesType;
   updateFiltersValues: (key: string, value: SelectOptionType) => void;
+  sortMode: SelectOptionType;
+  updateSortMode: (newSortMode: SelectOptionType) => void;
 };
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
@@ -39,9 +42,9 @@ const ContextInitalValue: SearchContextType = {
     language: noneOption,
     sources: noneOption,
   },
-  updateFiltersValues: (key, value) => {
-    console.log("click at initial");
-  },
+  updateFiltersValues: (key, value) => {},
+  sortMode: sortModesArrays[0],
+  updateSortMode: () => {},
 };
 
 export const SearchContext =
@@ -70,6 +73,9 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     language: noneOption,
     sources: noneOption,
   });
+  const [sortMode, setSortMode] = useState<SelectOptionType>(
+    sortModesArrays[0]
+  );
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -106,6 +112,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     handleClear: props.userInputAPI.handleClear,
     filtersValues: filtersDict,
     updateFiltersValues: updateFiltersDict,
+    sortMode: sortMode,
+    updateSortMode: (newSortMode: SelectOptionType) => setSortMode(newSortMode),
   };
 
   return (

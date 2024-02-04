@@ -1,10 +1,14 @@
-import { SelectOptionType } from "../../../global-data";
+import { SelectOptionType } from "../../../../global-data";
 
 export const modeArray: SelectOptionType[] = [
   { key: 0, title: "Top Headlines", value: "top-headlines" },
   { key: 1, title: "Everything", value: "everything" },
 ];
-
+export const sortModesArrays: SelectOptionType[] = [
+  { key: 0, title: "Relevency", value: "relevency" },
+  { key: 1, title: "Popularity", value: "popularity" },
+  { key: 2, title: "Published At", value: "publishedAt" },
+];
 export const filterArray: SelectOptionType[] = [
   { key: 0, title: "Sources", value: "sources" },
   { key: 1, title: "Language", value: "language" },

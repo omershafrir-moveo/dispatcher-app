@@ -1,14 +1,15 @@
 import { FiltersToolbar } from "./FiltersLayout.styles";
-import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
+import DropDownMenu from "../../../../components/DropdownMenu/DropDownMenu";
 import { modeArray, filterArray } from "./FilterLayout.types";
-import { SelectOptionType } from "../../../global-data";
+import { SelectOptionType } from "../../../../global-data";
 import { dataMock, noneOption } from "./FilterLayout.types";
 import { useState, useContext } from "react";
 import {
   SearchContext,
   InputProvider,
-} from "../../../components/SearchContext/SearchContext";
-import SearchContextApi from "../../../api/SearchContextApi";
+} from "../../../../components/SearchContext/SearchContext";
+import SearchContextApi from "../../../../api/SearchContextApi";
+import SortDropdown from "../../../../components/SortDropdown/SortDropdown";
 
 export type filtersValuesType = {
   country?: SelectOptionType;
@@ -66,19 +67,12 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   return (
     <InputProvider userInputAPI={SearchContextApi}>
       <FiltersToolbar>
+        <SortDropdown />
         {filters.map((f: SelectOptionType, index: number) => (
           <DropDownMenu
             defaultItemName={f}
             handleSelectedOptionChange={(option) => {
               getFilter(f).updateValue(option);
-              console.log(
-                "click!",
-                option
-                // `'filtersValues' value is: ,${JSON.stringify(filtersValues)}`
-              );
-              console.log(
-                `'filtersValues' value is: ,${JSON.stringify(filtersValues)}`
-              );
             }}
             itemsNames={getFilter(f).options}
             selectedOption={getFilter(f).chosenValue as SelectOptionType}

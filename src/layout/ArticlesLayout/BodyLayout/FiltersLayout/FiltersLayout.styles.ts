@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../../global-data";
+import { COLORS } from "../../../../global-data";
 
 export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   display: flex;

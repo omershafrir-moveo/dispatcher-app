@@ -1,12 +1,12 @@
 import { Container, DataContainer } from "./BodyLayout.styles";
-import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
-import { ArticlesLayoutProps } from "../ArticlesLayout/ArticlesLayout";
-import Typography from "../../components/Typography/Typography";
-import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
+import ArticlesLayout from "../ArticlesLayout";
+import { ArticlesLayoutProps } from "../ArticlesLayout";
+import Typography from "../../../components/Typography/Typography";
+import WidgetsSection from "../../../components/Widget/WidgetsSection/WidgetsSection";
 import ArticleCard, {
   ArticleProps,
-} from "../../components/ArticleCard/ArticleCard";
-import DispatcherButton from "../../components/DispatcherButton/DispatcherButton";
+} from "../../../components/ArticleCard/ArticleCard";
+import DispatcherButton from "../../../components/DispatcherButton/DispatcherButton";
 
 const articleMock: ArticleProps = {
   photo: {
