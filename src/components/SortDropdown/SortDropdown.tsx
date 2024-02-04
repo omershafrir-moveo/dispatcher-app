@@ -1,5 +1,5 @@
 import DropDownMenu from "../DropdownMenu/DropDownMenu";
-import { sortModesArrays } from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import { useContext } from "react";
 import { SearchContext } from "../SearchContext/SearchContext";
 

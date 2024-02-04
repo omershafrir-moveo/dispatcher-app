@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
-import { filtersValuesType } from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FiltersLayout";
+import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
   noneOption,
   yesOption,
-} from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FilterLayout.types";
+} from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
-import { sortModesArrays } from "../../layout/ArticlesLayout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 
 type SearchContextType = {
   isOpenRecent: boolean;

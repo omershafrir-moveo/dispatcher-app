@@ -1,4 +1,4 @@
-import { SelectOptionType } from "../../../../global-data";
+import { SelectOptionType } from "../../../global-data";
 
 export const modeArray: SelectOptionType[] = [
   { key: 0, title: "Top Headlines", value: "top-headlines" },

@@ -1,15 +1,16 @@
 import { FiltersToolbar } from "./FiltersLayout.styles";
-import DropDownMenu from "../../../../components/DropdownMenu/DropDownMenu";
+import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
 import { modeArray, filterArray } from "./FilterLayout.types";
-import { SelectOptionType } from "../../../../global-data";
+import { SelectOptionType } from "../../../global-data";
 import { dataMock, noneOption } from "./FilterLayout.types";
 import { useState, useContext } from "react";
 import {
   SearchContext,
   InputProvider,
-} from "../../../../components/SearchContext/SearchContext";
-import SearchContextApi from "../../../../api/SearchContextApi";
-import SortDropdown from "../../../../components/SortDropdown/SortDropdown";
+} from "../../../components/SearchContext/SearchContext";
+import SearchContextApi from "../../../api/SearchContextApi";
+import SortDropdown from "../../../components/SortDropdown/SortDropdown";
+import DatePicker from "../../../components/DatePicker/DatePicker";
 
 export type filtersValuesType = {
   country?: SelectOptionType;
@@ -68,6 +69,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
     <InputProvider userInputAPI={SearchContextApi}>
       <FiltersToolbar>
         <SortDropdown />
+        <DatePicker />
         {filters.map((f: SelectOptionType, index: number) => (
           <DropDownMenu
             defaultItemName={f}
