@@ -63,3 +63,5 @@ export type articlesLayoutProps = {
 6. top headlines in israel - default -  add condition for viewing it
 7. combine context with filters layout. specifically - each filter needs to get it's state value and set function, from parent or context.
 8. need to add 2 special buttons in the start of the toolbar : sort by & dates  
+V 9. connect dates to context : figure out what to do with its initial state.   
+10. change color of text in range picker

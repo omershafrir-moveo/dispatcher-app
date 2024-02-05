@@ -8,6 +8,7 @@ import {
 } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
 import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { setDate } from "date-fns";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -24,6 +25,8 @@ type SearchContextType = {
   updateFiltersValues: (key: string, value: SelectOptionType) => void;
   sortMode: SelectOptionType;
   updateSortMode: (newSortMode: SelectOptionType) => void;
+  datesRange: Date[];
+  updateDatesRange: (newRange: Date[]) => void;
 };
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
@@ -45,6 +48,8 @@ const ContextInitalValue: SearchContextType = {
   updateFiltersValues: (key, value) => {},
   sortMode: sortModesArrays[0],
   updateSortMode: () => {},
+  datesRange: [],
+  updateDatesRange: () => {},
 };
 
 export const SearchContext =
@@ -76,6 +81,11 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const [sortMode, setSortMode] = useState<SelectOptionType>(
     sortModesArrays[0]
   );
+  const [datesRange, setDatesRange] = useState<Date[]>([]);
+  const updateDatesRange = (newDatesRange: Date[]) => {
+    if (newDatesRange) setDatesRange([newDatesRange[0], newDatesRange[1]]);
+    else setDatesRange([]);
+  };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -114,6 +124,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     updateFiltersValues: updateFiltersDict,
     sortMode: sortMode,
     updateSortMode: (newSortMode: SelectOptionType) => setSortMode(newSortMode),
+    datesRange: datesRange,
+    updateDatesRange: updateDatesRange,
   };
 
   return (
