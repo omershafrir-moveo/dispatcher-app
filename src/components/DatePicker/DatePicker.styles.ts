@@ -22,6 +22,11 @@ const styledDatePicker = styled(DateRangePicker)`
     border-radius: 10px 0px 0px 10px;
     background-color: #ffffff;
     border: none;
+    color: #5a5a89;
+    ::placeholder {
+      color: #5a5a89;
+      padding-left: 5px;
+    }
   }
   .rs-input-group.rs-input-group-inside {
     border: none;
