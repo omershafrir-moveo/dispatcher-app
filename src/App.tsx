@@ -15,12 +15,13 @@ import { modeArray } from "./layout/BodyLayout/FiltersLayout/FilterLayout.types"
 import DatePicker from "./components/DatePicker/DatePicker";
 import { Button } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
+import PageLayout from "./layout/PageLayout/PageLayout";
 
 function App() {
   return (
     <>
       <InputProvider userInputAPI={SearchContextApi}>
-        <FiltersLayout mode={modeArray[1]} />
+        <PageLayout />
       </InputProvider>
     </>
   );
