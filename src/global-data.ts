@@ -1,7 +1,8 @@
 export const COLORS = {
   primaryButtonColor: "#0058B9",
   primaryLightColor: "#FFFFFF",
-  backgroundColor: "#E5E5E5",
+  backgroundColor: "#F8F8FF",
+  // backgroundColor: "red",
 };
 
 export type SelectOptionType = {

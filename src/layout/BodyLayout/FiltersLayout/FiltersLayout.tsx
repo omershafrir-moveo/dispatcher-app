@@ -3,7 +3,7 @@ import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
 import { modeArray, filterArray } from "./FilterLayout.types";
 import { SelectOptionType } from "../../../global-data";
 import { dataMock, noneOption } from "./FilterLayout.types";
-import { useState, useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   SearchContext,
   InputProvider,
@@ -24,12 +24,15 @@ export type FiltersLayoutProps = {
 };
 
 const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
+  const { filterValue, filtersValues, updateFiltersValues } =
+    useContext(SearchContext);
+  
+
   const filters: SelectOptionType[] =
-    props.mode.key == 1
+    filterValue.key == 1
       ? [filterArray[2], filterArray[3], filterArray[0]]
       : [filterArray[0], filterArray[1]];
 
-  const { filtersValues, updateFiltersValues } = useContext(SearchContext);
   const getFilter = (f: SelectOptionType) => {
     switch (f.value) {
       case "language":
@@ -39,7 +42,6 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           updateValue: (newVal: any) => updateFiltersValues("language", newVal),
         };
       case "category":
-        console.log(`'filtersValues' value is:`, filtersValues);
         return {
           options: dataMock.category,
           chosenValue: filtersValues.category,

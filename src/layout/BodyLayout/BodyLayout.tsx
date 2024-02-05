@@ -25,7 +25,7 @@ const articleMock: ArticleProps = {
   },
 };
 
-const articlesArrayMock: ArticleProps[] = [
+export const articlesArrayMock: ArticleProps[] = [
   articleMock,
   articleMock,
   articleMock,
@@ -36,15 +36,9 @@ const articlesArrayMock: ArticleProps[] = [
 
 type BodyLayoutProps = {
   articles: ArticlesLayoutProps;
-  // filters: {
-  //   base: "Everything" | "Top Headlines";
-  //   country: string;
-  //   category: string;
-  //   sources: string;
-  // };
 };
 
-const BodyLayout: React.FC<BodyLayoutProps> = (props) => {
+const BodyLayout: React.FC<{ articles: ArticleProps[] }> = (props) => {
   return (
     <Container>
       {/* <FiltersLayout /> */}

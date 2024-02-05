@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "../../global-data";
 
-export const Container = styled.div<{ children?: React.ReactNode }>`
-`;
+export const Container = styled.div<{ children?: React.ReactNode }>``;
 
 export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   height: 1231px;

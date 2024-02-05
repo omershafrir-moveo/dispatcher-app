@@ -29,7 +29,6 @@ const articlesArrayMock: ArticleProps[] = [
   articleMock,
 ];
 
-
 const meta: Meta<typeof ArticlesLayout> = {
   title: "ArticlesLayout",
   component: ArticlesLayout,

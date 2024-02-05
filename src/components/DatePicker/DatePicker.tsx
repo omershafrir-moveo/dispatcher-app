@@ -14,7 +14,7 @@ const DatePicker = () => {
       style={{ width: "190px" }}
       showHeader={false}
       showOneCalendar={true}
-      format="dd-MM-yyyy"
+      format="dd-MM-yy"
       caretAs={Calender}
       onChange={updateDatesRange}
     />

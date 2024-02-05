@@ -94,7 +94,11 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   };
 
   const handleFilterChange = (event: SelectOptionType) => {
-    setFilterValue(event);
+    console.log("Print!");
+
+    setFilterValue({ ...event });
+    console.log(`'filterValue' value is: ,${JSON.stringify(filterValue)}`)
+    
   };
 
   const [items, setItems] = useState<RecentSearchesItem[]>([
