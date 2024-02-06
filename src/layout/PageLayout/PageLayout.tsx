@@ -13,8 +13,6 @@ import SearchContextApi from "../../api/SearchContextApi";
 const PageLayout: React.FC = () => {
   const { filterValue, filtersValues, sortMode, datesRange, searchValue } =
     useContext(SearchContext);
-  console.log("RERENDER!");
-  console.log(searchValue);
   return (
     <PageContainer>
       <Header />

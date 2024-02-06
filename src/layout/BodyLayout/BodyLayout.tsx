@@ -6,8 +6,10 @@ import ArticleCard, {
   ArticleProps,
 } from "../../components/ArticleCard/ArticleCard";
 import DispatcherButton from "../../components/DispatcherButton/DispatcherButton";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
+import { getArticles } from "../../util/apiService";
+import { resolve } from "path";
 
 const articleMock: ArticleProps = {
   photo: {
@@ -35,11 +37,21 @@ export const articlesArrayMock: ArticleProps[] = [
   articleMock,
 ];
 
-const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({articles}) => {
+const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({ articles }) => {
   const { filterValue, filtersValues } = useContext(SearchContext);
+  // const [articlesss, setArticles] = useState([]);
   const topHeadlinesCondition =
     filterValue.key == 0 &&
     ["israel", "none"].includes(filtersValues.country!.value);
+  const [x, setX] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      const xxx = await getArticles();
+      setX(xxx);
+    };
+    fetchData();
+  }, []);
+  console.log(x);
   return (
     <Container>
       {topHeadlinesCondition && (
@@ -53,7 +65,7 @@ const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({articles}) => {
         </Typography>
       )}
       <DataContainer>
-        <ArticlesLayout articles={articles} />
+        <ArticlesLayout articles={articlesArrayMock} />
         <WidgetsSection />
       </DataContainer>
     </Container>
