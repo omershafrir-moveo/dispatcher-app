@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const LegendContainer = styled.div`
-  /* background-color: chocolate; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,16 +11,13 @@ export const LegendContainer = styled.div`
 `;
 
 export const LegendItem = styled.div`
-  /* background-color: #631ed2; */
   display: flex;
   align-items: center;
   height: 20px;
   width: 372px;
   justify-content: flex-start;
-  /* margin-bottom: 0px; */
 `;
 export const LegendItemData = styled.div`
-  /* background-color: #21d21e; */
   display: flex;
   align-items: center;
   height: 20px;

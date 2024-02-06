@@ -44,3 +44,20 @@ continue:
     setArtciels(res))
 
   }
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+export type articlesLayoutProps = {
+  articles: ArticleProps[];
+  filters: { filter: string; value: string }[];
+};
+
+^^^
+1. type of filters here is just string, but in the filterSelect Component it is an object with key, title, value.
+2. what should be the title above the articles list ?
+3. finish body layout.
+4. organize all filter/sort data in a well organized DS.
+3. filter by / sort by ?
+4. impl Date filter/sort
+5. where all the calculations for the widgets occur? option: each widget calculates the data at its component 
+6. top headlines in israel - default -  add condition for viewing it

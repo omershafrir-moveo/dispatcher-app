@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "DispatcherSearchBox.tsx", "util", "util.js"]
+  "include": ["src", "DispatcherSearchBox.tsx", "util", "makeComp.js"]
 }
