@@ -1,12 +1,13 @@
 import { Container, DataContainer } from "./BodyLayout.styles";
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
-import { ArticlesLayoutProps } from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
 import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
 import ArticleCard, {
   ArticleProps,
 } from "../../components/ArticleCard/ArticleCard";
 import DispatcherButton from "../../components/DispatcherButton/DispatcherButton";
+import { useContext } from "react";
+import { SearchContext } from "../../components/SearchContext/SearchContext";
 
 const articleMock: ArticleProps = {
   photo: {
@@ -34,26 +35,25 @@ export const articlesArrayMock: ArticleProps[] = [
   articleMock,
 ];
 
-type BodyLayoutProps = {
-  articles: ArticlesLayoutProps;
-};
-
-const BodyLayout: React.FC<{ articles: ArticleProps[] }> = (props) => {
+const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({articles}) => {
+  const { filterValue, filtersValues } = useContext(SearchContext);
+  const topHeadlinesCondition =
+    filterValue.key == 0 &&
+    ["israel", "none"].includes(filtersValues.country!.value);
   return (
     <Container>
-      {/* <FiltersLayout /> */}
-      {/* <Typography color="#262146" size="24px" weight="medium">
-        Top Headlines in Israel
-      </Typography>
-      <Typography
-        size="14px"
-        weight="regular"
-        letterSpacing="0.25px"
-      >
-        33 Total Results
-      </Typography> */}
+      {topHeadlinesCondition && (
+        <Typography color="#262146" size="24px" weight="medium">
+          Top Headlines in Israel
+        </Typography>
+      )}
+      {!topHeadlinesCondition && (
+        <Typography size="14px" weight="regular" letterSpacing="0.25px">
+          {`${articles.length} Total Results`}
+        </Typography>
+      )}
       <DataContainer>
-        <ArticlesLayout articles={articlesArrayMock} />
+        <ArticlesLayout articles={articles} />
         <WidgetsSection />
       </DataContainer>
     </Container>

@@ -30,9 +30,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
   const handleBlur = () => {
     // adding timeout of 100 ms to prevent behaviour where onBlur handler of input box fired before onClick handler of option box,
     // resulting in behaviour where drop down  is practically closed before the onClick is fired, and therefore not working
-    setTimeout(() => {
-      if (isOpen) setIsOpen(false);
-    }, 0);
+    if (isOpen) setIsOpen(false);
   };
 
   // on first render shlould be 'defaultItemName', after change should be state value

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
@@ -89,10 +89,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log("Print INPUT!");
-
     setSearchValue(event.target.value);
-    console.log(`'searchValue: ,${searchValue}`);
   };
 
   const handleFilterChange = (event: SelectOptionType) => {
@@ -102,10 +99,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     console.log(`'filterValue' value is: ,${JSON.stringify(filterValue)}`);
   };
 
-  const [items, setItems] = useState<RecentSearchesItem[]>([
-    { key: 1, text: "example1" },
-    { key: 2, text: "example2" },
-  ]);
+  const [items, setItems] = useState<RecentSearchesItem[]>([]);
 
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
