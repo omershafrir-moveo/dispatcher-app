@@ -7,4 +7,3 @@ export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   background-color: ${COLORS.backgroundColor};
 `;
 
-export default true;
