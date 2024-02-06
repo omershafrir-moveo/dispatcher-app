@@ -17,6 +17,7 @@ export const PhotoContainer = styled.img<ArticlePhotoProps>`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 14px;
   justify-content: flex-start;
   width: 711px;
 `;
@@ -29,6 +30,7 @@ export const DataContainer = styled.div`
   border: 1px solid #D9DBE9;
   border-left: none;
   display: flex;
+  gap: 14px;
   flex-direction: column;
   align-items: flex-end;
 `;
