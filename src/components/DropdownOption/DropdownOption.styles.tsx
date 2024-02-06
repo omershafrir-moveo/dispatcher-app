@@ -18,7 +18,7 @@ const StyledOption = styled.button<StyledButtonProps>`
   justify-content: space-between;
   align-items: center;
   border: none;
-  border-left: 0.5px solid #D9DBE9;
+  /* border-left: 0.5px solid #D9DBE9; */
   /* border-image: linear-gradient(to top, #FFF 10%, #000 , #FFF 90%); to top - at 50% transparent */
   /* border-image-slice: 1; */
 

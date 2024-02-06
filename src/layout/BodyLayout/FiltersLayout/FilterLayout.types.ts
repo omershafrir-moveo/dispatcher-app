@@ -1,14 +1,138 @@
 import { SelectOptionType } from "../../../global-data";
 
+export const modeArray: SelectOptionType[] = [
+  { key: 0, title: "Top Headlines", value: "top-headlines" },
+  { key: 1, title: "Everything", value: "everything" },
+];
+export const sortModesArrays: SelectOptionType[] = [
+  { key: 0, title: "Relevency", value: "relevency" },
+  { key: 1, title: "Popularity", value: "popularity" },
+  { key: 2, title: "Published At", value: "publishedAt" },
+];
+export const filterArray: SelectOptionType[] = [
+  { key: 0, title: "Sources", value: "sources" },
+  { key: 1, title: "Language", value: "language" },
+  { key: 2, title: "Country", value: "country" },
+  { key: 3, title: "Category", value: "category" },
+];
 
-export type filterType =
-  | "DATES"
-  | "SOURCES"
-  | "LANGUAGE"
-  | "COUNTRY"
-  | "CATEGORY";
+export const noneOption: SelectOptionType = {
+  key: -1,
+  title: "None",
+  value: "none",
+};
 
-export type FilterDict = {
-    filterName:filterType;
-    
-}
+export const yesOption: SelectOptionType = {
+  key: 1,
+  title: "Yes",
+  value: "yes",
+};
+
+export const dataMock = {
+  language: [
+    { key: 0, title: "Arabic", value: "ar" },
+    { key: 1, title: "German", value: "de" },
+    { key: 2, title: "English", value: "en" },
+    { key: 3, title: "Spanish", value: "es" },
+    { key: 4, title: "French", value: "fr" },
+    { key: 5, title: "Hebrew", value: "he" },
+    { key: 6, title: "Italian", value: "it" },
+    { key: 7, title: "Dutch", value: "nl" },
+    { key: 8, title: "Norweigian", value: "no" },
+    { key: 9, title: "Portuguese", value: "pt" },
+    { key: 10, title: "Russian", value: "ru" },
+    { key: 11, title: "Swedish", value: "sv" },
+    { key: 12, title: "Undefined", value: "ud" },
+    { key: 13, title: "Chinese", value: "zh " },
+  ],
+  category: [
+    {
+      key: 1,
+      title: "Painting & Vinyl Wall Covering",
+      value: "Landscaping & Irrigation",
+    },
+    {
+      key: 2,
+      title: "Overhead Doors",
+      value: "Construction Clean and Final Clean",
+    },
+    { key: 3, title: "Framing (Steel)", value: "Electrical" },
+    { key: 4, title: "Fire Protection", value: "HVAC" },
+    {
+      key: 5,
+      title: "Ornamental Railings",
+      value: "Rebar & Wire Mesh Install",
+    },
+    { key: 6, title: "Electrical", value: "Fire Sprinkler System" },
+    { key: 7, title: "Marlite Panels (FED)", value: "Masonry & Precast" },
+    {
+      key: 8,
+      title: "Drywall & Acoustical (FED)",
+      value: "Roofing (Asphalt)",
+    },
+  ],
+  country: [
+    { key: 1, title: "Tunisia", value: "TN" },
+    { key: 2, title: "Armenia", value: "AM" },
+    { key: 3, title: "Russia", value: "RU" },
+    { key: 4, title: "China", value: "CN" },
+    { key: 5, title: "Panama", value: "PA" },
+    { key: 6, title: "Luxembourg", value: "LU" },
+    { key: 7, title: "China", value: "CN" },
+    { key: 8, title: "United States", value: "US" },
+    { key: 9, title: "Ukraine", value: "UA" },
+    { key: 10, title: "Russia", value: "RU" },
+    { key: 11, title: "South Africa", value: "ZA" },
+    { key: 12, title: "China", value: "CN" },
+    { key: 13, title: "Poland", value: "PL" },
+    { key: 14, title: "Peru", value: "PE" },
+    { key: 15, title: "France", value: "FR" },
+  ],
+  sources: [
+    { key: 0, title: "CoStar Group, Inc.", value: "Asta Funding, Inc." },
+    {
+      key: 1,
+      title: "VelocityShares VIX Short-Term ETN",
+      value: "Genocea Biosciences, Inc.",
+    },
+    {
+      key: 2,
+      title: "Asia Pacific Fund, Inc. (The)",
+      value: "Central Garden & Pet Company",
+    },
+    { key: 3, title: "Freshpet, Inc.", value: "Rayonier Inc." },
+    { key: 4, title: "EastGroup Properties, Inc.", value: "Net Element, Inc." },
+    { key: 5, title: "Citigroup Inc.", value: "Graham Holdings Company" },
+    {
+      key: 6,
+      title: "Gabelli Equity Trust, Inc. (The)",
+      value: "Tekla Healthcare Investors",
+    },
+    {
+      key: 7,
+      title: "Taiwan Semiconductor Manufacturing Company Ltd.",
+      value: "Cogent Communications Holdings, Inc.",
+    },
+    {
+      key: 8,
+      title: "Signet Jewelers Limited",
+      value: "Siebert Financial Corp.",
+    },
+    {
+      key: 9,
+      title: "Kimco Realty Corporation",
+      value: "First United Corporation",
+    },
+    { key: 10, title: "Synacor, Inc.", value: "Ringcentral, Inc." },
+    {
+      key: 11,
+      title: "Randolph Bancorp, Inc.",
+      value: "Neptune Technologies & Bioresources Inc",
+    },
+    {
+      key: 12,
+      title: "Insys Therapeutics, Inc.",
+      value: "Jacksonville Bancorp Inc.",
+    },
+  ],
+};

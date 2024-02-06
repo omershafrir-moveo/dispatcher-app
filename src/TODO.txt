@@ -55,9 +55,14 @@ export type articlesLayoutProps = {
 ^^^
 1. type of filters here is just string, but in the filterSelect Component it is an object with key, title, value.
 2. what should be the title above the articles list ?
-3. finish body layout.
-4. organize all filter/sort data in a well organized DS.
-3. filter by / sort by ?
-4. impl Date filter/sort
+V 3. finish body layout.
+V 4. organize all filter/sort data in a well organized DS.
+V 3. filter by / sort by ?
+V 4. impl Date filter/sort
 5. where all the calculations for the widgets occur? option: each widget calculates the data at its component 
 6. top headlines in israel - default -  add condition for viewing it
+V 7. combine context with filters layout. specifically - each filter needs to get it's state value and set function, from parent or context.
+V 8. need to add 2 special buttons in the start of the toolbar : sort by & dates  
+V 9. connect dates to context : figure out what to do with its initial state.   
+V 10. change color of text in range picker
+11. add local storage functionality

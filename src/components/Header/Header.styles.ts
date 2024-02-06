@@ -5,9 +5,10 @@ export const Container = styled.div`
   margin: 0px;
   padding: 0px;
   background-color: #262146;
-  width: 100%;
+  width: 1920px;
   height: 74px;
   justify-content: left;
+  z-index: 3;
 `;
 
 export const IconWrapper = styled.div`

@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Container, SearchContainer } from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
 import { SelectOptionType } from "../../../global-data";
+import { modeArray } from "../../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 
 export type SearchBarProps = {
   searchValue: string;
@@ -23,15 +24,8 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         />
       </SearchContainer>
       <FilterSelect
-        defaultItemName={{
-          key: 0,
-          title: "Top Headlines",
-          value: "top-headlines",
-        }}
-        itemsNames={[
-          { key: 0, title: "Top Headlines", value: "top-headlines" },
-          { key: 1, title: "Everything", value: "every" },
-        ]}
+        defaultItemName={props.filterValue}
+        itemsNames={[modeArray[0], modeArray[1]]}
         selectedOption={props.filterValue}
         handleSelectedOptionChange={props.handleFilterChange}
         theme="filter"

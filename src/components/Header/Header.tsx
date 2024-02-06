@@ -12,14 +12,12 @@ import SearchContextApi from "../../api/SearchContextApi";
 const Header = () => {
   return (
     <Container>
-      <InputProvider userInputAPI={SearchContextApi}>
-        <IconWrapper>
-          <LogoIcon />
-        </IconWrapper>
-        <InputWrapper>
-          <InputSearchBar />
-        </InputWrapper>
-      </InputProvider>
+      <IconWrapper>
+        <LogoIcon />
+      </IconWrapper>
+      <InputWrapper>
+        <InputSearchBar />
+      </InputWrapper>
     </Container>
   );
 };

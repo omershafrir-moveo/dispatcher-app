@@ -18,12 +18,11 @@ export const Search: React.FC<searchProps> = (props) => {
     }
   };
   const handleBlur = () => {
-    setTimeout(() => {
-      if (isOpenRecent) {
-        toggleRecentSearchesMenu();
-      }
-    }, 150);
+    if (isOpenRecent) {
+      toggleRecentSearchesMenu();
+    }
   };
+
   return (
     <StyledTextField
       type="text"
@@ -32,7 +31,7 @@ export const Search: React.FC<searchProps> = (props) => {
       onChange={props.handleInputChange}
       onClick={handleClick}
       onBlur={handleBlur}
-    />  
+    />
   );
 };
 
