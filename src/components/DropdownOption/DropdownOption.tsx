@@ -9,6 +9,7 @@ export const DropdownOption: React.FC<{
   handleClick: () => void;
   handleBlur?: () => void;
   theme: themeOption;
+  disabled?: boolean;
 }> = (props) => {
   return (
     <StyledOption
@@ -16,6 +17,7 @@ export const DropdownOption: React.FC<{
       onMouseDown={props.handleClick}
       onBlur={props.handleBlur}
       theme={props.theme}
+      disabled={props.disabled}
     >
       {props.value.title}
       {props.isInputBox && <DownArrowIcon />}

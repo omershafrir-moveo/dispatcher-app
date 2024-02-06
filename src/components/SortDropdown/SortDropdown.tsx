@@ -12,6 +12,7 @@ const SortDropdown = () => {
       itemsNames={sortModesArrays}
       selectedOption={sortMode}
       theme="default"
+      disabled={false}
     />
   );
 };

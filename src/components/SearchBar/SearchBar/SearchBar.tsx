@@ -29,6 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         selectedOption={props.filterValue}
         handleSelectedOptionChange={props.handleFilterChange}
         theme="filter"
+        disabled={false}
       />
     </Container>
   );

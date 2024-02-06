@@ -44,6 +44,7 @@ export const dataMock = {
     { key: 11, title: "Swedish", value: "sv" },
     { key: 12, title: "Undefined", value: "ud" },
     { key: 13, title: "Chinese", value: "zh " },
+    noneOption,
   ],
   category: [
     {
@@ -70,6 +71,7 @@ export const dataMock = {
       title: "Drywall & Acoustical (FED)",
       value: "Roofing (Asphalt)",
     },
+    noneOption,
   ],
   country: [
     { key: 1, title: "Tunisia", value: "TN" },
@@ -87,6 +89,7 @@ export const dataMock = {
     { key: 13, title: "Poland", value: "PL" },
     { key: 14, title: "Peru", value: "PE" },
     { key: 15, title: "France", value: "FR" },
+    noneOption,
   ],
   sources: [
     { key: 0, title: "CoStar Group, Inc.", value: "Asta Funding, Inc." },
@@ -134,5 +137,6 @@ export const dataMock = {
       title: "Insys Therapeutics, Inc.",
       value: "Jacksonville Bancorp Inc.",
     },
+    noneOption,
   ],
 };
