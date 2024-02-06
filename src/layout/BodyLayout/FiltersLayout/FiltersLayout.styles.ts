@@ -11,4 +11,3 @@ export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   z-index: 1;
 `;
 
-export default true;

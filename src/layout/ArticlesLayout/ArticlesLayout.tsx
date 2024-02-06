@@ -7,10 +7,10 @@ export type ArticlesLayoutProps = {
   articles: ArticleProps[];
 };
 
-const ArticlesLayout: React.FC<ArticlesLayoutProps> = (props) => {
+const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({ articles }) => {
   return (
     <ArticlesContainer>
-      {props.articles.map((article: ArticleProps, index) => (
+      {articles?.map((article: ArticleProps, index) => (
         <Item key={index}>
           <ArticleCard photo={article.photo} info={article.info} />
         </Item>

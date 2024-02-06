@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { COLORS } from "../../global-data";
 
 export const Container = styled.div<{ children?: React.ReactNode }>``;
 
@@ -12,7 +11,6 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   margin-top: 0px;
   display: flex;
   flex-direction: column;
-  /* overflow-x: hidden; */
   overflow-y: scroll;
 `;
 
