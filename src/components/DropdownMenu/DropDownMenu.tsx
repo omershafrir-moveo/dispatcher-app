@@ -32,7 +32,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     // resulting in behaviour where drop down  is practically closed before the onClick is fired, and therefore not working
     setTimeout(() => {
       if (isOpen) setIsOpen(false);
-    }, 120);
+    }, 0);
   };
 
   // on first render shlould be 'defaultItemName', after change should be state value

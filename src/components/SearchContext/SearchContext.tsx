@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
@@ -8,7 +8,6 @@ import {
 } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
 import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
-import { setDate } from "date-fns";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -83,22 +82,24 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   );
   const [datesRange, setDatesRange] = useState<Date[]>([]);
   const updateDatesRange = (newDatesRange: Date[]) => {
-    if (newDatesRange) setDatesRange([newDatesRange[0], newDatesRange[1]]);
+    if (newDatesRange) setDatesRange([...newDatesRange]);
     else setDatesRange([]);
   };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    console.log("Print INPUT!");
+
     setSearchValue(event.target.value);
+    console.log(`'searchValue: ,${searchValue}`);
   };
 
   const handleFilterChange = (event: SelectOptionType) => {
     console.log("Print!");
 
     setFilterValue({ ...event });
-    console.log(`'filterValue' value is: ,${JSON.stringify(filterValue)}`)
-    
+    console.log(`'filterValue' value is: ,${JSON.stringify(filterValue)}`);
   };
 
   const [items, setItems] = useState<RecentSearchesItem[]>([
@@ -127,7 +128,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     filtersValues: filtersDict,
     updateFiltersValues: updateFiltersDict,
     sortMode: sortMode,
-    updateSortMode: (newSortMode: SelectOptionType) => setSortMode(newSortMode),
+    updateSortMode: (newSortMode: SelectOptionType) =>
+      setSortMode({ ...newSortMode }),
     datesRange: datesRange,
     updateDatesRange: updateDatesRange,
   };

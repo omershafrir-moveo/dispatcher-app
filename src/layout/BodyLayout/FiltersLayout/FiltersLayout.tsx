@@ -26,10 +26,9 @@ export type FiltersLayoutProps = {
 const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   const { filterValue, filtersValues, updateFiltersValues } =
     useContext(SearchContext);
-  
 
   const filters: SelectOptionType[] =
-    filterValue.key == 1
+    filterValue.key == 0
       ? [filterArray[2], filterArray[3], filterArray[0]]
       : [filterArray[0], filterArray[1]];
 
@@ -68,10 +67,9 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
     }
   };
   return (
-    <InputProvider userInputAPI={SearchContextApi}>
       <FiltersToolbar>
-        <SortDropdown />
-        <DatePicker />
+        {filterValue.key == 1 && <SortDropdown />}
+        {filterValue.key == 1 && <DatePicker />}
         {filters.map((f: SelectOptionType, index: number) => (
           <DropDownMenu
             defaultItemName={f}
@@ -85,7 +83,6 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           />
         ))}
       </FiltersToolbar>
-    </InputProvider>
   );
 };
 

@@ -11,19 +11,21 @@ import { InputProvider } from "../../components/SearchContext/SearchContext";
 import SearchContextApi from "../../api/SearchContextApi";
 
 const PageLayout: React.FC = () => {
-  const { filterValue } = useContext(SearchContext);
-
+  const { filterValue, filtersValues, sortMode, datesRange, searchValue } =
+    useContext(SearchContext);
+  console.log("RERENDER!");
+  console.log(searchValue);
   return (
-      <PageContainer>
-        <Header />
-        <BodyContainer>
-          <FiltersLayout mode={filterValue} />
-          <Line>
-            <SeparatorLine />
-          </Line>
-          <BodyLayout articles={articlesArrayMock} />
-        </BodyContainer>
-      </PageContainer>
+    <PageContainer>
+      <Header />
+      <BodyContainer>
+        <FiltersLayout mode={filterValue} />
+        <Line>
+          <SeparatorLine />
+        </Line>
+        <BodyLayout articles={articlesArrayMock} />
+      </BodyContainer>
+    </PageContainer>
   );
 };
 

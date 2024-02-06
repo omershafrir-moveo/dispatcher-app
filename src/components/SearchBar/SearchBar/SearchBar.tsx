@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Container, SearchContainer } from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         />
       </SearchContainer>
       <FilterSelect
-        defaultItemName={modeArray[0]}
+        defaultItemName={props.filterValue}
         itemsNames={[modeArray[0], modeArray[1]]}
         selectedOption={props.filterValue}
         handleSelectedOptionChange={props.handleFilterChange}

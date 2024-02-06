@@ -59,10 +59,10 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
                 >
                   <stop
                     offset="0.3125"
-                    stop-color="#0058B9"
-                    stop-opacity="0.30"
+                    stopColor="#0058B9"
+                    stopOpacity="0.30"
                   />
-                  <stop offset="1" stop-color="#00B9FF" stop-opacity="0" />
+                  <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <Area

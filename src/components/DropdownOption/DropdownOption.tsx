@@ -13,7 +13,7 @@ export const DropdownOption: React.FC<{
   return (
     <StyledOption
       isInputBox={props.isInputBox}
-      onClick={props.handleClick}
+      onMouseDown={props.handleClick}
       onBlur={props.handleBlur}
       theme={props.theme}
     >
