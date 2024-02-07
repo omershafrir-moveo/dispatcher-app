@@ -1,5 +1,5 @@
 import {
-  Container,
+  BodyLayoutContainer,
   DataContainer,
   EmptyStateContainer,
   TypoContainer,
@@ -36,10 +36,10 @@ const BodyLayout: React.FC = () => {
   // console.log(x);
 
   return (
-    <Container>
-      <DataContainer>
+    <BodyLayoutContainer className="BodyLayoutContainer">
+      <DataContainer className="DataContainer">
         {articles.length == 0 && (
-          <EmptyStateContainer>
+          <EmptyStateContainer className="EmptyStateContainer">
             <NoArticles />
             <TypoContainer>
               <Typography size="18px" color="#5A5A89">
@@ -59,9 +59,9 @@ const BodyLayout: React.FC = () => {
           </Typography>
         )}
         {articles.length != 0 && <ArticlesLayout articles={articles} />}
-        <WidgetsSection />
       </DataContainer>
-    </Container>
+      <WidgetsSection />
+    </BodyLayoutContainer>
   );
 };
 

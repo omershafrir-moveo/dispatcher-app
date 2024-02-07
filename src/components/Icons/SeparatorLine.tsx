@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 const SeparatorLine: React.FC = () => {
   return (
     <svg
-      width="1440"
+      width="100%"
       height="1"
       viewBox="0 0 1440 1"
       fill="none"
