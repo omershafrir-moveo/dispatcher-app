@@ -8,7 +8,6 @@ import SeparatorLine from "../../components/Icons/SeparatorLine";
 import { useContext } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { InputProvider } from "../../components/SearchContext/SearchContext";
-import SearchContextApi from "../../api/SearchContextApi";
 
 const PageLayout: React.FC = () => {
   const { filterValue, filtersValues, sortMode, datesRange, searchValue } =

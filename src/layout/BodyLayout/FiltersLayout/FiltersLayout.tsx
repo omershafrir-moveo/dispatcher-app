@@ -8,7 +8,6 @@ import {
   SearchContext,
   InputProvider,
 } from "../../../components/SearchContext/SearchContext";
-import SearchContextApi from "../../../api/SearchContextApi";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 

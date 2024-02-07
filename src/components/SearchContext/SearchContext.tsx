@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
-import { RecentSearchesItem } from "../RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
   noneOption,
@@ -8,6 +7,7 @@ import {
 } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
 import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { dictToArray, toJson } from "../../util/util";
 
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -16,9 +16,9 @@ type SearchContextType = {
   handleFilterChange: (value: SelectOptionType) => void;
   searchValue: string;
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  items: RecentSearchesItem[];
-  handleClick: (item: RecentSearchesItem) => void;
-  handleDelete: (item: RecentSearchesItem) => void;
+  items: string[];
+  handleClick: (item: string) => void;
+  handleDelete: (item: string) => void;
   handleClear: () => void;
   filtersValues: filtersValuesType;
   updateFiltersValues: (key: string, value: SelectOptionType) => void;
@@ -26,6 +26,7 @@ type SearchContextType = {
   updateSortMode: (newSortMode: SelectOptionType) => void;
   datesRange: Date[];
   updateDatesRange: (newRange: Date[]) => void;
+  sendRequest: (text: string) => void;
 };
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
@@ -35,8 +36,8 @@ const ContextInitalValue: SearchContextType = {
   searchValue: "",
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => {},
   items: [],
-  handleClick: (item: RecentSearchesItem) => {},
-  handleDelete: (item: RecentSearchesItem) => {},
+  handleClick: (item: string) => {},
+  handleDelete: (item: string) => {},
   handleClear: () => {},
   filtersValues: {
     category: noneOption,
@@ -49,6 +50,7 @@ const ContextInitalValue: SearchContextType = {
   updateSortMode: () => {},
   datesRange: [],
   updateDatesRange: () => {},
+  sendRequest: () => {},
 };
 
 export const SearchContext =
@@ -56,11 +58,6 @@ export const SearchContext =
 
 export type SearchContextProps = {
   children?: React.ReactNode;
-  userInputAPI: {
-    handleClick: (item: RecentSearchesItem) => void;
-    handleDelete: (item: RecentSearchesItem) => void;
-    handleClear: () => void;
-  };
 };
 
 export const InputProvider: React.FC<SearchContextProps> = (props) => {
@@ -93,16 +90,41 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   };
 
   const handleFilterChange = (event: SelectOptionType) => {
-    console.log("Print!");
-
     setFilterValue({ ...event });
-    console.log(`'filterValue' value is: ,${JSON.stringify(filterValue)}`);
   };
 
-  const [items, setItems] = useState<RecentSearchesItem[]>([]);
+  const [items, setItems] = useState<string[]>([]);
 
+  const fetchRecentSearches = (): void => {
+    if (!localStorage.getItem("recentSearches"))
+      localStorage.setItem("recentSearches", JSON.stringify({}));
+    const data = localStorage.getItem("recentSearches") as string;
+    const dataDict = JSON.parse(data);
+    setItems(Object.values(dataDict));
+  };
+
+  useEffect(() => {
+    fetchRecentSearches();
+  }, []);
+
+  const updateLocalStorage = (newItems: string[]) => {
+    localStorage.setItem("recentSearches", JSON.stringify(toJson(newItems)));
+    setItems(newItems);
+  };
+  const sendRequest = (text: string) => {
+    const newItems = [...items, text];
+    updateLocalStorage(newItems);
+  };
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
+  };
+  const handleDelete = (text: string) => {
+    const newItems = [...items].filter((item) => item !== text);
+    updateLocalStorage(newItems);
+  };
+
+  const handleClear = () => {
+    updateLocalStorage([]);
   };
 
   const SearchData: SearchContextType = {
@@ -114,11 +136,10 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     handleSearchInputChange,
     items,
     handleClick: (item) => {
-      setSearchValue(item.text);
+      setSearchValue(item);
     },
-    // handleClick: props.userInputAPI.handleClick,
-    handleDelete: props.userInputAPI.handleDelete,
-    handleClear: props.userInputAPI.handleClear,
+    handleDelete,
+    handleClear,
     filtersValues: filtersDict,
     updateFiltersValues: updateFiltersDict,
     sortMode: sortMode,
@@ -126,6 +147,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
       setSortMode({ ...newSortMode }),
     datesRange: datesRange,
     updateDatesRange: updateDatesRange,
+    sendRequest,
   };
 
   return (

@@ -9,7 +9,6 @@ import DispatcherButton from "../../components/DispatcherButton/DispatcherButton
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles } from "../../util/apiService";
-import { resolve } from "path";
 
 const articleMock: ArticleProps = {
   photo: {
@@ -51,7 +50,7 @@ const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({ articles }) => {
     };
     fetchData();
   }, []);
-  console.log(x);
+  // console.log(x);
   return (
     <Container>
       {topHeadlinesCondition && (

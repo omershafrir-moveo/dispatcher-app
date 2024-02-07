@@ -17,7 +17,12 @@ const RecentSearchesItem: React.FC<SearchItemProps> = (props) => {
   return (
     <ItemContainer onMouseDown={props.handleClick}>
       <TextContainer text={props.text}>{props.text}</TextContainer>
-      <DeleteButton onClick={props.handleDelete}>
+      <DeleteButton
+        onMouseDown={(event) => {
+          event.stopPropagation();
+          props.handleDelete();
+        }}
+      >
         <XIcon />
       </DeleteButton>
     </ItemContainer>
