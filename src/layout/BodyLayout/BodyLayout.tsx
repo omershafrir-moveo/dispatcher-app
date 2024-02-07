@@ -9,15 +9,11 @@ import {
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
 import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
-import ArticleCard, {
-  ArticleProps,
-} from "../../components/ArticleCard/ArticleCard";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles } from "../../util/apiService";
-import NoData from "../../components/Icons/NoData";
 import NoArticles from "../../components/Icons/NoArticles";
-
+import { searchParams } from "../../util/apiService";
 const BodyLayout: React.FC = () => {
   const { filterValue, filtersValues } = useContext(SearchContext);
   const [articles, setArticles] = useState([]);
@@ -27,15 +23,20 @@ const BodyLayout: React.FC = () => {
     ["israel", "none"].includes(filtersValues.country!.value);
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
+  const params: searchParams = {
+    searchMode: "everything",
+    queries: [{ q: "bitcoin" }],
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getArticles();
+      const data = await getArticles(params);
       setArticles(data.articles);
     };
     fetchData();
   }, []);
 
-  console.log(articles);
+  // console.log(articles);
 
   return (
     <>
