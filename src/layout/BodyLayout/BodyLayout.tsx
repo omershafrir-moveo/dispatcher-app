@@ -1,70 +1,64 @@
-import { Container, DataContainer } from "./BodyLayout.styles";
+import {
+  Container,
+  DataContainer,
+  EmptyStateContainer,
+  TypoContainer,
+} from "./BodyLayout.styles";
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
 import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
 import ArticleCard, {
   ArticleProps,
 } from "../../components/ArticleCard/ArticleCard";
-import DispatcherButton from "../../components/DispatcherButton/DispatcherButton";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles } from "../../util/apiService";
+import NoData from "../../components/Icons/NoData";
+import NoArticles from "../../components/Icons/NoArticles";
 
-const articleMock: ArticleProps = {
-  photo: {
-    src: "https://a.espncdn.com/photo/2021/0801/r889086_1296x729_16-9.jpg",
-    alt: "SEAN STRICKLAND",
-  },
-  info: {
-    date: "Friday Jun 25, 2021",
-    body: "There's nothing flashy about Sean Strickland, unless you're counting the punches he relentlessly flashes into the face of his opponent. Strickland won his fifth fight in a row on Saturday night, ove… [+1595 chars]",
-    source: "Jeff Wagenheim, ESPN",
-    title:
-      "Sean Strickland dominates Uriah Hall in unanimous decision for 5th straight win - ESPN",
-    button: (
-      <DispatcherButton text="NAVIGATE TO DISPATCH" handleClick={() => {}} />
-    ),
-  },
-};
-
-export const articlesArrayMock: ArticleProps[] = [
-  articleMock,
-  articleMock,
-  articleMock,
-  articleMock,
-  articleMock,
-  articleMock,
-];
-
-const BodyLayout: React.FC<{ articles: ArticleProps[] }> = ({ articles }) => {
+const BodyLayout: React.FC = () => {
   const { filterValue, filtersValues } = useContext(SearchContext);
-  // const [articlesss, setArticles] = useState([]);
+  const [articles, setArticles] = useState([]);
   const topHeadlinesCondition =
+    articles.length != 0 &&
     filterValue.key == 0 &&
     ["israel", "none"].includes(filtersValues.country!.value);
-  const [x, setX] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const xxx = await getArticles();
-      setX(xxx);
-    };
-    fetchData();
-  }, []);
+  const resultsCondition = !topHeadlinesCondition && articles.length != 0;
+
+  // const [x, setX] = useState(null);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const xxx = await getArticles();
+  //     setX(xxx);
+  //   };
+  //   fetchData();
+  // }, []);
   // console.log(x);
+
   return (
     <Container>
-      {topHeadlinesCondition && (
-        <Typography color="#262146" size="24px" weight="medium">
-          Top Headlines in Israel
-        </Typography>
-      )}
-      {!topHeadlinesCondition && (
-        <Typography size="14px" weight="regular" letterSpacing="0.25px">
-          {`${articles.length} Total Results`}
-        </Typography>
-      )}
       <DataContainer>
-        <ArticlesLayout articles={articlesArrayMock} />
+        {articles.length == 0 && (
+          <EmptyStateContainer>
+            <NoArticles />
+            <TypoContainer>
+              <Typography size="18px" color="#5A5A89">
+                we couldn't find any matches for your query
+              </Typography>
+            </TypoContainer>
+          </EmptyStateContainer>
+        )}
+        {topHeadlinesCondition && (
+          <Typography color="#262146" size="24px" weight="medium">
+            Top Headlines in Israel
+          </Typography>
+        )}
+        {resultsCondition && (
+          <Typography size="14px" weight="regular" letterSpacing="0.25px">
+            {`${articles.length} Total Results`}
+          </Typography>
+        )}
+        {articles.length != 0 && <ArticlesLayout articles={articles} />}
         <WidgetsSection />
       </DataContainer>
     </Container>

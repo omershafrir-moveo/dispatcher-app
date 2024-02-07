@@ -3,7 +3,6 @@ import FiltersLayout from "../BodyLayout/FiltersLayout/FiltersLayout";
 import { modeArray } from "../BodyLayout/FiltersLayout/FilterLayout.types";
 import Header from "../../components/Header/Header";
 import BodyLayout from "../BodyLayout/BodyLayout";
-import { articlesArrayMock } from "../BodyLayout/BodyLayout";
 import SeparatorLine from "../../components/Icons/SeparatorLine";
 import { useContext } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
@@ -20,7 +19,7 @@ const PageLayout: React.FC = () => {
         <Line>
           <SeparatorLine />
         </Line>
-        <BodyLayout articles={articlesArrayMock} />
+        <BodyLayout />
       </BodyContainer>
     </PageContainer>
   );

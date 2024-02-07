@@ -5,37 +5,36 @@ import {
   DataContainer,
 } from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
+import DispatcherButton from "../DispatcherButton/DispatcherButton";
 
-export type ArticleInfoProps = {
-  date: string;
-  title: string;
-  source: string;
-  body: string;
-  button: React.ReactNode;
-};
-
-export type ArticlePhotoProps = {
-  src: string;
-  alt: string;
+export type sourceProps = {
+  id: string;
+  name: string;
 };
 
 export type ArticleProps = {
-  photo: ArticlePhotoProps;
-  info: ArticleInfoProps;
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  title: string;
+  url: string;
+  urlToImage: string;
+  source: sourceProps;
 };
 
 const ArticleCard: React.FC<ArticleProps> = (props) => {
   return (
     <Card>
       <PhotoContainer
-        src={props.photo.src}
-        alt={props.photo.alt}
+        src={props.urlToImage}
+        alt={props.title}
         width="244px"
         height="242px"
       />
       <DataContainer>
         <InfoContainer>
-          <Typography margin="17px 0px 0px 0px">{props.info.date}</Typography>
+          <Typography margin="17px 0px 0px 0px">{props.publishedAt}</Typography>
           <Typography
             color="#000000"
             weight="bold"
@@ -43,14 +42,19 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
             width="470px"
             height="42px"
           >
-            {props.info.title}
+            {props.title}
           </Typography>
-          <Typography>{props.info.source}</Typography>
+          <Typography>{props.source.name}</Typography>
           <Typography color="#5A5A89" width="711px" height="32px">
-            {props.info.body}
+            {props.content}
           </Typography>
         </InfoContainer>
-        {props.info.button}
+        <DispatcherButton
+          text="NAVIGATE TO DISPATCH"
+          handleClick={() => {
+            window.open(props.urlToImage, "_blank");
+          }}
+        />
       </DataContainer>
     </Card>
   );

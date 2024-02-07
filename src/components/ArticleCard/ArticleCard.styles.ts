@@ -1,17 +1,16 @@
 import styled from "styled-components";
-import { ArticlePhotoProps } from "./ArticleCard";
+import { ArticleProps } from "./ArticleCard";
 
 export const Card = styled.div`
   display: flex;
   height: 242px;
   width: 955px;
-  /* border: 1px solid #D9DBE9; */
   border-radius: 20px;
 `;
 
-export const PhotoContainer = styled.img<ArticlePhotoProps>`
+export const PhotoContainer = styled.img<{src:string, alt:string}>`
   border-radius: 20px 0px 0px 20px;
-  border: 1px solid #D9DBE9;
+  border: 1px solid #d9dbe9;
 `;
 
 export const InfoContainer = styled.div`
@@ -27,7 +26,7 @@ export const DataContainer = styled.div`
   background-color: #ffffff;
   height: 242px;
   border-radius: 0px 20px 20px 0px;
-  border: 1px solid #D9DBE9;
+  border: 1px solid #d9dbe9;
   border-left: none;
   display: flex;
   gap: 14px;
