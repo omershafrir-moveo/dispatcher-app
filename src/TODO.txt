@@ -66,3 +66,8 @@ V 8. need to add 2 special buttons in the start of the toolbar : sort by & dates
 V 9. connect dates to context : figure out what to do with its initial state.   
 V 10. change color of text in range picker
 11. add local storage functionality
+
+ask noy:
+1. white at the bottom of app  :
+what dims should i have?
+2. font props of Top Headlines in Israel so not match

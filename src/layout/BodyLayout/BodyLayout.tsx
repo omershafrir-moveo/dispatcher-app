@@ -2,6 +2,8 @@ import {
   BodyLayoutContainer,
   DataContainer,
   EmptyStateContainer,
+  HeadlinesContainer,
+  TopContainer,
   TypoContainer,
 } from "./BodyLayout.styles";
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
@@ -25,43 +27,49 @@ const BodyLayout: React.FC = () => {
     ["israel", "none"].includes(filtersValues.country!.value);
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
-  // const [x, setX] = useState(null);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const xxx = await getArticles();
-  //     setX(xxx);
-  //   };
-  //   fetchData();
-  // }, []);
-  // console.log(x);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getArticles();
+      setArticles(data.articles);
+    };
+    fetchData();
+  }, []);
+
+  console.log(articles);
 
   return (
-    <BodyLayoutContainer className="BodyLayoutContainer">
-      <DataContainer className="DataContainer">
-        {articles.length == 0 && (
-          <EmptyStateContainer className="EmptyStateContainer">
-            <NoArticles />
-            <TypoContainer>
-              <Typography size="18px" color="#5A5A89">
-                we couldn't find any matches for your query
-              </Typography>
-            </TypoContainer>
-          </EmptyStateContainer>
-        )}
-        {topHeadlinesCondition && (
-          <Typography color="#262146" size="24px" weight="medium">
-            Top Headlines in Israel
-          </Typography>
-        )}
-        {resultsCondition && (
-          <Typography size="14px" weight="regular" letterSpacing="0.25px">
-            {`${articles.length} Total Results`}
-          </Typography>
-        )}
-        {articles.length != 0 && <ArticlesLayout articles={articles} />}
-      </DataContainer>
-      <WidgetsSection />
-    </BodyLayoutContainer>
+    <>
+      <TopContainer className="TopContainer">
+        <HeadlinesContainer className="HeadlinesContainer">
+          {topHeadlinesCondition && (
+            <Typography color="#262146" size="24px" weight="bold">
+              Top Headlines in Israel
+            </Typography>
+          )}
+          {resultsCondition && (
+            <Typography size="14px" weight="regular" letterSpacing="0.25px">
+              {`${articles.length} Total Results`}
+            </Typography>
+          )}
+        </HeadlinesContainer>
+        <BodyLayoutContainer className="BodyLayoutContainer">
+          <DataContainer className="DataContainer">
+            {articles.length == 0 && (
+              <EmptyStateContainer className="EmptyStateContainer">
+                <NoArticles />
+                <TypoContainer>
+                  <Typography size="18px" color="#5A5A89">
+                    we couldn't find any matches for your query
+                  </Typography>
+                </TypoContainer>
+              </EmptyStateContainer>
+            )}
+            {articles.length != 0 && <ArticlesLayout articles={articles} />}
+          </DataContainer>
+          <WidgetsSection />
+        </BodyLayoutContainer>
+      </TopContainer>
+    </>
   );
 };
 

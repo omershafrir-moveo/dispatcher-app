@@ -52,7 +52,7 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
         <DispatcherButton
           text="NAVIGATE TO DISPATCH"
           handleClick={() => {
-            window.open(props.urlToImage, "_blank");
+            window.open(props.url, "_blank");
           }}
         />
       </DataContainer>
