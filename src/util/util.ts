@@ -1,3 +1,7 @@
+import { SelectOptionType } from "../global-data";
+import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { queryEntry } from "./apiService";
+
 export const dictToArray = (dictionary: {}) => {
   return Object.entries(dictionary).map(([key, text]: [any, any]) => {
     return { [key]: text };
@@ -11,5 +15,19 @@ export const toJson = (items: string[]): { [key: string]: string } => {
     obj[index + 1] = item;
   });
   return obj;
+};
+
+export const arrayToQueryString = (
+  queryEntries: queryEntry[] | undefined
+): string => {
+  if (queryEntries == undefined) return "";
+  else
+    return queryEntries
+      .map((entry) =>
+        Object.entries(entry)
+          .map(([key, value]) => `${key}=${value}`)
+          .join("&")
+      )
+      .join("&");
 };
 

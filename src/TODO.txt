@@ -71,3 +71,4 @@ ask noy:
 1. white at the bottom of app  :
 what dims should i have?
 2. font props of Top Headlines in Israel so not match
+3. defaulted params for everything, top headlines

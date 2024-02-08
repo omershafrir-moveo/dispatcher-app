@@ -2,13 +2,14 @@ import React, { createContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
+  modeArray,
   noneOption,
   yesOption,
 } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
 import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import { dictToArray, toJson } from "../../util/util";
-
+import { queryEntry } from "../../util/apiService";
 type SearchContextType = {
   isOpenRecent: boolean;
   toggleRecentSearchesMenu: () => void;
@@ -63,11 +64,9 @@ export type SearchContextProps = {
 export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const [isOpenRecent, setIsOpenRecent] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [filterValue, setFilterValue] = useState<SelectOptionType>({
-    key: 0,
-    title: "Top Headlines",
-    value: "top",
-  });
+  const [filterValue, setFilterValue] = useState<SelectOptionType>(
+    modeArray[0]
+  );
   const [filtersDict, updateFiltersDict] = useDict({
     category: noneOption,
     country: noneOption,

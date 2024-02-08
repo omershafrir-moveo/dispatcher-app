@@ -7,7 +7,7 @@ const NoArticles = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_269_83)">
+      <g clipPath="url(#clip0_269_83)">
         <path
           d="M66.4999 133C103.227 133 133 103.227 133 66.4999C133 29.773 103.227 0 66.4999 0C29.773 0 0 29.773 0 66.4999C0 103.227 29.773 133 66.4999 133Z"
           fill="#FD5959"
