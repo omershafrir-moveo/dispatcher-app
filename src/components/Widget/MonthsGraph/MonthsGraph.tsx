@@ -7,10 +7,31 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-const MonthsGraph: React.FC<WidgetProps> = (props) => {
-  const { data }: { data: { date: Date; value: number }[] } = props;
+const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
+  let contentFlag = articles.length > 0;
 
-  let contentFlag = data.length > 0;
+  const computeData = () => {
+    const dateCounts: { [date: string]: number } = {};
+
+    articles.forEach((article) => {
+      const month = article.publishedAt.substring(5, 7);
+      dateCounts[month] = (dateCounts[month] || 0) + 1;
+    });
+
+    const monthsArray: { date: Date; value: number }[] = Object.keys(
+      dateCounts
+    ).map((date) => {
+      return {
+        date: new Date(date),
+        value: dateCounts[date],
+      };
+    });
+
+    return monthsArray;
+  };
+
+  const data = computeData();
+  console.log(data);
 
   return (
     <WidgetCard type="monthes">

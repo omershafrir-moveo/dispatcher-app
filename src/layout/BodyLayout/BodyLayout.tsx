@@ -11,21 +11,44 @@ import Typography from "../../components/Typography/Typography";
 import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
-import { getArticles, getParams } from "../../util/apiService";
+import { getArticles, getParams, getSources } from "../../util/apiService";
 import NoArticles from "../../components/Icons/NoArticles";
 import { useQuery } from "@tanstack/react-query";
+import { title } from "process";
+import { SelectOptionType } from "../../global-data";
+import { noneOption } from "./FiltersLayout/FilterLayout.types";
+import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 
 const BodyLayout: React.FC = () => {
-  const { searchValue, filterValue, filtersValues, datesRange, sortMode } =
-    useContext(SearchContext);
-  const [articles, setArticles] = useState([]);
+  const {
+    searchValue,
+    filterValue,
+    filtersValues,
+    datesRange,
+    sortMode,
+    updateSources,
+  } = useContext(SearchContext);
+
+  const [articles, setArticles] = useState<ArticleProps[]>([]);
   const topHeadlinesCondition =
     articles.length != 0 &&
     filterValue.key == 0 &&
     ["israel", "none"].includes(filtersValues.country!.value);
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
-  const fetchData = async () => {
+  const fetchSources = async () => {
+    const data = await getSources();
+    const sourcesArray: SelectOptionType[] = data.sources
+      .map((source: { name: string; id: string }, idx: number) => {
+        return { key: idx + 1, title: source.name, value: source.id };
+      })
+      .concat([noneOption]);
+
+    updateSources(sourcesArray);
+    return data;
+  };
+
+  const fetchArticles = async () => {
     const params = getParams(
       filterValue,
       filtersValues,
@@ -38,12 +61,16 @@ const BodyLayout: React.FC = () => {
     return data;
   };
 
-  const query = useQuery({
-    queryFn: () => fetchData(),
+  const articlesQuery = useQuery({
+    queryFn: () => fetchArticles(),
     queryKey: [
       "articles",
       { searchValue, filterValue, filtersValues, datesRange, sortMode },
     ],
+  });
+  const sourcesQuery = useQuery({
+    queryFn: () => fetchSources(),
+    queryKey: ["sources"],
   });
 
   return (
@@ -75,7 +102,7 @@ const BodyLayout: React.FC = () => {
             )}
             {articles.length != 0 && <ArticlesLayout articles={articles} />}
           </DataContainer>
-          <WidgetsSection />
+          <WidgetsSection articles={articles} />
         </BodyLayoutContainer>
       </TopContainer>
     </>

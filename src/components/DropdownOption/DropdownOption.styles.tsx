@@ -11,7 +11,7 @@ const StyledOption = styled.button<StyledButtonProps>`
     props.disabled ? "#e9e4e4" : THEMES.backgroundColor(props.theme)};
   font-family: ${(props) => THEMES.fontFamily(props.theme)};
   font-size: ${(props) => THEMES.fontSize(props.theme)};
-  color: ${(props) => (props.disabled ? "#b3b0b0" : "5a5a89")};
+  color: ${(props) => (props.disabled ? "#b3b0b0" : "#5A5A89")};
   padding: 15px;
   cursor: pointer;
   text-align: left;

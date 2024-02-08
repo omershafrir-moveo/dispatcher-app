@@ -28,6 +28,8 @@ type SearchContextType = {
   datesRange: Date[];
   updateDatesRange: (newRange: Date[]) => void;
   sendRequest: (text: string) => void;
+  sources: SelectOptionType[];
+  updateSources: (sources: SelectOptionType[]) => void;
 };
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
@@ -42,7 +44,7 @@ const ContextInitalValue: SearchContextType = {
   handleClear: () => {},
   filtersValues: {
     category: noneOption,
-    country: yesOption,
+    country: noneOption,
     language: noneOption,
     sources: noneOption,
   },
@@ -52,6 +54,8 @@ const ContextInitalValue: SearchContextType = {
   datesRange: [],
   updateDatesRange: () => {},
   sendRequest: () => {},
+  sources: [],
+  updateSources: () => {},
 };
 
 export const SearchContext =
@@ -64,6 +68,7 @@ export type SearchContextProps = {
 export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const [isOpenRecent, setIsOpenRecent] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [sources, setSources] = useState<SelectOptionType[]>([]);
   const [filterValue, setFilterValue] = useState<SelectOptionType>(
     modeArray[0]
   );
@@ -126,6 +131,10 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     updateLocalStorage([]);
   };
 
+  const updateSources = (newSources: SelectOptionType[]) => {
+    setSources([...newSources]);
+  };
+
   const SearchData: SearchContextType = {
     isOpenRecent,
     toggleRecentSearchesMenu,
@@ -147,6 +156,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     datesRange: datesRange,
     updateDatesRange: updateDatesRange,
     sendRequest,
+    sources,
+    updateSources,
   };
 
   return (

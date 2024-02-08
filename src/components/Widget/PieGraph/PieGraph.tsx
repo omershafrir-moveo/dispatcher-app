@@ -7,12 +7,31 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import { WidgetProps } from "../WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Spacer from "../../Container/Spacer/Spacer";
+import { ArticleProps } from "../../ArticleCard/ArticleCard";
 
-const PieGraph: React.FC<WidgetProps> = (props) => {
+const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
   const COLORS = ["#030035", "#343A6E", "#E8E8E8", "#FF9800"];
-  const { data }: { data: { name: string; value: number }[] } = props;
+  let contentFlag = articles.length > 0;
 
-  let contentFlag = data.length > 0;
+  const computeData = () => {
+    const sourceCounts: { [name: string]: number } = {};
+
+    articles.forEach((article) => {
+      const sourceName = article.source.name;
+      sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
+    });
+
+    const sourceArray: { name: string; value: number }[] = Object.keys(
+      sourceCounts
+    ).map((name) => ({
+      name,
+      value: sourceCounts[name],
+    }));
+    return sourceArray;
+  };
+  const data = computeData();
+  console.log(data);
+
   return (
     <WidgetCard type="pie">
       <Typography color="#000000" size="24px" weight="700">

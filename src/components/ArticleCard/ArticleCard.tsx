@@ -6,11 +6,7 @@ import {
 } from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
 import DispatcherButton from "../DispatcherButton/DispatcherButton";
-
-export type sourceProps = {
-  id: string;
-  name: string;
-};
+import { SelectOptionType } from "../../global-data";
 
 export type ArticleProps = {
   author: string;
@@ -20,7 +16,7 @@ export type ArticleProps = {
   title: string;
   url: string;
   urlToImage: string;
-  source: sourceProps;
+  source: { id: string; name: string };
 };
 
 const ArticleCard: React.FC<ArticleProps> = (props) => {

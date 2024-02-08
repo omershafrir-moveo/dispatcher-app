@@ -2,7 +2,7 @@ import { FiltersToolbar } from "./FiltersLayout.styles";
 import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
 import { modeArray, filterArray } from "./FilterLayout.types";
 import { SelectOptionType } from "../../../global-data";
-import { dataMock, noneOption } from "./FilterLayout.types";
+import { DATA_OPTIONS, noneOption } from "./FilterLayout.types";
 import { useContext, useEffect, useState } from "react";
 import {
   SearchContext,
@@ -23,7 +23,7 @@ export type FiltersLayoutProps = {
 };
 
 const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
-  const { filterValue, filtersValues, updateFiltersValues } =
+  const { filterValue, filtersValues, updateFiltersValues, sources } =
     useContext(SearchContext);
 
   const filters: SelectOptionType[] =
@@ -38,7 +38,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
     switch (f.value) {
       case "language":
         return {
-          options: dataMock.language,
+          options: DATA_OPTIONS.language,
           chosenValue: filtersValues.language,
           updateValue: (newVal: any) => {
             updateFiltersValues("language", newVal);
@@ -47,7 +47,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         };
       case "category":
         return {
-          options: dataMock.category,
+          options: DATA_OPTIONS.category,
           chosenValue: filtersValues.category,
           updateValue: (newVal: any) => {
             updateFiltersValues("category", newVal);
@@ -56,7 +56,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         };
       case "country":
         return {
-          options: dataMock.country,
+          options: DATA_OPTIONS.country,
           chosenValue: filtersValues.country,
           updateValue: (newVal: any) => {
             updateFiltersValues("country", newVal);
@@ -65,7 +65,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         };
       case "sources":
         return {
-          options: dataMock.sources,
+          options: sources,
           chosenValue: filtersValues.sources,
           updateValue: (newVal: any) => {
             updateFiltersValues("sources", newVal);
