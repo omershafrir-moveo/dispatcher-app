@@ -8,8 +8,6 @@ export type ArticlesLayoutProps = {
 };
 
 const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({ articles }) => {
-  // console.log(`'articles' value is: ,${JSON.stringify(articles)}`);
-
   return (
     <ArticlesContainer>
       {articles?.map((article: ArticleProps, index) => (

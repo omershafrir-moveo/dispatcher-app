@@ -37,3 +37,9 @@ export const TypoContainer = styled.div<{ children?: React.ReactNode }>`
 `;
 
 export const HeadlinesContainer = styled.div<{ children?: React.ReactNode }>``;
+
+export const Loading = styled.h1`
+  align-self: center;
+  color: rgb(90, 90, 137);
+  font-family: "Roboto", sans-serif;
+`;

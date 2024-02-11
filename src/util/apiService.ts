@@ -3,6 +3,7 @@ import { SelectOptionType } from "../global-data";
 import { arrayToQueryString } from "./util";
 import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import { filtersValuesType } from "../layout/BodyLayout/FiltersLayout/FiltersLayout";
+import { queries } from "@testing-library/react";
 const API_KEYS = [
   "1147e6878ef44d28bb7374107d98351b",
   "40f24796ae9248c59526eba4705abb29",
@@ -16,7 +17,7 @@ const API_KEYS = [
   "f79ddaf709914ff9b621a7693cfb36c3",
 ];
 
-const API_KEY = API_KEYS[2];
+const API_KEY = API_KEYS[4];
 
 export type queryEntry = {
   [param: string]: string;
@@ -26,6 +27,13 @@ export type searchParams = {
   queries: queryEntry[];
 };
 type Dictionary = { [key: string]: SelectOptionType };
+
+const getParamsNames = (queries: queryEntry[]): string[] => {
+  return queries.reduce((acc: string[], entry: queryEntry) => {
+    const keys: string[] = Object.keys(entry);
+    return acc.concat(keys);
+  }, []);
+};
 
 export const getParams = (
   filterValue: SelectOptionType,
@@ -44,11 +52,20 @@ export const getParams = (
     queries.push({ from: datesRange[0].toISOString().split("T")[0] });
     queries.push({ to: datesRange[1].toISOString().split("T")[0] });
   }
-  if (queries.length == 0) {
-    if (searchMode == "top-headlines") queries.push({ country: "il" });
-    else queries.push({ q: "Israel" });
-  }
+
+  if (searchMode == "top-headlines" && queries.length == 0)
+    queries.push({ country: "il" });
+
+  if (
+    searchMode == "everything" &&
+    getParamsNames(queries).every(
+      (qu: string) => !["sources", "q"].includes(qu)
+    )
+  )
+    queries.push({ q: "Israel" });
+
   if (searchMode == "everything") queries.push({ sortBy: sortMode.value });
+
   return { searchMode, queries };
 };
 

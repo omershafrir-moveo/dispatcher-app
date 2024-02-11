@@ -3,6 +3,7 @@ import {
   DataContainer,
   EmptyStateContainer,
   HeadlinesContainer,
+  Loading,
   TopContainer,
   TypoContainer,
 } from "./BodyLayout.styles";
@@ -28,10 +29,32 @@ const BodyLayout: React.FC = () => {
     updateSources,
   } = useContext(SearchContext);
 
-  const [articles, setArticles] = useState<ArticleProps[]>([]);
+  const fetchArticles = async () => {
+    const params = getParams(
+      filterValue,
+      filtersValues,
+      searchValue,
+      datesRange,
+      sortMode
+    );
+    const data = await getArticles(params);
+    return data;
+  };
+
+  const articlesQuery = useQuery({
+    queryFn: () => fetchArticles(),
+    queryKey: [
+      "articles",
+      { searchValue, filterValue, filtersValues, datesRange, sortMode },
+    ],
+  });
+
+  const articles = articlesQuery.data?.articles ?? [];
   const topHeadlinesCondition =
     articles.length != 0 &&
     filterValue.key == 0 &&
+    filtersValues.category?.value == "none" &&
+    filtersValues.sources?.value == "none" &&
     ["israel", "none"].includes(filtersValues.country!.value);
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
@@ -47,64 +70,45 @@ const BodyLayout: React.FC = () => {
     return data;
   };
 
-  const fetchArticles = async () => {
-    const params = getParams(
-      filterValue,
-      filtersValues,
-      searchValue,
-      datesRange,
-      sortMode
-    );
-    const data = await getArticles(params);
-    setArticles(data.articles);
-    return data;
-  };
-
-  const articlesQuery = useQuery({
-    queryFn: () => fetchArticles(),
-    queryKey: [
-      "articles",
-      { searchValue, filterValue, filtersValues, datesRange, sortMode },
-    ],
-  });
   const sourcesQuery = useQuery({
     queryFn: () => fetchSources(),
     queryKey: ["sources"],
   });
 
   return (
-    <>
-      <TopContainer className="TopContainer">
-        <HeadlinesContainer className="HeadlinesContainer">
-          {topHeadlinesCondition && (
-            <Typography color="#262146" size="24px" weight="bold">
-              Top Headlines in Israel
-            </Typography>
+    <TopContainer className="TopContainer">
+      <HeadlinesContainer className="HeadlinesContainer">
+        {topHeadlinesCondition && (
+          <Typography color="#262146" size="24px" weight="bold">
+            Top Headlines in Israel
+          </Typography>
+        )}
+        {resultsCondition && (
+          <Typography size="14px" weight="regular" letterSpacing="0.25px">
+            {`${articles.length} Total Results`}
+          </Typography>
+        )}
+      </HeadlinesContainer>
+      <BodyLayoutContainer className="BodyLayoutContainer">
+        <DataContainer className="DataContainer">
+          {articlesQuery.isLoading && <Loading>Loading...</Loading>}
+          {!articlesQuery.isLoading && articles.length == 0 && (
+            <EmptyStateContainer className="EmptyStateContainer">
+              <NoArticles />
+              <TypoContainer>
+                <Typography size="18px" color="#5A5A89">
+                  we couldn't find any matches for your query
+                </Typography>
+              </TypoContainer>
+            </EmptyStateContainer>
           )}
-          {resultsCondition && (
-            <Typography size="14px" weight="regular" letterSpacing="0.25px">
-              {`${articles.length} Total Results`}
-            </Typography>
+          {articles.length != 0 && (
+            <ArticlesLayout articles={articlesQuery.data.articles} />
           )}
-        </HeadlinesContainer>
-        <BodyLayoutContainer className="BodyLayoutContainer">
-          <DataContainer className="DataContainer">
-            {articles.length == 0 && (
-              <EmptyStateContainer className="EmptyStateContainer">
-                <NoArticles />
-                <TypoContainer>
-                  <Typography size="18px" color="#5A5A89">
-                    we couldn't find any matches for your query
-                  </Typography>
-                </TypoContainer>
-              </EmptyStateContainer>
-            )}
-            {articles.length != 0 && <ArticlesLayout articles={articles} />}
-          </DataContainer>
-          <WidgetsSection articles={articles} />
-        </BodyLayoutContainer>
-      </TopContainer>
-    </>
+        </DataContainer>
+        <WidgetsSection articles={articles} />
+      </BodyLayoutContainer>
+    </TopContainer>
   );
 };
 

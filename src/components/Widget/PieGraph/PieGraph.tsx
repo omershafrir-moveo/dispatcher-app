@@ -32,7 +32,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
   const data = computeData();
 
   return (
-    <WidgetCard type="pie">
+    <WidgetCard type={data.length > 0 ? "pie" : "no-data"}>
       <Typography color="#000000" size="24px" weight="700">
         Sources
       </Typography>

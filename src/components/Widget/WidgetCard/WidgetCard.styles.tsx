@@ -13,4 +13,6 @@ export const Card = styled.div<{ type: string }>`
   border: 1px solid var(--grayscale-line, #d9dbe9);
   background: var(--grayscale-white, #fff);
   overflow-y: ${(props) => (props.type == "pie" ? "auto" : "visible")};
+  justify-content: ${(props) =>
+    props.type == "no-data" ? "flex-start" : "space-between"};
 `;

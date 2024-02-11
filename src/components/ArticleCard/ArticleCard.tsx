@@ -21,8 +21,6 @@ export type ArticleProps = {
   source: { id: string; name: string };
 };
 
-// https://usercontent.one/wp/www.vocaleurope.eu/wp-content/uploads/no-image.jpg?media=1642546813
-
 const ArticleCard: React.FC<ArticleProps> = (props) => {
   return (
     <Card>
@@ -34,7 +32,7 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
             color="#000000"
             weight="bold"
             size="18px"
-            width="470px"
+            width="70%"
             height="42px"
           >
             {props.title}

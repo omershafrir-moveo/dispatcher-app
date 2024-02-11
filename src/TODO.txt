@@ -1,75 +1,25 @@
-TODOS:
-
-2. fix style of searchBox + filter : rounded edges, borders, to make it look like 1 component
-3. add logo to header
-4. fix style of header to look like in figma
-
-
-DropDown:
-- cant chnage attributes of scrollbar: color, background and visibillity.
-- change color of scrollbar
-- ask roey about margins: how do i know from the figma the small details in between components( like margin)
-
-
-RecentSearches:
-- IMPORTANT: when user clicks on 'x' in the recent searches- to stop the event propogation to the Item container that wraps it ( since it is also a button).
-
-
-InputSearchBar: 
-- IMPORTANT: what happens when both the recentSearches and the FilterDropdown are opened ?
-
-
-import { useContext } from 'react'
-import { SearchContext } from "../SearchContext/SearchContext";
-const { } = useContext(SearchContext);
-
-
-
-continue:
-1. fix clicks on/out search bar
-2. fix clicks on/out filter
-3. connect states to search bar and filter box
-4. connect handlers to search bar and filter box
-
-* handleBlur of filter interrupts state assignment of filter
-* handle vent propogation for recent searches items to work. 
-
-
-
-/////////////////////////////////////////////////////////////////////////////////
-  const {page,searchQuery} = useContext(SearchContext)
-
-  const callApi = async () => {
-    const res = await axios.get(`url/q=${searchQuery}&page=${page}`);
-    setArtciels(res))
-
-  }
-
-
-^^^
-
 ask noy:
 1. white at the bottom of app  :
 what dims should i have?
-2. font props of Top Headlines in Israel so not match
-3. defaulted params for everything, top headlines - ask noy! about sending requests for api without params
 4. pie graph scroller for legend
-5. minor scrolling on page- why?
 6. dates widget - fix.
-7. what are the valid requests ? why top-headlines/everything with just api-ket does not work ?
-8. if search recieved error: implement noData state
 9. implement loading states? foir articles layout and for widgets.
-10. about query: what do i do with the  'query' objext ? right now i dont ever access it. 
-search routes finished: 
-top headlines: country+ca tegory , sources , q
-11. image stretching in articles card.
-12. what should be when the image is missing?
-everything: sources, q , sortBy
+
+
+
+***:
+left the reactQueries in body layout because i need the articles data at body layout because of the headlines.
+but i removed the usage of a state.
 
 what does not work :
-top headlines alone
-everything alone
-everything + q/languauge/q+languauge , "error message"
+top headlines without q/language/category/country/sources
+everything without q/sources
+
+therefore:
+if user is on top headlines - the default search is country=Israel 
+if user is on everything - the default is q=israel ( as long as sources/q are not selected)
+
+error message for empty searches:
 : Required parameters are missing, the scope of your search is too broad. 
 Please set any of the following required parameters and try again: q, qInTitle, sources, domains."
 

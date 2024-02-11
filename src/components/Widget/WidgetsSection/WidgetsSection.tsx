@@ -17,9 +17,7 @@ const WidgetsSection: React.FC<{ articles: ArticleProps[] }> = ({
   return (
     <WidgetContainer>
       <PieGraph articles={articles} />
-      <Spacer height="24px" />
       <MonthsGraph articles={articles} />
-      <Spacer height="24px" />
     </WidgetContainer>
   );
 };

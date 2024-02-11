@@ -11,13 +11,22 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
   let contentFlag = articles.length > 0;
 
   const computeData = () => {
+    const sortFunc = (
+      obj1: { date: Date; value: number },
+      obj2: { date: Date; value: number }
+    ) => {
+      const timestamp1 = obj1.date.getTime();
+      const timestamp2 = obj2.date.getTime();
+
+      return timestamp1 - timestamp2;
+    };
+
     const dateCounts: { [date: string]: number } = {};
 
     articles.forEach((article) => {
-      const month = article.publishedAt.substring(5, 7);
+      const month = `${article.publishedAt.substring(0, 7)}-01`;
       dateCounts[month] = (dateCounts[month] || 0) + 1;
     });
-
     const monthsArray: { date: Date; value: number }[] = Object.keys(
       dateCounts
     ).map((date) => {
@@ -26,14 +35,13 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
         value: dateCounts[date],
       };
     });
-
+    monthsArray.sort(sortFunc);
     return monthsArray;
   };
 
   const data = computeData();
-
   return (
-    <WidgetCard type="monthes">
+    <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
       <div>
         <Typography color="#14142B" size="24px" weight="700">
           Dates
@@ -43,26 +51,24 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
       <WidgetContainer>
         {contentFlag && (
           <>
-            <Spacer height="80px" />
             <AreaChart
-              style={{ left: -12 }}
               width={438}
               height={250}
               data={data}
               margin={{
                 top: 0,
-                right: 0,
-                left: 0,
-                bottom: 20,
+                right: 10,
+                left: 10,
+                bottom: 0,
               }}
             >
               <XAxis
                 dataKey="date"
-                scale="time"
                 domain={["dataMin", "dataMax"]}
                 tickFormatter={(date) => format(date, "MMM")}
                 tickLine={false}
                 axisLine={false}
+                interval="preserveStartEnd"
                 style={{
                   fontWeight: "700",
                 }}

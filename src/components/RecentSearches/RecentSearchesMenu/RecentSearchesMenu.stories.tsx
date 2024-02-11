@@ -6,20 +6,14 @@ import {
 } from "./RecentSearchesMenu";
 import { useState } from "react";
 
-
 const meta: Meta<typeof RecentSearchesMenu> = {
   title: "RecentSearchesMenu",
   component: RecentSearchesMenu,
 };
 export default meta;
 
-
 export const RecentSearchesMenuWithState: React.FC = () => {
-  const itemsMock = [
-    "crypto" ,
-    "soccer" ,
-    "politics" ,
-  ];
+  const itemsMock = ["crypto", "soccer", "politics"];
 
   const [items, setItems] = useState(itemsMock);
 
