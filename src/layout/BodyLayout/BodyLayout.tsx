@@ -14,11 +14,10 @@ import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles, getParams, getSources } from "../../util/apiService";
 import NoArticles from "../../components/Icons/NoArticles";
 import { useQuery } from "@tanstack/react-query";
-import { title } from "process";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "./FiltersLayout/FilterLayout.types";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
-
+import Fader from "../../components/Fader/Fader";
 const BodyLayout: React.FC = () => {
   const {
     searchValue,

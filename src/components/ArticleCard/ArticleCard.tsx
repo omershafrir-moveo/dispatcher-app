@@ -19,11 +19,32 @@ export type ArticleProps = {
   source: { id: string; name: string };
 };
 
+const noImageUrl =
+  "https://usercontent.one/wp/www.vocaleurope.eu/wp-content/uploads/no-image.jpg?media=1642546813";
+const imageValid = async (urlToImage: string) => {
+  try {
+    const response = await fetch(urlToImage, { method: "HEAD" });
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+};
+
+const getPhoto = async (urlToImage: string): string => {
+  try {
+    const response = await fetch(urlToImage, { method: "HEAD" });
+    return response.ok ? urlToImage : noImageUrl;
+  } catch (error) {
+    return noImageUrl;
+  }
+};
+
 const ArticleCard: React.FC<ArticleProps> = (props) => {
   return (
     <Card>
       <PhotoContainer
-        src={props.urlToImage}
+        src={getPhoto(props.urlToImage)}
+        // src={imageValid(props.urlToImage) ? props.urlToImage : noImageUrl }
         alt={props.title}
         width="244px"
         height="242px"

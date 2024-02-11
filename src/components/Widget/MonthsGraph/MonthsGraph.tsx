@@ -31,7 +31,6 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
   };
 
   const data = computeData();
-  console.log(data);
 
   return (
     <WidgetCard type="monthes">

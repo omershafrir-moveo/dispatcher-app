@@ -30,7 +30,6 @@ const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
     return sourceArray;
   };
   const data = computeData();
-  console.log(data);
 
   return (
     <WidgetCard type="pie">
