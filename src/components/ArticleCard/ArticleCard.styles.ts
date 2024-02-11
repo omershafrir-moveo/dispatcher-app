@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ArticleProps } from "./ArticleCard";
 
 export const Card = styled.div`
   display: flex;
@@ -8,10 +7,9 @@ export const Card = styled.div`
   border-radius: 20px;
   gap: 17px;
   border: 1px solid #d9dbe9;
-
 `;
 
-export const PhotoContainer = styled.img<{src:string, alt:string}>`
+export const PhotoContainer = styled.img<{ src: string; alt: string }>`
   border-radius: 20px 0px 0px 20px;
 `;
 
