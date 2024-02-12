@@ -8,8 +8,7 @@ import {
 } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import useDict from "../../hooks/useDict";
 import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
-import { dictToArray, toJson } from "../../util/util";
-import { queryEntry } from "../../util/apiService";
+import { toJson } from "../../util/util";
 type SearchContextType = {
   isOpenRecent: boolean;
   toggleRecentSearchesMenu: () => void;

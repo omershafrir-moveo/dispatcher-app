@@ -1,6 +1,4 @@
-import { SelectOptionType } from "../global-data";
-import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
-import { queryEntry } from "./apiService";
+import { queryEntry } from "./apiService.types";
 
 export const dictToArray = (dictionary: {}) => {
   return Object.entries(dictionary).map(([key, text]: [any, any]) => {
@@ -30,4 +28,3 @@ export const arrayToQueryString = (
       )
       .join("&");
 };
-
