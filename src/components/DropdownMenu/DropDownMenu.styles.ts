@@ -11,4 +11,5 @@ export const StyledMenu = styled.ul`
   max-height: 118px; // 4 * height of a single option
   overflow-x: hidden;
   overflow-y: scroll;
+  width: 100%;
 `;

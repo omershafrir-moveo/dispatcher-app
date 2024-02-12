@@ -2,7 +2,7 @@ import { COLORS } from "../../global-data";
 
 type themeProperty = (theme: themeOption) => any;
 type themeType = {
-  width: themeProperty;
+  maxWidth: themeProperty;
   height: themeProperty;
   borderRadius: themeProperty;
   marginBottom: themeProperty;
@@ -24,15 +24,15 @@ export type StyledButtonProps = {
 };
 
 const THEMES: themeType = {
-  width: (theme: themeOption) =>
+  maxWidth: (theme: themeOption) =>
     theme === "defaultInputOption"
-      ? "190px"
+      ? "189px"
       : theme === "defaultOption"
       ? "189px"
       : theme === "filterInputOption"
-      ? "138px"
+      ? "175px"
       : theme === "filterOption"
-      ? "138px"
+      ? "175px"
       : undefined,
   height: (theme: themeOption) =>
     theme === "defaultInputOption"

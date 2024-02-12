@@ -15,8 +15,8 @@ export type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
   return (
-    <Container>
-      <SearchContainer>
+    <Container className="SearchBarContainer">
+      <SearchContainer className="SearchContainer">
         <SearchIcon />
         <Search
           searchInput={props.searchValue}

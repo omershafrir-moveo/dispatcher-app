@@ -24,7 +24,7 @@ export type RecentSearchesMenuProps = {
 const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
   return (
     <Container>
-      <HeaderContainer>
+      <HeaderContainer className="HeaderContainer">
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onMouseDown={props.handleClear}>CLEAR</ClearButton>
       </HeaderContainer>

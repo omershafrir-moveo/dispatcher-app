@@ -13,6 +13,7 @@ const Image: React.FC<{ src: string; alt: string }> = (props) => {
       alt={props.alt}
       style={{
         width: "100%",
+        maxWidth: "244px",
         height: "242px",
         objectFit: "cover",
         overflow: "hidden",

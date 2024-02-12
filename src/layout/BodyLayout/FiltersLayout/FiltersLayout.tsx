@@ -79,7 +79,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   };
 
   return (
-    <FiltersToolbar>
+    <FiltersToolbar className="FiltersToolbar">
       {filterValue.key == 1 && <SortDropdown />}
       {filterValue.key == 1 && <DatePicker />}
       {filters.map((f: SelectOptionType, index: number) => (

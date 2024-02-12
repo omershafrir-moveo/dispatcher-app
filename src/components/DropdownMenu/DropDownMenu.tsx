@@ -30,8 +30,10 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     if (isOpen) setIsOpen(false);
   };
 
-  const inputOptionValue = props.selectedOption.value == 'none' ?
-    props.defaultItemName : props.selectedOption
+  const inputOptionValue =
+    props.selectedOption.value == "none"
+      ? props.defaultItemName
+      : props.selectedOption;
 
   return (
     <DropDownMenuContainer>
@@ -47,7 +49,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       />
       {isOpen && (
         <ItemsListContainer>
-          <StyledMenu>
+          <StyledMenu className="styledMenu">
             {props.itemsNames.map((item, index) => (
               <DropdownOption
                 key={index}

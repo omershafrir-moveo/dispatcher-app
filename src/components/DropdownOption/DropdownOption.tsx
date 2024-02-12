@@ -12,7 +12,7 @@ export const DropdownOption: React.FC<{
   disabled?: boolean;
 }> = (props) => {
   return (
-    <StyledOption
+    <StyledOption className="StyledOption"
       isInputBox={props.isInputBox}
       onMouseDown={props.handleClick}
       onBlur={props.handleBlur}

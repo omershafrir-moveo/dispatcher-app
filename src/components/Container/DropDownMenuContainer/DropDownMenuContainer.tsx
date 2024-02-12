@@ -6,7 +6,7 @@ export type StyledContainerProps = {
   };
 
 const DropDownMenuContainer: React.FC<StyledContainerProps> = (props) => {
-    return <StyledContainer>{props.children}</StyledContainer>;
+    return <StyledContainer className="StyledContainer">{props.children}</StyledContainer>;
 };
 
 export default DropDownMenuContainer;

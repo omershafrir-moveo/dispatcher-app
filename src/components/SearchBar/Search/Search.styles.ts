@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledTextField = styled.input`
-  width: 424px;
+  width: 100%;
+  max-width: 424px;
   height: 40px;
   padding: 0px;
   font-family: "Roboto", sans-serif;

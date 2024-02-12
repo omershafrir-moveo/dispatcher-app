@@ -11,11 +11,11 @@ export type WidgetProps = {
 };
 
 const WidgetsSection: React.FC<{
-  articles: ArticleProps[]; 
+  articles: ArticleProps[];
   isLoading: boolean;
 }> = ({ articles, isLoading }) => {
   return (
-    <WidgetsSectionContainer>
+    <WidgetsSectionContainer className="WidgetsSectionContainer">
       <PieGraph articles={articles} isLoading={isLoading} />
       <MonthsGraph articles={articles} isLoading={isLoading} />
     </WidgetsSectionContainer>

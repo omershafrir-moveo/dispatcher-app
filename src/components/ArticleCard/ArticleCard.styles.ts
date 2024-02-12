@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Card = styled.div`
   display: flex;
   background-color: #ffffff;
+  width: 100%;
+  max-width: 988px;
   flex-direction: row;
   border-radius: 20px;
   gap: 17px;
@@ -18,10 +20,12 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   gap: 14px;
   justify-content: flex-start;
+  width: 100%;
 `;
 
 export const DataContainer = styled.div`
   border-radius: 0px 20px 20px 0px;
+  width: 100%;
   border-left: none;
   display: flex;
   gap: 14px;

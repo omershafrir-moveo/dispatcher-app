@@ -4,11 +4,11 @@ import { Container, IconWrapper, InputWrapper } from "./Header.styles";
 
 const Header = () => {
   return (
-    <Container>
+    <Container className="Container">
       <IconWrapper>
         <LogoIcon />
       </IconWrapper>
-      <InputWrapper>
+      <InputWrapper className="InputWrapper">
         <InputSearchBar />
       </InputWrapper>
     </Container>

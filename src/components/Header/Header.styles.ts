@@ -17,4 +17,5 @@ export const IconWrapper = styled.div`
 
 export const InputWrapper = styled.div`
   margin-top: 12px;
+  width: 100%;
 `;

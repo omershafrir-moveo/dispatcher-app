@@ -17,6 +17,8 @@ import { useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "./FiltersLayout/FilterLayout.types";
 import Loading from "../../components/Loading/Loading";
+import useWidth from "../../hooks/useWidth";
+import useViewport, { Viewport } from "../../hooks/useViewport";
 
 const BodyLayout: React.FC = () => {
   const {
@@ -74,6 +76,10 @@ const BodyLayout: React.FC = () => {
     queryKey: ["sources"],
   });
 
+  const viewport = useViewport();
+  console.log(`'viewport' value is: ,${viewport}`);
+
+  const width = useWidth();
   return (
     <TopContainer className="TopContainer">
       <HeadlinesContainer className="HeadlinesContainer">
@@ -105,10 +111,12 @@ const BodyLayout: React.FC = () => {
             <ArticlesLayout articles={articlesQuery.data.articles} />
           )}
         </DataContainer>
-        <WidgetsSection
-          articles={articles}
-          isLoading={articlesQuery.isLoading}
-        />
+        {viewport == Viewport.DESKTOP && (
+          <WidgetsSection
+            articles={articles}
+            isLoading={articlesQuery.isLoading}
+          />
+        )}
       </BodyLayoutContainer>
     </TopContainer>
   );

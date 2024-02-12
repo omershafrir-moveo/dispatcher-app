@@ -26,6 +26,7 @@ export const Search: React.FC<searchProps> = (props) => {
   return (
     <StyledTextField
       type="text"
+      className="StyledTextField"
       value={searchValue}
       placeholder="Search"
       onChange={props.handleInputChange}

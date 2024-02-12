@@ -4,6 +4,13 @@ import Calender from "../Icons/Calender";
 import "rsuite/DateRangeInput/styles/index.css";
 
 const styledDatePicker = styled(DateRangePicker)`
+  .shafrirshoter {
+    top: 200px;
+  }
+  .rs-picker-popup {
+    top: 200px;
+  }
+
   .rs-input-group rs-input-group-inside {
     border: none;
   }

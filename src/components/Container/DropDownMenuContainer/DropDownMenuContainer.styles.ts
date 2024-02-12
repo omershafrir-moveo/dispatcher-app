@@ -6,6 +6,8 @@ export const StyledContainer = styled.div`
   border-radius: 10px;
   box-shadow: none;
   margin: 0px;
+  width: 100%;
+  max-width: 175px;
   padding-top: none;
   padding-bottom: none;
   justify-content: center;

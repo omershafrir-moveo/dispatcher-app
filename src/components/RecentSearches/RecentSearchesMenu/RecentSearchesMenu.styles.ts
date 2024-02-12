@@ -6,13 +6,14 @@ import { COLORS } from "../../../global-data";
 export const Container = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: column;
+  max-width: 663px;
 `;
 
 export const ItemsList = styled.ul<ItemsListProps>`
   background-color: ${COLORS.primaryLightColor};
   margin: 0px;
   padding: 0px;
-  width: 663px;
+  width: 100%;
 `;
 
 export const HeaderContainer = styled.div<{ children?: React.ReactNode }>`
@@ -20,7 +21,7 @@ export const HeaderContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: row;
   justify-content: space-between;
   background-color: ${COLORS.primaryLightColor};
-  width: 663px;
+  width: 100%;
   height: 45.3px;
   border-radius: 10px 10px 0px 0px;
 `;
@@ -37,7 +38,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const FooterContainer = styled.div<{ children?: React.ReactNode }>`
   background-color: ${COLORS.primaryLightColor};
-  width: 663px;
+  width: 100%;
   height: 8.78px;
   border-radius: 0px 0px 10px 10px;
 `;

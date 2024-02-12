@@ -23,10 +23,10 @@ export type ArticleProps = {
 
 const ArticleCard: React.FC<ArticleProps> = (props) => {
   return (
-    <Card>
+    <Card className="Card">
       <Image src={props.urlToImage} alt={props.title} />
-      <DataContainer>
-        <InfoContainer>
+      <DataContainer className="DataContainer">
+        <InfoContainer className="InfoContainer">
           <Typography margin="17px 0px 0px 0px">{props.publishedAt}</Typography>
           <Typography
             color="#000000"

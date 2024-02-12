@@ -13,6 +13,7 @@ export const BodyLayoutContainer = styled.div<{ children?: React.ReactNode }>`
   justify-content: space-between;
   align-items: flex-start;
   gap: 32px;
+  background-color: transparent;
 `;
 
 export const DataContainer = styled.div<{ children?: React.ReactNode }>`

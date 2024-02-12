@@ -9,6 +9,7 @@ export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   justify-content: flex-start;
   align-items: center;
   background-color: ${COLORS.backgroundColor};
+  background-color: red;
   gap: 20px;
 `;
 
@@ -17,7 +18,7 @@ export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: column;
   width: calc(100% - 480px);
   height: 100%;
-  background-color: ${COLORS.backgroundColor};
+  background-color: transparent;
   gap: 20px;
 `;
 

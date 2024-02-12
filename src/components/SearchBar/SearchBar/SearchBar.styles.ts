@@ -18,7 +18,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   height: 50px;
-  width: 663px;
+  width: 100%;
+  max-width: 663px;
   margin: 0px;
   background-color: ${COLORS.primaryLightColor};
   border-radius: 10px;
