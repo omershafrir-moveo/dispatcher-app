@@ -9,7 +9,7 @@ export type ArticlesLayoutProps = {
 
 const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({ articles }) => {
   return (
-    <ArticlesContainer>
+    <ArticlesContainer className="ArticlesContainer">
       {articles?.map((article: ArticleProps, index) => (
         <Item key={index}>
           <ArticleCard

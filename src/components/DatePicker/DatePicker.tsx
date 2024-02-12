@@ -6,16 +6,6 @@ import { SearchContext } from "../SearchContext/SearchContext";
 
 const DatePicker = () => {
   const { datesRange, updateDatesRange } = useContext(SearchContext);
-  useEffect(() => {
-    const pickerPopupDiv = document.querySelector(
-      '[data-testid="picker-popup"]'
-    );
-    console.log(pickerPopupDiv);
-    const element = document.getElementById("picker-popup");
-    if (element) {
-      element.classList.add("shafrirshoter");
-    }
-  }, []);
 
   return (
     <StyledDatePicker
