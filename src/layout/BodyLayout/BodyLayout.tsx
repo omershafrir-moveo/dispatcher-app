@@ -3,13 +3,12 @@ import {
   DataContainer,
   EmptyStateContainer,
   HeadlinesContainer,
-  Loading,
   TopContainer,
   TypoContainer,
 } from "./BodyLayout.styles";
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
-import WidgetsSection from "../../components/Widget/WidgetsSection/WidgetsSection";
+import WidgetsSection from "../../components/Widget/WidgetContainer/WidgetsSection/WidgetsSection";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles, getParams, getSources } from "../../util/apiService";
@@ -17,8 +16,8 @@ import NoArticles from "../../components/Icons/NoArticles";
 import { useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "./FiltersLayout/FilterLayout.types";
-import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
-import Fader from "../../components/Fader/Fader";
+import Loading from "../../components/Loading/Loading";
+
 const BodyLayout: React.FC = () => {
   const {
     searchValue,
@@ -91,7 +90,7 @@ const BodyLayout: React.FC = () => {
       </HeadlinesContainer>
       <BodyLayoutContainer className="BodyLayoutContainer">
         <DataContainer className="DataContainer">
-          {articlesQuery.isLoading && <Loading>Loading...</Loading>}
+          {articlesQuery.isLoading && <Loading />}
           {!articlesQuery.isLoading && articles.length == 0 && (
             <EmptyStateContainer className="EmptyStateContainer">
               <NoArticles />
@@ -106,7 +105,10 @@ const BodyLayout: React.FC = () => {
             <ArticlesLayout articles={articlesQuery.data.articles} />
           )}
         </DataContainer>
-        <WidgetsSection articles={articles} />
+        <WidgetsSection
+          articles={articles}
+          isLoading={articlesQuery.isLoading}
+        />
       </BodyLayoutContainer>
     </TopContainer>
   );

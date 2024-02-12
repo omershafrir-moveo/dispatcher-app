@@ -4,12 +4,12 @@ import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import Typography from "../../Typography/Typography";
 import WidgetCard from "../WidgetCard/WidgetCard";
 import HorizontalLine from "../../Icons/HorizontalLine";
-import { WidgetProps } from "../WidgetsSection/WidgetsSection";
+import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Spacer from "../../Container/Spacer/Spacer";
-import { ArticleProps } from "../../ArticleCard/ArticleCard";
+import Loading from "../../Loading/Loading";
 
-const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
+const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   const COLORS = ["#030035", "#343A6E", "#E8E8E8", "#FF9800"];
   let contentFlag = articles.length > 0;
 
@@ -30,7 +30,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
     return sourceArray;
   };
   const data = computeData();
-
+  console.log(isLoading);
   return (
     <WidgetCard type={data.length > 0 ? "pie" : "no-data"}>
       <Typography color="#000000" size="24px" weight="700">
@@ -38,6 +38,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
       </Typography>
       <HorizontalLine />
       <WidgetContainer>
+        {isLoading && <Loading />}
         {contentFlag && (
           <>
             <PieChart width={124} height={124}>
@@ -78,7 +79,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles }) => {
             />
           </>
         )}
-        {!contentFlag && (
+        {!contentFlag && !isLoading && (
           <>
             <Spacer height="59.5px" />
             <NoData />

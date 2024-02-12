@@ -5,9 +5,10 @@ import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import { format } from "date-fns";
 import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
-import { WidgetProps } from "../WidgetsSection/WidgetsSection";
+import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
+import Loading from "../../Loading/Loading";
+const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
 
   const computeData = () => {
@@ -49,6 +50,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
         <HorizontalLine />
       </div>
       <WidgetContainer>
+        {isLoading && <Loading />}
         {contentFlag && (
           <>
             <AreaChart
@@ -101,7 +103,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles }) => {
             </AreaChart>
           </>
         )}
-        {!contentFlag && (
+        {!contentFlag && !isLoading && (
           <>
             <Spacer height="59.5px" />
             <NoData />

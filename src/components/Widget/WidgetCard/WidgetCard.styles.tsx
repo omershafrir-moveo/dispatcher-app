@@ -14,5 +14,9 @@ export const Card = styled.div<{ type: string }>`
   background: var(--grayscale-white, #fff);
   overflow-y: ${(props) => (props.type == "pie" ? "auto" : "visible")};
   justify-content: ${(props) =>
-    props.type == "no-data" ? "flex-start" : "space-between"};
+    props.type == "no-data"
+      ? "flex-start"
+      : props.type == "monthes"
+      ? "space-between"
+      : "none"};
 `;

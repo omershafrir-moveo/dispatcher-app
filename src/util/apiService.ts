@@ -17,7 +17,7 @@ const API_KEYS = [
   "f79ddaf709914ff9b621a7693cfb36c3",
 ];
 
-const API_KEY = API_KEYS[4];
+const API_KEY = API_KEYS[1];
 
 export type queryEntry = {
   [param: string]: string;
@@ -75,6 +75,12 @@ export const getArticles = async (params?: searchParams) => {
     // console.log(`'queriesSuffix' value is: ,${queriesSuffix}`);
     const url = `https://newsapi.org/v2/${params?.searchMode}?${queriesSuffix}&apiKey=${API_KEY}`;
     const res = await axios.get(url);
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
+
     return res.data;
   } catch (error) {
     console.log(error);

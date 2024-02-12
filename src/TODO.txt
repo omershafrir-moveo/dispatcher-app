@@ -8,6 +8,12 @@ what dims should i have?
 
 
 ***:
+
+questions:
+
+1. if a user picks for instance country and then switches from tio-headlines to everything - should his filters selections should be reset?
+
+notes:
 left the reactQueries in body layout because i need the articles data at body layout because of the headlines.
 but i removed the usage of a state.
 
