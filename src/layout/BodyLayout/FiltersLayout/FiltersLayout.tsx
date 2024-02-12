@@ -1,13 +1,10 @@
 import { FiltersToolbar } from "./FiltersLayout.styles";
 import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
-import { modeArray, filterArray } from "./FilterLayout.types";
+import { filterArray } from "./FilterLayout.types";
 import { SelectOptionType } from "../../../global-data";
 import { DATA_OPTIONS, noneOption } from "./FilterLayout.types";
 import { useContext, useEffect, useState } from "react";
-import {
-  SearchContext,
-  InputProvider,
-} from "../../../components/SearchContext/SearchContext";
+import { SearchContext } from "../../../components/SearchContext/SearchContext";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 

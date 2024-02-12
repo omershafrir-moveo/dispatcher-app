@@ -2,8 +2,7 @@ import axios from "axios";
 import { SelectOptionType } from "../global-data";
 import { arrayToQueryString } from "./util";
 import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
-import { filtersValuesType } from "../layout/BodyLayout/FiltersLayout/FiltersLayout";
-import { queries } from "@testing-library/react";
+import { queryEntry, searchParams, Dictionary } from "./apiService.types";
 const API_KEYS = [
   "1147e6878ef44d28bb7374107d98351b",
   "40f24796ae9248c59526eba4705abb29",
@@ -18,15 +17,6 @@ const API_KEYS = [
 ];
 
 const API_KEY = API_KEYS[1];
-
-export type queryEntry = {
-  [param: string]: string;
-};
-export type searchParams = {
-  searchMode: string;
-  queries: queryEntry[];
-};
-type Dictionary = { [key: string]: SelectOptionType };
 
 const getParamsNames = (queries: queryEntry[]): string[] => {
   return queries.reduce((acc: string[], entry: queryEntry) => {
@@ -72,15 +62,8 @@ export const getParams = (
 export const getArticles = async (params?: searchParams) => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
-    // console.log(`'queriesSuffix' value is: ,${queriesSuffix}`);
     const url = `https://newsapi.org/v2/${params?.searchMode}?${queriesSuffix}&apiKey=${API_KEY}`;
     const res = await axios.get(url);
-    await new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
-
     return res.data;
   } catch (error) {
     console.log(error);
