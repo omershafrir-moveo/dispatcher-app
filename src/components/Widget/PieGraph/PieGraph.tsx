@@ -10,7 +10,38 @@ import Spacer from "../../Container/Spacer/Spacer";
 import Loading from "../../Loading/Loading";
 
 const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
-  const COLORS = ["#030035", "#343A6E", "#E8E8E8", "#FF9800"];
+  const COLORS = [
+    "#1f77b4",
+    "#cdd9ea",
+    "#ff7f0e",
+    "#ffbb78",
+    "#2ca02c",
+    "#98df8a",
+    "#460909",
+    "#ff9896",
+    "#9467bd",
+    "#c5b0d5",
+    "#8c564b",
+    "#c49c94",
+    "#e377c2",
+    "#f7b6d2",
+    "#7f7f7f",
+    "#c7c7c7",
+    "#bcbd22",
+    "#dbdb8d",
+    "#17becf",
+    "#9edae5",
+    "#393b79",
+    "#020202",
+    "#6b6ecf",
+    "#9c9ede",
+    "#637939",
+    "#8ca252",
+    "#b5cf6b",
+    "#cedb9c",
+    "#8c6d31",
+    "#bd9e39",
+  ];
   let contentFlag = articles.length > 0;
 
   const computeData = () => {

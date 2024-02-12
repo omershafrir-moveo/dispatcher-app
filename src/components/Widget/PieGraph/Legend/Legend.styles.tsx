@@ -8,6 +8,7 @@ export const LegendContainer = styled.div`
   width: 372px;
   height: 143px;
   margin-top: 15px;
+  overflow-y: auto;
 `;
 
 export const LegendItem = styled.div`

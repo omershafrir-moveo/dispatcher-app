@@ -58,7 +58,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
               height={250}
               data={data}
               margin={{
-                top: 0,
+                top: 5,
                 right: 10,
                 left: 10,
                 bottom: 0,

@@ -14,7 +14,7 @@ const Legend: React.FC<{ data: any[]; children?: React.ReactNode }> = (
   props
 ) => {
   return (
-    <LegendContainer>
+    <LegendContainer className="LegendContainer">
       {props.data.map((dataPoint, index) => (
         <LegendItem key={index}>
           <LegendBullet color={dataPoint.color} />

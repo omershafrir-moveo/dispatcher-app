@@ -11,7 +11,7 @@ export type WidgetProps = {
 };
 
 const WidgetsSection: React.FC<{
-  articles: ArticleProps[];
+  articles: ArticleProps[]; 
   isLoading: boolean;
 }> = ({ articles, isLoading }) => {
   return (
