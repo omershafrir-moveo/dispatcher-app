@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import { device } from "../../util/breakpoints";
-export const Container = styled.div`
+import { device } from "../../../util/breakpoints";
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   background-color: #262146;
+
+  @media ${device.mobile} {
+    position: relative;
+  }
 `;
 
 export const IconWrapper = styled.div``;

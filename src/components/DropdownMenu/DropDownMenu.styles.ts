@@ -12,4 +12,5 @@ export const StyledMenu = styled.ul`
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;
+  position: absolute;
 `;

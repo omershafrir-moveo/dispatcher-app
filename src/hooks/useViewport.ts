@@ -1,4 +1,5 @@
 import useWidth from "./useWidth";
+import { size_numbers } from "../util/breakpoints";
 
 export enum Viewport {
   DESKTOP = "DESKTOP",
@@ -8,9 +9,10 @@ export enum Viewport {
 
 const useViewport = (): Viewport => {
   const width = useWidth();
-  return width > 726
+  console.log("vp:", width);
+  return width > size_numbers.tablet
     ? Viewport.DESKTOP
-    : 374 < width && width <= 726
+    : size_numbers.mobile < width && width <= size_numbers.tablet
     ? Viewport.TABLET
     : Viewport.MOBILE;
 };

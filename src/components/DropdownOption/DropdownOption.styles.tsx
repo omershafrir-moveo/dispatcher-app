@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import DownArrowIcon from "../Icons/DownArrowIcon";
 import THEMES, { StyledButtonProps } from "./DropdownOption.types";
+import { device } from "../../util/breakpoints";
 
 const StyledOption = styled.button<StyledButtonProps>`
   width: 100%;
   max-width: ${(props) => THEMES.maxWidth(props.theme)};
   height: ${(props) => THEMES.height(props.theme)};
   border-radius: ${(props) => THEMES.borderRadius(props.theme)};
+  margin-bottom: ${(props) => THEMES.marginBottom(props.theme)};
   margin-bottom: ${(props) => THEMES.marginBottom(props.theme)};
   background-color: ${(props) =>
     props.disabled ? "#e9e4e4" : THEMES.backgroundColor(props.theme)};
@@ -20,10 +22,15 @@ const StyledOption = styled.button<StyledButtonProps>`
   justify-content: space-between;
   align-items: center;
   border: none;
+  position: relative;
 
   &:hover {
     background-color: ${(props) => THEMES.onHover(props.theme)};
   }
+
+  /* @media ${device.mobile} {
+    width: 105px;
+  } */
 `;
 
 export default StyledOption;

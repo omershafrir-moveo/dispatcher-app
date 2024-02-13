@@ -31,7 +31,10 @@ Please set any of the following required parameters and try again: q, qInTitle, 
 
 
 
-
+TODOS API:
+1. only enter fires search request
+2. show at most 10 recent searches
+3. default top headliens: israel (shown) , default everything: empty state
 
 
 

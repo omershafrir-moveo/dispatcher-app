@@ -7,6 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../../components/SearchContext/SearchContext";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
+import useViewport, { Viewport } from "../../../hooks/useViewport";
+import MobileFiltersToolbar from "../../../components/MobileFiltersToolbar/MobileFiltersToolbar";
 
 export type filtersValuesType = {
   country?: SelectOptionType;
@@ -77,8 +79,8 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         };
     }
   };
-
-  return (
+  const vp = useViewport();
+  return vp == Viewport.DESKTOP || vp == Viewport.TABLET ? (
     <FiltersToolbar className="FiltersToolbar">
       {filterValue.key == 1 && <SortDropdown />}
       {filterValue.key == 1 && <DatePicker />}
@@ -96,6 +98,8 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         />
       ))}
     </FiltersToolbar>
+  ) : (
+    <MobileFiltersToolbar mode={filterValue} />
   );
 };
 
