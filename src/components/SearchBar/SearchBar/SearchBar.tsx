@@ -1,5 +1,9 @@
 import React from "react";
-import { Container, SearchContainer } from "./SearchBar.styles";
+import {
+  Container,
+  SearchContainer,
+  SearchIconWrapper,
+} from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
@@ -17,7 +21,9 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   return (
     <Container className="SearchBarContainer">
       <SearchContainer className="SearchContainer">
-        <SearchIcon />
+        <SearchIconWrapper className="SearchIconWrapper">
+          <SearchIcon />
+        </SearchIconWrapper>
         <Search
           searchInput={props.searchValue}
           handleInputChange={props.handleSearchInputChange}

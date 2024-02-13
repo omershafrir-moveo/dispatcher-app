@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../util/breakpoints";
 
 export const Card = styled.div`
   display: flex;
@@ -9,6 +10,10 @@ export const Card = styled.div`
   border-radius: 20px;
   gap: 17px;
   border: 1px solid #d9dbe9;
+
+  /* @media ${device.mobile} {
+    flex-direction: column;
+  } */
 `;
 
 export const PhotoContainer = styled.img<{ src: string; alt: string }>`

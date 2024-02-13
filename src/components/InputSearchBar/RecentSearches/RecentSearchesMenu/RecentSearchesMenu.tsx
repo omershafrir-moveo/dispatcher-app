@@ -3,8 +3,8 @@ import {
   HeaderContainer,
   HeaderTitleContainer,
   FooterContainer,
-  Container,
   ClearButton,
+  RecentSearchesMenuContainer,
 } from "./RecentSearchesMenu.styles";
 import RecentSearchesItem from "../RecentSearchesItem/RecentSearchesItem";
 
@@ -23,7 +23,7 @@ export type RecentSearchesMenuProps = {
 
 const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
   return (
-    <Container>
+    <RecentSearchesMenuContainer className="RecentSearchesMenuContainer">
       <HeaderContainer className="HeaderContainer">
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
         <ClearButton onMouseDown={props.handleClear}>CLEAR</ClearButton>
@@ -43,7 +43,7 @@ const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
         </ItemsList>
       )}
       <FooterContainer />
-    </Container>
+    </RecentSearchesMenuContainer>
   );
 };
 

@@ -4,7 +4,7 @@ import {
   DeleteButton,
   TextContainer,
 } from "./RecentSearchesItem.styles";
-import XIcon from "../../Icons/XIcon";
+import XIcon from "../../../Icons/XIcon";
 
 export type SearchItemProps = {
   text: string;

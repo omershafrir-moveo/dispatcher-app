@@ -8,7 +8,6 @@ export enum Viewport {
 
 const useViewport = (): Viewport => {
   const width = useWidth();
-  console.log(width);
   return width > 726
     ? Viewport.DESKTOP
     : 374 < width && width <= 726

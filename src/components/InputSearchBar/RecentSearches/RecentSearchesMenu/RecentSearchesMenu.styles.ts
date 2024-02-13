@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { ItemsListProps } from "./RecentSearchesMenu.types";
 import { ButtonProps } from "./RecentSearchItem.types";
-import { COLORS } from "../../../global-data";
+import { COLORS } from "../../../../global-data";
 
-export const Container = styled.div<{ children?: React.ReactNode }>`
+export const RecentSearchesMenuContainer = styled.div<{
+  children?: React.ReactNode;
+}>`
   display: flex;
   flex-direction: column;
-  max-width: 663px;
+  width: 100%;
+  position: absolute;
+  top: 56px;
 `;
 
 export const ItemsList = styled.ul<ItemsListProps>`

@@ -77,7 +77,6 @@ const BodyLayout: React.FC = () => {
   });
 
   const viewport = useViewport();
-  console.log(`'viewport' value is: ,${viewport}`);
 
   const width = useWidth();
   return (
@@ -111,7 +110,7 @@ const BodyLayout: React.FC = () => {
             <ArticlesLayout articles={articlesQuery.data.articles} />
           )}
         </DataContainer>
-        {viewport == Viewport.DESKTOP && (
+        {viewport == Viewport.DESKTOP && false && (
           <WidgetsSection
             articles={articles}
             isLoading={articlesQuery.isLoading}
