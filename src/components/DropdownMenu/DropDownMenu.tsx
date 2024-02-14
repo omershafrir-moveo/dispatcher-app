@@ -3,8 +3,8 @@ import { SelectOptionType } from "../../global-data";
 
 import DropdownOption from "../DropdownOption/DropdownOption";
 import { StyledMenu } from "./DropDownMenu.styles";
-import DropDownMenuContainer from "../Container/DropDownMenuContainer/DropDownMenuContainer";
-import ItemsListContainer from "../Container/ItemsListContainer/ItemsListContainer";
+import { DropDownMenuContainer } from "./DropDownMenu.styles";
+import { ItemsListContainer } from "./DropDownMenu.styles";
 
 export type DropDownProps = {
   defaultItemName: SelectOptionType;
@@ -48,7 +48,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         disabled={props.disabled}
       />
       {isOpen && (
-        <ItemsListContainer>
+        <ItemsListContainer className="ItemsListContainer">
           <StyledMenu className="styledMenu">
             {props.itemsNames.map((item, index) => (
               <DropdownOption

@@ -3,6 +3,7 @@ import { COLORS } from "../../../global-data";
 
 export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   display: flex;
+  justify-content: flex-start;
   height: 47px;
   width: 100%;
   background-color: transparent;

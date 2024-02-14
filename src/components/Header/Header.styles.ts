@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../../util/breakpoints";
+import { device } from "../../util/breakpoints";
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;

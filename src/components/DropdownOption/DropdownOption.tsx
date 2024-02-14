@@ -1,8 +1,7 @@
-import StyledOption from "./DropdownOption.styles";
+import StyledOption, { TextContainer } from "./DropdownOption.styles";
 import DownArrowIcon from "../Icons/DownArrowIcon";
 import { themeOption } from "./DropdownOption.types";
 import { SelectOptionType } from "../../global-data";
-
 export const DropdownOption: React.FC<{
   value: SelectOptionType;
   isInputBox: boolean;
@@ -12,14 +11,17 @@ export const DropdownOption: React.FC<{
   disabled?: boolean;
 }> = (props) => {
   return (
-    <StyledOption className="StyledOption"
+    <StyledOption
+      className="StyledOption"
       isInputBox={props.isInputBox}
       onMouseDown={props.handleClick}
       onBlur={props.handleBlur}
       theme={props.theme}
       disabled={props.disabled}
     >
-      {props.value.title}
+      <TextContainer className="TextContainer">
+        {props.value.title}
+      </TextContainer>
       {props.isInputBox && <DownArrowIcon />}
     </StyledOption>
   );

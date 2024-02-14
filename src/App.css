@@ -38,7 +38,7 @@
 }
 #root {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 button {
@@ -46,4 +46,10 @@ button {
   background: none;
   cursor: pointer;
   padding: 0;
+}
+body {
+  height: 100%;
+}
+* {
+  margin: 0;
 }

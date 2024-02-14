@@ -1,13 +1,12 @@
 import { FiltersToolbar } from "./FiltersLayout.styles";
 import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
-import { SelectOptionType } from "../../../global-data";
+import { FiltersBySearchMode, SelectOptionType } from "../../../global-data";
 import { DATA_OPTIONS, noneOption, filterArray } from "../../../global-data";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../../components/SearchContext/SearchContext";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 import useViewport, { Viewport } from "../../../hooks/useViewport";
-import MobileFiltersToolbar from "../../../components/MobileFiltersToolbar/MobileFiltersToolbar";
 
 export type filtersValuesType = {
   country?: SelectOptionType;
@@ -24,11 +23,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   const { filterValue, filtersValues, updateFiltersValues, sources } =
     useContext(SearchContext);
 
-  const filters: SelectOptionType[] =
-    filterValue.key == 0
-      ? [filterArray[2], filterArray[3], filterArray[0]]
-      : [filterArray[0], filterArray[1]];
-
+  const filters = FiltersBySearchMode(filterValue);
   const [sourcesActive, setSourcesActive] = useState(false);
   const [filterActive, setFilterActive] = useState(false);
 
@@ -79,9 +74,9 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
     }
   };
   const vp = useViewport();
-  return vp == Viewport.DESKTOP || vp == Viewport.TABLET ? (
+  return (
     <FiltersToolbar className="FiltersToolbar">
-      {filterValue.key == 1 && <SortDropdown />}
+      {filterValue.key == 1 && vp == Viewport.DESKTOP && <SortDropdown />}
       {filterValue.key == 1 && <DatePicker />}
       {filters.map((f: SelectOptionType, index: number) => (
         <DropDownMenu
@@ -97,8 +92,6 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
         />
       ))}
     </FiltersToolbar>
-  ) : (
-    <MobileFiltersToolbar mode={filterValue} />
   );
 };
 

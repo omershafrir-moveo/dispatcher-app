@@ -1,14 +1,4 @@
-export const COLORS = {
-  primaryButtonColor: "#0058B9",
-  primaryLightColor: "#FFFFFF",
-  backgroundColor: "#F8F8FF",
-};
-
-export type SelectOptionType = {
-  key: number;
-  title: string;
-  value: string;
-};
+import { SelectOptionType } from "../../../global-data";
 
 export const modeArray: SelectOptionType[] = [
   { key: 0, title: "Top Headlines", value: "top-headlines" },
@@ -196,10 +186,3 @@ export const DATA_OPTIONS = {
     noneOption,
   ],
 };
-
-export const FiltersBySearchMode = (
-  filterValue: SelectOptionType
-): SelectOptionType[] =>
-  filterValue.key == 0
-    ? [filterArray[2], filterArray[3], filterArray[0]]
-    : [filterArray[0], filterArray[1]];

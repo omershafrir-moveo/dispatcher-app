@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
@@ -201,3 +201,4 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     </SearchContext.Provider>
   );
 };
+export const useSearchContext = () => useContext(SearchContext)

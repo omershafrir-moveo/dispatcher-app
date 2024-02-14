@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FilterToolbarContainer = styled.div<{
+export const MobileToolbarContainer = styled.div<{
   children?: React.ReactNode;
 }>`
   display: flex;
@@ -16,4 +16,12 @@ export const FiltersWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+`;
+export const MobileFiltersToolbarWrapper = styled.div`
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  z-index: -1;
 `;
