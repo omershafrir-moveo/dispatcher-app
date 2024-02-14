@@ -1,6 +1,6 @@
 import FiltersLayout from "./FiltersLayout";
 import { Meta, StoryObj } from "@storybook/react";
-import { modeArray } from "./FilterLayout.types";
+import { modeArray } from "../../../global-data";
 
 const meta: Meta<typeof FiltersLayout> = {
   title: "FiltersLayout",

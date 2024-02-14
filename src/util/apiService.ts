@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { SelectOptionType } from "../global-data";
 import { arrayToQueryString } from "./util";
-import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { noneOption } from "../global-data";
 import { queryEntry, searchParams, Dictionary } from "./apiService.types";
 import { ArticleProps } from "../components/ArticleCard/ArticleCard";
 const API_KEYS = [

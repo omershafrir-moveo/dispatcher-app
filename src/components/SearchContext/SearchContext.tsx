@@ -5,10 +5,9 @@ import {
   DATA_OPTIONS,
   modeArray,
   noneOption,
-  yesOption,
-} from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+  sortModesArrays,
+} from "../../global-data";
 import useDict from "../../hooks/useDict";
-import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import { toJson } from "../../util/util";
 import { getParams, validateParams } from "../../util/apiService";
 type SearchContextType = {
@@ -144,7 +143,6 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
         sortMode
       );
       const error = validateParams(params);
-      console.log(`'error' value is: ,${error}`);
 
       setErrorMsg(error);
     }

@@ -1,9 +1,8 @@
 import { FiltersToolbar } from "./FiltersLayout.styles";
 import DropDownMenu from "../../../components/DropdownMenu/DropDownMenu";
-import { filterArray } from "./FilterLayout.types";
 import { SelectOptionType } from "../../../global-data";
-import { DATA_OPTIONS, noneOption } from "./FilterLayout.types";
-import { useContext, useEffect, useState } from "react";
+import { DATA_OPTIONS, noneOption, filterArray } from "../../../global-data";
+import { useContext, useState } from "react";
 import { SearchContext } from "../../../components/SearchContext/SearchContext";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
