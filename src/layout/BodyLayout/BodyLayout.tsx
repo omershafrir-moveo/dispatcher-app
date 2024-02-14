@@ -5,6 +5,7 @@ import {
   HeadlinesContainer,
   TopContainer,
   TypoContainer,
+  ErrorHeadlinesContainer,
 } from "./BodyLayout.styles";
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
@@ -15,14 +16,15 @@ import { getArticles, getParams, getSources } from "../../util/apiService";
 import NoArticles from "../../components/Icons/NoArticles";
 import { useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
-import { noneOption } from "./FiltersLayout/FilterLayout.types";
+import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
 import useWidth from "../../hooks/useWidth";
 import useViewport, { Viewport } from "../../hooks/useViewport";
+import { validateParams } from "../../util/apiService";
 
 const BodyLayout: React.FC = () => {
   const {
-    searchValue,
+    searchValueCopy,
     filterValue,
     filtersValues,
     datesRange,
@@ -30,14 +32,15 @@ const BodyLayout: React.FC = () => {
     updateSources,
   } = useContext(SearchContext);
 
+  const params = getParams(
+    filterValue,
+    filtersValues,
+    searchValueCopy,
+    datesRange,
+    sortMode
+  );
+
   const fetchArticles = async () => {
-    const params = getParams(
-      filterValue,
-      filtersValues,
-      searchValue,
-      datesRange,
-      sortMode
-    );
     const data = await getArticles(params);
     return data;
   };
@@ -46,9 +49,13 @@ const BodyLayout: React.FC = () => {
     queryFn: () => fetchArticles(),
     queryKey: [
       "articles",
-      { searchValue, filterValue, filtersValues, datesRange, sortMode },
+      { searchValueCopy, filterValue, filtersValues, datesRange, sortMode },
     ],
   });
+  const [errorMsg, setErrorMsg] = useState("");
+  useEffect(() => {
+    setErrorMsg(validateParams(params));
+  }, [searchValueCopy, filterValue, filtersValues]);
 
   const articles = articlesQuery.data?.articles ?? [];
   const topHeadlinesCondition =
@@ -95,17 +102,21 @@ const BodyLayout: React.FC = () => {
       </HeadlinesContainer>
       <BodyLayoutContainer className="BodyLayoutContainer">
         <DataContainer className="DataContainer">
-          {articlesQuery.isLoading && <Loading />}
-          {!articlesQuery.isLoading && articles.length == 0 && (
-            <EmptyStateContainer className="EmptyStateContainer">
-              <NoArticles />
-              <TypoContainer>
-                <Typography size="18px" color="#5A5A89">
-                  we couldn't find any matches for your query
-                </Typography>
-              </TypoContainer>
-            </EmptyStateContainer>
-          )}
+          <ErrorHeadlinesContainer className="ErrorHeadlinesContainer">
+            {articlesQuery.isLoading && <Loading />}
+            {!articlesQuery.isLoading && articles.length == 0 && (
+              <EmptyStateContainer className="EmptyStateContainer">
+                <NoArticles />
+                <TypoContainer>
+                  <Typography size="18px" color="#5A5A89">
+                    {errorMsg
+                      ? errorMsg
+                      : "we couldn't find any matches for your query"}
+                  </Typography>
+                </TypoContainer>
+              </EmptyStateContainer>
+            )}
+          </ErrorHeadlinesContainer>
           {articles.length != 0 && (
             <ArticlesLayout articles={articlesQuery.data.articles} />
           )}

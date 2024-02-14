@@ -8,7 +8,7 @@ export const dictToArray = (dictionary: {}) => {
 
 export const toJson = (items: string[]): { [key: string]: string } => {
   const obj: { [key: string]: string } = {};
-  if (items.length > 5) items.shift();
+  if (items.length > 10) items.shift();
   items.forEach((item: string, index) => {
     obj[index + 1] = item;
   });
@@ -18,13 +18,13 @@ export const toJson = (items: string[]): { [key: string]: string } => {
 export const arrayToQueryString = (
   queryEntries: queryEntry[] | undefined
 ): string => {
-  if (queryEntries == undefined) return "";
+  if (queryEntries == undefined || queryEntries.length == 0) return "";
   else
-    return queryEntries
+    return `&${queryEntries
       .map((entry) =>
         Object.entries(entry)
           .map(([key, value]) => `${key}=${value}`)
           .join("&")
       )
-      .join("&");
+      .join("&")}`;
 };

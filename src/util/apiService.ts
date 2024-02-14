@@ -1,8 +1,9 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { SelectOptionType } from "../global-data";
 import { arrayToQueryString } from "./util";
-import { noneOption } from "../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { noneOption } from "../global-data";
 import { queryEntry, searchParams, Dictionary } from "./apiService.types";
+import { ArticleProps } from "../components/ArticleCard/ArticleCard";
 const API_KEYS = [
   "1147e6878ef44d28bb7374107d98351b",
   "40f24796ae9248c59526eba4705abb29",
@@ -24,6 +25,28 @@ const getParamsNames = (queries: queryEntry[]): string[] => {
     return acc.concat(keys);
   }, []);
 };
+export type responseType = {
+  articles: ArticleProps[];
+  error?: string;
+};
+
+export const validateParams = (params: searchParams): string => {
+  if (
+    params.searchMode == "everything" &&
+    getParamsNames(params.queries).every(
+      (qu: string) => !["sources", "q"].includes(qu)
+    )
+  )
+    return "Please select a source or type a keyword.";
+  if (
+    getParamsNames(params.queries).every(
+      (qu: string) =>
+        !["sources", "q", "country", "language", "category"].includes(qu)
+    )
+  )
+    return "Please select a source/category/language/country or type a keyword.";
+  return "";
+};
 
 export const getParams = (
   filterValue: SelectOptionType,
@@ -43,17 +66,6 @@ export const getParams = (
     queries.push({ to: datesRange[1].toISOString().split("T")[0] });
   }
 
-  if (searchMode == "top-headlines" && queries.length == 0)
-    queries.push({ country: "il" });
-
-  if (
-    searchMode == "everything" &&
-    getParamsNames(queries).every(
-      (qu: string) => !["sources", "q"].includes(qu)
-    )
-  )
-    queries.push({ q: "Israel" });
-
   if (searchMode == "everything") queries.push({ sortBy: sortMode.value });
 
   return { searchMode, queries };
@@ -62,12 +74,12 @@ export const getParams = (
 export const getArticles = async (params?: searchParams) => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
-    const url = `https://newsapi.org/v2/${params?.searchMode}?${queriesSuffix}&apiKey=${API_KEY}`;
+    const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}`;
     const res = await axios.get(url);
     return res.data;
-  } catch (error) {
-    console.log(error);
-    return { articles: [] };
+  } catch (error: any) {
+    console.log(error.response.data);
+    return [];
   }
 };
 

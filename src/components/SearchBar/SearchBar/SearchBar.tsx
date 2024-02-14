@@ -8,7 +8,7 @@ import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
 import { SelectOptionType } from "../../../global-data";
-import { modeArray } from "../../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+import { modeArray } from "../../../global-data";
 
 export type SearchBarProps = {
   searchValue: string;

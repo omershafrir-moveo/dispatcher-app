@@ -11,7 +11,7 @@ export const BodyLayoutContainer = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 32px;
   background-color: transparent;
 `;
@@ -21,7 +21,7 @@ export const DataContainer = styled.div<{ children?: React.ReactNode }>`
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 `;
 
 export const EmptyStateContainer = styled.div<{ children?: React.ReactNode }>`
@@ -43,4 +43,12 @@ export const Loading = styled.h1`
   align-self: center;
   color: rgb(90, 90, 137);
   font-family: "Roboto", sans-serif;
+`;
+
+export const ErrorHeadlinesContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

@@ -2,12 +2,14 @@ import React, { createContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
+  DATA_OPTIONS,
   modeArray,
   noneOption,
-} from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
+  sortModesArrays,
+} from "../../global-data";
 import useDict from "../../hooks/useDict";
-import { sortModesArrays } from "../../layout/BodyLayout/FiltersLayout/FilterLayout.types";
 import { toJson } from "../../util/util";
+import { getParams, validateParams } from "../../util/apiService";
 import useViewport, { Viewport } from "../../hooks/useViewport";
 type SearchContextType = {
   isOpenRecent: boolean;
@@ -15,6 +17,7 @@ type SearchContextType = {
   filterValue: SelectOptionType;
   handleFilterChange: (value: SelectOptionType) => void;
   searchValue: string;
+  searchValueCopy: string;
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   items: string[];
   handleClick: (item: string) => void;
@@ -29,13 +32,16 @@ type SearchContextType = {
   sendRequest: (text: string) => void;
   sources: SelectOptionType[];
   updateSources: (sources: SelectOptionType[]) => void;
+  errorMsg: string;
 };
+
 const ContextInitalValue: SearchContextType = {
   isOpenRecent: false,
   toggleRecentSearchesMenu: () => {},
   filterValue: { key: 0, title: "Top Headlines", value: "top" },
   handleFilterChange: (value) => {},
   searchValue: "",
+  searchValueCopy: "",
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => {},
   items: [],
   handleClick: (item: string) => {},
@@ -55,6 +61,7 @@ const ContextInitalValue: SearchContextType = {
   sendRequest: () => {},
   sources: [],
   updateSources: () => {},
+  errorMsg: "",
 };
 
 export const SearchContext =
@@ -68,13 +75,16 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   const vp = useViewport();
   const [isOpenRecent, setIsOpenRecent] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [searchValueCopy, setSearchValueCopy] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [sources, setSources] = useState<SelectOptionType[]>([]);
   const [filterValue, setFilterValue] = useState<SelectOptionType>(
     modeArray[0]
   );
+
   const [filtersDict, updateFiltersDict] = useDict({
     category: noneOption,
-    country: noneOption,
+    country: DATA_OPTIONS.country[22],
     language: noneOption,
     sources: noneOption,
   });
@@ -96,6 +106,14 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   };
 
   const handleFilterChange = (event: SelectOptionType) => {
+    const resetFilters = () => {
+      updateFiltersDict("category", noneOption);
+      updateFiltersDict("country", noneOption);
+      updateFiltersDict("sources", noneOption);
+      updateFiltersDict("language", noneOption);
+      setSearchValue("");
+    };
+    resetFilters();
     setFilterValue({ ...event });
   };
 
@@ -118,8 +136,21 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     setItems(newItems);
   };
   const sendRequest = (text: string) => {
-    const newItems = [...items, text];
-    updateLocalStorage(newItems);
+    if (text) {
+      const newItems = [...items, text];
+      updateLocalStorage(newItems);
+      const params = getParams(
+        filterValue,
+        filtersDict,
+        searchValue,
+        datesRange,
+        sortMode
+      );
+      const error = validateParams(params);
+
+      setErrorMsg(error);
+    }
+    setSearchValueCopy(text);
   };
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
@@ -143,6 +174,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     filterValue,
     handleFilterChange,
     searchValue,
+    searchValueCopy,
     handleSearchInputChange,
     items,
     handleClick: (item) => {
@@ -160,6 +192,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     sendRequest,
     sources,
     updateSources,
+    errorMsg,
   };
 
   return (
