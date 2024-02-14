@@ -61,7 +61,6 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
     return sourceArray;
   };
   const data = computeData();
-  console.log(isLoading);
   return (
     <WidgetCard type={data.length > 0 ? "pie" : "no-data"}>
       <Typography color="#000000" size="24px" weight="700">

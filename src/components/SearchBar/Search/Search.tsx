@@ -33,6 +33,7 @@ export const Search: React.FC<searchProps> = (props) => {
       onBlur={handleBlur}
       onKeyDown={(event) => {
         if (event.key == "Enter") sendRequest(searchValue);
+        
       }}
     />
   );
