@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SeparatorLine from "../../../components/Icons/SeparatorLine";
 import { COLORS } from "../../../global-data";
+import { device } from "../../../util/breakpoints";
 export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   width: 100%;
   height: 100%;
@@ -9,8 +10,11 @@ export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   justify-content: flex-start;
   align-items: center;
   background-color: ${COLORS.backgroundColor};
-  background-color: red;
   gap: 20px;
+
+  @media ${device.mobile} {
+    gap: 0px;
+  }
 `;
 
 export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
@@ -20,5 +24,10 @@ export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
   height: 100%;
   background-color: transparent;
   gap: 20px;
-`;
 
+  @media ${device.mobile} {
+    width: 100%;
+    align-items: center;
+    gap: 0px;
+  }
+`;

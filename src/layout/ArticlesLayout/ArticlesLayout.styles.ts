@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../util/breakpoints";
 
 export const Container = styled.div<{ children?: React.ReactNode }>``;
 

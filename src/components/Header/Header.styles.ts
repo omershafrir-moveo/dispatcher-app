@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../../util/breakpoints";
+import { device } from "../../util/breakpoints";
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -11,7 +11,12 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const IconWrapper = styled.div``;
+export const IconWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  display: flex;
+`;
 
 export const DataWrapper = styled.div<{ children?: React.ReactNode }>`
   display: flex;

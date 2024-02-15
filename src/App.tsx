@@ -10,8 +10,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <InputProvider>
-        {/* <PageLayout /> */}
-        <Responsiveness />
+        <PageLayout />
+        {/* <Responsiveness /> */}
       </InputProvider>
     </QueryClientProvider>
   );

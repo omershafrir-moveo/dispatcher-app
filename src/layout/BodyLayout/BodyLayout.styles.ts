@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { COLORS } from "../../global-data";
+import { device } from "../../util/breakpoints";
 
 export const TopContainer = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media ${device.mobile} {
+    width: calc(100% - 32px);
+  }
 `;
 export const BodyLayoutContainer = styled.div<{ children?: React.ReactNode }>`
   background-color: ${COLORS.backgroundColor};

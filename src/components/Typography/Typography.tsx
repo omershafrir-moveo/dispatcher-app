@@ -12,6 +12,7 @@ export type TypeographyProps = {
   margin?: string;
   height?: string;
   width?: string;
+  maxHeight?: string;
 };
 
 const Typography: React.FC<TypeographyProps> = ({
@@ -25,6 +26,7 @@ const Typography: React.FC<TypeographyProps> = ({
   margin,
   height,
   width,
+  maxHeight
 }) => {
   return (
     <StyledFont
@@ -37,6 +39,7 @@ const Typography: React.FC<TypeographyProps> = ({
       margin={margin}
       height={height}
       width={width}
+      maxHeight={maxHeight}
     >
       {children}
     </StyledFont>

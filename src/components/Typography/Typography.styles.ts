@@ -10,6 +10,6 @@ export default styled.div<TypeographyProps>`
   letter-spacing: ${(props) => props.letterSpacing ?? "0px"};
   margin: ${(props) => (props.margin ? props.margin : "0px")};
   height: ${(props) => (props.height ? props.height : "none")};
-  width: ${(props) => (props.width ? props.width : "none")};
+  width: ${(props) => (props.width ? props.width : "100%")};
   text-align: "left";
 `;

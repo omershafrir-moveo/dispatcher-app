@@ -2,6 +2,8 @@ import StyledOption, { TextContainer } from "./DropdownOption.styles";
 import DownArrowIcon from "../Icons/DownArrowIcon";
 import { themeOption } from "./DropdownOption.types";
 import { SelectOptionType } from "../../global-data";
+import { IconWrapper } from "../Container/IconContainer";
+import useMobile from "../../hooks/useMobile";
 export const DropdownOption: React.FC<{
   value: SelectOptionType;
   isInputBox: boolean;
@@ -10,6 +12,7 @@ export const DropdownOption: React.FC<{
   theme: themeOption;
   disabled?: boolean;
 }> = (props) => {
+  const isMobile = useMobile();
   return (
     <StyledOption
       className="StyledOption"
@@ -22,7 +25,11 @@ export const DropdownOption: React.FC<{
       <TextContainer className="TextContainer">
         {props.value.title}
       </TextContainer>
-      {props.isInputBox && <DownArrowIcon />}
+      {props.isInputBox && !isMobile && (
+        <IconWrapper>
+          <DownArrowIcon />
+        </IconWrapper>
+      )}
     </StyledOption>
   );
 };

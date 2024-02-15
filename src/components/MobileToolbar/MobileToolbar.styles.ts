@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { device } from "../../util/breakpoints";
 
 export const MobileToolbarContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
   align-items: center;
-  height: 44px;
+  height: 56px;
 `;
 
 export const TopMobileContainer = styled.div<{ children?: React.ReactNode }>`
@@ -18,6 +19,7 @@ export const InputMobileWrapper = styled.div`
   top: 100%;
   width: 100%;
   left: 0px;
-  background: red;
   z-index: 10;
+  height: 60px;
+  background-color: #ffffff;
 `;

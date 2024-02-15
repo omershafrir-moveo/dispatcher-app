@@ -1,6 +1,7 @@
 import {
   MobileToolbarContainer,
   FiltersWrapper,
+  MobileToolbarWrapper,
 } from "./MobileFiltersToolbar.styles";
 import FiltersLayout, {
   FiltersLayoutProps,
@@ -23,17 +24,14 @@ const MobileFiltersToolbar: React.FC<FiltersLayoutProps> = (props) => {
   const { filterValue } = useSearchContext();
   return (
     <MobileToolbarContainer className="MobileToolbarContainer">
-      <FiltersWrapper className="FiltersWrapper" mode={filterValue}>
-        {filterValue.value == "everything" && <SortDropdown />}
+      <MobileToolbarWrapper className="MobileToolbarWrapper">
+        <FiltersWrapper className="FiltersWrapper" mode={filterValue}>
+          {isActiveFilters && <FiltersLayout mode={filterValue} />}
+        </FiltersWrapper>
         <IconButton handleClick={handleFilterClick}>
           <FiltersIcon />
         </IconButton>
-        {isActiveFilters && (
-          <MobileFiltersToolbarWrapper className="MobileFiltersToolbarWrapper">
-            <FiltersLayout mode={filterValue} />
-          </MobileFiltersToolbarWrapper>
-        )}
-      </FiltersWrapper>
+      </MobileToolbarWrapper>
     </MobileToolbarContainer>
   );
 };

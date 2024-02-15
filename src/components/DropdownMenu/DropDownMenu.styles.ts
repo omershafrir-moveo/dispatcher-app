@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../global-data";
+import { device } from "../../util/breakpoints";
 
 type StyledMenuProps = {
   numOfItems: number; // Add your custom prop here
@@ -33,9 +34,10 @@ export const DropDownMenuContainer = styled.div`
   padding-bottom: none;
   justify-content: center;
   align-items: center;
-  background-color: red;
   position: relative;
   height: 100%;
+
+
 `;
 
 export const StyledMenu = styled.ul`

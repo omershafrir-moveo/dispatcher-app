@@ -76,7 +76,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   const vp = useViewport();
   return (
     <FiltersToolbar className="FiltersToolbar">
-      {filterValue.key == 1 && vp == Viewport.DESKTOP && <SortDropdown />}
+      {filterValue.key == 1 && <SortDropdown />}
       {filterValue.key == 1 && <DatePicker />}
       {filters.map((f: SelectOptionType, index: number) => (
         <DropDownMenu
