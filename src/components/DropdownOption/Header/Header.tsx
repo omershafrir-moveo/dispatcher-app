@@ -1,13 +1,13 @@
-import InputSearchBar from "../InputSearchBar/InputSearchBar";
-import LogoIcon from "../Icons/LogoIcon";
+import InputSearchBar from "../../InputSearchBar/InputSearchBar";
+import LogoIcon from "../../Icons/LogoIcon";
 import {
   HeaderContainer,
   DataWrapper,
   IconWrapper,
   InputWrapper,
 } from "./Header.styles";
-import useViewport, { Viewport } from "../../hooks/useViewport";
-import MobileToolbar from "../MobileToolbar/MobileToolbar";
+import useViewport, { Viewport } from "../../../hooks/useViewport";
+import MobileToolbar from "../../MobileToolbar/MobileToolbar";
 
 const Header = () => {
   const vp = useViewport();

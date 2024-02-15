@@ -6,7 +6,7 @@ interface Size {
   desktop: string;
 }
 export const size_numbers = {
-  mobile: 400,
+  mobile: 440,
   tablet: 780,
   desktop: 1440,
 };

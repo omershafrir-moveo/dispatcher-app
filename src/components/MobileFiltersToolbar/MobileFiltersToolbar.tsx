@@ -23,8 +23,8 @@ const MobileFiltersToolbar: React.FC<FiltersLayoutProps> = (props) => {
   const { filterValue } = useSearchContext();
   return (
     <MobileToolbarContainer className="MobileToolbarContainer">
-      <FiltersWrapper className="FiltersWrapper">
-        {filterValue.value == 'everything' && <SortDropdown />}
+      <FiltersWrapper className="FiltersWrapper" mode={filterValue}>
+        {filterValue.value == "everything" && <SortDropdown />}
         <IconButton handleClick={handleFilterClick}>
           <FiltersIcon />
         </IconButton>

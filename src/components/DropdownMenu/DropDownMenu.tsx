@@ -36,7 +36,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       : props.selectedOption;
 
   return (
-    <DropDownMenuContainer>
+    <DropDownMenuContainer className="DropDownMenuContainer">
       <DropdownOption
         value={inputOptionValue}
         isInputBox={true}

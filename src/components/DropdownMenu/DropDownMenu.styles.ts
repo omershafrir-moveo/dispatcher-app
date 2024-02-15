@@ -35,6 +35,7 @@ export const DropDownMenuContainer = styled.div`
   align-items: center;
   background-color: red;
   position: relative;
+  height: 100%;
 `;
 
 export const StyledMenu = styled.ul`
