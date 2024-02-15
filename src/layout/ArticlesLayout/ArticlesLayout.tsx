@@ -27,6 +27,8 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
     }
   };
 
+  console.log(`'articles' value is: ,${JSON.stringify(articles)}`);
+
   return (
     <ArticlesContainer ref={scrolledContainerRef} onScroll={handleScrollEnd}>
       {articles?.map((article: ArticleProps, index) => (

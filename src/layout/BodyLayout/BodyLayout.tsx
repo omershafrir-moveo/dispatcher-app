@@ -19,7 +19,7 @@ import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
 import { validateParams } from "../../util/apiService";
-import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
+
 export type ArticlesResponseType = {
   status: string;
 };
@@ -75,6 +75,7 @@ const BodyLayout: React.FC = () => {
 
   const articles =
     infiniteArticlesQuery.data?.pages.map((res) => res.articles).flat() ?? [];
+  console.log(`'articles' value is right!: ,${JSON.stringify(articles)}`);
 
   const topHeadlinesCondition =
     articles.length != 0 &&
@@ -132,7 +133,12 @@ const BodyLayout: React.FC = () => {
               </EmptyStateContainer>
             )}
           </ErrorHeadlinesContainer>
-          {articles.length != 0 && <ArticlesLayout articles={articles} fetchNextPage={infiniteArticlesQuery.fetchNextPage} />}
+          {articles.length != 0 && (
+            <ArticlesLayout
+              articles={articles}
+              fetchNextPage={infiniteArticlesQuery.fetchNextPage}
+            />
+          )}
         </DataContainer>
         <WidgetsSection
           articles={articles}
