@@ -14,11 +14,15 @@ import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles, getParams, getSources } from "../../util/apiService";
 import NoArticles from "../../components/Icons/NoArticles";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
 import { validateParams } from "../../util/apiService";
+import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
+export type ArticlesResponseType = {
+  status: string;
+};
 
 const BodyLayout: React.FC = () => {
   const {
@@ -38,24 +42,40 @@ const BodyLayout: React.FC = () => {
     sortMode
   );
 
-  const fetchArticles = async () => {
-    const data = await getArticles(params);
+  const fetchArticles = async ({ pageParam = 1 }) => {
+    const data = await getArticles(pageParam, params);
     return data;
   };
 
-  const articlesQuery = useQuery({
-    queryFn: () => fetchArticles(),
+  // const articlesQuery = useQuery({
+  //   queryFn: () => fetchArticles(),
+  //   queryKey: [
+  //     "articles",
+  //     { searchValueCopy, filterValue, filtersValues, datesRange, sortMode },
+  //   ],
+  // });
+
+  const infiniteArticlesQuery = useInfiniteQuery({
+    queryFn: fetchArticles,
     queryKey: [
       "articles",
       { searchValueCopy, filterValue, filtersValues, datesRange, sortMode },
     ],
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.length < 10) return undefined;
+      else return allPages.length + 1;
+    },
   });
+
   const [errorMsg, setErrorMsg] = useState("");
   useEffect(() => {
     setErrorMsg(validateParams(params));
   }, [searchValueCopy, filterValue, filtersValues]);
 
-  const articles = articlesQuery.data?.articles ?? [];
+  const articles =
+    infiniteArticlesQuery.data?.pages.map((res) => res.articles).flat() ?? [];
+
   const topHeadlinesCondition =
     articles.length != 0 &&
     filterValue.key == 0 &&
@@ -98,8 +118,8 @@ const BodyLayout: React.FC = () => {
       <BodyLayoutContainer className="BodyLayoutContainer">
         <DataContainer className="DataContainer">
           <ErrorHeadlinesContainer className="ErrorHeadlinesContainer">
-            {articlesQuery.isLoading && <Loading />}
-            {!articlesQuery.isLoading && articles.length == 0 && (
+            {infiniteArticlesQuery.isLoading && <Loading />}
+            {!infiniteArticlesQuery.isLoading && articles.length == 0 && (
               <EmptyStateContainer className="EmptyStateContainer">
                 <NoArticles />
                 <TypoContainer>
@@ -112,13 +132,11 @@ const BodyLayout: React.FC = () => {
               </EmptyStateContainer>
             )}
           </ErrorHeadlinesContainer>
-          {articles.length != 0 && (
-            <ArticlesLayout articles={articlesQuery.data.articles} />
-          )}
+          {articles.length != 0 && <ArticlesLayout articles={articles} fetchNextPage={infiniteArticlesQuery.fetchNextPage} />}
         </DataContainer>
         <WidgetsSection
           articles={articles}
-          isLoading={articlesQuery.isLoading}
+          isLoading={infiniteArticlesQuery.isLoading}
         />
       </BodyLayoutContainer>
     </TopContainer>

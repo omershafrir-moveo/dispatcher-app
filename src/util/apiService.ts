@@ -71,10 +71,10 @@ export const getParams = (
   return { searchMode, queries };
 };
 
-export const getArticles = async (params?: searchParams) => {
+export const getArticles = async (pageParam: number, params?: searchParams ) => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
-    const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}`;
+    const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
     return res.data;
   } catch (error: any) {
