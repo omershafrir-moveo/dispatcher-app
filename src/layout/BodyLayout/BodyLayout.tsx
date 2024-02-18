@@ -22,6 +22,7 @@ import useWidth from "../../hooks/useWidth";
 import useViewport, { Viewport } from "../../hooks/useViewport";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
+import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
 
 export type ArticlesResponseType = {
   status: string;
@@ -103,10 +104,6 @@ const BodyLayout: React.FC = () => {
     queryKey: ["sources"],
   });
 
-  const viewport = useViewport();
-  const width = useWidth();
-  console.log(viewport);
-  console.log(width);
   return (
     <TopContainer className="TopContainer">
       <HeadlinesContainer className="HeadlinesContainer">

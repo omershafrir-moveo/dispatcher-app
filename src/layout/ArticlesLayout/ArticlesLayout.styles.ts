@@ -23,11 +23,19 @@ export const UpButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px; 
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
+  left: 50px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.3) 2px 4px 2px 0px;
+  box-shadow: rgba(0, 0.6, 0.3, 0.6) 2px 4px 2px 0px;
   border-radius: 50%;
+
+  @media ${device.mobile} {
+    width: 40px;
+    height: 40px; 
+    bottom: 40px;
+    left: 40px;
+  }
 `;

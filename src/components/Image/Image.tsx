@@ -17,7 +17,7 @@ const Image: React.FC<{ src: string; alt: string }> = (props) => {
       style={{
         width: "100%",
         maxWidth: `${isMobile ? "none" : "244px"}`,
-        maxHeight: "242px",
+        // maxHeight: "242px",
         objectFit: "cover",
         overflow: "hidden",
         borderRadius: `${

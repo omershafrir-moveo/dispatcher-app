@@ -17,7 +17,7 @@ const API_KEYS = [
   "f79ddaf709914ff9b621a7693cfb36c3",
 ];
 
-const API_KEY = API_KEYS[2];
+const API_KEY = API_KEYS[4];
 
 const getParamsNames = (queries: queryEntry[]): string[] => {
   return queries.reduce((acc: string[], entry: queryEntry) => {

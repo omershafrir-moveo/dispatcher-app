@@ -112,6 +112,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
       updateFiltersDict("sources", noneOption);
       updateFiltersDict("language", noneOption);
       setSearchValue("");
+      setSearchValueCopy("");
     };
     resetFilters();
     setFilterValue({ ...event });
@@ -136,7 +137,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     setItems(newItems);
   };
   const sendRequest = (text: string) => {
-    if (text) {
+    if (text && !items.includes(text)) {
       const newItems = [...items, text];
       updateLocalStorage(newItems);
       const params = getParams(
@@ -151,6 +152,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
       setErrorMsg(error);
     }
     setSearchValueCopy(text);
+    toggleRecentSearchesMenu();
   };
   const toggleRecentSearchesMenu = () => {
     setIsOpenRecent((isOpen) => !isOpen);
@@ -201,4 +203,4 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     </SearchContext.Provider>
   );
 };
-export const useSearchContext = () => useContext(SearchContext)
+export const useSearchContext = () => useContext(SearchContext);
