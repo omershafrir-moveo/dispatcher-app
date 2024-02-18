@@ -44,6 +44,9 @@ export const EmptyStateContainer = styled.div<{ children?: React.ReactNode }>`
 
 export const TypoContainer = styled.div<{ children?: React.ReactNode }>`
   gap: 16px;
+  @media ${device.tablet} {
+    text-align: center;
+  }
 `;
 
 export const HeadlinesContainer = styled.div<{ children?: React.ReactNode }>``;

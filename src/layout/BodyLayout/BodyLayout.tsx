@@ -83,7 +83,7 @@ const BodyLayout: React.FC = () => {
     filterValue.key == 0 &&
     filtersValues.category?.value == "none" &&
     filtersValues.sources?.value == "none" &&
-    ["israel", "none"].includes(filtersValues.country!.value);
+    filtersValues.country?.value == "israel";
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
   const fetchSources = async () => {
@@ -128,7 +128,7 @@ const BodyLayout: React.FC = () => {
             {!infiniteArticlesQuery.isLoading && articles.length == 0 && (
               <EmptyStateContainer className="EmptyStateContainer">
                 <NoArticles />
-                <TypoContainer>
+                <TypoContainer className="TypoContainer">
                   <Typography size="18px" color="#5A5A89">
                     {errorMsg
                       ? errorMsg

@@ -1,8 +1,15 @@
-import { Container, ArticlesContainer, Item } from "./ArticlesLayout.styles";
+import {
+  Container,
+  ArticlesContainer,
+  Item,
+  UpButtonWrapper,
+} from "./ArticlesLayout.styles";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import Typography from "../../components/Typography/Typography";
 import { useRef } from "react";
+import IconButton from "../../components/IconButton/IconButton";
+import UpArrowIcon from "../../components/Icons/UpArrowIcon";
 
 export type ArticlesLayoutProps = {
   articles: ArticleProps[];
@@ -45,6 +52,21 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
           />
         </Item>
       ))}
+      <UpButtonWrapper>
+        <IconButton
+          handleClick={() => {
+            if (scrolledContainerRef.current) {
+              scrolledContainerRef.current.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+            window.scrollTo(0, 0);
+          }}
+        >
+          <UpArrowIcon />
+        </IconButton>
+      </UpButtonWrapper>
     </ArticlesContainer>
   );
 };

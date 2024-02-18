@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../global-data";
+import { device } from "../../util/breakpoints";
 
 export const ItemsListContainer = styled.div`
   display: flex;
@@ -13,6 +14,12 @@ export const ItemsListContainer = styled.div`
   width: 100%;
   padding: 10px 0px 10px 0px;
   border-radius: 10px;
+
+  @media ${device.tablet} {
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
 `;
 
 export const DropDownMenuContainer = styled.div`
@@ -30,6 +37,10 @@ export const DropDownMenuContainer = styled.div`
   padding-bottom: none;
   position: relative;
   height: 100%;
+
+  @media ${device.tablet} {
+    position: static;
+  }
 `;
 
 export const StyledMenu = styled.ul`

@@ -18,3 +18,16 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
 export const Item = styled.li<{ children?: React.ReactNode }>`
   list-style-type: none;
 `;
+
+export const UpButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  bottom: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 4px 2px 0px;
+  border-radius: 50%;
+`;

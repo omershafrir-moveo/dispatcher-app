@@ -14,7 +14,6 @@ const PageLayout: React.FC = () => {
   const { filterValue, filtersValues, sortMode, datesRange, searchValue } =
     useContext(SearchContext);
   const isDesktop = useDesktop();
-  const isMobile = useMobile();
   return (
     <PageContainer className="pageContainer">
       <Header />

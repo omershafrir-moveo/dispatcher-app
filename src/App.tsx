@@ -11,7 +11,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <InputProvider>
         <PageLayout />
-        {/* <Responsiveness /> */}
       </InputProvider>
     </QueryClientProvider>
   );

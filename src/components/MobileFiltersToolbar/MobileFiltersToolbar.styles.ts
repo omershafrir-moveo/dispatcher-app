@@ -8,20 +8,23 @@ export const MobileToolbarContainer = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 58px;
   gap: 12px;
   background-color: #ffffff;
   border-bottom: solid 1px #d9dbe9;
 
-  /* @media ${device.tablet} {
-    height: 44px;
-  } */
+  @media ${device.tablet} {
+      position: relative;
+  }
 `;
 
 export const MobileToolbarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: calc(100% - 12px);
+
+  @media ${device.tablet} {
+    height: 55px;
+  }
 `;
 
 export const FiltersWrapper = styled.div<{ mode: SelectOptionType }>`
@@ -31,7 +34,6 @@ export const FiltersWrapper = styled.div<{ mode: SelectOptionType }>`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  position: relative;
   z-index: 0;
 
   @media ${device.tablet} {
