@@ -4,6 +4,9 @@ import WidgetContainer from "../WidgetContainer";
 import { ArticleProps } from "../../../ArticleCard/ArticleCard";
 import React from "react";
 import { WidgetsSectionContainer } from "./WidgetsSection.styles";
+import useViewport, { Viewport } from "../../../../hooks/useViewport";
+import useTablet from "../../../../hooks/useTablet";
+import useDesktop from "../../../../hooks/useDesktop";
 export type WidgetProps = {
   articles: ArticleProps[];
   isLoading: boolean;

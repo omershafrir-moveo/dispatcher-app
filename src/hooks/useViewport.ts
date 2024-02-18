@@ -9,7 +9,6 @@ export enum Viewport {
 
 const useViewport = (): Viewport => {
   const width = useWidth();
-  console.log("vp:", width);
   return width > size_numbers.tablet
     ? Viewport.DESKTOP
     : size_numbers.mobile < width && width <= size_numbers.tablet

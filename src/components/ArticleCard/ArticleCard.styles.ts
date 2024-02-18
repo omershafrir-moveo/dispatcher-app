@@ -17,6 +17,10 @@ export const Card = styled.div`
     align-items: center;
     gap: 0px;
   }
+
+  @media ${device.tablet} {
+    gap: 0px;
+  }
 `;
 
 export const PhotoContainer = styled.img<{ src: string; alt: string }>`
@@ -29,12 +33,16 @@ export const DataContainer = styled.div`
   gap: 14px;
   flex-direction: column;
   align-items: flex-end;
-
+  max-width: calc(100%-32px);
   @media ${device.mobile} {
     height: 100%;
-    /* height: calc(100% - 86px); */
     align-items: center;
     gap: 10px;
+  }
+
+  @media ${device.tablet} {
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -48,17 +56,28 @@ export const InfoContainer = styled.div`
   @media ${device.mobile} {
     gap: 10px;
     align-items: center;
-    height: calc(100% - 86px);
     width: calc(100% - 32px);
     padding: 8px 0px 12px 0px;
+  }
+
+  @media ${device.tablet} {
+    width: calc(100% - 34px);
   }
 `;
 
 export const Container = styled.div<{ children?: React.ReactNode }>``;
 export const ButtonWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  @media ${device.tablet} {
+    max-width: 226px;
+    align-self: flex-end;
+  }
+  @media ${device.mobile} {
+    width: 100%;
+    max-width: none;
+  }
 `;

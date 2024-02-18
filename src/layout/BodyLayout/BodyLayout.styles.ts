@@ -7,7 +7,12 @@ export const TopContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: column;
   gap: 20px;
 
+  @media ${device.tablet} {
+    gap: 12px;
+    width: calc(100% - 60px);
+  }
   @media ${device.mobile} {
+    gap: 16px;
     width: calc(100% - 32px);
   }
 `;
@@ -26,7 +31,6 @@ export const DataContainer = styled.div<{ children?: React.ReactNode }>`
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  /* align-items: flex-start; */
 `;
 
 export const EmptyStateContainer = styled.div<{ children?: React.ReactNode }>`

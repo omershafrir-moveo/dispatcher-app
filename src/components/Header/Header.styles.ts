@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../util/breakpoints";
+
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -30,6 +31,10 @@ export const DataWrapper = styled.div<{ children?: React.ReactNode }>`
 
   @media ${device.mobile} {
     justify-content: space-between;
+  }
+
+  @media ${device.tablet} {
+    gap: 50px;
   }
 `;
 export const InputWrapper = styled.div`

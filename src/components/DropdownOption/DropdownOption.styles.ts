@@ -24,6 +24,15 @@ const StyledOption = styled.button<StyledButtonProps>`
     background-color: ${(props) => THEMES.onHover(props.theme)};
   }
 
+  @media ${device.tablet} {
+    text-align: center;
+    font-size: 13px;
+    box-shadow: ${(props) =>
+      ["defaultInputOption" , "filterInputOption"].includes(props.theme)
+        ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
+        : "none"};
+  }
+
   @media ${device.mobile} {
     text-align: center;
     justify-content: center;
@@ -32,9 +41,6 @@ const StyledOption = styled.button<StyledButtonProps>`
         ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
         : "none"};
     font-size: 13px;
-  }
-  @media ${device.tablet} {
-    text-align: center;
   }
 `;
 

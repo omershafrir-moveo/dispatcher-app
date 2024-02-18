@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "../../util/breakpoints";
 
 export const MobileToolbarContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 12px;

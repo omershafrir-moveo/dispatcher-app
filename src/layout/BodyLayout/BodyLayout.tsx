@@ -84,8 +84,9 @@ const BodyLayout: React.FC = () => {
   });
 
   const viewport = useViewport();
-
   const width = useWidth();
+  console.log(viewport);
+  console.log(width);
   return (
     <TopContainer className="TopContainer">
       <HeadlinesContainer className="HeadlinesContainer">
@@ -121,12 +122,11 @@ const BodyLayout: React.FC = () => {
             <ArticlesLayout articles={articlesQuery.data.articles} />
           )}
         </DataContainer>
-        {viewport == Viewport.DESKTOP && false && (
-          <WidgetsSection
-            articles={articles}
-            isLoading={articlesQuery.isLoading}
-          />
-        )}
+
+        <WidgetsSection
+          articles={articles}
+          isLoading={articlesQuery.isLoading}
+        />
       </BodyLayoutContainer>
     </TopContainer>
   );

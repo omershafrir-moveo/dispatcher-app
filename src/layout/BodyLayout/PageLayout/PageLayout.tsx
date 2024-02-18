@@ -19,12 +19,12 @@ const PageLayout: React.FC = () => {
     <PageContainer className="pageContainer">
       <Header />
       <BodyContainer className="BodyContainer">
-        {!isMobile ? (
+        {isDesktop ? (
           <FiltersLayout mode={filterValue} />
         ) : (
           <MobileFiltersToolbar mode={filterValue} />
         )}
-        <SeparatorLine />
+        {isDesktop && <SeparatorLine />}
         <BodyLayout />
       </BodyContainer>
     </PageContainer>

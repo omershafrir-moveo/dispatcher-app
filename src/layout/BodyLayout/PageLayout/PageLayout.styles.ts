@@ -9,10 +9,10 @@ export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${COLORS.backgroundColor};
+  background-color: red;
   gap: 20px;
 
-  @media ${device.mobile} {
+  @media ${device.tablet} {
     gap: 0px;
   }
 `;
@@ -25,9 +25,14 @@ export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
   background-color: transparent;
   gap: 20px;
 
-  @media ${device.mobile} {
+  @media ${device.tablet} {
     width: 100%;
+    gap: 12px;
     align-items: center;
-    gap: 0px;
   }
+
+  @media ${device.mobile} {
+    gap: 16px;
+  }
+
 `;

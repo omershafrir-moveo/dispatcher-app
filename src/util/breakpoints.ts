@@ -7,7 +7,7 @@ interface Size {
 }
 export const size_numbers = {
   mobile: 440,
-  tablet: 780,
+  tablet: 880,
   desktop: 1440,
 };
 const size: Size = {
@@ -18,6 +18,6 @@ const size: Size = {
 
 export const device = {
   mobile: `(max-width: ${size.mobile})`,
-  tablet: `(max-width: ${size.tablet})`,
+  tablet: `(max-width: ${size.tablet}) `,
   desktop: `(min-width: ${size.tablet})`,
 };
