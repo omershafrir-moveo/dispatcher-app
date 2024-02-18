@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { SelectOptionType } from "../../global-data";
 
-import DropdownOption from "../DropdownOption/DropdownOption";
+import DropdownOption from "./DropdownOption/DropdownOption";
 import { StyledMenu } from "./DropDownMenu.styles";
-import DropDownMenuContainer from "../Container/DropDownMenuContainer/DropDownMenuContainer";
-import ItemsListContainer from "../Container/ItemsListContainer/ItemsListContainer";
+import { DropDownMenuContainer } from "./DropDownMenu.styles";
+import { ItemsListContainer } from "./DropDownMenu.styles";
 
 export type DropDownProps = {
   defaultItemName: SelectOptionType;
@@ -30,11 +30,13 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     if (isOpen) setIsOpen(false);
   };
 
-  const inputOptionValue = props.selectedOption.value == 'none' ?
-    props.defaultItemName : props.selectedOption
+  const inputOptionValue =
+    props.selectedOption.value == "none"
+      ? props.defaultItemName
+      : props.selectedOption;
 
   return (
-    <DropDownMenuContainer>
+    <DropDownMenuContainer className="DropDownMenuContainer">
       <DropdownOption
         value={inputOptionValue}
         isInputBox={true}
@@ -46,8 +48,8 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         disabled={props.disabled}
       />
       {isOpen && (
-        <ItemsListContainer>
-          <StyledMenu>
+        <ItemsListContainer className="ItemsListContainer">
+          <StyledMenu className="styledMenu">
             {props.itemsNames.map((item, index) => (
               <DropdownOption
                 key={index}

@@ -18,6 +18,8 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
+import useWidth from "../../hooks/useWidth";
+import useViewport, { Viewport } from "../../hooks/useViewport";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 
@@ -101,6 +103,10 @@ const BodyLayout: React.FC = () => {
     queryKey: ["sources"],
   });
 
+  const viewport = useViewport();
+  const width = useWidth();
+  console.log(viewport);
+  console.log(width);
   return (
     <TopContainer className="TopContainer">
       <HeadlinesContainer className="HeadlinesContainer">
@@ -140,6 +146,7 @@ const BodyLayout: React.FC = () => {
             />
           )}
         </DataContainer>
+
         <WidgetsSection
           articles={articles}
           isLoading={infiniteArticlesQuery.isLoading}

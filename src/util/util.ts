@@ -28,3 +28,19 @@ export const arrayToQueryString = (
       )
       .join("&")}`;
 };
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  };
+
+  const newDate = new Intl.DateTimeFormat("en-US", options).format(date);
+  const firstColon = newDate.indexOf(",");
+  return newDate
+    .substring(0, firstColon)
+    .concat(newDate.substring(firstColon + 1));
+};

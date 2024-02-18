@@ -2,8 +2,20 @@ import styled from "styled-components";
 import { DateRangePicker } from "rsuite";
 import Calender from "../Icons/Calender";
 import "rsuite/DateRangeInput/styles/index.css";
+import { device } from "../../util/breakpoints";
 
+export const DatePickerWrapper = styled.div`
+  max-width: 175px;
+  border-radius: 10px;
+  @media ${device.mobile} {
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 4px 2px 0px;
+  }
+`;
 const styledDatePicker = styled(DateRangePicker)`
+  .rs-picker-popup {
+    top: 200px;
+  }
+
   .rs-input-group rs-input-group-inside {
     border: none;
   }
@@ -23,6 +35,7 @@ const styledDatePicker = styled(DateRangePicker)`
     background-color: #ffffff;
     border: none;
     color: #5a5a89;
+
     ::placeholder {
       color: #5a5a89;
       padding-left: 5px;
@@ -31,6 +44,10 @@ const styledDatePicker = styled(DateRangePicker)`
   .rs-input-group.rs-input-group-inside {
     border: none;
     border-radius: 10px;
+  }
+
+  .rs-picker.rs-picker-daterange.rs-picker-default.rs-picker-toggle-wrapper.rs-picker-cleanable.rs-picker-error {
+    max-width: 175px;
   }
 `;
 

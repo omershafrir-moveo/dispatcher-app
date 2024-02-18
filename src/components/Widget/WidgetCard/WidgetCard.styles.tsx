@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div<{ type: string }>`
   background-color: #ffffff;
   height: 355px;
+  /* width: 100%; */
   width: 412px;
   border-radius: 20px;
   display: flex;

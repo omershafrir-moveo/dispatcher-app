@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { ButtonProps } from "../RecentSearchesMenu/RecentSearchItem.types";
-import { COLORS } from "../../../global-data";
+import { COLORS } from "../../../../global-data";
 
 export const ItemContainer = styled.div<ButtonProps>`
   background-color: ${COLORS.primaryLightColor};
-  width: 663px;
+  width: 100%;
   height: 29.3px;
   display: flex;
   margin: 0px;

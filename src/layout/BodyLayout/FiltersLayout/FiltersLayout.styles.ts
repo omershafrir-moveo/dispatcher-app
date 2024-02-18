@@ -3,9 +3,10 @@ import { COLORS } from "../../../global-data";
 
 export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   display: flex;
+  justify-content: flex-start;
   height: 47px;
   width: 100%;
-  background-color: ${COLORS.backgroundColor};
+  background-color: transparent;
   gap: 20px;
   z-index: 1;
 `;

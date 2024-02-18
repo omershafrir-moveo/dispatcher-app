@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { SelectOptionType } from "../../global-data";
 import { filtersValuesType } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import {
@@ -10,6 +10,7 @@ import {
 import useDict from "../../hooks/useDict";
 import { toJson } from "../../util/util";
 import { getParams, validateParams } from "../../util/apiService";
+import useViewport, { Viewport } from "../../hooks/useViewport";
 type SearchContextType = {
   isOpenRecent: boolean;
   toggleRecentSearchesMenu: () => void;
@@ -71,6 +72,7 @@ export type SearchContextProps = {
 };
 
 export const InputProvider: React.FC<SearchContextProps> = (props) => {
+  const vp = useViewport();
   const [isOpenRecent, setIsOpenRecent] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchValueCopy, setSearchValueCopy] = useState("");
@@ -87,7 +89,9 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     sources: noneOption,
   });
   const [sortMode, setSortMode] = useState<SelectOptionType>(
-    sortModesArrays[0]
+    vp == Viewport.DESKTOP
+      ? sortModesArrays[0]
+      : { key: -1, title: "Sort By", value: "sort-by" }
   );
   const [datesRange, setDatesRange] = useState<Date[]>([]);
   const updateDatesRange = (newDatesRange: Date[]) => {
@@ -197,3 +201,4 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     </SearchContext.Provider>
   );
 };
+export const useSearchContext = () => useContext(SearchContext)

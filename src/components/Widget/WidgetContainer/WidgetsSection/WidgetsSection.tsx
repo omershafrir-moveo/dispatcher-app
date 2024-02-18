@@ -4,6 +4,9 @@ import WidgetContainer from "../WidgetContainer";
 import { ArticleProps } from "../../../ArticleCard/ArticleCard";
 import React from "react";
 import { WidgetsSectionContainer } from "./WidgetsSection.styles";
+import useViewport, { Viewport } from "../../../../hooks/useViewport";
+import useTablet from "../../../../hooks/useTablet";
+import useDesktop from "../../../../hooks/useDesktop";
 export type WidgetProps = {
   articles: ArticleProps[];
   isLoading: boolean;
@@ -11,11 +14,11 @@ export type WidgetProps = {
 };
 
 const WidgetsSection: React.FC<{
-  articles: ArticleProps[]; 
+  articles: ArticleProps[];
   isLoading: boolean;
 }> = ({ articles, isLoading }) => {
   return (
-    <WidgetsSectionContainer>
+    <WidgetsSectionContainer className="WidgetsSectionContainer">
       <PieGraph articles={articles} isLoading={isLoading} />
       <MonthsGraph articles={articles} isLoading={isLoading} />
     </WidgetsSectionContainer>
