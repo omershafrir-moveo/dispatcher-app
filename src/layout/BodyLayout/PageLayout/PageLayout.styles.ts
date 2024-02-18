@@ -9,7 +9,7 @@ export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: red;
+  background-color: ${COLORS.backgroundColor};
   gap: 20px;
 
   @media ${device.tablet} {
@@ -34,5 +34,4 @@ export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
   @media ${device.mobile} {
     gap: 16px;
   }
-
 `;

@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import DownArrowIcon from "../Icons/DownArrowIcon";
+import DownArrowIcon from "../../Icons/DownArrowIcon";
 import THEMES, { StyledButtonProps } from "./DropdownOption.types";
-import { device } from "../../util/breakpoints";
+import { device } from "../../../util/breakpoints";
 
 const StyledOption = styled.button<StyledButtonProps>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: ${(props) => THEMES.height(props.theme)};
   border-radius: ${(props) => THEMES.borderRadius(props.theme)};
@@ -12,13 +16,8 @@ const StyledOption = styled.button<StyledButtonProps>`
   font-family: ${(props) => THEMES.fontFamily(props.theme)};
   font-size: ${(props) => THEMES.fontSize(props.theme)};
   color: ${(props) => (props.disabled ? "#b3b0b0" : "#5A5A89")};
-  /* padding: 15px; */
   cursor: pointer;
   text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border: none;
   position: relative;
   &:hover {
     background-color: ${(props) => THEMES.onHover(props.theme)};
@@ -28,7 +27,7 @@ const StyledOption = styled.button<StyledButtonProps>`
     text-align: center;
     font-size: 13px;
     box-shadow: ${(props) =>
-      ["defaultInputOption" , "filterInputOption"].includes(props.theme)
+      ["defaultInputOption", "filterInputOption"].includes(props.theme)
         ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
         : "none"};
   }
@@ -45,8 +44,12 @@ const StyledOption = styled.button<StyledButtonProps>`
 `;
 
 export const TextContainer = styled.div`
-  width: calc(100% - 30px);
   overflow: hidden;
 `;
-
+export const OptionDataContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 30px);
+`;
 export default StyledOption;

@@ -1,5 +1,4 @@
-import { COLORS } from "../../global-data";
-
+import { COLORS } from "../../../global-data";
 type themeProperty = (theme: themeOption) => any;
 type themeType = {
   maxWidth: themeProperty;
@@ -98,11 +97,11 @@ const THEMES: themeType = {
     theme === "defaultInputOption"
       ? "none"
       : theme === "defaultOption"
-      ? "#DFE0EB69"
+      ? "#f2f2f7"
       : theme === "filterInputOption"
       ? "none"
       : theme === "filterOption"
-      ? "#DFE0EB69"
+      ? "#f2f2f7"
       : undefined,
 };
 

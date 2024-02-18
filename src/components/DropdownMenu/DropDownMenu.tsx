@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SelectOptionType } from "../../global-data";
 
-import DropdownOption from "../DropdownOption/DropdownOption";
+import DropdownOption from "./DropdownOption/DropdownOption";
 import { StyledMenu } from "./DropDownMenu.styles";
 import { DropDownMenuContainer } from "./DropDownMenu.styles";
 import { ItemsListContainer } from "./DropDownMenu.styles";
