@@ -7,27 +7,27 @@ import { useRef } from "react";
 export type ArticlesLayoutProps = {
   articles: ArticleProps[];
   fetchNextPage: any;
+  hasNextPage: boolean;
 };
 
 const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   articles,
   fetchNextPage,
+  hasNextPage,
 }) => {
   const scrolledContainerRef = useRef<HTMLUListElement>(null);
+
   const handleScrollEnd = () => {
-    if (scrolledContainerRef.current) {
+    if (scrolledContainerRef.current && hasNextPage) {
       if (
         scrolledContainerRef.current.scrollTop ===
         scrolledContainerRef.current.scrollHeight -
           scrolledContainerRef.current.clientHeight
       ) {
-        console.log("ScrollEnd!");
         fetchNextPage();
       }
     }
   };
-
-  console.log(`'articles' value is: ,${JSON.stringify(articles)}`);
 
   return (
     <ArticlesContainer ref={scrolledContainerRef} onScroll={handleScrollEnd}>

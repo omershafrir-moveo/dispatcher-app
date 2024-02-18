@@ -98,7 +98,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                 textAnchor="middle"
                 dominantBaseline="middle"
               >
-                Sum
+                {articles.length}
               </text>
             </PieChart>
             <Legend

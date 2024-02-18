@@ -19,6 +19,7 @@ import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
 import { validateParams } from "../../util/apiService";
+import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 
 export type ArticlesResponseType = {
   status: string;
@@ -47,14 +48,6 @@ const BodyLayout: React.FC = () => {
     return data;
   };
 
-  // const articlesQuery = useQuery({
-  //   queryFn: () => fetchArticles(),
-  //   queryKey: [
-  //     "articles",
-  //     { searchValueCopy, filterValue, filtersValues, datesRange, sortMode },
-  //   ],
-  // });
-
   const infiniteArticlesQuery = useInfiniteQuery({
     queryFn: fetchArticles,
     queryKey: [
@@ -74,8 +67,14 @@ const BodyLayout: React.FC = () => {
   }, [searchValueCopy, filterValue, filtersValues]);
 
   const articles =
-    infiniteArticlesQuery.data?.pages.map((res) => res.articles).flat() ?? [];
-  console.log(`'articles' value is right!: ,${JSON.stringify(articles)}`);
+    infiniteArticlesQuery.status == "success" &&
+    infiniteArticlesQuery.data?.pages.flat().length != 0
+      ? (infiniteArticlesQuery.data?.pages
+          ?.map((res) =>
+            res?.articles && res.articles.length > 0 ? res?.articles : []
+          )
+          .flat() as ArticleProps[])
+      : [];
 
   const topHeadlinesCondition =
     articles.length != 0 &&
@@ -137,6 +136,7 @@ const BodyLayout: React.FC = () => {
             <ArticlesLayout
               articles={articles}
               fetchNextPage={infiniteArticlesQuery.fetchNextPage}
+              hasNextPage={infiniteArticlesQuery.hasNextPage}
             />
           )}
         </DataContainer>
