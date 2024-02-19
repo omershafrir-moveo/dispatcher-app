@@ -1,23 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { SelectOptionType } from "../global-data";
-import { arrayToQueryString } from "./util";
+import { arrayToQueryString, wait } from "./util";
 import { noneOption } from "../global-data";
 import { queryEntry, searchParams, Dictionary } from "./apiService.types";
 import { ArticleProps } from "../components/ArticleCard/ArticleCard";
-const API_KEYS = [
-  "1147e6878ef44d28bb7374107d98351b",
-  "40f24796ae9248c59526eba4705abb29",
-  "9c43938f5eb949de8ab2fae9e92f007e",
-  "1d9a5d9b35df4b69963b1272cabb6e43",
-  "a32b42999aba45aca01fde128bbf474a",
-  "da77a58986be4a1c8de3119abcf1b937",
-  "bb4c03f4a58741b3ade559261ef6a112",
-  "81241658eda34bc39a1c1a554e563c93",
-  "1ab54f6161084c749f2dcd1a00f84f22",
-  "f79ddaf709914ff9b621a7693cfb36c3",
-];
 
-const API_KEY = API_KEYS[4];
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const getParamsNames = (queries: queryEntry[]): string[] => {
   return queries.reduce((acc: string[], entry: queryEntry) => {
@@ -74,6 +62,7 @@ export const getParams = (
 export const getArticles = async (pageParam: number, params?: searchParams) => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
+    // await wait(2000);
     const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
     return res.data;

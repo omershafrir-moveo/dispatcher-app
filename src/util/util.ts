@@ -44,3 +44,9 @@ export const formatDate = (dateString: string): string => {
     .substring(0, firstColon)
     .concat(newDate.substring(firstColon + 1));
 };
+
+export const wait = (ms: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};

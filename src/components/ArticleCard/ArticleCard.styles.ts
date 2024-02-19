@@ -4,8 +4,7 @@ import { device } from "../../util/breakpoints";
 export const Card = styled.div`
   display: flex;
   background-color: #ffffff;
-  width: 100%;
-  /* height: 100%; */
+  width: calc(100%-2px);
   max-width: 988px;
   flex-direction: row;
   border-radius: 20px;

@@ -39,7 +39,7 @@ const StyledOption = styled.button<StyledButtonProps>`
       props.theme == "defaultInputOption"
         ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
         : "none"};
-    font-size: 13px;
+    font-size: 12px;
   }
 `;
 

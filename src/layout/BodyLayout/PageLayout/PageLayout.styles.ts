@@ -4,7 +4,6 @@ import { COLORS } from "../../../global-data";
 import { device } from "../../../util/breakpoints";
 export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
