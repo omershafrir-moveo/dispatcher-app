@@ -57,25 +57,29 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   return (
     <ArticlesContainer ref={scrolledContainerRef} onScroll={handleScrollEnd}>
       {articles?.map((article: ArticleProps, index) => (
-        <Item key={index}>
-          <ArticleCard
-            author={article.author}
-            content={article.content}
-            description={article.description}
-            publishedAt={article.publishedAt}
-            title={article.title}
-            url={article.url}
-            urlToImage={article.urlToImage}
-            source={article.source}
-          />
-        </Item>
+        <FadeWrapper>
+          <Item key={index}>
+            <ArticleCard
+              author={article.author}
+              content={article.content}
+              description={article.description}
+              publishedAt={article.publishedAt}
+              title={article.title}
+              url={article.url}
+              urlToImage={article.urlToImage}
+              source={article.source}
+            />
+          </Item>
+        </FadeWrapper>
       ))}
       {!isDesktop && !isAtTop && (
-        <UpButtonWrapper>
-          <IconButton handleClick={handleTopArrowClick}>
-            <UpArrowIcon />
-          </IconButton>
-        </UpButtonWrapper>
+        <FadeWrapper>
+          <UpButtonWrapper>
+            <IconButton handleClick={handleTopArrowClick}>
+              <UpArrowIcon />
+            </IconButton>
+          </UpButtonWrapper>
+        </FadeWrapper>
       )}
     </ArticlesContainer>
   );

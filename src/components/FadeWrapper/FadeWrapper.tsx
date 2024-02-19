@@ -8,7 +8,6 @@ const FadeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     setIsVisible(true);
-    setIsVisible(false);
   }, []);
 
   return (

@@ -13,7 +13,7 @@ export const MobileToolbarContainer = styled.div`
   border-bottom: solid 1px #d9dbe9;
 
   @media ${device.tablet} {
-      position: relative;
+    position: relative;
   }
 `;
 
@@ -23,7 +23,7 @@ export const MobileToolbarWrapper = styled.div`
   width: calc(100% - 12px);
 
   @media ${device.tablet} {
-    height: 55px;
+    height: 65px;
   }
 `;
 

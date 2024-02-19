@@ -18,8 +18,6 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import Loading from "../../components/Loading/Loading";
-import useWidth from "../../hooks/useWidth";
-import useViewport, { Viewport } from "../../hooks/useViewport";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
@@ -124,7 +122,9 @@ const BodyLayout: React.FC = () => {
             {infiniteArticlesQuery.isLoading && <Loading />}
             {!infiniteArticlesQuery.isLoading && articles.length == 0 && (
               <EmptyStateContainer className="EmptyStateContainer">
-                <NoArticles />
+                <FadeWrapper>
+                  <NoArticles />
+                </FadeWrapper>
                 <TypoContainer className="TypoContainer">
                   <Typography size="18px" color="#5A5A89">
                     {errorMsg

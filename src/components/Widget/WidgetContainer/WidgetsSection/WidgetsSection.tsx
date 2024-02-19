@@ -7,6 +7,7 @@ import { WidgetsSectionContainer } from "./WidgetsSection.styles";
 import useViewport, { Viewport } from "../../../../hooks/useViewport";
 import useTablet from "../../../../hooks/useTablet";
 import useDesktop from "../../../../hooks/useDesktop";
+import FadeWrapper from "../../../FadeWrapper/FadeWrapper";
 export type WidgetProps = {
   articles: ArticleProps[];
   isLoading: boolean;
@@ -19,8 +20,12 @@ const WidgetsSection: React.FC<{
 }> = ({ articles, isLoading }) => {
   return (
     <WidgetsSectionContainer className="WidgetsSectionContainer">
-      <PieGraph articles={articles} isLoading={isLoading} />
-      <MonthsGraph articles={articles} isLoading={isLoading} />
+      <FadeWrapper>
+        <PieGraph articles={articles} isLoading={isLoading} />
+      </FadeWrapper>
+      <FadeWrapper>
+        <MonthsGraph articles={articles} isLoading={isLoading} />
+      </FadeWrapper>
     </WidgetsSectionContainer>
   );
 };
