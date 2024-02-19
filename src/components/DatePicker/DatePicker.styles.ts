@@ -7,7 +7,7 @@ import { device } from "../../util/breakpoints";
 export const DatePickerWrapper = styled.div`
   max-width: 175px;
   border-radius: 10px;
-  @media ${device.mobile} {
+  @media ${device.tablet} {
     box-shadow: rgba(0, 0, 0, 0.15) 2px 4px 2px 0px;
   }
 `;

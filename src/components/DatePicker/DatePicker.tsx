@@ -11,7 +11,7 @@ const DatePicker = () => {
     <DatePickerWrapper>
       <StyledDatePicker
         value={datesRange}
-        placeholder="Dates"
+        placeholder={"Dates"}
         style={{ width: "100%", maxWidth: "265px" }}
         showHeader={false}
         showOneCalendar={true}
