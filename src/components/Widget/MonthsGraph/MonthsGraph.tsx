@@ -8,6 +8,7 @@ import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Loading from "../../Loading/Loading";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
 
@@ -50,7 +51,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
         <HorizontalLine />
       </div>
       <WidgetContainer>
-        {isLoading && <Loading />}
+        {isLoading && <LoadingSpinner />}
         {contentFlag && (
           <>
             <AreaChart

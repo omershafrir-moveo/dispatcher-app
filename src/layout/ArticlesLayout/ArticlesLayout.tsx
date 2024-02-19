@@ -35,7 +35,6 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
           scrolledContainerRef.current.scrollHeight -
             scrolledContainerRef.current.clientHeight
       ) {
-        console.log("Fetching more");
         fetchNextPage();
       }
     }

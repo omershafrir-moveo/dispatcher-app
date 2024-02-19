@@ -8,6 +8,8 @@ import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Spacer from "../../Container/Spacer/Spacer";
 import Loading from "../../Loading/Loading";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import { round2decimal } from "../../../util/util";
 
 const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   const COLORS = [
@@ -61,6 +63,10 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
     return sourceArray;
   };
   const data = computeData();
+  const totalNumOfArticles = data
+    .map((point) => point.value)
+    .reduce((acc, curr) => (acc = acc + curr), 0);
+
   return (
     <WidgetCard type={data.length > 0 ? "pie" : "no-data"}>
       <Typography color="#000000" size="24px" weight="700">
@@ -68,7 +74,7 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
       </Typography>
       <HorizontalLine />
       <WidgetContainer>
-        {isLoading && <Loading />}
+        {isLoading && <LoadingSpinner />}
         {contentFlag && (
           <>
             <PieChart width={124} height={124}>
@@ -103,7 +109,8 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
             </PieChart>
             <Legend
               data={data.map((p, index) => ({
-                ...p,
+                name: p.name,
+                value: round2decimal((p.value / totalNumOfArticles) * 100),
                 color: COLORS[index % COLORS.length],
               }))}
             />

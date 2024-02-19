@@ -21,6 +21,7 @@ import Loading from "../../components/Loading/Loading";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 export type ArticlesResponseType = {
   status: string;
@@ -82,7 +83,7 @@ const BodyLayout: React.FC = () => {
     filterValue.key == 0 &&
     filtersValues.category?.value == "none" &&
     filtersValues.sources?.value == "none" &&
-    filtersValues.country?.value == "israel";
+    filtersValues.country?.value == "il";
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
   const fetchSources = async () => {
@@ -119,7 +120,7 @@ const BodyLayout: React.FC = () => {
       <BodyLayoutContainer className="BodyLayoutContainer">
         <DataContainer className="DataContainer">
           <ErrorHeadlinesContainer className="ErrorHeadlinesContainer">
-            {infiniteArticlesQuery.isLoading && <Loading />}
+            {infiniteArticlesQuery.isLoading && <LoadingSpinner />}
             {!infiniteArticlesQuery.isLoading && articles.length == 0 && (
               <EmptyStateContainer className="EmptyStateContainer">
                 <FadeWrapper>

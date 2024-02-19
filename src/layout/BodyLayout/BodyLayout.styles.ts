@@ -49,7 +49,11 @@ export const TypoContainer = styled.div<{ children?: React.ReactNode }>`
   }
 `;
 
-export const HeadlinesContainer = styled.div<{ children?: React.ReactNode }>``;
+export const HeadlinesContainer = styled.div<{ children?: React.ReactNode }>`
+  @media ${device.tablet} {
+    text-align: center;
+  }
+`;
 
 export const Loading = styled.h1`
   align-self: center;

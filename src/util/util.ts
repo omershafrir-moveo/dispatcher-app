@@ -50,3 +50,7 @@ export const wait = (ms: number): Promise<void> => {
     setTimeout(resolve, ms);
   });
 };
+
+export const round2decimal = (num: number) => {
+  return Math.round(num * 100) / 100;
+};

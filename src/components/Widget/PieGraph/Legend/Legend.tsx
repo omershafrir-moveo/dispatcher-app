@@ -6,9 +6,6 @@ import {
   LegendValue,
   LegendItemData,
 } from "./Legend.styles";
-// import { DataType } from "../PieGraph";
-
-// export type DataType<T> = T & {color: string}
 
 const Legend: React.FC<{ data: any[]; children?: React.ReactNode }> = (
   props
