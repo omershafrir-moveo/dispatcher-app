@@ -20,12 +20,29 @@ export type FiltersLayoutProps = {
 };
 
 const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
-  const { filterValue, filtersValues, updateFiltersValues, sources } =
-    useContext(SearchContext);
+  const {
+    filterValue,
+    filtersValues,
+    updateFiltersValues,
+    sources,
+    isSourcesActive,
+    isSomeFilterActive,
+    updateSomeFilterActiveness,
+    updateSourceActiveness,
+  } = useContext(SearchContext);
 
   const filters = FiltersBySearchMode(filterValue);
-  const [sourcesActive, setSourcesActive] = useState(false);
-  const [filterActive, setFilterActive] = useState(false);
+
+  // const [sourcesActive, setSourcesActive] = useState(
+  //   filtersValues.sources?.value != "none"
+  // );
+  // const [filterActive, setFilterActive] = useState(
+  //   [
+  //     filtersValues.category?.value,
+  //     filtersValues.country?.value,
+  //     filtersValues.language?.value,
+  //   ].some((val) => val != "none")
+  // );
 
   const getFilter = (f: SelectOptionType) => {
     switch (f.value) {
@@ -35,7 +52,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.language,
           updateValue: (newVal: any) => {
             updateFiltersValues("language", newVal);
-            setFilterActive(newVal?.value != "none");
+            updateSomeFilterActiveness(newVal?.value != "none");
           },
         };
       case "category":
@@ -44,7 +61,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.category,
           updateValue: (newVal: any) => {
             updateFiltersValues("category", newVal);
-            setFilterActive(newVal?.value != "none");
+            updateSomeFilterActiveness(newVal?.value != "none");
           },
         };
       case "country":
@@ -53,7 +70,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.country,
           updateValue: (newVal: any) => {
             updateFiltersValues("country", newVal);
-            setFilterActive(newVal?.value != "none");
+            updateSomeFilterActiveness(newVal?.value != "none");
           },
         };
       case "sources":
@@ -62,7 +79,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.sources,
           updateValue: (newVal: any) => {
             updateFiltersValues("sources", newVal);
-            setSourcesActive(newVal?.value != "none");
+            updateSourceActiveness(newVal?.value != "none");
           },
         };
       default:
@@ -88,7 +105,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           selectedOption={getFilter(f).chosenValue as SelectOptionType}
           theme="default"
           key={index}
-          disabled={f.value == "sources" ? filterActive : sourcesActive}
+          disabled={f.value == "sources" ? isSomeFilterActive : isSourcesActive}
         />
       ))}
     </FiltersToolbar>

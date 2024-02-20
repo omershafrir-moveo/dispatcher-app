@@ -24,40 +24,27 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   hasNextPage,
 }) => {
   const scrolledContainerRef = useRef<HTMLUListElement>(null);
-  const [isAtTop, setIsAtTop] = useState(true);
-  const isDesktop = useDesktop();
+
   const handleScrollEnd = () => {
     if (scrolledContainerRef.current) {
-      setIsAtTop(scrolledContainerRef.current.scrollTop === 0);
       if (
         hasNextPage &&
         scrolledContainerRef.current.scrollTop ===
           scrolledContainerRef.current.scrollHeight -
             scrolledContainerRef.current.clientHeight
       ) {
+        console.log("fetching!");
+
         fetchNextPage();
       }
     }
   };
-  const handleTopArrowClick = () => {
-    if (scrolledContainerRef.current) {
-      scrolledContainerRef.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-    window.scrollTo(0, 0);
-  };
 
-  const shouldDisplayArrow = () => {
-    if (scrolledContainerRef.current)
-      return scrolledContainerRef.current.scrollTop != 0;
-  };
   return (
     <ArticlesContainer ref={scrolledContainerRef} onScroll={handleScrollEnd}>
       {articles?.map((article: ArticleProps, index) => (
-        <FadeWrapper>
-          <Item key={index}>
+        <Item key={index}>
+          <FadeWrapper>
             <ArticleCard
               author={article.author}
               content={article.content}
@@ -68,8 +55,8 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
               urlToImage={article.urlToImage}
               source={article.source}
             />
-          </Item>
-        </FadeWrapper>
+          </FadeWrapper>
+        </Item>
       ))}
     </ArticlesContainer>
   );

@@ -16,6 +16,10 @@ type SearchContextType = {
   toggleRecentSearchesMenu: () => void;
   filterValue: SelectOptionType;
   handleFilterChange: (value: SelectOptionType) => void;
+  isSourcesActive: boolean;
+  updateSourceActiveness: (isActive: boolean) => void;
+  isSomeFilterActive: boolean;
+  updateSomeFilterActiveness: (isActive: boolean) => void;
   searchValue: string;
   searchValueCopy: string;
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -54,6 +58,10 @@ const ContextInitalValue: SearchContextType = {
     sources: noneOption,
   },
   updateFiltersValues: (key, value) => {},
+  isSourcesActive: false,
+  updateSourceActiveness: () => {},
+  isSomeFilterActive: false,
+  updateSomeFilterActiveness: () => {},
   sortMode: sortModesArrays[0],
   updateSortMode: () => {},
   datesRange: [],
@@ -99,6 +107,13 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     else setDatesRange([]);
   };
 
+  const [isSourcesActive, setIsSourcesActive] = useState(false);
+  const [isSomeFilterActive, setIsSomeFilterActive] = useState(false);
+  const updateSourceActiveness = (isActive: boolean) =>
+    setIsSourcesActive(isActive);
+  const updateSomeFilterActiveness = (isActive: boolean) =>
+    setIsSomeFilterActive(isActive);
+
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -113,6 +128,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
       updateFiltersDict("language", noneOption);
       setSearchValue("");
       setSearchValueCopy("");
+      updateSourceActiveness(false);
+      updateSomeFilterActiveness(false);
     };
     resetFilters();
     setFilterValue({ ...event });
@@ -161,7 +178,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     const newItems = [...items].filter((item) => item !== text);
     updateLocalStorage(newItems);
   };
-  const handleClick = (item:string) => {
+  const handleClick = (item: string) => {
     setSearchValue(item);
     sendRequest(item);
   };
@@ -182,6 +199,10 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     searchValue,
     searchValueCopy,
     handleSearchInputChange,
+    isSourcesActive,
+    updateSourceActiveness,
+    isSomeFilterActive,
+    updateSomeFilterActiveness,
     items,
     handleClick,
     handleDelete,

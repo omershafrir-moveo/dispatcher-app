@@ -8,5 +8,5 @@ export type DataPoint = {
 export interface CustomTooltipProps extends TooltipProps {
     active?: boolean;
     payload?: DataPoint[];
-    label?: string;
+    label?: Date;
   }
