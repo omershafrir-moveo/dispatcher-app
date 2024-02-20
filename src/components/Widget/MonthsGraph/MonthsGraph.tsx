@@ -44,7 +44,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   const firstDatesArray: Date[] = useMemo(() => {
     const returnArray: Date[] = [];
     const dates: Date[] = data.map((dataPoint) => dataPoint.date);
-    for (let month = 1; month <= 12; month++) {
+    for (let month = 0; month < 12; month++) {
       const firstDate = dates.find((date) => date.getMonth() == month);
       if (firstDate) returnArray.push(firstDate);
     }
@@ -71,6 +71,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
 
     return null;
   };
+  console.log(firstDatesArray);
 
   return (
     <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
@@ -101,7 +102,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                 firstDatesArray.includes(date) ? format(date, "MMM") : ""
               }
               // tickFormatter={(date: Date) => {
-              //   if (date.getDate() % 3 === 0) {
+              //   if (date.getDay() % 1 === 0) {
               //     return format(date, "MMM d");
               //   }
               //   return "";
