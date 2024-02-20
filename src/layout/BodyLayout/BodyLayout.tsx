@@ -88,11 +88,11 @@ const BodyLayout: React.FC = () => {
 
   const fetchSources = async () => {
     const data = await getSources();
-    const sourcesArray: SelectOptionType[] = data.sources
+    const sourcesArray: SelectOptionType[] = [noneOption].concat(data.sources
       .map((source: { name: string; id: string }, idx: number) => {
         return { key: idx + 1, title: source.name, value: source.id };
-      })
-      .concat([noneOption]);
+      }))
+      
 
     updateSources(sourcesArray);
     return data;

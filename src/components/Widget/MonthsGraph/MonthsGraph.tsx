@@ -1,4 +1,4 @@
-import { AreaChart, Area, XAxis } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
 import WidgetCard from "../WidgetCard/WidgetCard";
 import Typography from "../../Typography/Typography";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
@@ -9,6 +9,9 @@ import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Loading from "../../Loading/Loading";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import { CustomTooltipProps } from "./MonthsGraph.types";
+import { dateToMonth } from "../../../util/util";
+import { TooltipContainer, TooltipTextContainer } from "./MonthsGrpah.styles";
 const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
 
@@ -42,6 +45,27 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   };
 
   const data = computeData();
+
+  const CustomTooltip: React.FC<CustomTooltipProps> = ({
+    active,
+    payload,
+    label,
+  }) => {
+    if (active && payload && payload.length) {
+      return (
+        <TooltipContainer className="TooltipContainer">
+          <TooltipTextContainer className="TooltipTextContainer">
+            <p className="label">{`Articles published in ${dateToMonth(
+              label!
+            )} : ${payload[0].value}`}</p>
+          </TooltipTextContainer>
+        </TooltipContainer>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
       <div>
@@ -94,6 +118,12 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                   <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
                 </linearGradient>
               </defs>
+              <Tooltip
+                cursor={false}
+                viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
+                formatter={(value, name) => "value"}
+                content={<CustomTooltip />}
+              />
               <Area
                 type="basis"
                 dataKey="value"

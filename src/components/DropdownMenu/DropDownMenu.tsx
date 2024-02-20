@@ -50,21 +50,27 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       {isOpen && (
         <ItemsListContainer className="ItemsListContainer">
           <StyledMenu className="styledMenu">
-            {props.itemsNames.map((item, index) => (
-              <DropdownOption
-                key={index}
-                value={item}
-                isInputBox={false}
-                handleClick={() => {
-                  onOptionClick(item);
-                }}
-                handleBlur={handleBlur}
-                theme={
-                  props.theme === "default" ? "defaultOption" : "filterOption"
-                }
-                disabled={props.disabled}
-              />
-            ))}
+            {props.itemsNames.map(
+              (item, index) =>
+                (item.value != "none" ||
+                  props.selectedOption.value != "none") && (
+                  <DropdownOption
+                    key={index}
+                    value={item}
+                    isInputBox={false}
+                    handleClick={() => {
+                      onOptionClick(item);
+                    }}
+                    handleBlur={handleBlur}
+                    theme={
+                      props.theme === "default"
+                        ? "defaultOption"
+                        : "filterOption"
+                    }
+                    disabled={props.disabled}
+                  />
+                )
+            )}
           </StyledMenu>
         </ItemsListContainer>
       )}

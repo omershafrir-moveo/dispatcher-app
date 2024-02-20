@@ -84,7 +84,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
 
   const [filtersDict, updateFiltersDict] = useDict({
     category: noneOption,
-    country: DATA_OPTIONS.country[22],
+    country: DATA_OPTIONS.country[23],
     language: noneOption,
     sources: noneOption,
   });
@@ -161,6 +161,10 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     const newItems = [...items].filter((item) => item !== text);
     updateLocalStorage(newItems);
   };
+  const handleClick = (item:string) => {
+    setSearchValue(item);
+    sendRequest(item);
+  };
 
   const handleClear = () => {
     updateLocalStorage([]);
@@ -179,9 +183,7 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     searchValueCopy,
     handleSearchInputChange,
     items,
-    handleClick: (item) => {
-      setSearchValue(item);
-    },
+    handleClick,
     handleDelete,
     handleClear,
     filtersValues: filtersDict,

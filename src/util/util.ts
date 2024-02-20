@@ -54,3 +54,23 @@ export const wait = (ms: number): Promise<void> => {
 export const round2decimal = (num: number) => {
   return Math.round(num * 100) / 100;
 };
+
+export const dateToMonth = (dateString: string): string => {
+  const date = new Date(dateString);
+  const monthIndex = date.getMonth();
+  const monthNames: string[] = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return monthNames[monthIndex];
+};

@@ -99,6 +99,7 @@ const countryCodes = [
 
 export const DATA_OPTIONS = {
   language: [
+    noneOption,
     { key: 0, title: "Arabic", value: "ar" },
     { key: 1, title: "German", value: "de" },
     { key: 2, title: "English", value: "en" },
@@ -111,11 +112,10 @@ export const DATA_OPTIONS = {
     { key: 9, title: "Portuguese", value: "pt" },
     { key: 10, title: "Russian", value: "ru" },
     { key: 11, title: "Swedish", value: "sv" },
-    { key: 12, title: "Undefined", value: "ud" },
-    { key: 13, title: "Chinese", value: "zh " },
-    noneOption,
+    { key: 12, title: "Chinese", value: "zh " },
   ],
   category: [
+    noneOption,
     {
       key: 1,
       title: "Business",
@@ -135,66 +135,15 @@ export const DATA_OPTIONS = {
     },
     { key: 6, title: "Sports", value: "sports" },
     { key: 7, title: "Technology", value: "technology" },
-    noneOption,
   ],
-  country: countryCodes
+  country: [noneOption].concat(countryCodes
     .map((code: string, idx: number) => {
       return {
         key: idx + 1,
         title: codeToCountry.of(code.toUpperCase()) as string,
         value: code,
       };
-    })
-    .concat([noneOption]),
-
-  sources: [
-    { key: 0, title: "CoStar Group, Inc.", value: "Asta Funding, Inc." },
-    {
-      key: 1,
-      title: "VelocityShares VIX Short-Term ETN",
-      value: "Genocea Biosciences, Inc.",
-    },
-    {
-      key: 2,
-      title: "Asia Pacific Fund, Inc. (The)",
-      value: "Central Garden & Pet Company",
-    },
-    { key: 3, title: "Freshpet, Inc.", value: "Rayonier Inc." },
-    { key: 4, title: "EastGroup Properties, Inc.", value: "Net Element, Inc." },
-    { key: 5, title: "Citigroup Inc.", value: "Graham Holdings Company" },
-    {
-      key: 6,
-      title: "Gabelli Equity Trust, Inc. (The)",
-      value: "Tekla Healthcare Investors",
-    },
-    {
-      key: 7,
-      title: "Taiwan Semiconductor Manufacturing Company Ltd.",
-      value: "Cogent Communications Holdings, Inc.",
-    },
-    {
-      key: 8,
-      title: "Signet Jewelers Limited",
-      value: "Siebert Financial Corp.",
-    },
-    {
-      key: 9,
-      title: "Kimco Realty Corporation",
-      value: "First United Corporation",
-    },
-    { key: 10, title: "Synacor, Inc.", value: "Ringcentral, Inc." },
-    {
-      key: 11,
-      title: "Randolph Bancorp, Inc.",
-      value: "Neptune Technologies & Bioresources Inc",
-    },
-    {
-      key: 12,
-      title: "Insys Therapeutics, Inc.",
-      value: "Jacksonville Bancorp Inc.",
-    },
-    noneOption,
-  ],
+    }))
 };
 
 export const FiltersBySearchMode = (

@@ -71,15 +71,6 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
           </Item>
         </FadeWrapper>
       ))}
-      {!isDesktop && !isAtTop && (
-        <FadeWrapper>
-          <UpButtonWrapper>
-            <IconButton handleClick={handleTopArrowClick}>
-              <UpArrowIcon />
-            </IconButton>
-          </UpButtonWrapper>
-        </FadeWrapper>
-      )}
     </ArticlesContainer>
   );
 };
