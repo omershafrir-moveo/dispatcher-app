@@ -17,7 +17,6 @@ import NoArticles from "../../components/Icons/NoArticles";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
-import Loading from "../../components/Loading/Loading";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";

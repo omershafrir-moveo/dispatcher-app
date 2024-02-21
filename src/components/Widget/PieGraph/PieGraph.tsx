@@ -7,7 +7,6 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import Spacer from "../../Container/Spacer/Spacer";
-import Loading from "../../Loading/Loading";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { round2decimal } from "../../../util/util";
 

@@ -8,10 +8,8 @@ import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-import Loading from "../../Loading/Loading";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { CustomTooltipProps } from "./MonthsGraph.types";
-import { dateToMonth } from "../../../util/util";
 import { TooltipContainer, TooltipTextContainer } from "./MonthsGraph.styles";
 const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
