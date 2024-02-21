@@ -12,4 +12,6 @@ export default styled.div<TypeographyProps>`
   height: ${(props) => (props.height ? props.height : "none")};
   width: ${(props) => (props.width ? props.width : "100%")};
   text-align: "left";
+  white-space: pre-line;
+  text-align: ${(props) => (props.textAlign ? props.textAlign : "none")};
 `;

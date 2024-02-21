@@ -1,4 +1,4 @@
-import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
+import { AreaChart, Area, XAxis, ResponsiveContainer, Tooltip } from "recharts";
 import { useMemo } from "react";
 import WidgetCard from "../WidgetCard/WidgetCard";
 import Typography from "../../Typography/Typography";
@@ -10,7 +10,7 @@ import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { CustomTooltipProps } from "./MonthsGraph.types";
-import { TooltipContainer, TooltipTextContainer } from "./MonthsGraph.styles";
+import { HeadlineContainer, TooltipContainer, TooltipTextContainer } from "./MonthsGraph.styles";
 const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
 
@@ -69,16 +69,15 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
 
     return null;
   };
-  console.log(firstDatesArray);
 
   return (
     <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
-      <div>
+      <HeadlineContainer className="HeadlineContainer">
         <Typography color="#14142B" size="24px" weight="700">
           Dates
         </Typography>
         <HorizontalLine />
-      </div>
+      </HeadlineContainer>
       <WidgetContainer>
         {isLoading && <LoadingSpinner />}
         {contentFlag && (

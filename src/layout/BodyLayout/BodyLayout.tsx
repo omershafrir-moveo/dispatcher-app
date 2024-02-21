@@ -21,6 +21,7 @@ import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { Status } from "../../util/apiService.types";
 
 export type ArticlesResponseType = {
   status: string;
@@ -35,7 +36,7 @@ const BodyLayout: React.FC = () => {
     sortMode,
     updateSources,
   } = useContext(SearchContext);
-
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const params = getParams(
     filterValue,
     filtersValues,
@@ -45,7 +46,14 @@ const BodyLayout: React.FC = () => {
   );
 
   const fetchArticles = async ({ pageParam = 1 }) => {
-    const data = await getArticles(pageParam, params);
+    const {
+      data,
+      status: responseStatus,
+      errorMsg: responseMessage,
+    } = await getArticles(pageParam, params);
+    if (responseMessage) {
+      setErrorMsg(responseMessage);
+    }
     return data;
   };
 
@@ -62,10 +70,10 @@ const BodyLayout: React.FC = () => {
     },
   });
 
-  const [errorMsg, setErrorMsg] = useState("");
   useEffect(() => {
     setErrorMsg(validateParams(params));
   }, [searchValueCopy, filterValue, filtersValues]);
+  console.log("ssss", infiniteArticlesQuery.data);
 
   const articles =
     infiniteArticlesQuery.status == "success" &&
@@ -86,13 +94,12 @@ const BodyLayout: React.FC = () => {
   const resultsCondition = !topHeadlinesCondition && articles.length != 0;
 
   const fetchSources = async () => {
-    const data = await getSources();
-    const sourcesArray: SelectOptionType[] = [noneOption].concat(data.sources
-      .map((source: { name: string; id: string }, idx: number) => {
+    const { data } = await getSources();
+    const sourcesArray: SelectOptionType[] = [noneOption].concat(
+      data.sources.map((source: { name: string; id: string }, idx: number) => {
         return { key: idx + 1, title: source.name, value: source.id };
-      }))
-      
-
+      })
+    );
     updateSources(sourcesArray);
     return data;
   };
@@ -126,7 +133,7 @@ const BodyLayout: React.FC = () => {
                   <NoArticles />
                 </FadeWrapper>
                 <TypoContainer className="TypoContainer">
-                  <Typography size="18px" color="#5A5A89">
+                  <Typography size="18px" color="#5A5A89" textAlign="center">
                     {errorMsg
                       ? errorMsg
                       : "we couldn't find any matches for your query"}
@@ -140,6 +147,7 @@ const BodyLayout: React.FC = () => {
               articles={articles}
               fetchNextPage={infiniteArticlesQuery.fetchNextPage}
               hasNextPage={infiniteArticlesQuery.hasNextPage}
+              errorMsg={errorMsg}
             />
           )}
         </DataContainer>

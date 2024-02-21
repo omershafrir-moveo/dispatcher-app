@@ -24,7 +24,7 @@ export const UpButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 60px;
-  height: 60px; 
+  height: 60px;
   position: fixed;
   bottom: 50px;
   left: 50px;
@@ -34,8 +34,12 @@ export const UpButtonWrapper = styled.div`
 
   @media ${device.mobile} {
     width: 40px;
-    height: 40px; 
+    height: 40px;
     bottom: 40px;
     left: 40px;
   }
+`;
+
+export const EndErrorContainer = styled.div`
+  padding-bottom: 20px;
 `;

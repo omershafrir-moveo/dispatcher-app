@@ -9,3 +9,14 @@ export type searchParams = {
 };
 
 export type Dictionary = { [key: string]: SelectOptionType };
+
+export enum Status {
+  SUCCESS = "success",
+  ERROR = "error",  
+}
+
+export type ResponseType = {
+  data: any;
+  status: Status;
+  errorMsg?: string;
+}

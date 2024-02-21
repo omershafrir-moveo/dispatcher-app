@@ -2,8 +2,13 @@ import axios, { AxiosError } from "axios";
 import { SelectOptionType } from "../global-data";
 import { arrayToQueryString, wait } from "./util";
 import { noneOption } from "../global-data";
-import { queryEntry, searchParams, Dictionary } from "./apiService.types";
-import { ArticleProps } from "../components/ArticleCard/ArticleCard";
+import {
+  queryEntry,
+  searchParams,
+  Dictionary,
+  ResponseType,
+  Status,
+} from "./apiService.types";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -13,9 +18,11 @@ const getParamsNames = (queries: queryEntry[]): string[] => {
     return acc.concat(keys);
   }, []);
 };
-export type responseType = {
-  articles: ArticleProps[];
-  error?: string;
+
+const errorsDict: { [code: string]: string } = {
+  parametersMissing: `Required parameters are missing.\nPlease set any of the following parameters: source/language/country/category or enter a query.`,
+  rateLimited: `You have made too many requests recently.\nIf you wish to view more articles please consider upgrading your plan.`,
+  maximumResultsReached: `You have requested too many results.\n If you wish to view more articles please consider upgrading your plan.`
 };
 
 export const validateParams = (params: searchParams): string => {
@@ -59,21 +66,36 @@ export const getParams = (
   return { searchMode, queries };
 };
 
-export const getArticles = async (pageParam: number, params?: searchParams) => {
+export const getArticles = async (
+  pageParam: number,
+  params?: searchParams
+): Promise<ResponseType> => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
     // await wait(2000);
     const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
-    return res.data;
+    return { data: res.data, status: Status.SUCCESS };
   } catch (error: any) {
     console.log(error.response.data);
-    return [];
+    return {
+      data: [],
+      status: Status.ERROR,
+      errorMsg: errorsDict[error.response.data.code],
+    };
   }
 };
 
 export const getSources = async () => {
-  const url = `https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`;
-  const res = await axios.get(url);
-  return res.data;
+  try {
+    const url = `https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`;
+    const res = await axios.get(url);
+    return { data: res.data, status: Status.SUCCESS };
+  } catch (error: any) {
+    return {
+      data: [],
+      status: Status.ERROR,
+      errorMsg: error.response.data.message,
+    };
+  }
 };

@@ -14,3 +14,7 @@ export const TooltipTextContainer = styled.div`
   margin: 0;
   font-family: "Roboto", sans-serif;
 `;
+
+export const HeadlineContainer = styled.div`
+
+`;
