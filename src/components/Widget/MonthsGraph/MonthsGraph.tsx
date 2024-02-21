@@ -98,15 +98,12 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
             <XAxis
               className="XAxis"
               dataKey="date"
-              tickFormatter={(date: Date) =>
-                firstDatesArray.includes(date) ? format(date, "MMM") : ""
-              }
-              // tickFormatter={(date: Date) => {
-              //   if (date.getDay() % 1 === 0) {
-              //     return format(date, "MMM d");
-              //   }
-              //   return "";
-              // }}
+              tickFormatter={(date: Date) => {
+                if (firstDatesArray.includes(date)) {
+                  console.log(date);
+                  return format(date, "MMM");
+                } else return "";
+              }}
               tickLine={false}
               axisLine={false}
               interval="preserveStartEnd"
