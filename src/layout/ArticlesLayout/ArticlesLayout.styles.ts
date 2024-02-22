@@ -4,8 +4,8 @@ import { device } from "../../util/breakpoints";
 export const Container = styled.div<{ children?: React.ReactNode }>``;
 
 export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
-  height: 100%;
-  max-height: 1160px; // for scrolling
+  height: calc(100% - 60px);
+  /* max-height: 1160px; // for scrolling */
   width: 100%;
   padding-left: 0px;
   gap: 24px;
@@ -13,6 +13,35 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: block;
+    width: 35px;
+    height: 5px;
+  }
 `;
 
 export const Item = styled.li<{ children?: React.ReactNode }>`
@@ -40,6 +69,4 @@ export const UpButtonWrapper = styled.div`
   }
 `;
 
-export const EndErrorContainer = styled.div`
-  padding-bottom: 20px;
-`;
+export const EndErrorContainer = styled.div``;

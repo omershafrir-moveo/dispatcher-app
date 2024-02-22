@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import Legend from "./Legend/Legend";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import Typography from "../../Typography/Typography";
@@ -72,57 +72,63 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
         Sources
       </Typography>
       <HorizontalLine />
-      <WidgetContainer>
-        {isLoading && <LoadingSpinner />}
-        {contentFlag && (
-          <>
-            <PieChart width={124} height={124}>
-              <Pie
-                data={data}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={62}
-                innerRadius={54}
-                stroke=""
-              >
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <text
-                x={62}
-                y={62}
-                fontFamily="Mulish, sans-serif"
-                color="#030035"
-                fontSize={12}
-                textAnchor="middle"
-                dominantBaseline="middle"
-              >
-                <tspan x={62} dy={-5}>{articles.length}</tspan>
-                <tspan x={62} dy={15}>Articles</tspan>
-              </text>
-            </PieChart>
-            <Legend
-              data={data.map((p, index) => ({
-                name: p.name,
-                value: round2decimal((p.value / totalNumOfArticles) * 100),
-                color: COLORS[index % COLORS.length],
-              }))}
-            />
-          </>
-        )}
-        {!contentFlag && !isLoading && (
-          <>
-            <Spacer height="59.5px" />
-            <NoData />
-          </>
-        )}
-      </WidgetContainer>
+      <ResponsiveContainer>
+        <WidgetContainer>
+          {isLoading && <LoadingSpinner />}
+          {contentFlag && (
+            <>
+              <PieChart width={124} height={120}>
+                <Pie
+                  data={data}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={52}
+                  innerRadius={44}
+                  stroke=""
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <text
+                  x={62}
+                  y={62}
+                  fontFamily="Mulish, sans-serif"
+                  color="#030035"
+                  fontSize={12}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                >
+                  <tspan x={62} dy={-5} fontSize={18}>
+                    {articles.length}
+                  </tspan>
+                  <tspan x={62} dy={15} fontSize={18}>
+                    Articles
+                  </tspan>
+                </text>
+              </PieChart>
+              <Legend
+                data={data.map((p, index) => ({
+                  name: p.name,
+                  value: round2decimal((p.value / totalNumOfArticles) * 100),
+                  color: COLORS[index % COLORS.length],
+                }))}
+              />
+            </>
+          )}
+          {!contentFlag && !isLoading && (
+            <>
+              <Spacer height="59.5px" />
+              <NoData />
+            </>
+          )}
+        </WidgetContainer>
+      </ResponsiveContainer>
     </WidgetCard>
   );
 };

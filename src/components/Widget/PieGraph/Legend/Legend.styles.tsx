@@ -6,7 +6,7 @@ export const LegendContainer = styled.div`
   /* justify-content: space-between; */
   align-items: flex-start;
   width: 372px;
-  height: 143px;
+  height: 100px;
   margin-top: 15px;
   overflow-y: auto;
 `;

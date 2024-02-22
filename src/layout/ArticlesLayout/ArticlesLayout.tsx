@@ -8,12 +8,8 @@ import {
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import { useRef, useState } from "react";
-import IconButton from "../../components/IconButton/IconButton";
-import UpArrowIcon from "../../components/Icons/UpArrowIcon";
-import useDesktop from "../../hooks/useDesktop";
-import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
 import Typography from "../../components/Typography/Typography";
-import { Status } from "../../util/apiService.types";
+import { Fade } from "react-awesome-reveal";
 
 export type ArticlesLayoutProps = {
   articles: ArticleProps[];
@@ -49,10 +45,14 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
     }
   };
   return (
-    <ArticlesContainer ref={scrolledContainerRef} onScroll={handleScrollEnd}>
+    <ArticlesContainer
+      className="ArticlesContainer"
+      ref={scrolledContainerRef}
+      onScroll={handleScrollEnd}
+    >
       {articles?.map((article: ArticleProps, index) => (
         <Item key={index}>
-          <FadeWrapper>
+          <Fade>
             <ArticleCard
               author={article.author}
               content={article.content}
@@ -63,15 +63,17 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
               urlToImage={article.urlToImage}
               source={article.source}
             />
-          </FadeWrapper>
+          </Fade>
         </Item>
       ))}
       {errorMsg && (
-        <EndErrorContainer className="EndErrorContainer">
-          <Typography size="18px" color="#5A5A89" textAlign="center">
-            {errorMsg}
-          </Typography>
-        </EndErrorContainer>
+        <Fade>
+          <EndErrorContainer className="EndErrorContainer">
+            <Typography size="18px" color="#5A5A89" textAlign="center">
+              {errorMsg}
+            </Typography>
+          </EndErrorContainer>
+        </Fade>
       )}
     </ArticlesContainer>
   );

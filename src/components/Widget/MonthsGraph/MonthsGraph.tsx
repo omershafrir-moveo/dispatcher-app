@@ -10,7 +10,11 @@ import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { CustomTooltipProps } from "./MonthsGraph.types";
-import { HeadlineContainer, TooltipContainer, TooltipTextContainer } from "./MonthsGraph.styles";
+import {
+  HeadlineContainer,
+  TooltipContainer,
+  TooltipTextContainer,
+} from "./MonthsGraph.styles";
 const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   let contentFlag = articles.length > 0;
 
@@ -42,9 +46,18 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
   const firstDatesArray: Date[] = useMemo(() => {
     const returnArray: Date[] = [];
     const dates: Date[] = data.map((dataPoint) => dataPoint.date);
+    const datesReversed: Date[] = [...dates].reverse();
     for (let month = 0; month < 12; month++) {
-      const firstDate = dates.find((date) => date.getMonth() == month);
-      if (firstDate) returnArray.push(firstDate);
+      const firstDateIndex = dates.findIndex(
+        (date) => date.getMonth() == month
+      );
+      const lastDateIndex = datesReversed.findIndex(
+        (date) => date.getMonth() == month
+      );
+      if (firstDateIndex != -1) {
+        // returnArray.push(dates[Math.floor(firstDateIndex + lastDateIndex) / 2]);
+        returnArray.push(dates[firstDateIndex]);
+      }
     }
     return returnArray;
   }, [data]);
@@ -58,10 +71,14 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
       return (
         <TooltipContainer className="TooltipContainer">
           <TooltipTextContainer className="TooltipTextContainer">
-            <p className="label">{`Articles published in ${format(
-              label!,
-              "d, MMM"
-            )} : ${payload[0].value}`}</p>
+            <Typography color="#5A5A89">
+              {" "}
+              {`articled published in ${format(label!, "MMM d")}`}
+            </Typography>
+            <Typography color="#5A5A89" weight="800">
+              {" "}
+              {payload[0].value}
+            </Typography>
           </TooltipTextContainer>
         </TooltipContainer>
       );
@@ -78,70 +95,72 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
         </Typography>
         <HorizontalLine />
       </HeadlineContainer>
-      <WidgetContainer>
-        {isLoading && <LoadingSpinner />}
-        {contentFlag && (
-          <AreaChart
-            width={438}
-            height={250}
-            data={data}
-            margin={{
-              top: 5,
-              right: 10,
-              left: 10,
-              bottom: 0,
-            }}
-          >
-            <XAxis
-              className="XAxis"
-              dataKey="date"
-              tickFormatter={(date: Date) => {
-                if (firstDatesArray.includes(date)) {
-                  console.log(date);
-                  return format(date, "MMM");
-                } else return "";
+      <ResponsiveContainer>
+        <WidgetContainer>
+          {isLoading && <LoadingSpinner />}
+          {contentFlag && (
+            <AreaChart
+              width={438}
+              height={250}
+              data={data}
+              margin={{
+                top: 5,
+                right: 10,
+                left: 10,
+                bottom: 0,
               }}
-              tickLine={false}
-              axisLine={false}
-              interval="preserveStartEnd"
-              style={{
-                fontWeight: "700",
-              }}
-              tick={{ fill: "#5A5A89" }}
-            />
-            <defs>
-              <linearGradient
-                id="grad"
-                x1="191.129"
-                y1="0"
-                x2="191.585"
-                y2="154.843"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0.3125" stopColor="#0058B9" stopOpacity="0.30" />
-                <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <Tooltip
-              viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
-              content={<CustomTooltip />}
-            />
-            <Area
-              type="basis"
-              dataKey="value"
-              fill={`url(#grad)`}
-              stroke="#0058B9"
-              strokeWidth="4px"
-            />
-          </AreaChart>
-        )}
-        {!contentFlag && !isLoading && (
-          <>
-            <Spacer height="59.5px" />
-            <NoData />
-          </>
-        )}
-      </WidgetContainer>
+            >
+              <XAxis
+                className="XAxis"
+                dataKey="date"
+                tickFormatter={(date: Date) => format(date, "dd.MM")}
+                tickLine={false}
+                axisLine={false}
+                interval="preserveStartEnd"
+                style={{
+                  fontWeight: "700",
+                }}
+                tick={{ fill: "#5A5A89" }}
+              />
+              <defs>
+                <linearGradient
+                  id="grad"
+                  x1="191.129"
+                  y1="0"
+                  x2="191.585"
+                  y2="154.843"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop
+                    offset="0.3125"
+                    stopColor="#0058B9"
+                    stopOpacity="0.30"
+                  />
+                  <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <Tooltip
+                viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
+                cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
+                content={<CustomTooltip />}
+              />
+              <Area
+                type="basis"
+                dataKey="value"
+                fill={`url(#grad)`}
+                stroke="#0058B9"
+                strokeWidth="4px"
+              />
+            </AreaChart>
+          )}
+          {!contentFlag && !isLoading && (
+            <>
+              <Spacer height="59.5px" />
+              <NoData />
+            </>
+          )}
+        </WidgetContainer>
+      </ResponsiveContainer>
     </WidgetCard>
   );
 };

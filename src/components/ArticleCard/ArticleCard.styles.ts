@@ -49,7 +49,7 @@ export const InfoContainer = styled.div`
   display: flex;
   width: calc(100% - 32px);
   height: 100%;
-  padding: 8px 0px 8px 0px;
+  padding: 16px 0px;
   flex-direction: column;
   gap: 19px;
   justify-content: space-evenly;

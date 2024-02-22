@@ -10,7 +10,7 @@ import {
 import ArticlesLayout from "../ArticlesLayout/ArticlesLayout";
 import Typography from "../../components/Typography/Typography";
 import WidgetsSection from "../../components/Widget/WidgetContainer/WidgetsSection/WidgetsSection";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SearchContext } from "../../components/SearchContext/SearchContext";
 import { getArticles, getParams, getSources } from "../../util/apiService";
 import NoArticles from "../../components/Icons/NoArticles";
@@ -19,9 +19,8 @@ import { SelectOptionType } from "../../global-data";
 import { noneOption } from "../../global-data";
 import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
-import FadeWrapper from "../../components/FadeWrapper/FadeWrapper";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import { Status } from "../../util/apiService.types";
+import { Fade } from "react-awesome-reveal";
 
 export type ArticlesResponseType = {
   status: string;
@@ -36,6 +35,22 @@ const BodyLayout: React.FC = () => {
     sortMode,
     updateSources,
   } = useContext(SearchContext);
+
+  const errorCodeInterpreter = (code: string): string => {
+    switch (code) {
+      case "parametersMissing":
+        if (filterValue.key == 0)
+          return `Required parameters are missing.\nPlease set any of the following parameters: country/category/source or enter a query.`;
+        else
+          return `Required parameters are missing.\nPlease choose a source or enter a query.`;
+      case "rateLimited":
+        return `Unfortunately you have reached the maximal number of requests allowed to a free user.\nIf you wish to view more articles please consider upgrading your plan.`;
+      case "maximumResultsReached":
+        return "Unfortunately you have reached the maximal number of requests allowed to a free user.\n If you wish to view more articles please consider upgrading your plan.";
+      default:
+        return "";
+    }
+  };
   const [errorMsg, setErrorMsg] = useState<string>("");
   const params = getParams(
     filterValue,
@@ -49,10 +64,10 @@ const BodyLayout: React.FC = () => {
     const {
       data,
       status: responseStatus,
-      errorMsg: responseMessage,
+      errorMsg: errorCode,
     } = await getArticles(pageParam, params);
-    if (responseMessage) {
-      setErrorMsg(responseMessage);
+    if (errorCode) {
+      setErrorMsg(errorCodeInterpreter(errorCode));
     }
     return data;
   };
@@ -70,18 +85,20 @@ const BodyLayout: React.FC = () => {
     },
   });
 
-  useEffect(() => {
-    setErrorMsg(validateParams(params));
-  }, [searchValueCopy, filterValue, filtersValues]);
-  console.log("ssss", infiniteArticlesQuery.data);
-
+  // useEffect(() => {
+  //   setErrorMsg(validateParams(params));
+  // }, [searchValueCopy, filterValue, filtersValues]);
+  const numOfResults = useRef<number>(0);
   const articles =
     infiniteArticlesQuery.status == "success" &&
     infiniteArticlesQuery.data?.pages.flat().length != 0
       ? (infiniteArticlesQuery.data?.pages
-          ?.map((res) =>
-            res?.articles && res.articles.length > 0 ? res?.articles : []
-          )
+          ?.map((res) => {
+            if (res?.articles && res.articles.length > 0) {
+              numOfResults.current = res.totalResults;
+              return res?.articles;
+            } else return [];
+          })
           .flat() as ArticleProps[])
       : [];
 
@@ -119,7 +136,7 @@ const BodyLayout: React.FC = () => {
         )}
         {resultsCondition && (
           <Typography size="14px" weight="regular" letterSpacing="0.25px">
-            {`${articles.length} Total Results`}
+            {`${numOfResults.current} Total Results`}
           </Typography>
         )}
       </HeadlinesContainer>
@@ -129,9 +146,9 @@ const BodyLayout: React.FC = () => {
             {infiniteArticlesQuery.isLoading && <LoadingSpinner />}
             {!infiniteArticlesQuery.isLoading && articles.length == 0 && (
               <EmptyStateContainer className="EmptyStateContainer">
-                <FadeWrapper>
+                <Fade>
                   <NoArticles />
-                </FadeWrapper>
+                </Fade>
                 <TypoContainer className="TypoContainer">
                   <Typography size="18px" color="#5A5A89" textAlign="center">
                     {errorMsg

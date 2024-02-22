@@ -24,12 +24,12 @@ const MobileFiltersToolbar: React.FC<FiltersLayoutProps> = (props) => {
     setIsActiveFilters((prevState) => !prevState);
   };
   const { filterValue, handleFilterChange } = useSearchContext();
-  const isTablet = useTablet()
+  const isTablet = useTablet();
   return (
     <MobileToolbarContainer className="MobileToolbarContainer">
       <MobileToolbarWrapper className="MobileToolbarWrapper">
         <FiltersWrapper className="FiltersWrapper" mode={filterValue}>
-          {isTablet &&
+          {isTablet && (
             <FilterSelect
               defaultItemName={filterValue}
               itemsNames={[modeArray[0], modeArray[1]]}
@@ -38,7 +38,7 @@ const MobileFiltersToolbar: React.FC<FiltersLayoutProps> = (props) => {
               theme="filter"
               disabled={false}
             />
-          }
+          )}
           {isActiveFilters && <FiltersLayout mode={filterValue} />}
         </FiltersWrapper>
         <IconButton handleClick={handleFilterClick}>

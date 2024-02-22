@@ -13,6 +13,7 @@ export const TooltipTextContainer = styled.div`
   color: #333333;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  text-align: center;
 `;
 
 export const HeadlineContainer = styled.div`

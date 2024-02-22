@@ -4,10 +4,8 @@ import WidgetContainer from "../WidgetContainer";
 import { ArticleProps } from "../../../ArticleCard/ArticleCard";
 import React from "react";
 import { WidgetsSectionContainer } from "./WidgetsSection.styles";
-import useViewport, { Viewport } from "../../../../hooks/useViewport";
-import useTablet from "../../../../hooks/useTablet";
-import useDesktop from "../../../../hooks/useDesktop";
-import FadeWrapper from "../../../FadeWrapper/FadeWrapper";
+import { Fade } from "react-awesome-reveal";
+
 export type WidgetProps = {
   articles: ArticleProps[];
   isLoading: boolean;
@@ -20,12 +18,12 @@ const WidgetsSection: React.FC<{
 }> = ({ articles, isLoading }) => {
   return (
     <WidgetsSectionContainer className="WidgetsSectionContainer">
-      <FadeWrapper>
+      <Fade>
         <PieGraph articles={articles} isLoading={isLoading} />
-      </FadeWrapper>
-      <FadeWrapper>
+      </Fade>
+      <Fade>
         <MonthsGraph articles={articles} isLoading={isLoading} />
-      </FadeWrapper>
+      </Fade>
     </WidgetsSectionContainer>
   );
 };

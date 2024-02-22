@@ -6,6 +6,7 @@ export const TopContainer = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: calc(100% - 67px); // 47+20 = 67 for articles
 
   @media ${device.tablet} {
     gap: 12px;
@@ -18,19 +19,21 @@ export const TopContainer = styled.div<{ children?: React.ReactNode }>`
 `;
 export const BodyLayoutContainer = styled.div<{ children?: React.ReactNode }>`
   background-color: ${COLORS.backgroundColor};
+  height: calc(100% - 34px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   background-color: transparent;
 `;
 
 export const DataContainer = styled.div<{ children?: React.ReactNode }>`
   display: flex;
   width: 100%;
+  height: 100%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const EmptyStateContainer = styled.div<{ children?: React.ReactNode }>`

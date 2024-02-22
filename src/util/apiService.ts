@@ -19,12 +19,6 @@ const getParamsNames = (queries: queryEntry[]): string[] => {
   }, []);
 };
 
-const errorsDict: { [code: string]: string } = {
-  parametersMissing: `Required parameters are missing.\nPlease set any of the following parameters: source/language/country/category or enter a query.`,
-  rateLimited: `You have made too many requests recently.\nIf you wish to view more articles please consider upgrading your plan.`,
-  maximumResultsReached: `You have requested too many results.\n If you wish to view more articles please consider upgrading your plan.`
-};
-
 export const validateParams = (params: searchParams): string => {
   if (
     params.searchMode == "everything" &&
@@ -81,7 +75,7 @@ export const getArticles = async (
     return {
       data: [],
       status: Status.ERROR,
-      errorMsg: errorsDict[error.response.data.code],
+      errorMsg: error.response.data.code,
     };
   }
 };
