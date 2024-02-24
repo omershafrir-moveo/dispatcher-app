@@ -21,6 +21,7 @@ import { validateParams } from "../../util/apiService";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { Fade } from "react-awesome-reveal";
+import { Status } from "../../util/apiService.types";
 
 export type ArticlesResponseType = {
   status: string;
@@ -52,6 +53,7 @@ const BodyLayout: React.FC = () => {
     }
   };
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [responseStatus, setResponseStatus] = useState<Status>(Status.SUCCESS);
   const params = getParams(
     filterValue,
     filtersValues,
@@ -63,15 +65,16 @@ const BodyLayout: React.FC = () => {
   const fetchArticles = async ({ pageParam = 1 }) => {
     const {
       data,
-      status: responseStatus,
+      responseStatus: ResponseStatus,
       errorMsg: errorCode,
     } = await getArticles(pageParam, params);
+  
     if (errorCode) {
       setErrorMsg(errorCodeInterpreter(errorCode));
     }
+    setResponseStatus(ResponseStatus)
     return data;
   };
-
   const infiniteArticlesQuery = useInfiniteQuery({
     queryFn: fetchArticles,
     queryKey: [
@@ -164,6 +167,7 @@ const BodyLayout: React.FC = () => {
               articles={articles}
               fetchNextPage={infiniteArticlesQuery.fetchNextPage}
               hasNextPage={infiniteArticlesQuery.hasNextPage}
+              responseStatus={responseStatus}
               errorMsg={errorMsg}
             />
           )}

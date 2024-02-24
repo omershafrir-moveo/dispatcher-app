@@ -14,6 +14,7 @@ export type TypeographyProps = {
   width?: string;
   maxHeight?: string;
   textAlign?: string;
+  overflow?: string;
 };
 
 const Typography: React.FC<TypeographyProps> = ({
@@ -29,6 +30,7 @@ const Typography: React.FC<TypeographyProps> = ({
   width,
   maxHeight,
   textAlign,
+  overflow
 }) => {
   return (
     <StyledFont
@@ -43,6 +45,7 @@ const Typography: React.FC<TypeographyProps> = ({
       width={width}
       maxHeight={maxHeight}
       textAlign={textAlign}
+      overflow={overflow}
     >
       {children}
     </StyledFont>

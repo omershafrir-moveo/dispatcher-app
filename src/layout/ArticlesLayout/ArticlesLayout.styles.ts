@@ -5,7 +5,6 @@ export const Container = styled.div<{ children?: React.ReactNode }>``;
 
 export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   height: calc(100% - 60px);
-  /* max-height: 1160px; // for scrolling */
   width: 100%;
   padding-left: 0px;
   gap: 24px;

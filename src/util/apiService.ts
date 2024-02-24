@@ -69,26 +69,26 @@ export const getArticles = async (
     // await wait(2000);
     const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
-    return { data: res.data, status: Status.SUCCESS };
+    return { data: res.data, responseStatus: Status.SUCCESS };
   } catch (error: any) {
     console.log(error.response.data);
     return {
       data: [],
-      status: Status.ERROR,
+      responseStatus: Status.ERROR,
       errorMsg: error.response.data.code,
     };
   }
 };
 
-export const getSources = async () => {
+export const getSources = async ():Promise<ResponseType> => {
   try {
     const url = `https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`;
     const res = await axios.get(url);
-    return { data: res.data, status: Status.SUCCESS };
+    return { data: res.data, responseStatus: Status.SUCCESS };
   } catch (error: any) {
     return {
       data: [],
-      status: Status.ERROR,
+      responseStatus: Status.ERROR,
       errorMsg: error.response.data.message,
     };
   }

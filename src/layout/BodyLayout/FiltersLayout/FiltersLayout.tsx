@@ -32,18 +32,6 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
   } = useContext(SearchContext);
 
   const filters = FiltersBySearchMode(filterValue);
-
-  // const [sourcesActive, setSourcesActive] = useState(
-  //   filtersValues.sources?.value != "none"
-  // );
-  // const [filterActive, setFilterActive] = useState(
-  //   [
-  //     filtersValues.category?.value,
-  //     filtersValues.country?.value,
-  //     filtersValues.language?.value,
-  //   ].some((val) => val != "none")
-  // );
-
   const getFilter = (f: SelectOptionType) => {
     switch (f.value) {
       case "language":

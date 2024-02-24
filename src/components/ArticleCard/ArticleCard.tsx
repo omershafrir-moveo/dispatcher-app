@@ -7,9 +7,7 @@ import {
 } from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
 import DispatcherButton from "../DispatcherButton/DispatcherButton";
-import { SelectOptionType } from "../../global-data";
 import Image from "../Image/Image";
-import Photograph from "../Photograph/Photograph";
 import { formatDate } from "../../util/util";
 import useMobile from "../../hooks/useMobile";
 
@@ -36,12 +34,14 @@ const ArticleCard: React.FC<ArticleProps> = (props) => {
             color="#000000"
             weight="bold"
             size="18px"
-            maxHeight={isMobile ? "63px" : "none"}
+            height="50px"
           >
             {props.title}
           </Typography>
-          <Typography >{props.source.name}</Typography>
-          <Typography color="#5A5A89">{props.content}</Typography>
+          <Typography>{props.source.name}</Typography>
+          <Typography maxHeight="60px"  overflow="hidden" color="#5A5A89">
+            {props.content}
+          </Typography>
           <ButtonWrapper className="ButtonWrapper">
             <DispatcherButton
               text="NAVIGATE TO DISPATCH"

@@ -10,12 +10,14 @@ import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import { useRef, useState } from "react";
 import Typography from "../../components/Typography/Typography";
 import { Fade } from "react-awesome-reveal";
+import { Status } from "../../util/apiService.types";
 
 export type ArticlesLayoutProps = {
   articles: ArticleProps[];
   fetchNextPage: any;
   hasNextPage: boolean;
   errorMsg: string;
+  responseStatus: Status;
 };
 
 const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
@@ -23,16 +25,28 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   fetchNextPage,
   hasNextPage,
   errorMsg,
+  responseStatus,
 }) => {
   const scrolledContainerRef = useRef<HTMLUListElement>(null);
-
+  const marginError = 10;
   const handleScrollEnd = () => {
     if (scrolledContainerRef.current) {
+      console.log(
+        "container scrolltop: ",
+        scrolledContainerRef.current.scrollTop
+      );
+      console.log(
+        "container height - client height§ ",
+        scrolledContainerRef.current.scrollHeight -
+          scrolledContainerRef.current.clientHeight
+      );
       if (
         hasNextPage &&
-        scrolledContainerRef.current.scrollTop ===
-          scrolledContainerRef.current.scrollHeight -
-            scrolledContainerRef.current.clientHeight
+        Math.abs(
+          scrolledContainerRef.current.scrollTop -
+            (scrolledContainerRef.current.scrollHeight -
+              scrolledContainerRef.current.clientHeight)
+        ) <= marginError
       ) {
         console.log("fetching!");
 
@@ -66,7 +80,7 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
           </Fade>
         </Item>
       ))}
-      {errorMsg && (
+      {responseStatus == Status.ERROR && (
         <Fade>
           <EndErrorContainer className="EndErrorContainer">
             <Typography size="18px" color="#5A5A89" textAlign="center">

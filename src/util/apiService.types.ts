@@ -17,6 +17,6 @@ export enum Status {
 
 export type ResponseType = {
   data: any;
-  status: Status;
+  responseStatus: Status;
   errorMsg?: string;
 }

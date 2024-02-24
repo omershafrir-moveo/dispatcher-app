@@ -7,8 +7,6 @@ export const Card = styled.div<{ type: string }>`
   display: flex;
   flex-direction: column;
   padding: 25px;
-  /* padding: ${(props) =>
-    props.type == "pie" ? "25px 15px 0px 25px" : "25px 15px 20px 25px"}; */
   box-shadow: 0px 32px 64px 0px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--grayscale-line, #d9dbe9);
   background: var(--grayscale-white, #fff);

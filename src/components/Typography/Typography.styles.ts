@@ -14,4 +14,6 @@ export default styled.div<TypeographyProps>`
   text-align: "left";
   white-space: pre-line;
   text-align: ${(props) => (props.textAlign ? props.textAlign : "none")};
+  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "none")};
+  overflow: ${(props) => (props.overflow ? props.overflow : "none")};
 `;
