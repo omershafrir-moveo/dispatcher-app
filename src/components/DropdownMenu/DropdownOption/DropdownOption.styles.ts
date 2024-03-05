@@ -41,6 +41,7 @@ const StyledOption = styled.button<StyledButtonProps>`
         : "none"};
     font-size: 12px;
     background-color: ${(props) => (props.isFilled ? "#568DDE" : "none")};
+    background-color: ${(props) => (props.isChosen ? "#568DDE" : "none")};
   }
 `;
 

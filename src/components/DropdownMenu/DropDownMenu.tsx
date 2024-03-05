@@ -50,6 +50,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         }
         disabled={props.disabled}
         filterType={props.defaultItemName.value}
+        isChosen={false}
       />
       {isOpen && (
         <ItemsListContainer className="ItemsListContainer">
@@ -74,6 +75,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
                       }
                       disabled={props.disabled}
                       filterType={props.defaultItemName.value}
+                      isChosen={props.selectedOption.value == item.value}
                     />
                   )
               )}

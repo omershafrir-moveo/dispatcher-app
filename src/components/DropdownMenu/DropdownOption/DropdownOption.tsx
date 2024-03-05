@@ -21,9 +21,9 @@ export const DropdownOption: React.FC<{
   theme: themeOption;
   disabled?: boolean;
   filterType: string;
+  isChosen?: boolean;
 }> = (props) => {
   const isMobile = useMobile();
-  console.log(`'props.value' value is: ,${props.value.value}`);
 
   return (
     <StyledOption
@@ -47,6 +47,10 @@ export const DropdownOption: React.FC<{
           "popularity",
           "publishedAt",
         ].includes(props.value.value) && props.isInputBox
+      }
+      isChosen={
+        props.isChosen &&
+        !["top-headlines", "everything"].includes(props.value.value)
       }
     >
       <OptionDataContainer
