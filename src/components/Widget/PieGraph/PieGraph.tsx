@@ -104,10 +104,10 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                   textAnchor="middle"
                   dominantBaseline="middle"
                 >
-                  <tspan x={62} dy={-5} fontSize={18}>
+                  <tspan x={62} dy={-8} fontSize={16}>
                     {articles.length}
                   </tspan>
-                  <tspan x={62} dy={15} fontSize={18}>
+                  <tspan x={62} dy={15} fontSize={12}>
                     Articles
                   </tspan>
                 </text>

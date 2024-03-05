@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../util/breakpoints";
 
 export const StyledTextField = styled.input`
   width: 100%;
@@ -16,4 +17,8 @@ export const StyledTextField = styled.input`
   }
   border: none;
   outline: none;
+
+  /* @media ${device.mobile} {
+    height: 68px;
+  } */
 `;

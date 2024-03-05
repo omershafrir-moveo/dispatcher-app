@@ -20,6 +20,7 @@ export type themeOption =
 export type StyledButtonProps = {
   isInputBox?: boolean;
   theme: themeOption;
+  isFilled?: boolean;
 };
 
 const THEMES: themeType = {

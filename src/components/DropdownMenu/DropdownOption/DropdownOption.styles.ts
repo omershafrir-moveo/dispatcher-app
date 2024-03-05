@@ -40,16 +40,25 @@ const StyledOption = styled.button<StyledButtonProps>`
         ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
         : "none"};
     font-size: 12px;
+    background-color: ${(props) => (props.isFilled ? "#568DDE" : "none")};
   }
 `;
 
 export const TextContainer = styled.div`
   overflow: hidden;
 `;
-export const OptionDataContainer = styled.div`
+export const OptionDataContainer = styled.div<{
+  isInputBox: boolean;
+}>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: calc(100% - 30px);
+
+  @media ${device.mobile} {
+    justify-content: ${(props) =>
+      !props.isInputBox ? "flex-start" : "center"};
+    align-items: center;
+  }
 `;
 export default StyledOption;

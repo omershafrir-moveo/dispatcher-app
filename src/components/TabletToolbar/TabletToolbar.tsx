@@ -16,7 +16,7 @@ const TabletToolbar = () => {
       <TabletSearchBarWrapper className="TabletSearchBarWrapper">
         <InputSearchBar />
       </TabletSearchBarWrapper>
-      <TabletToolbarContainer className="TabletToolbarContainer">
+      {/* <TabletToolbarContainer className="TabletToolbarContainer">
         <IconButton handleClick={() => {}}>
           <SettingsIcon />
         </IconButton>
@@ -26,7 +26,7 @@ const TabletToolbar = () => {
         <IconButton handleClick={() => {}}>
           <UserCircleIcon />
         </IconButton>
-      </TabletToolbarContainer>
+      </TabletToolbarContainer> */}
     </TopTabletContainer>
   );
 };

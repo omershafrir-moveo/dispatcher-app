@@ -11,6 +11,7 @@ export const RecentSearchesMenuContainer = styled.div<{
   width: 100%;
   position: absolute;
   top: 56px;
+  z-index: 9999;
 `;
 
 export const ItemsList = styled.ul<ItemsListProps>`

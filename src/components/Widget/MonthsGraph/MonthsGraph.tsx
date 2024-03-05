@@ -123,20 +123,9 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                 tick={{ fill: "#5A5A89" }}
               />
               <defs>
-                <linearGradient
-                  id="grad"
-                  x1="191.129"
-                  y1="0"
-                  x2="191.585"
-                  y2="154.843"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop
-                    offset="0.3125"
-                    stopColor="#0058B9"
-                    stopOpacity="0.30"
-                  />
-                  <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
+                <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="rgba(0, 88, 185, 1)" />
+                  <stop offset="100%" stopColor="rgba(0, 185, 255, 0)" />
                 </linearGradient>
               </defs>
               <Tooltip
@@ -166,3 +155,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
 };
 
 export default MonthsGraph;
+
+
+
+

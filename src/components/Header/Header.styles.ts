@@ -6,9 +6,12 @@ export const HeaderContainer = styled.div`
   justify-content: center;
   width: 100%;
   background-color: #262146;
+  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 99999;
 
-  @media ${device.mobile} {
-    position: relative;
+  @media ${device.tablet} {
+    box-shadow: none;
   }
 `;
 

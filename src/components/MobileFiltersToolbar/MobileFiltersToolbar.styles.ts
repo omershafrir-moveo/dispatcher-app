@@ -14,13 +14,15 @@ export const MobileToolbarContainer = styled.div`
 
   @media ${device.tablet} {
     position: relative;
+    z-index: 900;
   }
 `;
 
 export const MobileToolbarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: calc(100% - 12px);
+  gap: 10px;
+  width: calc(100% - 30px);
 
   @media ${device.tablet} {
     height: 65px;
@@ -34,7 +36,6 @@ export const FiltersWrapper = styled.div<{ mode: SelectOptionType }>`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  z-index: 0;
 
   @media ${device.tablet} {
     justify-content: space-between;

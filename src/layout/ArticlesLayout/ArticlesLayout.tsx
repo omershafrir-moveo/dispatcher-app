@@ -1,8 +1,6 @@
 import {
-  Container,
   ArticlesContainer,
   Item,
-  UpButtonWrapper,
   EndErrorContainer,
 } from "./ArticlesLayout.styles";
 import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
@@ -59,37 +57,37 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
     }
   };
   return (
-    <ArticlesContainer
-      className="ArticlesContainer"
-      ref={scrolledContainerRef}
-      onScroll={handleScrollEnd}
-    >
-      {articles?.map((article: ArticleProps, index) => (
-        <Item key={index}>
+      <ArticlesContainer
+        className="ArticlesContainer"
+        ref={scrolledContainerRef}
+        onScroll={handleScrollEnd}
+      >
+        {articles?.map((article: ArticleProps, index) => (
+          <Item key={index} className="Item">
+            <Fade>
+              <ArticleCard
+                author={article.author}
+                content={article.content}
+                description={article.description}
+                publishedAt={article.publishedAt}
+                title={article.title}
+                url={article.url}
+                urlToImage={article.urlToImage}
+                source={article.source}
+              />
+            </Fade>
+          </Item>
+        ))}
+        {responseStatus == Status.ERROR && (
           <Fade>
-            <ArticleCard
-              author={article.author}
-              content={article.content}
-              description={article.description}
-              publishedAt={article.publishedAt}
-              title={article.title}
-              url={article.url}
-              urlToImage={article.urlToImage}
-              source={article.source}
-            />
+            <EndErrorContainer className="EndErrorContainer">
+              <Typography size="18px" color="#5A5A89" textAlign="center">
+                {errorMsg}
+              </Typography>
+            </EndErrorContainer>
           </Fade>
-        </Item>
-      ))}
-      {responseStatus == Status.ERROR && (
-        <Fade>
-          <EndErrorContainer className="EndErrorContainer">
-            <Typography size="18px" color="#5A5A89" textAlign="center">
-              {errorMsg}
-            </Typography>
-          </EndErrorContainer>
-        </Fade>
-      )}
-    </ArticlesContainer>
+        )}
+      </ArticlesContainer>
   );
 };
 

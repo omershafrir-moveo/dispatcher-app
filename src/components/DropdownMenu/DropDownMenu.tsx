@@ -5,6 +5,7 @@ import DropdownOption from "./DropdownOption/DropdownOption";
 import { StyledMenu } from "./DropDownMenu.styles";
 import { DropDownMenuContainer } from "./DropDownMenu.styles";
 import { ItemsListContainer } from "./DropDownMenu.styles";
+import { Fade } from "react-awesome-reveal";
 
 export type DropDownProps = {
   defaultItemName: SelectOptionType;
@@ -35,6 +36,8 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       ? props.defaultItemName
       : props.selectedOption;
 
+  console.log(props.defaultItemName.value);
+
   return (
     <DropDownMenuContainer className="DropDownMenuContainer">
       <DropdownOption
@@ -46,31 +49,35 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
           props.theme === "default" ? "defaultInputOption" : "filterInputOption"
         }
         disabled={props.disabled}
+        filterType={props.defaultItemName.value}
       />
       {isOpen && (
         <ItemsListContainer className="ItemsListContainer">
           <StyledMenu className="styledMenu">
-            {props.itemsNames.map(
-              (item, index) =>
-                (item.value != "none" ||
-                  props.selectedOption.value != "none") && (
-                  <DropdownOption
-                    key={index}
-                    value={item}
-                    isInputBox={false}
-                    handleClick={() => {
-                      onOptionClick(item);
-                    }}
-                    handleBlur={handleBlur}
-                    theme={
-                      props.theme === "default"
-                        ? "defaultOption"
-                        : "filterOption"
-                    }
-                    disabled={props.disabled}
-                  />
-                )
-            )}
+            <Fade duration={200}>
+              {props.itemsNames.map(
+                (item, index) =>
+                  (item.value != "none" ||
+                    props.selectedOption.value != "none") && (
+                    <DropdownOption
+                      key={index}
+                      value={item}
+                      isInputBox={false}
+                      handleClick={() => {
+                        onOptionClick(item);
+                      }}
+                      handleBlur={handleBlur}
+                      theme={
+                        props.theme === "default"
+                          ? "defaultOption"
+                          : "filterOption"
+                      }
+                      disabled={props.disabled}
+                      filterType={props.defaultItemName.value}
+                    />
+                  )
+              )}
+            </Fade>
           </StyledMenu>
         </ItemsListContainer>
       )}

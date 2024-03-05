@@ -8,5 +8,5 @@ export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   width: 100%;
   background-color: transparent;
   gap: 20px;
-  z-index: 1;
+  z-index: 180;
 `;

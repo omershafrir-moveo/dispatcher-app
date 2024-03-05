@@ -11,6 +11,7 @@ import { InputMobileWrapper } from "./MobileToolbar.styles";
 import { useState } from "react";
 import InputSearchBar from "../InputSearchBar/InputSearchBar";
 import MobileFiltersToolbar from "../MobileFiltersToolbar/MobileFiltersToolbar";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const MobileToolbar = () => {
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const MobileToolbar = () => {
         <IconButton handleClick={handleSearchClick}>
           <SearchIcon />
         </IconButton>
-        <IconButton handleClick={() => {}}>
+        {/* <IconButton handleClick={() => {}}>
           <SettingsIcon />
         </IconButton>
         <IconButton handleClick={() => {}}>
@@ -33,11 +34,16 @@ const MobileToolbar = () => {
         </IconButton>
         <IconButton handleClick={() => {}}>
           <UserCircleIcon />
-        </IconButton>
+        </IconButton> */}
       </MobileToolbarContainer>
       {searchOpen && (
-        <InputMobileWrapper className="InputMobileWrapper">
-          <InputSearchBar />
+        <InputMobileWrapper
+          className="InputMobileWrapper"
+          onBlur={() => setSearchOpen(false)}
+        >
+          <Fade>
+            <InputSearchBar />
+          </Fade>
         </InputMobileWrapper>
       )}
     </TopMobileContainer>

@@ -9,6 +9,7 @@ export const PageContainer = styled.div<{ children?: React.ReactNode }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
   background-color: ${COLORS.backgroundColor};
   gap: 20px;
 

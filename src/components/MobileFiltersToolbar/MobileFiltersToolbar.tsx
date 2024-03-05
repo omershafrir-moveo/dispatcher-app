@@ -8,12 +8,9 @@ import FiltersLayout, {
 } from "../../layout/BodyLayout/FiltersLayout/FiltersLayout";
 import FiltersIcon from "../Icons/FiltersIcon";
 import IconButton from "../IconButton/IconButton";
-import SortDropdown from "../SortDropdown/SortDropdown";
 import { useState } from "react";
-import { MobileFiltersToolbarWrapper } from "./MobileFiltersToolbar.styles";
 
 import { useSearchContext } from "../SearchContext/SearchContext";
-import useViewport, { Viewport } from "../../hooks/useViewport";
 import { modeArray } from "../../global-data";
 import FilterSelect from "../SearchBar/FilterSelect/FilterSelect";
 import useTablet from "../../hooks/useTablet";

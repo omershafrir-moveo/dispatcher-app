@@ -14,11 +14,11 @@ export const ItemsListContainer = styled.div`
   width: 100%;
   padding: 10px 0px 10px 0px;
   border-radius: 10px;
+  z-index: 500;
 
   @media ${device.tablet} {
     top: 0;
     left: 0;
-    z-index: 3;
   }
 `;
 
@@ -47,7 +47,7 @@ export const StyledMenu = styled.ul`
   padding: 0;
   margin: 0;
   align-items: left;
-  max-height: 118px; // 4 * height of a single option
+  max-height: 111px; // 4 * height of a single option
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;

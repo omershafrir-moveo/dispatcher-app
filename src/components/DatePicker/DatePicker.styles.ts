@@ -5,14 +5,21 @@ import "rsuite/DateRangeInput/styles/index.css";
 import { device } from "../../util/breakpoints";
 
 export const DatePickerWrapper = styled.div`
+  position: relative;
+  /* z-index: 120; */
   max-width: 175px;
   border-radius: 10px;
   @media ${device.tablet} {
     box-shadow: rgba(0, 0, 0, 0.15) 2px 4px 2px 0px;
   }
+  @media ${device.mobile} {
+    width: 25%;
+  }
 `;
 const styledDatePicker = styled(DateRangePicker)`
   .rs-picker-popup {
+    position: relative;
+    z-index: 80;
     top: 200px;
   }
 
@@ -35,15 +42,22 @@ const styledDatePicker = styled(DateRangePicker)`
     background-color: #ffffff;
     border: none;
     color: #5a5a89;
+    padding-top: 0px;
+    padding-bottom: 0px;
 
     ::placeholder {
       color: #5a5a89;
       padding-left: 5px;
     }
+    @media ${device.mobile} {
+      display: none;
+    }
   }
   .rs-input-group.rs-input-group-inside {
     border: none;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
   }
 
   .rs-picker.rs-picker-daterange.rs-picker-default.rs-picker-toggle-wrapper.rs-picker-cleanable.rs-picker-error {

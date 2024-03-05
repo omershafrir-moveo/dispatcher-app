@@ -4,6 +4,7 @@ import { SearchBarWrapper } from "./InputSearchBar.styles";
 import { useContext } from "react";
 import { SearchContext } from "../SearchContext/SearchContext";
 import { RecentSearchesItem } from "./RecentSearches/RecentSearchesMenu/RecentSearchesMenu";
+import { Slide } from "react-awesome-reveal";
 
 const InputSearchBar = () => {
   const {
@@ -19,23 +20,23 @@ const InputSearchBar = () => {
   } = useContext(SearchContext);
 
   return (
-    <SearchBarWrapper className="SearchBarWrapper">
-      <SearchBar
-        filterValue={filterValue}
-        handleFilterChange={handleFilterChange}
-        searchValue={searchValue}
-        handleSearchInputChange={handleSearchInputChange}
-      />
-      {isOpenRecent && items.length > 0 && (
-        <RecentSearchesMenu
-          isOpen={isOpenRecent}
-          items={items}
-          handleClick={handleClick}
-          handleClear={handleClear}
-          handleDelete={handleDelete}
+      <SearchBarWrapper className="SearchBarWrapper">
+        <SearchBar
+          filterValue={filterValue}
+          handleFilterChange={handleFilterChange}
+          searchValue={searchValue}
+          handleSearchInputChange={handleSearchInputChange}
         />
-      )}
-    </SearchBarWrapper>
+        {isOpenRecent && items.length > 0 && (
+          <RecentSearchesMenu
+            isOpen={isOpenRecent}
+            items={items}
+            handleClick={handleClick}
+            handleClear={handleClear}
+            handleDelete={handleDelete}
+          />
+        )}
+      </SearchBarWrapper>
   );
 };
 

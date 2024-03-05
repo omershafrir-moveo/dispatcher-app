@@ -21,6 +21,7 @@ export const InputMobileWrapper = styled.div`
   width: 100%;
   left: 0px;
   z-index: 10;
-  height: 60px;
+  height: 68px;
   background-color: #ffffff;
+
 `;

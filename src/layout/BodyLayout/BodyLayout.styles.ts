@@ -11,6 +11,8 @@ export const TopContainer = styled.div<{ children?: React.ReactNode }>`
   @media ${device.tablet} {
     gap: 12px;
     width: calc(100% - 60px);
+    /* z-index: 800; */
+    position: relative;
   }
   @media ${device.mobile} {
     gap: 16px;

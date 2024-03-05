@@ -8,7 +8,7 @@ const DatePicker = () => {
   const { datesRange, updateDatesRange } = useContext(SearchContext);
 
   return (
-    <DatePickerWrapper>
+    <DatePickerWrapper className="DatePickerWrapper">
       <StyledDatePicker
         value={datesRange}
         placeholder={"Dates"}

@@ -12,16 +12,18 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  position: relative;
 
   ::-webkit-scrollbar {
+    position: absolute;
     width: 10px;
     height: 10px;
+    right: -10; /* Position scrollbar to the right */
   }
 
   ::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 5px;
-    margin: 5px;
   }
 
   ::-webkit-scrollbar-track {
@@ -38,34 +40,13 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
 
   ::-webkit-scrollbar-button {
     display: block;
-    width: 35px;
-    height: 5px;
   }
 `;
-
+export const ArticlesDataContainer = styled.div``;
 export const Item = styled.li<{ children?: React.ReactNode }>`
   list-style-type: none;
-`;
-
-export const UpButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  position: fixed;
-  bottom: 50px;
-  left: 50px;
-  background-color: white;
-  box-shadow: rgba(0, 0.6, 0.3, 0.6) 2px 4px 2px 0px;
-  border-radius: 50%;
-
-  @media ${device.mobile} {
-    width: 40px;
-    height: 40px;
-    bottom: 40px;
-    left: 40px;
-  }
+  z-index: 2;
+  position: relative;
 `;
 
 export const EndErrorContainer = styled.div``;

@@ -1,4 +1,5 @@
 import { queryEntry } from "./apiService.types";
+import LanguageIcon from "../components/Icons/LanguageIcon";
 
 export const dictToArray = (dictionary: {}) => {
   return Object.entries(dictionary).map(([key, text]: [any, any]) => {
@@ -73,4 +74,13 @@ export const dateToMonth = (dateString: string): string => {
     "December",
   ];
   return monthNames[monthIndex];
+};
+
+export const getIconByFilter = (filter: string): React.ReactNode => {
+  switch (filter) {
+    case "language":
+      return LanguageIcon();
+    default:
+      return null;
+  }
 };

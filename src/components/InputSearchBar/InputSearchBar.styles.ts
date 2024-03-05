@@ -8,6 +8,8 @@ export const SearchBarWrapper = styled.div`
   position: relative;
   max-width: 663px;
 
+
+
   @media ${device.mobile} {
     height: 100%;
     justify-content: center;
