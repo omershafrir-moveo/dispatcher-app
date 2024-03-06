@@ -12,6 +12,9 @@ export const FiltersToolbar = styled.div<{ children?: React.ReactNode }>`
   z-index: 180;
 
   @media ${device.tablet} {
-    justify-content: center;
+    padding-left: 10px;
+    justify-content: flex-start;
+    width: auto;
+    flex-grow: 1;
   }
 `;

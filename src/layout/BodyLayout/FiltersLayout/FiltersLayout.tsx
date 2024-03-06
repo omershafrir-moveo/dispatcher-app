@@ -7,6 +7,7 @@ import { SearchContext } from "../../../components/SearchContext/SearchContext";
 import SortDropdown from "../../../components/SortDropdown/SortDropdown";
 import DatePicker from "../../../components/DatePicker/DatePicker";
 import useViewport, { Viewport } from "../../../hooks/useViewport";
+import { Fade } from "react-awesome-reveal";
 
 export type filtersValuesType = {
   country?: SelectOptionType;

@@ -41,7 +41,7 @@ export const DropDownMenuContainer = styled.div`
   @media ${device.tablet} {
     position: static;
   }
-`;
+  `;
 
 export const StyledMenu = styled.ul`
   padding: 0;
