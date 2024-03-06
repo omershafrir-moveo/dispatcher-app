@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import Legend from "./Legend/Legend";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import Typography from "../../Typography/Typography";
@@ -9,40 +9,37 @@ import NoData from "../../Icons/NoData";
 import Spacer from "../../Container/Spacer/Spacer";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { round2decimal } from "../../../util/util";
+import { TooltipContainer, TooltipTextContainer } from "./PieGraph.styles";
+import { CustomPiechartTooltipProps } from "../Widget.types";
+
+const CustomPiechartTooltip: React.FC<CustomPiechartTooltipProps> = ({
+  active,
+  payload,
+}) => {
+  if (active && payload && payload.length) {
+    return (
+      <TooltipContainer className="TooltipContainer">
+        <TooltipTextContainer className="TooltipTextContainer">
+          <Typography color="#5A5A89" width="200px">
+            {" "}
+            {payload[0].name != "Other"
+              ? `Articles published by ${payload[0].name}`
+              : `Articles published by other sources`}
+          </Typography>
+          <Typography color="#5A5A89" weight="800">
+            {" "}
+            {payload[0].value}
+          </Typography>
+        </TooltipTextContainer>
+      </TooltipContainer>
+    );
+  }
+
+  return null;
+};
 
 const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
-  const COLORS = [
-    "#1f77b4",
-    "#cdd9ea",
-    "#ff7f0e",
-    "#ffbb78",
-    "#2ca02c",
-    "#98df8a",
-    "#460909",
-    "#ff9896",
-    "#9467bd",
-    "#c5b0d5",
-    "#8c564b",
-    "#c49c94",
-    "#e377c2",
-    "#f7b6d2",
-    "#7f7f7f",
-    "#c7c7c7",
-    "#bcbd22",
-    "#dbdb8d",
-    "#17becf",
-    "#9edae5",
-    "#393b79",
-    "#020202",
-    "#6b6ecf",
-    "#9c9ede",
-    "#637939",
-    "#8ca252",
-    "#b5cf6b",
-    "#cedb9c",
-    "#8c6d31",
-    "#bd9e39",
-  ];
+  const COLORS = ["#030235", "#fa9802", "#343a6e", "#ddf3fe", "#6f706f"];
   let contentFlag = articles.length > 0;
 
   const computeData = () => {
@@ -59,7 +56,20 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
       name,
       value: sourceCounts[name],
     }));
-    return sourceArray;
+    sourceArray.sort(
+      (
+        dataPointA: { name: string; value: number },
+        dataPointB: { name: string; value: number }
+      ) => dataPointB.value - dataPointA.value
+    );
+    const sourceArrayPre = sourceArray.slice(0, 4);
+    const sourceArrayPost = sourceArray.slice(4, sourceArray.length);
+    const OtherValue = sourceArrayPost
+      .map((dataPoint) => dataPoint.value)
+      .reduce((curr, acc) => (acc += curr), 0);
+    return OtherValue > 0
+      ? sourceArrayPre.concat({ name: "Other", value: OtherValue })
+      : sourceArrayPre;
   };
   const data = computeData();
   const totalNumOfArticles = data
@@ -111,6 +121,12 @@ const PieGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                     Articles
                   </tspan>
                 </text>
+                <Tooltip
+                  viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
+                  cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
+                  content={<CustomPiechartTooltip />}
+                  position={{ x: 130, y: 30 }}
+                />
               </PieChart>
               <Legend
                 data={data.map((p, index) => ({

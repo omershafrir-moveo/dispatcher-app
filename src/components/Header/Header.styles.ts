@@ -30,7 +30,8 @@ export const DataWrapper = styled.div<{ children?: React.ReactNode }>`
   justify-content: flex-start;
   z-index: 3;
   align-items: center;
-  gap: calc(12.5% - 76px);
+  /* gap: calc(12.5% - 76px); */
+  gap: 153px;
 
   @media ${device.mobile} {
     justify-content: space-between;

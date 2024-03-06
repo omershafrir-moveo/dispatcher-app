@@ -13,11 +13,11 @@ const Legend: React.FC<{ data: any[]; children?: React.ReactNode }> = (
   return (
     <LegendContainer className="LegendContainer">
       {props.data.map((dataPoint, index) => (
-        <LegendItem key={index}>
-          <LegendBullet color={dataPoint.color} />
-          <LegendItemData>
-            <LegendText>{dataPoint.name}</LegendText>
-            <LegendValue>{`${dataPoint.value}%`}</LegendValue>
+        <LegendItem className="LegendItem" key={index}>
+          <LegendBullet className="LegendBullet" color={dataPoint.color} />
+          <LegendItemData className="LegendItemData">
+            <LegendText className="LegendText">{dataPoint.name}</LegendText>
+            <LegendValue className="LegendValue">{`${dataPoint.value}%`}</LegendValue>
           </LegendItemData>
         </LegendItem>
       ))}

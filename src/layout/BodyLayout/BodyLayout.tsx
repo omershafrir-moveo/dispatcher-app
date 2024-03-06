@@ -68,13 +68,15 @@ const BodyLayout: React.FC = () => {
       responseStatus: ResponseStatus,
       errorMsg: errorCode,
     } = await getArticles(pageParam, params);
-  
     if (errorCode) {
       setErrorMsg(errorCodeInterpreter(errorCode));
+    } else if (errorCode == undefined && responseStatus == Status.SUCCESS) {
+      setErrorMsg("We couldn’t find any matches for your query");
     }
-    setResponseStatus(ResponseStatus)
+    setResponseStatus(ResponseStatus);
     return data;
   };
+
   const infiniteArticlesQuery = useInfiniteQuery({
     queryFn: fetchArticles,
     queryKey: [
@@ -88,9 +90,6 @@ const BodyLayout: React.FC = () => {
     },
   });
 
-  // useEffect(() => {
-  //   setErrorMsg(validateParams(params));
-  // }, [searchValueCopy, filterValue, filtersValues]);
   const numOfResults = useRef<number>(0);
   const articles =
     infiniteArticlesQuery.status == "success" &&
@@ -111,7 +110,7 @@ const BodyLayout: React.FC = () => {
     filtersValues.category?.value == "none" &&
     filtersValues.sources?.value == "none" &&
     filtersValues.country?.value == "il";
-  const resultsCondition = !topHeadlinesCondition && articles.length != 0;
+  const resultsCondition = articles.length != 0;
 
   const fetchSources = async () => {
     const { data } = await getSources();
@@ -139,7 +138,7 @@ const BodyLayout: React.FC = () => {
         )}
         {resultsCondition && (
           <Typography size="14px" weight="regular" letterSpacing="0.25px">
-            {`${numOfResults.current} Total Results`}
+            {`${articles.length} of ${numOfResults.current} total results`}
           </Typography>
         )}
       </HeadlinesContainer>

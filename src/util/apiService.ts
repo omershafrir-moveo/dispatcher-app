@@ -66,12 +66,10 @@ export const getArticles = async (
 ): Promise<ResponseType> => {
   try {
     const queriesSuffix = arrayToQueryString(params?.queries);
-    // await wait(2000);
     const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
     return { data: res.data, responseStatus: Status.SUCCESS };
   } catch (error: any) {
-    console.log(error.response.data);
     return {
       data: [],
       responseStatus: Status.ERROR,
@@ -80,7 +78,7 @@ export const getArticles = async (
   }
 };
 
-export const getSources = async ():Promise<ResponseType> => {
+export const getSources = async (): Promise<ResponseType> => {
   try {
     const url = `https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`;
     const res = await axios.get(url);

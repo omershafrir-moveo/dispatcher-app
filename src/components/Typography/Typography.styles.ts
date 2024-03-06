@@ -15,7 +15,6 @@ export default styled.div<TypeographyProps>`
   white-space: pre-line;
   text-align: ${(props) => (props.textAlign ? props.textAlign : "none")};
   max-height: ${(props) => (props.maxHeight ? props.maxHeight : "none")};
-  /* overflow: ${(props) => (props.overflow ? props.overflow : "none")}; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;

@@ -9,6 +9,7 @@ export const Card = styled.div`
   flex-direction: row;
   border-radius: 20px;
   border: 1px solid #d9dbe9;
+  margin-right: 24px;
 
   @media ${device.mobile} {
     flex-direction: column;

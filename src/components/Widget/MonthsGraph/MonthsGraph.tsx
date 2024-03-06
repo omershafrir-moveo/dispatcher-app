@@ -9,7 +9,7 @@ import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
-import { CustomTooltipProps } from "./MonthsGraph.types";
+import { CustomMonthsTooltipProps } from "../Widget.types";
 import {
   HeadlineContainer,
   TooltipContainer,
@@ -62,7 +62,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
     return returnArray;
   }, [data]);
 
-  const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  const CustomMonthsTooltip: React.FC<CustomMonthsTooltipProps> = ({
     active,
     payload,
     label,
@@ -73,7 +73,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
           <TooltipTextContainer className="TooltipTextContainer">
             <Typography color="#5A5A89">
               {" "}
-              {`articled published in ${format(label!, "MMM d")}`}
+              {`Articles published in ${format(label!, "MMM d")}`}
             </Typography>
             <Typography color="#5A5A89" weight="800">
               {" "}
@@ -131,7 +131,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
               <Tooltip
                 viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
                 cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
-                content={<CustomTooltip />}
+                content={<CustomMonthsTooltip />}
               />
               <Area
                 type="basis"
@@ -155,7 +155,3 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
 };
 
 export default MonthsGraph;
-
-
-
-

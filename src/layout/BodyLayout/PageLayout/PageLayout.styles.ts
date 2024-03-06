@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SeparatorLine from "../../../components/Icons/SeparatorLine";
 import { COLORS } from "../../../global-data";
 import { device } from "../../../util/breakpoints";
 export const PageContainer = styled.div<{ children?: React.ReactNode }>`
@@ -35,4 +34,10 @@ export const BodyContainer = styled.div<{ children?: React.ReactNode }>`
   @media ${device.mobile} {
     gap: 16px;
   }
+`;
+
+export const HorizontalLine = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #d9dbe9;
+  opacity: 40%;
 `;

@@ -7,7 +7,33 @@ export const LegendContainer = styled.div`
   width: 372px;
   height: 100px;
   margin-top: 15px;
+  gap: 7px;
   overflow-y: auto;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: -10; /* Position scrollbar to the right */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9ea1bb;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: block;
+  }
 `;
 
 export const LegendItem = styled.div`
@@ -44,4 +70,5 @@ export const LegendValue = styled.div`
   color: #9fa2b4;
   align-self: right;
   justify-self: end;
+  margin-right: 20px;
 `;

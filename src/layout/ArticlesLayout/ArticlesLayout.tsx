@@ -29,15 +29,6 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   const marginError = 10;
   const handleScrollEnd = () => {
     if (scrolledContainerRef.current) {
-      console.log(
-        "container scrolltop: ",
-        scrolledContainerRef.current.scrollTop
-      );
-      console.log(
-        "container height - client height§ ",
-        scrolledContainerRef.current.scrollHeight -
-          scrolledContainerRef.current.clientHeight
-      );
       if (
         hasNextPage &&
         Math.abs(
@@ -46,8 +37,6 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
               scrolledContainerRef.current.clientHeight)
         ) <= marginError
       ) {
-        console.log("fetching!");
-
         fetchNextPage();
         scrolledContainerRef.current.scrollTo({
           top: scrolledContainerRef.current.scrollTop + 150,
@@ -57,37 +46,37 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
     }
   };
   return (
-      <ArticlesContainer
-        className="ArticlesContainer"
-        ref={scrolledContainerRef}
-        onScroll={handleScrollEnd}
-      >
-        {articles?.map((article: ArticleProps, index) => (
-          <Item key={index} className="Item">
-            <Fade>
-              <ArticleCard
-                author={article.author}
-                content={article.content}
-                description={article.description}
-                publishedAt={article.publishedAt}
-                title={article.title}
-                url={article.url}
-                urlToImage={article.urlToImage}
-                source={article.source}
-              />
-            </Fade>
-          </Item>
-        ))}
-        {responseStatus == Status.ERROR && (
+    <ArticlesContainer
+      className="ArticlesContainer"
+      ref={scrolledContainerRef}
+      onScroll={handleScrollEnd}
+    >
+      {articles?.map((article: ArticleProps, index) => (
+        <Item key={index} className="Item">
           <Fade>
-            <EndErrorContainer className="EndErrorContainer">
-              <Typography size="18px" color="#5A5A89" textAlign="center">
-                {errorMsg}
-              </Typography>
-            </EndErrorContainer>
+            <ArticleCard
+              author={article.author}
+              content={article.content}
+              description={article.description}
+              publishedAt={article.publishedAt}
+              title={article.title}
+              url={article.url}
+              urlToImage={article.urlToImage}
+              source={article.source}
+            />
           </Fade>
-        )}
-      </ArticlesContainer>
+        </Item>
+      ))}
+      {responseStatus == Status.ERROR && (
+        <Fade>
+          <EndErrorContainer className="EndErrorContainer">
+            <Typography size="18px" color="#5A5A89" textAlign="center">
+              {errorMsg}
+            </Typography>
+          </EndErrorContainer>
+        </Fade>
+      )}
+    </ArticlesContainer>
   );
 };
 

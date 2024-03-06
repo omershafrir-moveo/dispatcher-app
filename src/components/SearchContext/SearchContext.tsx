@@ -11,6 +11,8 @@ import useDict from "../../hooks/useDict";
 import { toJson } from "../../util/util";
 import { getParams, validateParams } from "../../util/apiService";
 import useViewport, { Viewport } from "../../hooks/useViewport";
+import { filtersDictType } from "../../hooks/useDict";
+
 type SearchContextType = {
   isOpenRecent: boolean;
   toggleRecentSearchesMenu: () => void;
@@ -19,7 +21,10 @@ type SearchContextType = {
   isSourcesActive: boolean;
   updateSourceActiveness: (isActive: boolean) => void;
   isSomeFilterActive: boolean;
-  updateSomeFilterActiveness: (isActive: boolean) => void;
+  updateSomeFilterActiveness: (
+    filterName: "category" | "country" | "language",
+    isActive: boolean
+  ) => void;
   searchValue: string;
   searchValueCopy: string;
   handleSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -37,6 +42,8 @@ type SearchContextType = {
   sources: SelectOptionType[];
   updateSources: (sources: SelectOptionType[]) => void;
   errorMsg: string;
+  userCountry: SelectOptionType;
+  updateUserCountry: (country: SelectOptionType) => void;
 };
 
 const ContextInitalValue: SearchContextType = {
@@ -70,6 +77,8 @@ const ContextInitalValue: SearchContextType = {
   sources: [],
   updateSources: () => {},
   errorMsg: "",
+  userCountry: noneOption,
+  updateUserCountry: (countryCode: SelectOptionType) => {},
 };
 
 export const SearchContext =
@@ -108,11 +117,35 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
   };
 
   const [isSourcesActive, setIsSourcesActive] = useState(false);
-  const [isSomeFilterActive, setIsSomeFilterActive] = useState(false);
+  const [isSomeFilterActive, setIsSomeFilterActive] = useState(true);
+  const [userCountry, setUserCountry] = useState<SelectOptionType>(noneOption);
+
   const updateSourceActiveness = (isActive: boolean) =>
     setIsSourcesActive(isActive);
-  const updateSomeFilterActiveness = (isActive: boolean) =>
-    setIsSomeFilterActive(isActive);
+
+  const updateSomeFilterActiveness = (
+    filterName: "category" | "country" | "language",
+    isActive: boolean
+  ) => {
+    const filters = filtersDict as filtersDictType;
+    const newIsActive = isActive;
+    const categoryIsActive = filters["category"].value != "none";
+    const languageIsActive = filters["language"].value != "none";
+    const countryIsActive = filters["country"].value != "none";
+    const cond =
+      filterName == "category"
+        ? newIsActive || languageIsActive || countryIsActive
+        : filterName == "country"
+        ? newIsActive || languageIsActive || categoryIsActive
+        : newIsActive || countryIsActive || categoryIsActive;
+
+    // console.log("category", categoryIsActive);
+    // console.log("lang", languageIsActive);
+    // console.log("country", countryIsActive);
+    // console.log(filterName, isActive);
+    // console.log("final cond", cond);
+    setIsSomeFilterActive(cond);
+  };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -120,17 +153,17 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     setSearchValue(event.target.value);
   };
 
+  const resetFilters = () => {
+    updateFiltersDict("category", noneOption);
+    updateFiltersDict("country", noneOption);
+    updateFiltersDict("sources", noneOption);
+    updateFiltersDict("language", noneOption);
+    setSearchValue("");
+    setSearchValueCopy("");
+    updateSourceActiveness(false);
+    setIsSomeFilterActive(false);
+  };
   const handleFilterChange = (event: SelectOptionType) => {
-    const resetFilters = () => {
-      updateFiltersDict("category", noneOption);
-      updateFiltersDict("country", noneOption);
-      updateFiltersDict("sources", noneOption);
-      updateFiltersDict("language", noneOption);
-      setSearchValue("");
-      setSearchValueCopy("");
-      updateSourceActiveness(false);
-      updateSomeFilterActiveness(false);
-    };
     resetFilters();
     setFilterValue({ ...event });
   };
@@ -168,6 +201,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
 
       setErrorMsg(error);
     }
+    resetFilters();
+    setSearchValue(text);
     setSearchValueCopy(text);
     toggleRecentSearchesMenu();
   };
@@ -191,6 +226,21 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     setSources([...newSources]);
   };
 
+  // useEffect(() => {
+  //   axios.get('https://ipapi.co/json/').then((response) => {
+  //     const data = response.data;
+  //     setUserCountry()
+  //     this.setState({
+  //         countryName: data.country_name,
+  //         countryCode: data.country_calling_code
+  //     });
+  // }).catch((error) => {
+  //     console.log(error);
+  // });
+  // }, [])
+  const updateUserCountry = (country: SelectOptionType) => {
+    setUserCountry(country);
+  };
   const SearchData: SearchContextType = {
     isOpenRecent,
     toggleRecentSearchesMenu,
@@ -218,6 +268,8 @@ export const InputProvider: React.FC<SearchContextProps> = (props) => {
     sources,
     updateSources,
     errorMsg,
+    userCountry,
+    updateUserCountry,
   };
 
   return (

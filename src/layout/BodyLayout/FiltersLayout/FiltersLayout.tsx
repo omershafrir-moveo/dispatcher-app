@@ -40,7 +40,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.language,
           updateValue: (newVal: any) => {
             updateFiltersValues("language", newVal);
-            updateSomeFilterActiveness(newVal?.value != "none");
+            updateSomeFilterActiveness("language", newVal?.value != "none");
           },
         };
       case "category":
@@ -49,7 +49,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.category,
           updateValue: (newVal: any) => {
             updateFiltersValues("category", newVal);
-            updateSomeFilterActiveness(newVal?.value != "none");
+            updateSomeFilterActiveness("category", newVal?.value != "none");
           },
         };
       case "country":
@@ -58,7 +58,7 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
           chosenValue: filtersValues.country,
           updateValue: (newVal: any) => {
             updateFiltersValues("country", newVal);
-            updateSomeFilterActiveness(newVal?.value != "none");
+            updateSomeFilterActiveness("country", newVal?.value != "none");
           },
         };
       case "sources":

@@ -22,16 +22,12 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #9ea1bb;
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-track {
     background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #aaa;
   }
 
   ::-webkit-scrollbar-corner {

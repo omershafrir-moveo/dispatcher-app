@@ -19,6 +19,7 @@ const StyledOption = styled.button<StyledButtonProps>`
   cursor: pointer;
   text-align: left;
   position: relative;
+
   &:hover {
     background-color: ${(props) => THEMES.onHover(props.theme)};
   }
@@ -40,13 +41,16 @@ const StyledOption = styled.button<StyledButtonProps>`
         ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
         : "none"};
     font-size: 12px;
-    background-color: ${(props) => (props.isFilled ? "#568DDE" : "none")};
-    background-color: ${(props) => (props.isChosen ? "#568DDE" : "none")};
+    background-color: ${(props) => (props.isFilled ? "#03e3fc" : "none")};
+    background-color: ${(props) => (props.isChosen ? "#03e3fc" : "none")};
   }
 `;
 
 export const TextContainer = styled.div`
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 export const OptionDataContainer = styled.div<{
   isInputBox: boolean;

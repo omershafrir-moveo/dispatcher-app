@@ -136,14 +136,15 @@ export const DATA_OPTIONS = {
     { key: 6, title: "Sports", value: "sports" },
     { key: 7, title: "Technology", value: "technology" },
   ],
-  country: [noneOption].concat(countryCodes
-    .map((code: string, idx: number) => {
+  country: [noneOption].concat(
+    countryCodes.map((code: string, idx: number) => {
       return {
         key: idx + 1,
         title: codeToCountry.of(code.toUpperCase()) as string,
         value: code,
       };
-    }))
+    })
+  ),
 };
 
 export const FiltersBySearchMode = (
