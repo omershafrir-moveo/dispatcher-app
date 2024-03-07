@@ -24,4 +24,7 @@ export const InputMobileWrapper = styled.div`
   height: 68px;
   background-color: #ffffff;
 
+  @media ${device.mobile} {
+    height: auto;
+  }
 `;

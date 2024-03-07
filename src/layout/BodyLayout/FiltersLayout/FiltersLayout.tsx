@@ -85,18 +85,20 @@ const FiltersLayout: React.FC<FiltersLayoutProps> = (props) => {
       {filterValue.key == 1 && <SortDropdown />}
       {filterValue.key == 1 && <DatePicker />}
       {filters.map((f: SelectOptionType, index: number) => (
-        <DropDownMenu
-          defaultItemName={f}
-          handleSelectedOptionChange={(option) => {
-            getFilter(f).updateValue(option);
-          }}
-          itemsNames={getFilter(f).options}
-          selectedOption={getFilter(f).chosenValue as SelectOptionType}
-          theme="default"
-          key={index}
-          disabled={f.value == "sources" ? isSomeFilterActive : isSourcesActive}
-        />
-      ))}
+          <DropDownMenu
+            defaultItemName={f}
+            handleSelectedOptionChange={(option) => {
+              getFilter(f).updateValue(option);
+            }}
+            itemsNames={getFilter(f).options}
+            selectedOption={getFilter(f).chosenValue as SelectOptionType}
+            theme="default"
+            key={index}
+            disabled={
+              f.value == "sources" ? isSomeFilterActive : isSourcesActive
+            }
+          />
+          ))}
     </FiltersToolbar>
   );
 };

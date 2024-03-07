@@ -19,6 +19,7 @@ export const Card = styled.div`
 
   @media ${device.tablet} {
     gap: 0px;
+    margin-right: 2px;
   }
 `;
 

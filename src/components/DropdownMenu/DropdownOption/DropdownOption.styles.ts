@@ -23,13 +23,37 @@ const StyledOption = styled.button<StyledButtonProps>`
   &:hover {
     background-color: ${(props) => THEMES.onHover(props.theme)};
   }
+  &:disabled::before {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9e4e4;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    content: attr(data-tooltip);
+    transition: all 0.2s;
+    opacity: 0;
+  }
+  &:disabled:hover::before {
+    opacity: 1;
+  }
 
   @media ${device.tablet} {
     text-align: center;
     font-size: 13px;
     box-shadow: ${(props) =>
+      ["defaultInputOption", "filterInputOption"].includes(props.theme) &&
+      !props.disabled
+        ? "0 2px 4px rgba(0, 0, 0, 0.1)"
+        : "none"};
+    border-radius: ${(props) =>
       ["defaultInputOption", "filterInputOption"].includes(props.theme)
-        ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
+        ? "10px"
         : "none"};
   }
 
@@ -37,12 +61,12 @@ const StyledOption = styled.button<StyledButtonProps>`
     text-align: center;
     justify-content: center;
     box-shadow: ${(props) =>
-      props.theme == "defaultInputOption"
-        ? "2px 4px 2px 0px rgba(0, 0, 0, 0.15)"
-        : "none"};
+      props.theme == "filterInputOption" ? "none" : "auto"};
     font-size: 12px;
     background-color: ${(props) => (props.isFilled ? "#03e3fc" : "none")};
     background-color: ${(props) => (props.isChosen ? "#03e3fc" : "none")};
+    flex-grow: ${(props) =>
+      props.theme == "filterInputOption" ? "1" : "auto"};
   }
 `;
 
@@ -66,4 +90,24 @@ export const OptionDataContainer = styled.div<{
     align-items: center;
   }
 `;
+
+export const TooltipText = styled.span<{
+  isVisible: boolean;
+}>`
+  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+  width: 120px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  left: 0;
+  margin-left: -60px;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.3s;
+`;
+
 export default StyledOption;

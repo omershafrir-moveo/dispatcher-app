@@ -55,6 +55,9 @@ export const TypoContainer = styled.div<{ children?: React.ReactNode }>`
 `;
 
 export const HeadlinesContainer = styled.div<{ children?: React.ReactNode }>`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   @media ${device.tablet} {
     text-align: center;
   }

@@ -27,6 +27,9 @@ export const MobileToolbarWrapper = styled.div`
   @media ${device.tablet} {
     height: 65px;
   }
+  @media ${device.mobile} {
+    height: 60px;
+  }
 `;
 
 export const FiltersWrapper = styled.div<{ mode: SelectOptionType }>`

@@ -1,4 +1,7 @@
-import StyledOption, { TextContainer } from "./DropdownOption.styles";
+import StyledOption, {
+  TextContainer,
+  TooltipText,
+} from "./DropdownOption.styles";
 import DownArrowIcon from "../../Icons/DownArrowIcon";
 import { themeOption } from "./DropdownOption.types";
 import { OptionDataContainer } from "./DropdownOption.styles";
@@ -12,6 +15,7 @@ import SourceIcon from "@mui/icons-material/Source";
 import CategoryIcon from "@mui/icons-material/Category";
 import SortIcon from "@mui/icons-material/Sort";
 import { getIconByFilter } from "../../../util/util";
+import { useState } from "react";
 
 export const DropdownOption: React.FC<{
   value: SelectOptionType;
@@ -24,7 +28,7 @@ export const DropdownOption: React.FC<{
   isChosen?: boolean;
 }> = (props) => {
   const isMobile = useMobile();
-
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   return (
     <StyledOption
       className="StyledOption"
@@ -51,6 +55,11 @@ export const DropdownOption: React.FC<{
       isChosen={
         props.isChosen &&
         !["top-headlines", "everything"].includes(props.value.value)
+      }
+      data-tooltip={
+        ["language", "country", "category"].includes(props.filterType)
+          ? "Deselect Source in order to enable."
+          : "Deselect Language/Country/Language in order to enable."
       }
     >
       <OptionDataContainer
@@ -82,6 +91,9 @@ export const DropdownOption: React.FC<{
           </IconWrapper>
         )}
       </OptionDataContainer>
+      {/* {isTooltipVisible && (
+        <TooltipText isVisible={props.disabled == undefined ? false : isTooltipVisible }>yata yata yata</TooltipText>
+      )} */}
     </StyledOption>
   );
 };

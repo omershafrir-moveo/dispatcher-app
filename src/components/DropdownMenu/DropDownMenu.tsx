@@ -36,7 +36,6 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
       ? props.defaultItemName
       : props.selectedOption;
 
-
   return (
     <DropDownMenuContainer className="DropDownMenuContainer">
       <DropdownOption
