@@ -1,63 +1,39 @@
-TODOS:
-
-2. fix style of searchBox + filter : rounded edges, borders, to make it look like 1 component
-3. add logo to header
-4. fix style of header to look like in figma
-
-
-DropDown:
-- cant chnage attributes of scrollbar: color, background and visibillity.
-- change color of scrollbar
-- ask roey about margins: how do i know from the figma the small details in between components( like margin)
-
-
-RecentSearches:
-- IMPORTANT: when user clicks on 'x' in the recent searches- to stop the event propogation to the Item container that wraps it ( since it is also a button).
-
-
-InputSearchBar: 
-- IMPORTANT: what happens when both the recentSearches and the FilterDropdown are opened ?
-
-
-import { useContext } from 'react'
-import { SearchContext } from "../SearchContext/SearchContext";
-const { } = useContext(SearchContext);
+ask noy:
+1. white at the bottom of app  :
+what dims should i have?
+4. pie graph scroller for legend
+6. dates widget - fix.
+9. implement loading states? foir articles layout and for widgets.
 
 
 
-continue:
-1. fix clicks on/out search bar
-2. fix clicks on/out filter
-3. connect states to search bar and filter box
-4. connect handlers to search bar and filter box
+***:
 
-* handleBlur of filter interrupts state assignment of filter
-* handle vent propogation for recent searches items to work. 
+questions:
+
+1. if a user picks for instance country and then switches from tio-headlines to everything - should his filters selections should be reset?
+
+notes:
+left the reactQueries in body layout because i need the articles data at body layout because of the headlines.
+but i removed the usage of a state.
+
+what does not work :
+top headlines without q/language/category/country/sources
+everything without q/sources
+
+therefore:
+if user is on top headlines - the default search is country=Israel 
+if user is on everything - the default is q=israel ( as long as sources/q are not selected)
+
+error message for empty searches:
+: Required parameters are missing, the scope of your search is too broad. 
+Please set any of the following required parameters and try again: q, qInTitle, sources, domains."
 
 
 
-/////////////////////////////////////////////////////////////////////////////////
-  const {page,searchQuery} = useContext(SearchContext)
 
-  const callApi = async () => {
-    const res = await axios.get(`url/q=${searchQuery}&page=${page}`);
-    setArtciels(res))
 
-  }
 
-  ////////////////////////////////////////////////////////////////////////////////
 
-export type articlesLayoutProps = {
-  articles: ArticleProps[];
-  filters: { filter: string; value: string }[];
-};
-
-^^^
-1. type of filters here is just string, but in the filterSelect Component it is an object with key, title, value.
-2. what should be the title above the articles list ?
-3. finish body layout.
-4. organize all filter/sort data in a well organized DS.
-3. filter by / sort by ?
-4. impl Date filter/sort
-5. where all the calculations for the widgets occur? option: each widget calculates the data at its component 
-6. top headlines in israel - default -  add condition for viewing it
+KEY TAKEAWAYS:
+1. Before writing types for the app: inspect the API and all other relevant data that might influence the types.

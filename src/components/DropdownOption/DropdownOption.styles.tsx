@@ -7,10 +7,11 @@ const StyledOption = styled.button<StyledButtonProps>`
   height: ${(props) => THEMES.height(props.theme)};
   border-radius: ${(props) => THEMES.borderRadius(props.theme)};
   margin-bottom: ${(props) => THEMES.marginBottom(props.theme)};
-  background-color: ${(props) => THEMES.backgroundColor(props.theme)};
+  background-color: ${(props) =>
+    props.disabled ? "#e9e4e4" : THEMES.backgroundColor(props.theme)};
   font-family: ${(props) => THEMES.fontFamily(props.theme)};
   font-size: ${(props) => THEMES.fontSize(props.theme)};
-  color: #5a5a89;
+  color: ${(props) => (props.disabled ? "#b3b0b0" : "#5A5A89")};
   padding: 15px;
   cursor: pointer;
   text-align: left;
@@ -18,7 +19,7 @@ const StyledOption = styled.button<StyledButtonProps>`
   justify-content: space-between;
   align-items: center;
   border: none;
-  border-left: 0.5px solid #D9DBE9;
+  /* border-left: 0.5px solid #D9DBE9; */
   /* border-image: linear-gradient(to top, #FFF 10%, #000 , #FFF 90%); to top - at 50% transparent */
   /* border-image-slice: 1; */
 

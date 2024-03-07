@@ -4,7 +4,7 @@ import {
   LegendBullet,
   LegendText,
   LegendValue,
-  LegendItemData
+  LegendItemData,
 } from "./Legend.styles";
 // import { DataType } from "../PieGraph";
 
@@ -14,9 +14,9 @@ const Legend: React.FC<{ data: any[]; children?: React.ReactNode }> = (
   props
 ) => {
   return (
-    <LegendContainer>
-      {props.data.map((dataPoint) => (
-        <LegendItem>
+    <LegendContainer className="LegendContainer">
+      {props.data.map((dataPoint, index) => (
+        <LegendItem key={index}>
           <LegendBullet color={dataPoint.color} />
           <LegendItemData>
             <LegendText>{dataPoint.name}</LegendText>

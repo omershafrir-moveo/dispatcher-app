@@ -5,15 +5,44 @@ import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import { format } from "date-fns";
 import HorizontalLine from "../../Icons/HorizontalLine";
 import Spacer from "../../Container/Spacer/Spacer";
-import { WidgetProps } from "../WidgetsSection/WidgetsSection";
+import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
-const MonthsGraph: React.FC<WidgetProps> = (props) => {
-  const { data }: { data: { date: Date; value: number }[] } = props;
+import Loading from "../../Loading/Loading";
+const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
+  let contentFlag = articles.length > 0;
 
-  let contentFlag = data.length > 0;
+  const computeData = () => {
+    const sortFunc = (
+      obj1: { date: Date; value: number },
+      obj2: { date: Date; value: number }
+    ) => {
+      const timestamp1 = obj1.date.getTime();
+      const timestamp2 = obj2.date.getTime();
 
+      return timestamp1 - timestamp2;
+    };
+
+    const dateCounts: { [date: string]: number } = {};
+
+    articles.forEach((article) => {
+      const month = `${article.publishedAt.substring(0, 7)}-01`;
+      dateCounts[month] = (dateCounts[month] || 0) + 1;
+    });
+    const monthsArray: { date: Date; value: number }[] = Object.keys(
+      dateCounts
+    ).map((date) => {
+      return {
+        date: new Date(date),
+        value: dateCounts[date],
+      };
+    });
+    monthsArray.sort(sortFunc);
+    return monthsArray;
+  };
+
+  const data = computeData();
   return (
-    <WidgetCard type="monthes">
+    <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
       <div>
         <Typography color="#14142B" size="24px" weight="700">
           Dates
@@ -21,28 +50,27 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
         <HorizontalLine />
       </div>
       <WidgetContainer>
+        {isLoading && <Loading />}
         {contentFlag && (
           <>
-            <Spacer height="80px" />
             <AreaChart
-              style={{ left: -12 }}
               width={438}
               height={250}
               data={data}
               margin={{
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: 20,
+                top: 5,
+                right: 10,
+                left: 10,
+                bottom: 0,
               }}
             >
               <XAxis
                 dataKey="date"
-                scale="time"
                 domain={["dataMin", "dataMax"]}
                 tickFormatter={(date) => format(date, "MMM")}
                 tickLine={false}
                 axisLine={false}
+                interval="preserveStartEnd"
                 style={{
                   fontWeight: "700",
                 }}
@@ -59,10 +87,10 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
                 >
                   <stop
                     offset="0.3125"
-                    stop-color="#0058B9"
-                    stop-opacity="0.30"
+                    stopColor="#0058B9"
+                    stopOpacity="0.30"
                   />
-                  <stop offset="1" stop-color="#00B9FF" stop-opacity="0" />
+                  <stop offset="1" stopColor="#00B9FF" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <Area
@@ -75,7 +103,7 @@ const MonthsGraph: React.FC<WidgetProps> = (props) => {
             </AreaChart>
           </>
         )}
-        {!contentFlag && (
+        {!contentFlag && !isLoading && (
           <>
             <Spacer height="59.5px" />
             <NoData />

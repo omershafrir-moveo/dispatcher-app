@@ -12,6 +12,7 @@ export type DropDownProps = {
   selectedOption: SelectOptionType;
   handleSelectedOptionChange: (option: SelectOptionType) => void;
   theme: string;
+  disabled: boolean;
 };
 
 const DropDownMenu: React.FC<DropDownProps> = (props) => {
@@ -24,19 +25,13 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
     setIsOpen(false);
     props.handleSelectedOptionChange(item);
   };
+
   const handleBlur = () => {
-    // adding timeout of 100 ms to prevent behaviour where onBlur handler of input box fired before onClick handler of option box,
-    // resulting in behaviour where drop down  is practically closed before the onClick is fired, and therefore not working
-    setTimeout(() => {
-      if (isOpen) setIsOpen(false);
-    }, 100);
+    if (isOpen) setIsOpen(false);
   };
 
-  // on first render shlould be 'defaultItemName', after change should be state value
-  const inputOptionValue =
-    props.selectedOption.title != ""
-      ? props.selectedOption
-      : props.defaultItemName;
+  const inputOptionValue = props.selectedOption.value == 'none' ?
+    props.defaultItemName : props.selectedOption
 
   return (
     <DropDownMenuContainer>
@@ -48,6 +43,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
         theme={
           props.theme === "default" ? "defaultInputOption" : "filterInputOption"
         }
+        disabled={props.disabled}
       />
       {isOpen && (
         <ItemsListContainer>
@@ -64,6 +60,7 @@ const DropDownMenu: React.FC<DropDownProps> = (props) => {
                 theme={
                   props.theme === "default" ? "defaultOption" : "filterOption"
                 }
+                disabled={props.disabled}
               />
             ))}
           </StyledMenu>

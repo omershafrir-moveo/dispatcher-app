@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const LegendContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: flex-start;
   width: 372px;
   height: 143px;
   margin-top: 15px;
+  overflow-y: auto;
 `;
 
 export const LegendItem = styled.div`

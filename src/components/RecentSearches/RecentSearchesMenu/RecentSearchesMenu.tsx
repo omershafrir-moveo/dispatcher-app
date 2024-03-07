@@ -15,9 +15,9 @@ export type RecentSearchesItem = {
 
 export type RecentSearchesMenuProps = {
   isOpen?: boolean;
-  items: RecentSearchesItem[];
-  handleClick: (item: RecentSearchesItem) => void;
-  handleDelete: (item: RecentSearchesItem) => void;
+  items: string[];
+  handleClick: (item: string) => void;
+  handleDelete: (item: string) => void;
   handleClear: () => void;
 };
 
@@ -26,15 +26,17 @@ const RecentSearchesMenu: React.FC<RecentSearchesMenuProps> = (props) => {
     <Container>
       <HeaderContainer>
         <HeaderTitleContainer>RECENT SEARCHES</HeaderTitleContainer>
-        <ClearButton onClick={props.handleClear}>CLEAR</ClearButton>
+        <ClearButton onMouseDown={props.handleClear}>CLEAR</ClearButton>
       </HeaderContainer>
       {props.isOpen && props.items && (
         <ItemsList>
-          {props.items.map((item) => (
+          {props.items.map((item, index) => (
             <RecentSearchesItem
-              key={item.key}
-              text={item.text}
-              handleDelete={() => props.handleDelete(item)}
+              key={index}
+              text={item}
+              handleDelete={() => {
+                props.handleDelete(item);
+              }}
               handleClick={() => props.handleClick(item)}
             />
           ))}

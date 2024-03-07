@@ -9,7 +9,7 @@ type searchProps = {
 };
 
 export const Search: React.FC<searchProps> = (props) => {
-  const { isOpenRecent, toggleRecentSearchesMenu, searchValue } =
+  const { isOpenRecent, toggleRecentSearchesMenu, searchValue, sendRequest } =
     useContext(SearchContext);
 
   const handleClick = () => {
@@ -18,12 +18,11 @@ export const Search: React.FC<searchProps> = (props) => {
     }
   };
   const handleBlur = () => {
-    setTimeout(() => {
-      if (isOpenRecent) {
-        toggleRecentSearchesMenu();
-      }
-    }, 150);
+    if (isOpenRecent) {
+      toggleRecentSearchesMenu();
+    }
   };
+
   return (
     <StyledTextField
       type="text"
@@ -32,7 +31,11 @@ export const Search: React.FC<searchProps> = (props) => {
       onChange={props.handleInputChange}
       onClick={handleClick}
       onBlur={handleBlur}
-    />  
+      onKeyDown={(event) => {
+        if (event.key == "Enter") sendRequest(searchValue);
+        
+      }}
+    />
   );
 };
 

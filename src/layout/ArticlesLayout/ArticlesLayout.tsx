@@ -12,7 +12,16 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({ articles }) => {
     <ArticlesContainer>
       {articles?.map((article: ArticleProps, index) => (
         <Item key={index}>
-          <ArticleCard photo={article.photo} info={article.info} />
+          <ArticleCard
+            author={article.author}
+            content={article.content}
+            description={article.description}
+            publishedAt={article.publishedAt}
+            title={article.title}
+            url={article.url}
+            urlToImage={article.urlToImage}
+            source={article.source}
+          />
         </Item>
       ))}
     </ArticlesContainer>

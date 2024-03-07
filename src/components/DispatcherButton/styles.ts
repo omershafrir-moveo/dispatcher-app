@@ -13,4 +13,5 @@ export const buttonStyle = {
   lineHeight: "26px",
   letterSpacing: "0.25px",
   textTransform: "uppercase",
+  marginRight: "16px",
 };

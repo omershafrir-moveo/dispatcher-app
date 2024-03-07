@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ButtonProps } from "./RecentSearchItem.types";
+import { ButtonProps } from "../RecentSearchesMenu/RecentSearchItem.types";
 import { COLORS } from "../../../global-data";
 
-export const ItemContainer = styled.button<ButtonProps>`
+export const ItemContainer = styled.div<ButtonProps>`
   background-color: ${COLORS.primaryLightColor};
   width: 663px;
   height: 29.3px;

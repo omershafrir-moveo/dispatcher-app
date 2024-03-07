@@ -8,6 +8,7 @@ const FilterSelect: React.FC<DropDownProps> = (props) => {
       selectedOption={props.selectedOption}
       handleSelectedOptionChange={props.handleSelectedOptionChange}
       theme="filter"
+      disabled={props.disabled}
     />
   );
 };
