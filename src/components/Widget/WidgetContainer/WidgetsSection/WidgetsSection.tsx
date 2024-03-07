@@ -10,6 +10,7 @@ export type WidgetProps = {
   articles: ArticleProps[];
   isLoading: boolean;
   children?: React.ReactNode;
+  tooltip?: boolean | undefined;
 };
 
 const WidgetsSection: React.FC<{

@@ -68,12 +68,17 @@ export const getArticles = async (
     const queriesSuffix = arrayToQueryString(params?.queries);
     const url = `https://newsapi.org/v2/${params?.searchMode}?apiKey=${API_KEY}${queriesSuffix}&page=${pageParam}&pageSize=10`;
     const res = await axios.get(url);
+
+    if (res.data.articles.length == 0) {
+      throw new AxiosError(undefined, "noResults");
+    }
     return { data: res.data, responseStatus: Status.SUCCESS };
   } catch (error: any) {
     return {
       data: [],
       responseStatus: Status.ERROR,
-      errorMsg: error.response.data.code,
+      errorMsg:
+        error.code != "ERR_BAD_REQUEST" ? error.code : error.response.data.code,
     };
   }
 };

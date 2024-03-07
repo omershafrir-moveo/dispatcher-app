@@ -28,7 +28,8 @@ const StyledOption = styled.button<StyledButtonProps>`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #e9e4e4;
+    background-color: #505050;
+    color: white;
     text-align: center;
     border-radius: 6px;
     padding: 5px;

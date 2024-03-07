@@ -1,5 +1,11 @@
-import { AreaChart, Area, XAxis, ResponsiveContainer, Tooltip } from "recharts";
-import { useMemo } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  ResponsiveContainer,
+  Tooltip,
+  YAxis,
+} from "recharts";
 import WidgetCard from "../WidgetCard/WidgetCard";
 import Typography from "../../Typography/Typography";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
@@ -9,13 +15,13 @@ import Spacer from "../../Container/Spacer/Spacer";
 import { WidgetProps } from "../WidgetContainer/WidgetsSection/WidgetsSection";
 import NoData from "../../Icons/NoData";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
-import { CustomMonthsTooltipProps } from "../Widget.types";
-import {
-  HeadlineContainer,
-  TooltipContainer,
-  TooltipTextContainer,
-} from "./MonthsGraph.styles";
-const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
+import { HeadlineContainer } from "./MonthsGraph.styles";
+import { CustomMonthsTooltip } from "./MonthsGraph.types";
+const MonthsGraph: React.FC<WidgetProps> = ({
+  articles,
+  isLoading,
+  tooltip,
+}) => {
   let contentFlag = articles.length > 0;
 
   const computeData = (): {
@@ -43,50 +49,6 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
 
   const data: { date: Date; value: number }[] = computeData();
 
-  const firstDatesArray: Date[] = useMemo(() => {
-    const returnArray: Date[] = [];
-    const dates: Date[] = data.map((dataPoint) => dataPoint.date);
-    const datesReversed: Date[] = [...dates].reverse();
-    for (let month = 0; month < 12; month++) {
-      const firstDateIndex = dates.findIndex(
-        (date) => date.getMonth() == month
-      );
-      const lastDateIndex = datesReversed.findIndex(
-        (date) => date.getMonth() == month
-      );
-      if (firstDateIndex != -1) {
-        // returnArray.push(dates[Math.floor(firstDateIndex + lastDateIndex) / 2]);
-        returnArray.push(dates[firstDateIndex]);
-      }
-    }
-    return returnArray;
-  }, [data]);
-
-  const CustomMonthsTooltip: React.FC<CustomMonthsTooltipProps> = ({
-    active,
-    payload,
-    label,
-  }) => {
-    if (active && payload && payload.length) {
-      return (
-        <TooltipContainer className="TooltipContainer">
-          <TooltipTextContainer className="TooltipTextContainer">
-            <Typography color="#5A5A89">
-              {" "}
-              {`Articles published in ${format(label!, "MMM d")}`}
-            </Typography>
-            <Typography color="#5A5A89" weight="800">
-              {" "}
-              {payload[0].value}
-            </Typography>
-          </TooltipTextContainer>
-        </TooltipContainer>
-      );
-    }
-
-    return null;
-  };
-
   return (
     <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
       <HeadlineContainer className="HeadlineContainer">
@@ -100,13 +62,13 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
           {isLoading && <LoadingSpinner />}
           {contentFlag && (
             <AreaChart
-              width={438}
+              width={tooltip ? 438 : 500}
               height={250}
               data={data}
               margin={{
                 top: 5,
-                right: 10,
-                left: 10,
+                right: tooltip ? 10 : 40,
+                left: tooltip ? 10 : 5,
                 bottom: 0,
               }}
             >
@@ -122,17 +84,29 @@ const MonthsGraph: React.FC<WidgetProps> = ({ articles, isLoading }) => {
                 }}
                 tick={{ fill: "#5A5A89" }}
               />
+              {!tooltip && (
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  style={{
+                    fontWeight: "700",
+                  }}
+                  tick={{ fill: "#5A5A89" }}
+                />
+              )}
               <defs>
                 <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="rgba(0, 88, 185, 1)" />
                   <stop offset="100%" stopColor="rgba(0, 185, 255, 0)" />
                 </linearGradient>
               </defs>
-              <Tooltip
-                viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
-                cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
-                content={<CustomMonthsTooltip />}
-              />
+              {tooltip && (
+                <Tooltip
+                  viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
+                  cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
+                  content={<CustomMonthsTooltip />}
+                />
+              )}
               <Area
                 type="basis"
                 dataKey="value"

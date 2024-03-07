@@ -1,5 +1,4 @@
 import { TooltipProps } from "rsuite";
-
 export type MonthsDataPoint = {
   date: Date;
   value: number;
@@ -19,3 +18,9 @@ export interface CustomMonthsTooltipProps extends TooltipProps {
   payload?: MonthsDataPoint[];
   label?: Date;
 }
+
+export type CustomTickMonthsProps = {
+  x?: number;
+  y?: number;
+  payload: any;
+};

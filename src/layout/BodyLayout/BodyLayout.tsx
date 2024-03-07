@@ -22,6 +22,7 @@ import { ArticleProps } from "../../components/ArticleCard/ArticleCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { Fade } from "react-awesome-reveal";
 import { Status } from "../../util/apiService.types";
+import { AxiosError } from "axios";
 
 export type ArticlesResponseType = {
   status: string;
@@ -44,6 +45,8 @@ const BodyLayout: React.FC = () => {
           return `Required parameters are missing.\nPlease set any of the following parameters: country/category/source or enter a query.`;
         else
           return `Required parameters are missing.\nPlease choose a source or enter a query.`;
+      case "noResults":
+        return "we couldn't find any matches for your query";
       case "rateLimited":
         return `Unfortunately you have reached the maximal number of requests allowed to a free user.\nIf you wish to view more articles please consider upgrading your plan.`;
       case "maximumResultsReached":
@@ -70,8 +73,6 @@ const BodyLayout: React.FC = () => {
     } = await getArticles(pageParam, params);
     if (errorCode) {
       setErrorMsg(errorCodeInterpreter(errorCode));
-    } else if (errorCode == undefined && responseStatus == Status.SUCCESS) {
-      setErrorMsg("We couldn’t find any matches for your query");
     }
     setResponseStatus(ResponseStatus);
     return data;
@@ -88,6 +89,7 @@ const BodyLayout: React.FC = () => {
       if (lastPage.length < 10) return undefined;
       else return allPages.length + 1;
     },
+    retry: false,
   });
 
   const numOfResults = useRef<number>(0);
@@ -104,6 +106,18 @@ const BodyLayout: React.FC = () => {
           .flat() as ArticleProps[])
       : [];
 
+  // console.log(`'errorMSg' value is: ,${errorMsg}`);
+  // console.log(`'articles.length' value is: ,${articles.length}`);
+
+  // if (
+  //   errorMsg == "" &&
+  //   responseStatus == Status.SUCCESS &&
+  //   articles.length == 0
+  // ) {
+  //   console.log("!@!");
+
+  //   setErrorMsg("we couldn't find any matches for your query");
+  // }
   const topHeadlinesCondition =
     articles.length != 0 &&
     filterValue.key == 0 &&
@@ -153,9 +167,7 @@ const BodyLayout: React.FC = () => {
                 </Fade>
                 <TypoContainer className="TypoContainer">
                   <Typography size="18px" color="#5A5A89" textAlign="center">
-                    {errorMsg
-                      ? errorMsg
-                      : "we couldn't find any matches for your query"}
+                    {errorMsg}
                   </Typography>
                 </TypoContainer>
               </EmptyStateContainer>
