@@ -43,6 +43,20 @@ const MonthsGraph: React.FC<WidgetProps> = ({
         value: dateCounts[date],
       };
     });
+    let before = new Date();
+    let after = new Date();
+    if (datesArray.length == 1) {
+      before.setDate(datesArray[0].date.getDate() + 1);
+      datesArray.push({
+        date: before,
+        value: 0,
+      });
+      after.setDate(datesArray[0].date.getDate() - 1);
+      datesArray.push({
+        date: after,
+        value: 0,
+      });
+    }
     datesArray.sort((a, b) => a.date.getTime() - b.date.getTime());
     return datesArray;
   };

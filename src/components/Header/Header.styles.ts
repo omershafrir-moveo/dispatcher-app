@@ -38,7 +38,7 @@ export const DataWrapper = styled.div<{ children?: React.ReactNode }>`
   }
 
   @media ${device.tablet} {
-    gap: 50px;
+    gap: 25px;
   }
 `;
 export const InputWrapper = styled.div`

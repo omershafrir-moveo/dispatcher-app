@@ -7,13 +7,13 @@ export const LegendContainer = styled.div`
   width: 372px;
   height: 100px;
   margin-top: 15px;
-  gap: 7px;
+  gap: 14px;
   overflow-y: auto;
   overflow-x: hidden;
   ::-webkit-scrollbar {
     position: absolute;
     width: 10px;
-    height: 10px;
+    /* height: 50px; */
     right: -10; /* Position scrollbar to the right */
   }
 
@@ -26,13 +26,8 @@ export const LegendContainer = styled.div`
     background: transparent;
   }
 
-
   ::-webkit-scrollbar-corner {
     background-color: transparent;
-  }
-
-  ::-webkit-scrollbar-button {
-    display: block;
   }
 `;
 

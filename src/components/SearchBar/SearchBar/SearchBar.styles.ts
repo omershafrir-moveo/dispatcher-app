@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../../global-data";
+import { device } from "../../../util/breakpoints";
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -22,6 +23,10 @@ export const Container = styled.div`
   margin: 0px;
   background-color: ${COLORS.primaryLightColor};
   border-radius: 10px;
+
+  @media ${device.mobile} {
+    height: 60px;
+  }
 `;
 
 export const SearchIconWrapper = styled.div`

@@ -34,7 +34,6 @@ const StyledOption = styled.button<StyledButtonProps>`
     border-radius: 6px;
     padding: 5px;
     position: absolute;
-    z-index: 1;
     top: 60px;
     content: attr(data-tooltip);
     transition: all 0.2s;
@@ -44,13 +43,30 @@ const StyledOption = styled.button<StyledButtonProps>`
     opacity: 1;
   }
 
+  @media ${device.desktop} {
+    ::before {
+      display: ${({ theme }) =>
+        theme == "filterInputOption" ? "block" : "none"};
+      content: "";
+      position: absolute;
+      background-color: #d9dbe9;
+      top: 10;
+      height: 80%;
+      justify-self: center;
+      left: 0;
+      width: 1px; /* Width of the floating line */
+      z-index: 30;
+      opacity: 50%;
+    }
+  }
+
   @media ${device.tablet} {
     text-align: center;
     font-size: 13px;
     box-shadow: ${(props) =>
       ["defaultInputOption", "filterInputOption"].includes(props.theme) &&
       !props.disabled
-        ? "0 2px 4px rgba(0, 0, 0, 0.1)"
+        ? "0 2px 4px rgba(0, 0, 0, 0.2)"
         : "none"};
     border-radius: ${(props) =>
       ["defaultInputOption", "filterInputOption"].includes(props.theme)
@@ -66,8 +82,8 @@ const StyledOption = styled.button<StyledButtonProps>`
     font-size: 12px;
     background-color: ${(props) => (props.isFilled ? "#03e3fc" : "none")};
     background-color: ${(props) => (props.isChosen ? "#03e3fc" : "none")};
-    flex-grow: ${(props) =>
-      props.theme == "filterInputOption" ? "1" : "auto"};
+    width: ${(props) =>
+      props.theme == "filterInputOption" ? "180px" : "none"};
   }
 `;
 

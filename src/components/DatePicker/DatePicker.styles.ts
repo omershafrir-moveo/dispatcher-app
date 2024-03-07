@@ -11,7 +11,7 @@ export const DatePickerWrapper = styled.div`
   border-radius: 10px;
   @media ${device.tablet} {
     width: 25%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   @media ${device.mobile} {
     width: 25%;
