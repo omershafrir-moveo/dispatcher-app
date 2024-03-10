@@ -4,7 +4,7 @@ import { device } from "../../util/breakpoints";
 export const Container = styled.div<{ children?: React.ReactNode }>``;
 
 export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
-  height: calc(100% - 60px);
+  height: calc(100% - 100px);
   width: 100%;
   padding-left: 0px;
   gap: 24px;
@@ -18,7 +18,6 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
     position: absolute;
     width: 10px;
     height: 10px;
-    right: -10; /* Position scrollbar to the right */
   }
 
   ::-webkit-scrollbar-thumb {
@@ -32,10 +31,6 @@ export const ArticlesContainer = styled.ul<{ children?: React.ReactNode }>`
 
   ::-webkit-scrollbar-corner {
     background-color: transparent;
-  }
-
-  ::-webkit-scrollbar-button {
-    display: block;
   }
 `;
 export const ArticlesDataContainer = styled.div``;

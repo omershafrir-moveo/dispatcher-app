@@ -35,9 +35,16 @@ const StyledOption = styled.button<StyledButtonProps>`
     padding: 5px;
     position: absolute;
     top: 60px;
+    left: -10px;
+    width: 200px;
+    height: 60px;
     content: attr(data-tooltip);
     transition: all 0.2s;
     opacity: 0;
+
+    @media ${device.tablet} {
+      display: none;
+    }
   }
   &:disabled:hover::before {
     opacity: 1;

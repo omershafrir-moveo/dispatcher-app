@@ -106,18 +106,6 @@ const BodyLayout: React.FC = () => {
           .flat() as ArticleProps[])
       : [];
 
-  // console.log(`'errorMSg' value is: ,${errorMsg}`);
-  // console.log(`'articles.length' value is: ,${articles.length}`);
-
-  // if (
-  //   errorMsg == "" &&
-  //   responseStatus == Status.SUCCESS &&
-  //   articles.length == 0
-  // ) {
-  //   console.log("!@!");
-
-  //   setErrorMsg("we couldn't find any matches for your query");
-  // }
   const topHeadlinesCondition =
     articles.length != 0 &&
     filterValue.key == 0 &&

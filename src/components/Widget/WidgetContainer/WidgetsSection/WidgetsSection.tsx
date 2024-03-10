@@ -23,7 +23,7 @@ const WidgetsSection: React.FC<{
         <PieGraph articles={articles} isLoading={isLoading} />
       </Fade>
       <Fade>
-        <MonthsGraph articles={articles} isLoading={isLoading} />
+        <MonthsGraph articles={articles} isLoading={isLoading} tooltip/>
       </Fade>
     </WidgetsSectionContainer>
   );

@@ -67,15 +67,16 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
           </Fade>
         </Item>
       ))}
-      {responseStatus == Status.ERROR && (
-        <Fade>
-          <EndErrorContainer className="EndErrorContainer">
-            <Typography size="18px" color="#5A5A89" textAlign="center">
-              {errorMsg}
-            </Typography>
-          </EndErrorContainer>
-        </Fade>
-      )}
+      {responseStatus == Status.ERROR &&
+        errorMsg !== "we couldn't find any matches for your query" && (
+          <Fade>
+            <EndErrorContainer className="EndErrorContainer">
+              <Typography size="18px" color="#5A5A89" textAlign="center">
+                {errorMsg}
+              </Typography>
+            </EndErrorContainer>
+          </Fade>
+        )}
     </ArticlesContainer>
   );
 };
