@@ -11,6 +11,7 @@ export type WidgetProps = {
   isLoading: boolean;
   children?: React.ReactNode;
   tooltip?: boolean | undefined;
+  yaxis?: boolean | undefined;
 };
 
 const WidgetsSection: React.FC<{
@@ -23,7 +24,7 @@ const WidgetsSection: React.FC<{
         <PieGraph articles={articles} isLoading={isLoading} />
       </Fade>
       <Fade>
-        <MonthsGraph articles={articles} isLoading={isLoading} tooltip/>
+        <MonthsGraph articles={articles} isLoading={isLoading} tooltip />
       </Fade>
     </WidgetsSectionContainer>
   );

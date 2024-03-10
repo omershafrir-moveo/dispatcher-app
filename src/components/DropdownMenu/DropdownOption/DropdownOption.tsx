@@ -91,9 +91,6 @@ export const DropdownOption: React.FC<{
           </IconWrapper>
         )}
       </OptionDataContainer>
-      {/* {isTooltipVisible && (
-        <TooltipText isVisible={props.disabled == undefined ? false : isTooltipVisible }>yata yata yata</TooltipText>
-      )} */}
     </StyledOption>
   );
 };

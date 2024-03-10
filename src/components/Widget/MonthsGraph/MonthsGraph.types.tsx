@@ -11,6 +11,7 @@ export const CustomMonthsTooltip: React.FC<CustomMonthsTooltipProps> = ({
   payload,
   label,
 }) => {
+  // if (active && payload && payload.length) {
   if (active && payload && payload.length) {
     return (
       <TooltipContainer className="TooltipContainer">

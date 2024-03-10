@@ -24,7 +24,7 @@ const StyledOption = styled.button<StyledButtonProps>`
     background-color: ${(props) => THEMES.onHover(props.theme)};
   }
   &:disabled::before {
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -47,6 +47,7 @@ const StyledOption = styled.button<StyledButtonProps>`
     }
   }
   &:disabled:hover::before {
+    display: flex;
     opacity: 1;
   }
 

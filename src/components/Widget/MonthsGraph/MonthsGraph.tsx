@@ -17,10 +17,12 @@ import NoData from "../../Icons/NoData";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import { HeadlineContainer } from "./MonthsGraph.styles";
 import { CustomMonthsTooltip } from "./MonthsGraph.types";
+import { useState, MouseEventHandler } from "react";
 const MonthsGraph: React.FC<WidgetProps> = ({
   articles,
   isLoading,
   tooltip,
+  yaxis,
 }) => {
   let contentFlag = articles.length > 0;
 
@@ -62,6 +64,16 @@ const MonthsGraph: React.FC<WidgetProps> = ({
   };
 
   const data: { date: Date; value: number }[] = computeData();
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    x: number;
+    y: number;
+  }>({ x: 0, y: 0 });
+
+  const handleMouseEnter: MouseEventHandler<SVGElement> = (event) => {
+    const tooltipHeight = 160;
+    console.log("printintit");
+    setTooltipPosition({ x: event.clientX, y: event.clientY });
+  };
 
   return (
     <WidgetCard type={data.length > 0 ? "monthes" : "no-data"}>
@@ -98,7 +110,7 @@ const MonthsGraph: React.FC<WidgetProps> = ({
                 }}
                 tick={{ fill: "#5A5A89" }}
               />
-              {!tooltip && (
+              {yaxis && (
                 <YAxis
                   axisLine={false}
                   tickLine={false}
@@ -118,15 +130,19 @@ const MonthsGraph: React.FC<WidgetProps> = ({
                 <Tooltip
                   viewBox={{ x: 0, y: 0, width: 200, height: 30 }}
                   cursor={{ stroke: "#5A5A89", strokeWidth: 0.2 }}
+                  position={{ y: 0 }}
                   content={<CustomMonthsTooltip />}
                 />
               )}
               <Area
-                type="basis"
+                type="monotone"
                 dataKey="value"
                 fill={`url(#grad)`}
                 stroke="#0058B9"
                 strokeWidth="4px"
+                activeDot={{ strokeWidth: 2, r: 7 }}
+                // onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseEnter}
               />
             </AreaChart>
           )}
