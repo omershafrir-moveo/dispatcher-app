@@ -1,19 +1,46 @@
 import styled from "styled-components";
+import { device } from "../../util/breakpoints";
 
-export const Container = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
-  margin: 0px;
-  padding: 0px;
-  background-color: #262146;
+  justify-content: center;
   width: 100%;
-  height: 74px;
-  justify-content: left;
+  background-color: #262146;
+  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 99999;
+
+  @media ${device.tablet} {
+    box-shadow: none;
+  }
 `;
 
 export const IconWrapper = styled.div`
-  margin: 12px 154px 0px 20px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  display: flex;
 `;
 
+export const DataWrapper = styled.div<{ children?: React.ReactNode }>`
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 40px);
+  height: 74px;
+  justify-content: flex-start;
+  z-index: 3;
+  align-items: center;
+  /* gap: calc(12.5% - 76px); */
+  gap: 153px;
+
+  @media ${device.mobile} {
+    justify-content: space-between;
+  }
+
+  @media ${device.tablet} {
+    gap: 25px;
+  }
+`;
 export const InputWrapper = styled.div`
-  margin-top: 12px;
+  width: 100%;
 `;

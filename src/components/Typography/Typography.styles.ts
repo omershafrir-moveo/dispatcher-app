@@ -10,6 +10,13 @@ export default styled.div<TypeographyProps>`
   letter-spacing: ${(props) => props.letterSpacing ?? "0px"};
   margin: ${(props) => (props.margin ? props.margin : "0px")};
   height: ${(props) => (props.height ? props.height : "none")};
-  width: ${(props) => (props.width ? props.width : "none")};
+  width: ${(props) => (props.width ? props.width : "100%")};
   text-align: "left";
+  white-space: pre-line;
+  text-align: ${(props) => (props.textAlign ? props.textAlign : "none")};
+  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "none")};
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;

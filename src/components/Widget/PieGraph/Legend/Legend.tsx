@@ -4,23 +4,20 @@ import {
   LegendBullet,
   LegendText,
   LegendValue,
-  LegendItemData
+  LegendItemData,
 } from "./Legend.styles";
-// import { DataType } from "../PieGraph";
-
-// export type DataType<T> = T & {color: string}
 
 const Legend: React.FC<{ data: any[]; children?: React.ReactNode }> = (
   props
 ) => {
   return (
-    <LegendContainer>
-      {props.data.map((dataPoint) => (
-        <LegendItem>
-          <LegendBullet color={dataPoint.color} />
-          <LegendItemData>
-            <LegendText>{dataPoint.name}</LegendText>
-            <LegendValue>{`${dataPoint.value}%`}</LegendValue>
+    <LegendContainer className="LegendContainer">
+      {props.data.map((dataPoint, index) => (
+        <LegendItem className="LegendItem" key={index}>
+          <LegendBullet className="LegendBullet" color={dataPoint.color} />
+          <LegendItemData className="LegendItemData">
+            <LegendText className="LegendText">{dataPoint.name}</LegendText>
+            <LegendValue className="LegendValue">{`${dataPoint.value}%`}</LegendValue>
           </LegendItemData>
         </LegendItem>
       ))}

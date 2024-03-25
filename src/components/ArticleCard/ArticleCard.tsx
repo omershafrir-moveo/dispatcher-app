@@ -3,54 +3,54 @@ import {
   PhotoContainer,
   InfoContainer,
   DataContainer,
+  ButtonWrapper,
 } from "./ArticleCard.styles";
 import Typography from "../Typography/Typography";
 import DispatcherButton from "../DispatcherButton/DispatcherButton";
-import Spacer from "../Container/Spacer/Spacer";
-
-export type ArticleInfoProps = {
-  date: string;
-  title: string;
-  source: string;
-  body: string;
-  button: React.ReactNode;
-};
-
-export type ArticlePhotoProps = {
-  src: string;
-  alt: string;
-};
+import Image from "../Image/Image";
+import { formatDate } from "../../util/util";
+import useMobile from "../../hooks/useMobile";
 
 export type ArticleProps = {
-  photo: ArticlePhotoProps;
-  info: ArticleInfoProps;
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  title: string;
+  url: string;
+  urlToImage: string;
+  source: { id: string; name: string };
 };
 
 const ArticleCard: React.FC<ArticleProps> = (props) => {
+  const isMobile = useMobile();
   return (
-    <Card>
-      <PhotoContainer
-        src={props.photo.src}
-        alt={props.photo.alt}
-        width="244px"
-        height="242px"
-      />
-      <DataContainer>
-        <InfoContainer>
-          <Typography margin="17px 0px 0px 0px">{props.info.date}</Typography>
-          <Spacer height="14px" />
-          <Typography color="#000000" size="18px" width="470px" height="42px">
-            {props.info.title}
+    <Card className="Card">
+      <Image src={props.urlToImage} alt={props.title} />
+      <DataContainer className="DataContainer">
+        <InfoContainer className="InfoContainer">
+          <Typography>{formatDate(props.publishedAt)}</Typography>
+          <Typography
+            color="#000000"
+            weight="bold"
+            size="18px"
+            height="50px"
+          >
+            {props.title}
           </Typography>
-          <Spacer height="14px" />
-          <Typography>{props.info.source}</Typography>
-          <Spacer height="14px" />
-          <Typography color="#5A5A89" width="711px" height="32px">
-            {props.info.body}
+          <Typography>{props.source.name}</Typography>
+          <Typography maxHeight="60px"  overflow="hidden" color="#5A5A89">
+            {props.content}
           </Typography>
-          <Spacer height="24px" />
+          <ButtonWrapper className="ButtonWrapper">
+            <DispatcherButton
+              text="NAVIGATE TO DISPATCH"
+              handleClick={() => {
+                window.open(props.url, "_blank");
+              }}
+            />
+          </ButtonWrapper>
         </InfoContainer>
-        {props.info.button}
       </DataContainer>
     </Card>
   );

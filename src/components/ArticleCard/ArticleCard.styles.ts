@@ -1,29 +1,85 @@
 import styled from "styled-components";
-import { ArticlePhotoProps } from "./ArticleCard";
+import { device } from "../../util/breakpoints";
 
 export const Card = styled.div`
   display: flex;
-  height: 242px;
-  width: 955px;
+  background-color: #ffffff;
+  width: calc(100%-2px);
+  /* max-width: 988px; */
+  flex-direction: row;
+  border-radius: 20px;
+  border: 1px solid #d9dbe9;
+  margin-right: 24px;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+
+  @media ${device.tablet} {
+    gap: 0px;
+    margin-right: 2px;
+  }
 `;
 
-export const PhotoContainer = styled.img<ArticlePhotoProps>`
+export const PhotoContainer = styled.img<{ src: string; alt: string }>`
   border-radius: 20px 0px 0px 20px;
+`;
+
+export const DataContainer = styled.div`
+  border-radius: 0px 0px 20px 20px;
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @media ${device.mobile} {
+    height: 100%;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media ${device.tablet} {
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
+  width: calc(100% - 32px);
+  height: 100%;
+  padding: 16px 0px;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 711px;
+  gap: 19px;
+  justify-content: space-evenly;
+
+  @media ${device.mobile} {
+    gap: 10px;
+    align-items: center;
+    width: calc(100% - 32px);
+    padding: 8px 0px 12px 0px;
+  }
+
+  @media ${device.tablet} {
+    width: calc(100% - 34px);
+    padding: none;
+  }
 `;
 
-export const DataContainer = styled.div`
-  padding: 0px 16px 0px 17px;
-  background-color: #ffffff;
-  height: 242px;
-  border-radius: 0px 20px 20px 0px;
+export const Container = styled.div<{ children?: React.ReactNode }>``;
+export const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 226px;
+  align-self: flex-end;
+
+  @media ${device.mobile} {
+    width: 100%;
+    max-width: none;
+  }
 `;

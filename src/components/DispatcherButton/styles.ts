@@ -2,7 +2,7 @@ import { COLORS } from "../../global-data";
 
 export const buttonStyle = {
   backgroundColor: COLORS.primaryButtonColor,
-  width: "226",
+  width: "100%",
   height: "36",
   borderRadius: "20px",
   fontFeatureSettings: "'clig' off, 'liga' off",

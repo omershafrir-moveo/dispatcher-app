@@ -1,9 +1,16 @@
-import React, { useState, useContext } from "react";
-import { Container, SearchContainer } from "./SearchBar.styles";
+import React from "react";
+import {
+  Container,
+  SearchContainer,
+  SearchIconWrapper,
+} from "./SearchBar.styles";
 import Search from "../Search/Search";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import SearchIcon from "../../Icons/SearchIcon";
 import { SelectOptionType } from "../../../global-data";
+import { modeArray } from "../../../global-data";
+import useDesktop from "../../../hooks/useDesktop";
+import useTablet from "../../../hooks/useTablet";
 
 export type SearchBarProps = {
   searchValue: string;
@@ -13,29 +20,29 @@ export type SearchBarProps = {
 };
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const isDesktop = useDesktop();
+  const isTablet = useTablet();
   return (
-    <Container>
-      <SearchContainer>
-        <SearchIcon />
+    <Container className="SearchBarContainer">
+      <SearchContainer className="SearchContainer">
+        <SearchIconWrapper className="SearchIconWrapper">
+          <SearchIcon />
+        </SearchIconWrapper>
         <Search
           searchInput={props.searchValue}
           handleInputChange={props.handleSearchInputChange}
         />
       </SearchContainer>
-      <FilterSelect
-        defaultItemName={{
-          key: 0,
-          title: "Top Headlines",
-          value: "top-headlines",
-        }}
-        itemsNames={[
-          { key: 0, title: "Top Headlines", value: "top-headlines" },
-          { key: 1, title: "Everything", value: "every" },
-        ]}
-        selectedOption={props.filterValue}
-        handleSelectedOptionChange={props.handleFilterChange}
-        theme="filter"
-      />
+      {!isTablet && (
+        <FilterSelect
+          defaultItemName={props.filterValue}
+          itemsNames={[modeArray[0], modeArray[1]]}
+          selectedOption={props.filterValue}
+          handleSelectedOptionChange={props.handleFilterChange}
+          theme="filter"
+          disabled={false}
+        />
+      )}
     </Container>
   );
 };

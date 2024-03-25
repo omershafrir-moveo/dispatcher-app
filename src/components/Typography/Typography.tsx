@@ -1,17 +1,21 @@
 import { StringLiteral } from "typescript";
 import StyledFont from "./Typography.styles";
+import { useState, useRef, useEffect } from "react";
 
 export type TypeographyProps = {
+  children?: React.ReactNode;
   font?: string;
   size?: string;
   weight?: string;
   fontStyle?: string;
   color?: string;
   letterSpacing?: string;
-  children?: React.ReactNode;
   margin?: string;
   height?: string;
   width?: string;
+  maxHeight?: string;
+  textAlign?: string;
+  overflow?: string;
 };
 
 const Typography: React.FC<TypeographyProps> = ({
@@ -25,6 +29,9 @@ const Typography: React.FC<TypeographyProps> = ({
   margin,
   height,
   width,
+  maxHeight,
+  textAlign,
+  overflow,
 }) => {
   return (
     <StyledFont
@@ -37,6 +44,9 @@ const Typography: React.FC<TypeographyProps> = ({
       margin={margin}
       height={height}
       width={width}
+      maxHeight={maxHeight}
+      textAlign={textAlign}
+      overflow={overflow}
     >
       {children}
     </StyledFont>
